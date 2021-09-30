@@ -17,5 +17,6 @@ module.exports = {
         exclude: ['node_modules', 'bower_components', '.cache', 'public'],
       },
     },
+    'gatsby-plugin-styled-components',
   ],
 };
