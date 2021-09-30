@@ -6,6 +6,10 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://keytakeaways.gatsbyjs.io',
     title: 'Key Takeaways',
+    author: {
+      name: 'Alesia Korzun',
+    },
+    description: 'Key Takeaways: all you need!',
   },
   plugins: [
     {
@@ -18,5 +22,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-helmet',
   ],
 };
