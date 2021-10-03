@@ -7,7 +7,7 @@ import Seo from '../components/seo';
 const HomePage: React.FC<PageProps> = () => (
   <Layout>
     <Seo title="Home" />
-    <h1>Hello world!</h1>
+    <div>Home Page banner</div>
   </Layout>
 );
 
