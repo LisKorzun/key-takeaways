@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import { Link } from 'gatsby';
 
 import GlobalStyle from '../styles/GlobalStyle';
 import themes from '../styles/themes';
@@ -46,7 +47,8 @@ const Section = styled.div`
   position: relative;
 `;
 
-const Header = styled.div`
+const Header = styled((props) => <Link {...props} />)`
+  display: flex;
   margin: 1em;
   font-size: 30px;
   font-weight: 100;
@@ -68,11 +70,12 @@ const NavItem = styled.li`
   font-size: 18px;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled((props) => <Link {...props} />)`
   text-decoration: none;
   font-weight: 200;
   position: relative;
   padding: 10px 0;
+  color: ${(props) => props.theme.background};
   &:after {
     content: '';
     position: absolute;
@@ -111,22 +114,13 @@ const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => (
     <GlobalStyle theme={themes[theme]} />
     <PageContainer>
       <SideContainer>
-        <Header>Key Takeaways</Header>
+        <Header to="/">Key Takeaways</Header>
         <Nav>
           <NavItem>
-            <NavLink>Lead SE</NavLink>
+            <NavLink to="/blog">Blog</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>Senior SE</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>Middle SE</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>Junior SE</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>About</NavLink>
+            <NavLink to="/about">About</NavLink>
           </NavItem>
         </Nav>
       </SideContainer>

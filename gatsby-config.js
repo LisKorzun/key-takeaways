@@ -21,6 +21,14 @@ module.exports = {
         exclude: ['node_modules', 'bower_components', '.cache', 'public'],
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: `posts`,
+        path: `${__dirname}/content/posts`,
+      },
+    },
+    'gatsby-plugin-mdx',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
   ],

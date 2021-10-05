@@ -4,11 +4,11 @@ import { PageProps } from 'gatsby';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 
-const HomePage: React.FC<PageProps> = () => (
+const AboutPage: React.FC<PageProps> = () => (
   <Layout>
-    <Seo title="Home" />
-    <div>Home Page</div>
+    <Seo title="About" />
+    <div>About Page</div>
   </Layout>
 );
 
-export default HomePage;
+export default AboutPage;
