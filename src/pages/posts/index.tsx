@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Link, graphql } from 'gatsby';
 
-import Layout from '../components/layout';
-import Seo from '../components/seo';
+import Layout from '../../components/layout';
+import Seo from '../../components/seo';
 
 type Node = {
   id: string;
@@ -11,7 +10,7 @@ type Node = {
     date: string;
     title: string;
   };
-  body: string;
+  slug: string;
 };
 
 interface Props {
@@ -29,9 +28,10 @@ const BlogPage: FC<Props> = ({ data }) => {
       <div>
         {data.allMdx.nodes.map((node) => (
           <article key={node.id}>
-            <h2>{node.frontmatter.title}</h2>
+            <h2>
+              <Link to={`/posts/${node.slug}`}>{node.frontmatter.title}</Link>
+            </h2>
             <p>Posted: {node.frontmatter.date}</p>
-            <MDXRenderer>{node.body}</MDXRenderer>
           </article>
         ))}
       </div>
@@ -48,7 +48,7 @@ export const query = graphql`
           date(formatString: "MMMM DD, YYYY")
         }
         id
-        body
+        slug
       }
     }
   }

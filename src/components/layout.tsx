@@ -117,7 +117,7 @@ const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => (
         <Header to="/">Key Takeaways</Header>
         <Nav>
           <NavItem>
-            <NavLink to="/blog">Blog</NavLink>
+            <NavLink to="/posts">Posts</NavLink>
           </NavItem>
           <NavItem>
             <NavLink to="/about">About</NavLink>
