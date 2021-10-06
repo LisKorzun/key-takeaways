@@ -120,6 +120,9 @@ const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => (
             <NavLink to="/posts">Posts</NavLink>
           </NavItem>
           <NavItem>
+            <NavLink to="/tags">Tags</NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink to="/about">About</NavLink>
           </NavItem>
         </Nav>
