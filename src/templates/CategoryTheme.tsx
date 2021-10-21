@@ -22,7 +22,7 @@ interface Props {
 }
 
 const CategoryTheme: FC<Props> = ({ pageContext, data }) => {
-  const { category, theme } = pageContext;
+  const { category } = pageContext;
   const { totalCount, group } = data.allMdx;
 
   return (
