@@ -28,8 +28,19 @@ module.exports = {
         path: `${__dirname}/content/posts`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /svg/,
+        },
+      },
+    },
     'gatsby-plugin-mdx',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
   ],
 };

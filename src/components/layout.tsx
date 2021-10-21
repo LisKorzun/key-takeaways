@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 
 import GlobalStyle from '../styles/GlobalStyle';
 import themes from '../styles/themes';
+import Icon from '../images/svg/first-icon.svg';
 
 interface LayoutProps {
   theme?: string;
@@ -117,9 +118,6 @@ const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => (
         <Header to="/">Key Takeaways</Header>
         <Nav>
           <NavItem>
-            <NavLink to="/posts">Posts</NavLink>
-          </NavItem>
-          <NavItem>
             <NavLink to="/tags">Tags</NavLink>
           </NavItem>
           <NavItem>
@@ -128,6 +126,7 @@ const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => (
         </Nav>
       </SideContainer>
       <MainContainer>
+        <Icon />
         <Section>{children}</Section>
       </MainContainer>
     </PageContainer>
