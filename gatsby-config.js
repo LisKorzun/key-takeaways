@@ -10,6 +10,12 @@ module.exports = {
       name: 'Alesia Korzun',
     },
     description: 'Key Takeaways: all you need!',
+    levels: [
+      { id: '1', title: 'Novice Level' },
+      { id: '2', title: 'Competent Level' },
+      { id: '3', title: 'Proficient Level' },
+      { id: '4', title: 'Expert Level' },
+    ],
   },
   plugins: [
     {

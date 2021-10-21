@@ -1,19 +1,13 @@
 import React, { FC } from 'react';
 import { graphql, Link } from 'gatsby';
+import { kebabCase, find } from 'lodash';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import { kebabCase } from 'lodash';
 import styled from 'styled-components';
 
 const Themes = styled.div`
   display: flex;
-`;
-
-const Theme = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 60px;
 `;
 
 const StyledLink = styled.li`
@@ -29,7 +23,7 @@ interface Props {
       group: {
         fieldValue: string;
         totalCount: number;
-        group: { totalCount: number; fieldValue: string; nodes: { slug: string; frontmatter: { title: string } }[] }[];
+        nodes: { slug: string; frontmatter: { title: string } }[];
       }[];
     };
   };
@@ -38,24 +32,18 @@ const HomePage: FC<Props> = ({ data }) => (
   <Layout>
     <Seo title="Home" />
     <div>
-      {data.allMdx.group.map((category) => (
-        <article key={category.fieldValue}>
+      {data.allMdx.group.map((difficulty) => (
+        <article key={difficulty.fieldValue}>
           <p>
-            <Link to={`/${kebabCase(category.fieldValue)}/`}>
-              {`${category.fieldValue} (${category.totalCount} articles)`}
+            <Link to={`/${kebabCase(find(data.site.siteMetadata.levels, ['id', difficulty.fieldValue]).title)}/`}>
+              {`${difficulty.fieldValue} (${difficulty.totalCount} articles)`}
             </Link>
             <hr />
             <Themes>
-              {category.group.map((theme) => (
-                <Theme key={theme.fieldValue}>
-                  <h4>{theme.fieldValue}</h4>
-                  {theme.nodes.map((post) => (
-                    <StyledLink key={post.slug}>
-                      <Link to={`/${post.slug}`}>{post.frontmatter.title}</Link>
-                    </StyledLink>
-                  ))}
-                  <StyledLink>{`See All ${theme.totalCount}`}</StyledLink>
-                </Theme>
+              {difficulty.nodes.map((post) => (
+                <StyledLink key={post.slug}>
+                  <Link to={`/${post.slug}`}>{post.frontmatter.title}</Link>
+                </StyledLink>
               ))}
             </Themes>
           </p>
@@ -67,20 +55,28 @@ const HomePage: FC<Props> = ({ data }) => (
 
 export const query = graphql`
   query {
-    allMdx {
-      group(field: frontmatter___category) {
+    allMdx(limit: 5, sort: { order: DESC, fields: frontmatter___date }) {
+      group(field: frontmatter___difficulty) {
         totalCount
-        group(field: frontmatter___theme) {
-          totalCount
-          nodes {
-            slug
-            frontmatter {
-              title
-            }
-          }
-          fieldValue
-        }
         fieldValue
+        nodes {
+          frontmatter {
+            title
+            tags
+            topic
+            date(formatString: "DD MMM YYYY")
+          }
+          id
+          slug
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        levels {
+          id
+          title
+        }
       }
     }
   }
