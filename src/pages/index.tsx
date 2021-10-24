@@ -1,20 +1,37 @@
 import React, { FC } from 'react';
 import { graphql, Link } from 'gatsby';
 import { kebabCase, find } from 'lodash';
+import { ImageDataLike } from 'gatsby-plugin-image';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import styled from 'styled-components';
+import { Card } from '../components/card';
 
-const Themes = styled.div`
+const SCardsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  margin: 30px 0;
 `;
 
-const StyledLink = styled.li`
-  margin: 0 0 20px 0;
-  padding: 0;
-  list-style: none;
-  font-size: 18px;
+const STitleCaption = styled.div`
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: ${(props) => props.theme.primary};
+  font-weight: bold;
+  font-size: 10px;
+  margin-bottom: 10px;
+  margin-top: 70px;
+`;
+
+const STitle = styled((props) => <Link {...props} />)`
+  color: ${(props) => props.theme.secondary};
+  font-size: 40px;
+  text-transform: capitalize;
+  display: flex;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: ${(props) => `3px solid ${props.theme.accent}`};
 `;
 
 interface Props {
@@ -23,35 +40,48 @@ interface Props {
       group: {
         fieldValue: string;
         totalCount: number;
-        nodes: { slug: string; frontmatter: { title: string } }[];
+        nodes: {
+          slug: string;
+          id: string;
+          frontmatter: { title: string; date: string; topic: string; tags: string[]; hero_image: ImageDataLike };
+        }[];
       }[];
     };
+    site: { siteMetadata: { levels: { id: string; title: string }[] } };
   };
 }
-const HomePage: FC<Props> = ({ data }) => (
-  <Layout>
-    <Seo title="Home" />
-    <div>
-      {data.allMdx.group.map((difficulty) => (
-        <article key={difficulty.fieldValue}>
-          <p>
-            <Link to={`/${kebabCase(find(data.site.siteMetadata.levels, ['id', difficulty.fieldValue]).title)}/`}>
-              {`${difficulty.fieldValue} (${difficulty.totalCount} articles)`}
-            </Link>
-            <hr />
-            <Themes>
-              {difficulty.nodes.map((post) => (
-                <StyledLink key={post.slug}>
-                  <Link to={`/${post.slug}`}>{post.frontmatter.title}</Link>
-                </StyledLink>
-              ))}
-            </Themes>
-          </p>
-        </article>
-      ))}
-    </div>
-  </Layout>
-);
+
+const HomePage: FC<Props> = ({ data }) => {
+  const { levels } = data.site.siteMetadata;
+
+  return (
+    <Layout>
+      <Seo title="Home" />
+      <div>
+        {data.allMdx.group.map((difficulty) => {
+          const level = find(levels, ['id', difficulty.fieldValue]);
+          return (
+            <>
+              {level && (
+                <div key={difficulty.fieldValue}>
+                  <>
+                    <STitleCaption>Difficulty</STitleCaption>
+                    <STitle to={`/${kebabCase(level.title)}`}>{`${level.title}`}</STitle>
+                    <SCardsContainer>
+                      {difficulty.nodes.map((post) => (
+                        <Card key={post.id} post={post} />
+                      ))}
+                    </SCardsContainer>
+                  </>
+                </div>
+              )}
+            </>
+          );
+        })}
+      </div>
+    </Layout>
+  );
+};
 
 export const query = graphql`
   query {
@@ -64,7 +94,12 @@ export const query = graphql`
             title
             tags
             topic
-            date(formatString: "DD MMM YYYY")
+            date(formatString: "MMMM DD, YYYY")
+            hero_image {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
           }
           id
           slug

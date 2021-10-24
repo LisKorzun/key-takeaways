@@ -46,9 +46,10 @@ const MainContainer = styled.div`
   -o-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  background-color: ${(props) => props.theme.background};
 `;
 
-const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => (
+const Layout: FC<LayoutProps> = ({ children, theme = 'blue' }) => (
   <ThemeProvider theme={{ ...themes[theme] }}>
     <GlobalStyle theme={themes[theme]} />
     <PageContainer>
