@@ -7,12 +7,18 @@ import Tag from '../assets/svg/tag.svg';
 
 const SCard = styled.div`
   display: flex;
-  margin-bottom: 30px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid #eee;
 `;
 
 const SCardImage = styled((props) => <GatsbyImage {...props} />)`
   height: 100px;
-  width: 100px;
+  min-height: 100px;
+  max-height: 100px;
+  width: 150px;
+  max-width: 150px;
+  min-width: 150px;
   object-fit: contain;
   border-radius: 3px;
   margin-right: 30px;

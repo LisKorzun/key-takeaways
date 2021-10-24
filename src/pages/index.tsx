@@ -8,10 +8,23 @@ import Seo from '../components/seo';
 import styled from 'styled-components';
 import { Card } from '../components/card';
 
+const SContainer = styled.div`
+  display: flex;
+  margin: 30px 0;
+`;
+
 const SCardsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 30px 0;
+  margin-right: 30px;
+  width: 60%;
+  border-right: 1px solid #eee;
+`;
+
+const STopicContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 `;
 
 const STitleCaption = styled.div`
@@ -24,14 +37,47 @@ const STitleCaption = styled.div`
   margin-top: 70px;
 `;
 
+const STitleContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  border-bottom: ${(props) => `3px solid ${props.theme.accent}`};
+  padding-bottom: 10px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+`;
+
 const STitle = styled((props) => <Link {...props} />)`
+  display: flex;
+  align-items: flex-start;
   color: ${(props) => props.theme.secondary};
   font-size: 40px;
   text-transform: capitalize;
+  cursor: pointer;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  & span {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px;
+    margin-left: 15px;
+    border: ${(props) => `1px solid ${props.theme.secondary}`};
+    border-radius: 3px;
+  }
+  &:hover,
+  &:hover span {
+    color: ${(props) => props.theme.accent};
+    border-color: ${(props) => props.theme.accent};
+  }
+`;
+
+const SCardsHeader = styled.div`
   display: flex;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: ${(props) => `3px solid ${props.theme.accent}`};
+  flex-direction: column;
+  font-size: 20px;
+  color: ${(props) => props.theme.secondary};
 `;
 
 interface Props {
@@ -45,6 +91,7 @@ interface Props {
           id: string;
           frontmatter: { title: string; date: string; topic: string; tags: string[]; hero_image: ImageDataLike };
         }[];
+        group: { fieldValue: string }[];
       }[];
     };
     site: { siteMetadata: { levels: { id: string; title: string }[] } };
@@ -66,12 +113,30 @@ const HomePage: FC<Props> = ({ data }) => {
                 <div key={difficulty.fieldValue}>
                   <>
                     <STitleCaption>Difficulty</STitleCaption>
-                    <STitle to={`/${kebabCase(level.title)}`}>{`${level.title}`}</STitle>
-                    <SCardsContainer>
-                      {difficulty.nodes.map((post) => (
-                        <Card key={post.id} post={post} />
-                      ))}
-                    </SCardsContainer>
+                    <STitleContainer>
+                      <STitle to={`/${kebabCase(level.title)}`}>
+                        {level.title}
+                        <span>{`${difficulty.totalCount} Article`}</span>
+                      </STitle>
+                    </STitleContainer>
+                    <SContainer>
+                      <SCardsContainer>
+                        <>
+                          <SCardsHeader>Recent Stories</SCardsHeader>
+                          {difficulty.nodes.map((post) => (
+                            <Card key={post.id} post={post} />
+                          ))}
+                        </>
+                      </SCardsContainer>
+                      <STopicContainer>
+                        <>
+                          <SCardsHeader>Read by topics</SCardsHeader>
+                          {difficulty.group.map((topic) => (
+                            <div key={topic.fieldValue}>{topic.fieldValue}</div>
+                          ))}
+                        </>
+                      </STopicContainer>
+                    </SContainer>
                   </>
                 </div>
               )}
@@ -103,6 +168,9 @@ export const query = graphql`
           }
           id
           slug
+        }
+        group(field: frontmatter___topic, limit: 5) {
+          fieldValue
         }
       }
     }
