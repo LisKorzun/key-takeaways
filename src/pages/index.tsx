@@ -40,7 +40,7 @@ const STitleCaption = styled.div`
 const STitleContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  border-bottom: ${(props) => `3px solid ${props.theme.accent}`};
+  border-bottom: ${(props) => `3px solid ${props.theme.primary}`};
   padding-bottom: 10px;
   padding-right: 30px;
   margin-bottom: 10px;
