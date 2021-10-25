@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 
-import Tag from '../assets/svg/tag.svg';
+import { STags, TagIcon } from './common';
 
 const SCard = styled.div`
   display: flex;
@@ -61,26 +61,6 @@ const SCardDate = styled.div`
   margin-bottom: 15px;
 `;
 
-const SCardTags = styled.div`
-  margin-top: 10px;
-  display: flex;
-
-  & span {
-    margin-right: 10px;
-    font-size: 9px;
-    text-transform: uppercase;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    color: ${(props) => props.theme.text};
-  }
-`;
-
-const TagIcon = styled(Tag)`
-  fill: ${(props) => props.theme.text};
-  width: 13px;
-`;
-
 interface Props {
   post: {
     slug: string;
@@ -106,13 +86,13 @@ export const Card: FC<Props> = ({ post }) => {
           <SCardTitle to={`/${post.slug}`}>{post.frontmatter.title}</SCardTitle>
           <SCardDate>{post.frontmatter.date}</SCardDate>
         </SCardTitleContainer>
-        <SCardTags>
+        <STags>
           {post.frontmatter.tags.map((tag) => (
             <span key={tag}>
               <TagIcon /> {tag}
             </span>
           ))}
-        </SCardTags>
+        </STags>
       </SCardContent>
     </SCard>
   );

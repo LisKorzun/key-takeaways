@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Tag from '../assets/svg/tag.svg';
 import About from '../assets/svg/about.svg';
+import Topic from '../assets/svg/topics.svg';
 
 const TagIcon = styled(Tag)`
   fill: ${(props) => props.theme.background};
@@ -10,6 +11,11 @@ const TagIcon = styled(Tag)`
 `;
 
 const AboutIcon = styled(About)`
+  fill: ${(props) => props.theme.background};
+  width: 35px;
+`;
+
+const TopicIcon = styled(Topic)`
   fill: ${(props) => props.theme.background};
   width: 35px;
 `;
@@ -23,7 +29,7 @@ const Nav = styled.nav`
   justify-content: flex-end; ;
 `;
 const NavItem = styled.li`
-  margin-top: 20px;
+  margin-top: 13px;
   padding: 0;
   list-style: none;
   font-size: 18px;
@@ -39,7 +45,7 @@ const NavLink = styled((props) => <Link {...props} />)`
     content: '';
     position: absolute;
     height: 2px;
-    bottom: 14px;
+    bottom: 16px;
     left: -2px;
     right: 0;
     background-color: ${(props) => props.theme.primary};
@@ -71,6 +77,11 @@ const NavLink = styled((props) => <Link {...props} />)`
 const Menu: FC = () => {
   return (
     <Nav>
+      <NavItem>
+        <NavLink to="/topics">
+          <TopicIcon />
+        </NavLink>
+      </NavItem>
       <NavItem>
         <NavLink to="/tags">
           <TagIcon />

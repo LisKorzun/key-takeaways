@@ -7,7 +7,7 @@ import Layout from '../components/layout';
 import Seo from '../components/seo';
 import { Card } from '../components/card';
 import { Title } from '../components/title';
-import { SRowContainer, SPostsContainer, STopicContainer, STitleOfList, STopic } from '../components/styled';
+import { SRowContainer, SPostsContainer, STopicContainer, STitleOfList, STopic } from '../components/common';
 
 interface Props {
   data: {

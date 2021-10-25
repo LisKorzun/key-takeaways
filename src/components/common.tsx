@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import Tag from '../assets/svg/tag.svg';
+
+export const SSection = styled.div`
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const SRowContainer = styled.div`
   display: flex;
@@ -52,6 +59,24 @@ export const STopic = styled.div`
   }
 `;
 
+export const STitle = styled.div`
+  display: flex;
+  align-items: flex-start;
+  width: fit-content;
+  color: ${(props) => props.theme.secondary};
+  font-size: 40px;
+  text-transform: capitalize;
+  & span {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px;
+    margin-left: 15px;
+    border: ${(props) => `1px solid ${props.theme.secondary}`};
+    border-radius: 3px;
+  }
+`;
+
 export const STitleOfList = styled.div`
   display: block;
   font-size: 20px;
@@ -69,4 +94,30 @@ export const STitleOfList = styled.div`
     background-color: ${(props) => props.theme.border};
     margin-left: 20px;
   }
+`;
+
+export const SSeparator = styled.div`
+  border-bottom: ${(props) => `3px solid ${props.theme.primary}`};
+  width: 150px;
+  margin: 10px 0;
+`;
+
+export const STags = styled.div`
+  margin-top: 10px;
+  display: flex;
+
+  & span {
+    margin-right: 10px;
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: ${(props) => props.theme.text};
+  }
+`;
+
+export const TagIcon = styled(Tag)`
+  fill: ${(props) => props.theme.text};
+  width: 13px;
 `;

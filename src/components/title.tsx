@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { isEmpty } from 'lodash';
 
+import { STitle, SSeparator } from './common';
+
 const STitleLink = styled((props) => <Link {...props} />)`
   display: flex;
   align-items: flex-start;
@@ -27,24 +29,6 @@ const STitleLink = styled((props) => <Link {...props} />)`
   }
 `;
 
-const STitle = styled.div`
-  display: flex;
-  align-items: flex-start;
-  width: fit-content;
-  color: ${(props) => props.theme.secondary};
-  font-size: 40px;
-  text-transform: capitalize;
-  & span {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 4px;
-    margin-left: 15px;
-    border: ${(props) => `1px solid ${props.theme.secondary}`};
-    border-radius: 3px;
-  }
-`;
-
 const STitleCaption = styled.div`
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -53,12 +37,6 @@ const STitleCaption = styled.div`
   font-size: 10px;
   margin-bottom: 10px;
   margin-top: 70px;
-`;
-
-const SSeparator = styled.div`
-  border-bottom: ${(props) => `3px solid ${props.theme.primary}`};
-  width: 150px;
-  margin: 10px 0;
 `;
 
 interface HeadingProps {

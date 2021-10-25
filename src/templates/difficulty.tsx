@@ -5,7 +5,7 @@ import Seo from '../components/seo';
 import Layout from '../components/layout';
 import { find } from 'lodash';
 import { Title } from '../components/title';
-import { SPostsContainer, STitleOfList, SRowContainer, STopicContainer, STopic } from '../components/styled';
+import { SPostsContainer, STitleOfList, SRowContainer, STopicContainer, STopic } from '../components/common';
 import { Card } from '../components/card';
 import { ImageDataLike } from 'gatsby-plugin-image';
 
