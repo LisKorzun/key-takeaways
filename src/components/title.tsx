@@ -7,7 +7,7 @@ import { STitle, SSeparator } from './common';
 
 const STitleLink = styled((props) => <Link {...props} />)`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   width: fit-content;
   color: ${(props) => props.theme.secondary};
   font-size: 40px;

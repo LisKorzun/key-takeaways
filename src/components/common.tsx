@@ -98,7 +98,7 @@ export const STitleOfList = styled.div`
 
 export const SSeparator = styled.div`
   border-bottom: ${(props) => `3px solid ${props.theme.primary}`};
-  width: 150px;
+  width: 100px;
   margin: 10px 0;
 `;
 
