@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 `;
 

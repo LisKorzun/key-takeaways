@@ -1,84 +1,13 @@
-import React, { FC } from 'react';
-import { graphql, Link } from 'gatsby';
+import React, { FC, Fragment } from 'react';
+import { graphql } from 'gatsby';
 import { kebabCase, find } from 'lodash';
 import { ImageDataLike } from 'gatsby-plugin-image';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import styled from 'styled-components';
 import { Card } from '../components/card';
-
-const SContainer = styled.div`
-  display: flex;
-  margin: 30px 0;
-`;
-
-const SCardsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-right: 30px;
-  width: 60%;
-  border-right: 1px solid #eee;
-`;
-
-const STopicContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-`;
-
-const STitleCaption = styled.div`
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: ${(props) => props.theme.primary};
-  font-weight: bold;
-  font-size: 10px;
-  margin-bottom: 10px;
-  margin-top: 70px;
-`;
-
-const STitleContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  border-bottom: ${(props) => `3px solid ${props.theme.primary}`};
-  padding-bottom: 10px;
-  padding-right: 30px;
-  margin-bottom: 10px;
-`;
-
-const STitle = styled((props) => <Link {...props} />)`
-  display: flex;
-  align-items: flex-start;
-  color: ${(props) => props.theme.secondary};
-  font-size: 40px;
-  text-transform: capitalize;
-  cursor: pointer;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  & span {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 4px;
-    margin-left: 15px;
-    border: ${(props) => `1px solid ${props.theme.secondary}`};
-    border-radius: 3px;
-  }
-  &:hover,
-  &:hover span {
-    color: ${(props) => props.theme.accent};
-    border-color: ${(props) => props.theme.accent};
-  }
-`;
-
-const SCardsHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  color: ${(props) => props.theme.secondary};
-`;
+import { Title } from '../components/title';
+import { SRowContainer, SPostsContainer, STopicContainer, STitleOfList, STopic } from '../components/styled';
 
 interface Props {
   data: {
@@ -91,7 +20,7 @@ interface Props {
           id: string;
           frontmatter: { title: string; date: string; topic: string; tags: string[]; hero_image: ImageDataLike };
         }[];
-        group: { fieldValue: string }[];
+        group: { fieldValue: string; totalCount: number }[];
       }[];
     };
     site: { siteMetadata: { levels: { id: string; title: string }[] } };
@@ -108,39 +37,41 @@ const HomePage: FC<Props> = ({ data }) => {
         {data.allMdx.group.map((difficulty) => {
           const level = find(levels, ['id', difficulty.fieldValue]);
           return (
-            <>
+            <Fragment key={difficulty.fieldValue}>
               {level && (
-                <div key={difficulty.fieldValue}>
-                  <>
-                    <STitleCaption>Difficulty</STitleCaption>
-                    <STitleContainer>
-                      <STitle to={`/${kebabCase(level.title)}`}>
-                        {level.title}
-                        <span>{`${difficulty.totalCount} Article`}</span>
-                      </STitle>
-                    </STitleContainer>
-                    <SContainer>
-                      <SCardsContainer>
-                        <>
-                          <SCardsHeader>Recent Stories</SCardsHeader>
-                          {difficulty.nodes.map((post) => (
-                            <Card key={post.id} post={post} />
-                          ))}
-                        </>
-                      </SCardsContainer>
-                      <STopicContainer>
-                        <>
-                          <SCardsHeader>Read by topics</SCardsHeader>
-                          {difficulty.group.map((topic) => (
-                            <div key={topic.fieldValue}>{topic.fieldValue}</div>
-                          ))}
-                        </>
-                      </STopicContainer>
-                    </SContainer>
-                  </>
-                </div>
+                <>
+                  <Title
+                    caption="difficulty"
+                    title={level.title}
+                    link={`/${kebabCase(level.title)}`}
+                    count={difficulty.totalCount}
+                  />
+                  <SRowContainer>
+                    <SPostsContainer>
+                      <>
+                        <STitleOfList>Recent Articles</STitleOfList>
+                        {difficulty.nodes.map((post) => (
+                          <Card key={post.id} post={post} />
+                        ))}
+                      </>
+                    </SPostsContainer>
+                    <STopicContainer>
+                      <>
+                        <STitleOfList>Topics</STitleOfList>
+                        {difficulty.group.map((topic) => (
+                          <STopic key={topic.fieldValue}>
+                            <a>
+                              {topic.fieldValue}
+                              <span>{topic.totalCount}</span>
+                            </a>
+                          </STopic>
+                        ))}
+                      </>
+                    </STopicContainer>
+                  </SRowContainer>
+                </>
               )}
-            </>
+            </Fragment>
           );
         })}
       </div>
@@ -171,6 +102,7 @@ export const query = graphql`
         }
         group(field: frontmatter___topic, limit: 5) {
           fieldValue
+          totalCount
         }
       }
     }

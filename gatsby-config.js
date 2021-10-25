@@ -5,7 +5,7 @@ const gatsbyRequiredRules = path.join(process.cwd(), 'node_modules', 'gatsby', '
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://keytakeaways.gatsbyjs.io',
-    title: 'Key Takeaways',
+    title: 'Key Takeaways | JS, TS, React',
     author: {
       name: 'Alesia Korzun',
     },

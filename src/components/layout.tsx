@@ -42,10 +42,10 @@ const MainContainer = styled.div`
   margin-left: ${sizes.SIDE_BAR_WIDTH + sizes.SIDE_BAR_BORDER_WIDTH}px;
   padding-left: 50px;
   flex-grow: 1;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   background-color: ${(props) => props.theme.background};
 `;
 

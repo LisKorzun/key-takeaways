@@ -1,7 +1,7 @@
 import 'styled-components';
 import { DefaultTheme } from 'styled-components';
 
-type themes = 'blue' | 'yellow' | 'tan' | 'green';
+type themes = 'blue' | 'yellow' | 'green';
 
 export type IThemes = {
   [key in themes]: DefaultTheme;
@@ -12,8 +12,9 @@ export const themes: IThemes = {
     primary: '#4DA8DA',
     secondary: '#203647',
     accent: '#007CC7',
-    background: '#EEFBFB',
+    background: '#fdfefe',
     text: '#12232E',
+    border: '#edf6fb'
   },
   yellow: {
     primary: '#FFDF6C',
@@ -21,13 +22,7 @@ export const themes: IThemes = {
     accent: '#707070',
     background: '#FFFFFF',
     text: '#202020',
-  },
-  tan: {
-    primary: '#E8CEBF',
-    secondary: '#266150',
-    accent: '#DDAF94',
-    background: '#FDF8F5',
-    text: '#4F4846',
+    border: '#eee'
   },
   green: {
     primary: '#A3BCB6',
@@ -35,6 +30,7 @@ export const themes: IThemes = {
     accent: '#DADED4',
     background: '#FFFFFF',
     text: '#3C403D',
+    border: '#eee'
   },
 };
 

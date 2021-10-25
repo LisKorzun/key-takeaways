@@ -1,8 +1,13 @@
 import React, { FC } from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Seo from '../components/seo';
 import Layout from '../components/layout';
+import { find } from 'lodash';
+import { Title } from '../components/title';
+import { SPostsContainer, STitleOfList, SRowContainer, STopicContainer, STopic } from '../components/styled';
+import { Card } from '../components/card';
+import { ImageDataLike } from 'gatsby-plugin-image';
 
 interface Props {
   pageContext: {
@@ -11,35 +16,54 @@ interface Props {
   data: {
     allMdx: {
       totalCount: number;
-      nodes: { slug: string; frontmatter: { date: string; title: string } }[];
+      nodes: {
+        slug: string;
+        id: string;
+        frontmatter: { title: string; date: string; topic: string; tags: string[]; hero_image: ImageDataLike };
+      }[];
       group: {
         fieldValue: string;
         totalCount: number;
       }[];
     };
+    site: { siteMetadata: { levels: { id: string; title: string }[] } };
   };
 }
 
 const Difficulty: FC<Props> = ({ pageContext, data }) => {
   const { difficulty } = pageContext;
   const { totalCount, group, nodes } = data.allMdx;
+  const { levels } = data.site.siteMetadata;
+  const level = find(levels, ['id', difficulty]) || { title: '' };
 
   return (
     <Layout>
-      <Seo title="Difficulty" />
+      <Seo title={level.title} />
       <div>
-        <h1>{`${difficulty} - ${totalCount} articles`}</h1>
-        {group.map((theme) => (
-          <div key={theme.fieldValue}>{theme.fieldValue}</div>
-        ))}
-        <hr />
-        {nodes.map(({ slug, frontmatter: { title } }) => {
-          return (
-            <li key={slug}>
-              <Link to={`/${slug}`}>{title}</Link>
-            </li>
-          );
-        })}
+        <Title caption="difficulty" title={level.title || ''} count={totalCount} />
+        <SRowContainer>
+          <SPostsContainer>
+            <>
+              <STitleOfList>Articles</STitleOfList>
+              {nodes.map((post) => (
+                <Card key={post.id} post={post} />
+              ))}
+            </>
+          </SPostsContainer>
+          <STopicContainer>
+            <>
+              <STitleOfList>Topics</STitleOfList>
+              {group.map((topic) => (
+                <STopic key={topic.fieldValue}>
+                  <a>
+                    {topic.fieldValue}
+                    <span>{topic.totalCount}</span>
+                  </a>
+                </STopic>
+              ))}
+            </>
+          </STopicContainer>
+        </SRowContainer>
       </div>
     </Layout>
   );
@@ -62,8 +86,24 @@ export const pageQuery = graphql`
       nodes {
         frontmatter {
           title
+          tags
           topic
-          date(formatString: "DD MMM YYYY")
+          date(formatString: "MMMM DD, YYYY")
+          hero_image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        id
+        slug
+      }
+    }
+    site {
+      siteMetadata {
+        levels {
+          id
+          title
         }
       }
     }
