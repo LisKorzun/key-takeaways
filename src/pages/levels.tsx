@@ -82,7 +82,7 @@ const DifficultiesPage: FC<Props> = ({ data }) => {
 export const query = graphql`
   query {
     allMdx(limit: 5, sort: { order: DESC, fields: frontmatter___date }) {
-      group(field: frontmatter___difficulty) {
+      group(field: frontmatter___level) {
         totalCount
         fieldValue
         nodes {

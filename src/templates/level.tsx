@@ -11,7 +11,7 @@ import { ImageDataLike } from 'gatsby-plugin-image';
 
 interface Props {
   pageContext: {
-    difficulty: string;
+    level: string;
   };
   data: {
     allMdx: {
@@ -31,16 +31,16 @@ interface Props {
 }
 
 const Level: FC<Props> = ({ pageContext, data }) => {
-  const { difficulty } = pageContext;
+  const { level } = pageContext;
   const { totalCount, group, nodes } = data.allMdx;
   const { levels } = data.site.siteMetadata;
-  const level = find(levels, ['id', difficulty]) || { title: '' };
+  const levelData = find(levels, ['id', level]) || { title: '' };
 
   return (
     <Layout>
-      <Seo title={level.title} />
+      <Seo title={levelData.title} />
       <div>
-        <Title caption="Competency Level" title={level.title || ''} count={totalCount} />
+        <Title caption="Competency Level" title={levelData.title || ''} count={totalCount} />
         <SRowContainer>
           <SPostsContainer>
             <>
@@ -73,9 +73,9 @@ const Level: FC<Props> = ({ pageContext, data }) => {
 export default Level;
 
 export const pageQuery = graphql`
-  query ($difficulty: String) {
+  query ($level: String) {
     allMdx(
-      filter: { frontmatter: { difficulty: { eq: $difficulty } } }
+      filter: { frontmatter: { level: { eq: $level } } }
       sort: { fields: frontmatter___date, order: DESC }
       limit: 1000
     ) {

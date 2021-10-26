@@ -30,7 +30,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
       levels: allMdx(limit: 2000) {
-        group(field: frontmatter___difficulty) {
+        group(field: frontmatter___level) {
           fieldValue
         }
       }
@@ -53,12 +53,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const topics = result.data.topics.group;
   const posts = result.data.posts.nodes;
 
-  levels.forEach((difficulty) => {
+  levels.forEach((level) => {
     createPage({
-      path: `/levels/${_.kebabCase(_.find(levelsData, ['id', difficulty.fieldValue]).title)}`,
+      path: `/levels/${_.kebabCase(_.find(levelsData, ['id', level.fieldValue]).title)}`,
       component: levelTemplate,
       context: {
-        difficulty: difficulty.fieldValue,
+        level: level.fieldValue,
       },
     });
   });
