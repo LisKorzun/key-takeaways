@@ -1,13 +1,13 @@
 import React, { FC, Fragment } from 'react';
 import { graphql, Link } from 'gatsby';
 import { kebabCase, find } from 'lodash';
-import { ImageDataLike } from 'gatsby-plugin-image';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import { Card } from '../components/card';
 import { Title } from '../components/title';
-import { SRowContainer, SPostsContainer, STopicContainer, STitleOfList, STopic } from '../components/common';
+import { SRowContainer, STopicContainer, STitleOfList, STopic } from '../components/common';
+import { IPost } from '../common';
+import { PostsList } from '../components';
 
 interface Props {
   data: {
@@ -15,11 +15,7 @@ interface Props {
       group: {
         fieldValue: string;
         totalCount: number;
-        nodes: {
-          slug: string;
-          id: string;
-          frontmatter: { title: string; date: string; topic: string; tags: string[]; hero_image: ImageDataLike };
-        }[];
+        nodes: IPost[];
         group: { fieldValue: string; totalCount: number }[];
       }[];
     };
@@ -47,14 +43,7 @@ const HomePage: FC<Props> = ({ data }) => {
                     count={difficulty.totalCount}
                   />
                   <SRowContainer>
-                    <SPostsContainer>
-                      <>
-                        <STitleOfList>Recent Articles</STitleOfList>
-                        {difficulty.nodes.map((post) => (
-                          <Card key={post.id} post={post} />
-                        ))}
-                      </>
-                    </SPostsContainer>
+                    <PostsList posts={difficulty.nodes} />
                     <STopicContainer>
                       <>
                         <STitleOfList>Topics</STitleOfList>
@@ -86,19 +75,7 @@ export const query = graphql`
         totalCount
         fieldValue
         nodes {
-          frontmatter {
-            title
-            tags
-            topic
-            date(formatString: "MMMM DD, YYYY")
-            hero_image {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
-          id
-          slug
+          ...postFields
         }
         group(field: frontmatter___topic, limit: 5) {
           fieldValue

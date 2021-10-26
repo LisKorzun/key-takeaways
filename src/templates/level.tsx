@@ -5,9 +5,9 @@ import Seo from '../components/seo';
 import Layout from '../components/layout';
 import { find } from 'lodash';
 import { Title } from '../components/title';
-import { SPostsContainer, STitleOfList, SRowContainer, STopicContainer, STopic } from '../components/common';
-import { Card } from '../components/card';
-import { ImageDataLike } from 'gatsby-plugin-image';
+import { STitleOfList, SRowContainer, STopicContainer, STopic } from '../components/common';
+import { PostsList } from '../components';
+import { ARTICLES_LABEL, IPost } from '../common';
 
 interface Props {
   pageContext: {
@@ -16,11 +16,7 @@ interface Props {
   data: {
     allMdx: {
       totalCount: number;
-      nodes: {
-        slug: string;
-        id: string;
-        frontmatter: { title: string; date: string; topic: string; tags: string[]; hero_image: ImageDataLike };
-      }[];
+      nodes: IPost[];
       group: {
         fieldValue: string;
         totalCount: number;
@@ -42,14 +38,7 @@ const Level: FC<Props> = ({ pageContext, data }) => {
       <div>
         <Title caption="Competency Level" title={levelData.title || ''} count={totalCount} />
         <SRowContainer>
-          <SPostsContainer>
-            <>
-              <STitleOfList>Articles</STitleOfList>
-              {nodes.map((post) => (
-                <Card key={post.id} post={post} />
-              ))}
-            </>
-          </SPostsContainer>
+          <PostsList posts={nodes} title={ARTICLES_LABEL} />
           <STopicContainer>
             <>
               <STitleOfList>Topics</STitleOfList>
@@ -85,19 +74,7 @@ export const pageQuery = graphql`
         totalCount
       }
       nodes {
-        frontmatter {
-          title
-          tags
-          topic
-          date(formatString: "MMMM DD, YYYY")
-          hero_image {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
-        id
-        slug
+        ...postFields
       }
     }
     site {

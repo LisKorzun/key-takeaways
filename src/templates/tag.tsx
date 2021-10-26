@@ -5,8 +5,9 @@ import { ImageDataLike } from 'gatsby-plugin-image';
 import Seo from '../components/seo';
 import Layout from '../components/layout';
 import { Title } from '../components/title';
-import { SPostsContainer, STitleOfList, SRowContainer } from '../components/common';
-import { Card } from '../components/card';
+import { SRowContainer } from '../components/common';
+import { ARTICLES_LABEL, IPost } from '../common';
+import { PostsList } from '../components';
 
 interface Props {
   pageContext: {
@@ -14,11 +15,7 @@ interface Props {
   };
   data: {
     allMdx: {
-      nodes: {
-        slug: string;
-        id: string;
-        frontmatter: { title: string; date: string; topic: string; tags: string[]; hero_image: ImageDataLike };
-      }[];
+      nodes: IPost[];
       totalCount: number;
     };
   };
@@ -34,14 +31,7 @@ const Tag: FC<Props> = ({ pageContext, data }) => {
       <div>
         <Title caption="Tag" title={tag} count={totalCount} />
         <SRowContainer>
-          <SPostsContainer>
-            <>
-              <STitleOfList>Articles</STitleOfList>
-              {nodes.map((post) => (
-                <Card key={post.id} post={post} />
-              ))}
-            </>
-          </SPostsContainer>
+          <PostsList posts={nodes} title={ARTICLES_LABEL} />
         </SRowContainer>
         <Link to="/tags">All tags</Link>
       </div>
@@ -55,19 +45,7 @@ export const pageQuery = graphql`
   query ($tag: String) {
     allMdx(filter: { frontmatter: { tags: { eq: $tag } } }, sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
-        frontmatter {
-          title
-          tags
-          topic
-          date(formatString: "MMMM DD, YYYY")
-          hero_image {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
-        id
-        slug
+        ...postFields
       }
       totalCount
     }
