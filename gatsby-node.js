@@ -5,17 +5,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
   const difficultyTemplate = path.resolve('src/templates/difficulty.tsx');
-  // const categoryThemeTemplate = path.resolve('src/templates/CategoryTheme.tsx');
-  // const tagTemplate = path.resolve('src/templates/tag.tsx');
+  const tagTemplate = path.resolve('src/templates/tag.tsx');
   const postTemplate = path.resolve('src/templates/post.tsx');
 
   const result = await graphql(`
     {
-      difficulties: allMdx {
-        group(field: frontmatter___difficulty) {
-          fieldValue
-        }
-      }
       site: site {
         siteMetadata {
           levels {
@@ -24,9 +18,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-      posts: allMdx {
+      posts: allMdx(limit: 2000) {
         nodes {
           slug
+        }
+      }
+      tags: allMdx(limit: 2000) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+      difficulties: allMdx(limit: 2000) {
+        group(field: frontmatter___difficulty) {
+          fieldValue
         }
       }
     }
@@ -39,7 +43,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const difficulties = result.data.difficulties.group;
   const levels = result.data.site.siteMetadata.levels;
-  // const tags = result.data.tags.group;
+  const tags = result.data.tags.group;
   const posts = result.data.posts.nodes;
 
   difficulties.forEach((difficulty) => {
@@ -52,15 +56,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
-  // tags.forEach((tag) => {
-  //   createPage({
-  //     path: `/tags/${_.kebabCase(tag.fieldValue)}`,
-  //     component: tagTemplate,
-  //     context: {
-  //       tag: tag.fieldValue,
-  //     },
-  //   });
-  // });
+  tags.forEach((tag) => {
+    createPage({
+      path: `/tags/${_.kebabCase(tag.fieldValue)}`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
+  });
 
   posts.forEach(({ slug }) => {
     createPage({

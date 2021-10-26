@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
 import { Link, graphql } from 'gatsby';
+import { ImageDataLike } from 'gatsby-plugin-image';
 
 import Seo from '../components/seo';
 import Layout from '../components/layout';
+import { Title } from '../components/title';
+import { SPostsContainer, STitleOfList, SRowContainer } from '../components/common';
+import { Card } from '../components/card';
 
 interface Props {
   pageContext: {
@@ -10,7 +14,11 @@ interface Props {
   };
   data: {
     allMdx: {
-      nodes: { slug: string; frontmatter: { date: string; title: string } }[];
+      nodes: {
+        slug: string;
+        id: string;
+        frontmatter: { title: string; date: string; topic: string; tags: string[]; hero_image: ImageDataLike };
+      }[];
       totalCount: number;
     };
   };
@@ -19,22 +27,22 @@ interface Props {
 const Tags: FC<Props> = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { nodes, totalCount } = data.allMdx;
-  const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with "${tag}"`;
 
   return (
     <Layout>
-      <Seo title="Tags" />
+      <Seo title={`Tag ${tag}`} />
       <div>
-        <h1>{tagHeader}</h1>
-        <ul>
-          {nodes.map(({ slug, frontmatter: { title } }) => {
-            return (
-              <li key={slug}>
-                <Link to={`/posts/${slug}`}>{title}</Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Title caption="Tag" title={tag} count={totalCount} />
+        <SRowContainer>
+          <SPostsContainer>
+            <>
+              <STitleOfList>Articles</STitleOfList>
+              {nodes.map((post) => (
+                <Card key={post.id} post={post} />
+              ))}
+            </>
+          </SPostsContainer>
+        </SRowContainer>
         <Link to="/tags">All tags</Link>
       </div>
     </Layout>
@@ -47,11 +55,19 @@ export const pageQuery = graphql`
   query ($tag: String) {
     allMdx(filter: { frontmatter: { tags: { eq: $tag } } }, sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
-        slug
         frontmatter {
           title
-          date(formatString: "MMM D, YYYY")
+          tags
+          topic
+          date(formatString: "MMMM DD, YYYY")
+          hero_image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
         }
+        id
+        slug
       }
       totalCount
     }

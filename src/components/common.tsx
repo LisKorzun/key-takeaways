@@ -61,7 +61,7 @@ export const STopic = styled.div`
 
 export const STitle = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   width: fit-content;
   color: ${(props) => props.theme.secondary};
   font-size: 40px;
