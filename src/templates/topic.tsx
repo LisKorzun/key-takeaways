@@ -10,7 +10,7 @@ import { Card } from '../components/card';
 
 interface Props {
   pageContext: {
-    tag: string;
+    topic: string;
   };
   data: {
     allMdx: {
@@ -24,15 +24,15 @@ interface Props {
   };
 }
 
-const Tag: FC<Props> = ({ pageContext, data }) => {
-  const { tag } = pageContext;
+const Topic: FC<Props> = ({ pageContext, data }) => {
+  const { topic } = pageContext;
   const { nodes, totalCount } = data.allMdx;
 
   return (
     <Layout>
-      <Seo title={`Tag ${tag}`} />
+      <Seo title={`Topic ${topic}`} />
       <div>
-        <Title caption="Tag" title={tag} count={totalCount} />
+        <Title caption="Topic" title={topic} count={totalCount} />
         <SRowContainer>
           <SPostsContainer>
             <>
@@ -43,17 +43,17 @@ const Tag: FC<Props> = ({ pageContext, data }) => {
             </>
           </SPostsContainer>
         </SRowContainer>
-        <Link to="/tags">All tags</Link>
+        <Link to="/topics">All topics</Link>
       </div>
     </Layout>
   );
 };
 
-export default Tag;
+export default Topic;
 
 export const pageQuery = graphql`
-  query ($tag: String) {
-    allMdx(filter: { frontmatter: { tags: { eq: $tag } } }, sort: { fields: frontmatter___date, order: DESC }) {
+  query ($topic: String) {
+    allMdx(filter: { frontmatter: { topic: { eq: $topic } } }, sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
         frontmatter {
           title

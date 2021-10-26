@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import { kebabCase } from 'lodash';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
@@ -30,10 +31,10 @@ const TopicsPage: FC<Props> = ({ data }) => {
         <STopicContainer>
           {data.allMdx.group.map((topic) => (
             <STopic key={topic.fieldValue}>
-              <a>
+              <Link to={`/topics/${kebabCase(topic.fieldValue)}`}>
                 {topic.fieldValue}
                 <span>{topic.totalCount}</span>
-              </a>
+              </Link>
             </STopic>
           ))}
         </STopicContainer>

@@ -11,7 +11,7 @@ module.exports = {
     },
     description: 'Key Takeaways: all you need!',
     levels: [
-      { id: '1', title: 'Beginner' },
+      { id: '1', title: 'Basic' },
       { id: '2', title: 'Competent' },
       { id: '3', title: 'Proficient' },
       { id: '4', title: 'Expert' },

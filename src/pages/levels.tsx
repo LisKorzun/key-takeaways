@@ -27,12 +27,12 @@ interface Props {
   };
 }
 
-const HomePage: FC<Props> = ({ data }) => {
+const DifficultiesPage: FC<Props> = ({ data }) => {
   const { levels } = data.site.siteMetadata;
 
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo title="Competency Levels" />
       <div>
         {data.allMdx.group.map((difficulty) => {
           const level = find(levels, ['id', difficulty.fieldValue]);
@@ -117,4 +117,4 @@ export const query = graphql`
   }
 `;
 
-export default HomePage;
+export default DifficultiesPage;

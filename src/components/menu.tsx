@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import Tag from '../assets/svg/tag.svg';
 import About from '../assets/svg/about.svg';
 import Topic from '../assets/svg/topics.svg';
+import Levels from '../assets/svg/levels.svg';
 
 const TagIcon = styled(Tag)`
   fill: ${(props) => props.theme.background};
@@ -16,6 +17,10 @@ const AboutIcon = styled(About)`
 `;
 
 const TopicIcon = styled(Topic)`
+  fill: ${(props) => props.theme.background};
+  width: 35px;
+`;
+const LevelsIcon = styled(Levels)`
   fill: ${(props) => props.theme.background};
   width: 35px;
 `;
@@ -77,6 +82,11 @@ const NavLink = styled((props) => <Link {...props} />)`
 const Menu: FC = () => {
   return (
     <Nav>
+      <NavItem>
+        <NavLink to="/levels">
+          <LevelsIcon />
+        </NavLink>
+      </NavItem>
       <NavItem>
         <NavLink to="/topics">
           <TopicIcon />

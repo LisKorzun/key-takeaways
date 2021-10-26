@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import Seo from '../components/seo';
 import Layout from '../components/layout';
@@ -30,7 +30,7 @@ interface Props {
   };
 }
 
-const Difficulty: FC<Props> = ({ pageContext, data }) => {
+const Level: FC<Props> = ({ pageContext, data }) => {
   const { difficulty } = pageContext;
   const { totalCount, group, nodes } = data.allMdx;
   const { levels } = data.site.siteMetadata;
@@ -40,7 +40,7 @@ const Difficulty: FC<Props> = ({ pageContext, data }) => {
     <Layout>
       <Seo title={level.title} />
       <div>
-        <Title caption="difficulty" title={level.title || ''} count={totalCount} />
+        <Title caption="Competency Level" title={level.title || ''} count={totalCount} />
         <SRowContainer>
           <SPostsContainer>
             <>
@@ -64,12 +64,13 @@ const Difficulty: FC<Props> = ({ pageContext, data }) => {
             </>
           </STopicContainer>
         </SRowContainer>
+        <Link to="/levels">All Competency Levels</Link>
       </div>
     </Layout>
   );
 };
 
-export default Difficulty;
+export default Level;
 
 export const pageQuery = graphql`
   query ($difficulty: String) {
