@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Link, graphql } from 'gatsby';
-import { ImageDataLike } from 'gatsby-plugin-image';
 
 import Seo from '../components/seo';
 import Layout from '../components/layout';
@@ -43,7 +42,7 @@ export default Tag;
 
 export const pageQuery = graphql`
   query ($tag: String) {
-    allMdx(filter: { frontmatter: { tags: { eq: $tag } } }, sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(filter: { frontmatter: { tags: { in: [$tag] }  } }, sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
         ...postFields
       }

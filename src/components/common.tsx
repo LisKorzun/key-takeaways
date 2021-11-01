@@ -79,7 +79,7 @@ export const STitle = styled.div`
 
 export const STitleOfList = styled.div`
   display: block;
-  font-size: 20px;
+  font-size: 40px;
   position: relative;
   overflow: hidden;
   text-transform: capitalize;
@@ -104,11 +104,12 @@ export const SSeparator = styled.div`
 
 export const STags = styled.div`
   margin-top: 10px;
+  margin-bottom: 5px;
   display: flex;
 
   & span {
     margin-right: 10px;
-    font-size: 9px;
+    font-size: 11px;
     text-transform: uppercase;
     font-weight: 600;
     display: flex;

@@ -8,6 +8,8 @@ import { Title } from '../components/title';
 import { SRowContainer, STopicContainer, STitleOfList, STopic } from '../components/common';
 import { IPost } from '../common';
 import { PostsList } from '../components';
+import styled from 'styled-components';
+import Icon from '../assets/svg/react-logo.svg';
 
 interface Props {
   data: {

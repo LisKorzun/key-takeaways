@@ -13,15 +13,16 @@ const SCard = styled.div`
 `;
 
 const SCardImage = styled((props) => <GatsbyImage {...props} />)`
-  height: 100px;
-  min-height: 100px;
-  max-height: 100px;
-  width: 150px;
-  max-width: 150px;
-  min-width: 150px;
-  object-fit: contain;
-  border-radius: 3px;
+  height: 150px;
+  min-height: 150px;
+  max-height: 150px;
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+  object-fit: cover;
+  border-radius: 8px;
   margin-right: 30px;
+  object-position: center;
 `;
 
 const SCardContent = styled.div`
@@ -36,16 +37,17 @@ const SCardTitleContainer = styled.div`
 `;
 
 const SCardCaption = styled.div`
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-top: 5px;
   margin-bottom: 5px;
   color: ${(props) => props.theme.primary};
 `;
 
 const SCardTitle = styled((props) => <Link {...props} />)`
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 400;
   text-transform: capitalize;
   margin-bottom: 8px;
@@ -57,7 +59,7 @@ const SCardTitle = styled((props) => <Link {...props} />)`
 
 const SCardDate = styled.div`
   font-weight: 300;
-  font-size: 13px;
+  font-size: 16px;
   margin-bottom: 15px;
 `;
 

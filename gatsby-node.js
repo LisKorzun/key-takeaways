@@ -8,6 +8,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const tagTemplate = path.resolve('src/templates/tag.tsx');
   const postTemplate = path.resolve('src/templates/post.tsx');
   const topicTemplate = path.resolve('src/templates/topic.tsx');
+  const homeTemplate = path.resolve('src/templates/home.tsx');
 
   const result = await graphql(`
     {
@@ -19,24 +20,39 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-      posts: allMdx(limit: 2000) {
+      posts: allMdx(limit: 2000, sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
           slug
+          id
+          frontmatter {
+            title
+            tags
+            topic
+            date(formatString: "MMMM DD, YYYY")
+            hero_image {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
         }
       }
       tags: allMdx(limit: 2000) {
         group(field: frontmatter___tags) {
           fieldValue
+          totalCount
         }
       }
       levels: allMdx(limit: 2000) {
         group(field: frontmatter___level) {
           fieldValue
+          totalCount
         }
       }
       topics: allMdx(limit: 2000) {
         group(field: frontmatter___topic) {
           fieldValue
+          totalCount
         }
       }
     }
@@ -52,6 +68,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const tags = result.data.tags.group;
   const topics = result.data.topics.group;
   const posts = result.data.posts.nodes;
+
+  createPage({
+    path: '/',
+    component: homeTemplate,
+    context: { levels, levelsData, tags, topics, posts },
+  });
 
   levels.forEach((level) => {
     createPage({

@@ -9,12 +9,12 @@ export type IThemes = {
 
 export const themes: IThemes = {
   blue: {
-    primary: '#4DA8DA',
-    secondary: '#203647',
-    accent: '#007CC7',
-    background: '#fdfefe',
-    text: '#12232E',
-    border: '#edf6fb'
+    primary: '#06BCF0',
+    secondary: '#1B263B',
+    accent: '#778DA9',
+    background: '#FFF',
+    text: '#0D1B2A',
+    border: '#eee'
   },
   yellow: {
     primary: '#FFDF6C',

@@ -48,6 +48,10 @@ const MainContainer = styled.div`
   transition: all 0.2s ease-in-out;
   background-color: ${(props) => props.theme.background};
 `;
+const Content = styled.div`
+  width: 60vw;
+  margin: 0 auto;
+`;
 
 const Layout: FC<LayoutProps> = ({ children, theme = 'blue' }) => (
   <ThemeProvider theme={{ ...themes[theme] }}>
@@ -58,7 +62,7 @@ const Layout: FC<LayoutProps> = ({ children, theme = 'blue' }) => (
         <Header />
         <Menu />
       </SideContainer>
-      <MainContainer>{children}</MainContainer>
+      <MainContainer><Content>{children}</Content></MainContainer>
     </PageContainer>
   </ThemeProvider>
 );

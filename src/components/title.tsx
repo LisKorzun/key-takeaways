@@ -29,7 +29,7 @@ const STitleLink = styled((props) => <Link {...props} />)`
   }
 `;
 
-const STitleCaption = styled.div`
+export const STitleCaption = styled.div`
   text-transform: uppercase;
   letter-spacing: 2px;
   color: ${(props) => props.theme.primary};
