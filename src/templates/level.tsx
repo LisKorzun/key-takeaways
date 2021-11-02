@@ -5,8 +5,7 @@ import Seo from '../components/seo';
 import Layout from '../components/layout';
 import { find } from 'lodash';
 import { Title } from '../components/title';
-import { STitleOfList, SRowContainer, STopicContainer, STopic } from '../components/common';
-import { PostsList } from '../components';
+import { PostsList, SHeadLine, SRowContainer, STopicContainer, STopic } from '../components';
 import { ARTICLES_LABEL, IPost } from '../common';
 
 interface Props {
@@ -41,7 +40,7 @@ const Level: FC<Props> = ({ pageContext, data }) => {
           <PostsList posts={nodes} title={ARTICLES_LABEL} />
           <STopicContainer>
             <>
-              <STitleOfList>Topics</STitleOfList>
+              <SHeadLine>Topics</SHeadLine>
               {group.map((topic) => (
                 <STopic key={topic.fieldValue}>
                   <a>

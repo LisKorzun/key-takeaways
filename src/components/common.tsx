@@ -1,6 +1,42 @@
 import styled from 'styled-components';
 import Tag from '../assets/svg/tag.svg';
 
+export const STitle = styled.h2`
+  font-size: 60px;
+  margin: 0;
+`;
+
+export const SDescription = styled.div`
+  color: ${(props) => props.theme.secondary};
+  font-size: 20px;
+  font-weight: 300;
+`;
+
+export const SSeparator = styled.div`
+  width: 100px;
+  margin: 30px 0;
+  border-bottom: ${(props) => `8px solid ${props.theme.primary}`};
+`;
+
+export const SHeadLine = styled.div`
+  display: block;
+  font-size: 40px;
+  position: relative;
+  overflow: hidden;
+  text-transform: capitalize;
+  font-weight: 300;
+  color: ${(props) => props.theme.secondary};
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: ${(props) => props.theme.border};
+    margin-left: 20px;
+  }
+`;
+
 export const SSection = styled.div`
   margin-top: 70px;
   display: flex;
@@ -59,48 +95,25 @@ export const STopic = styled.div`
   }
 `;
 
-export const STitle = styled.div`
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  color: ${(props) => props.theme.secondary};
-  font-size: 40px;
-  text-transform: capitalize;
-  & span {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 4px;
-    margin-left: 15px;
-    border: ${(props) => `1px solid ${props.theme.secondary}`};
-    border-radius: 3px;
-  }
-`;
+// export const STitle = styled.div`
+//   display: flex;
+//   align-items: center;
+//   width: fit-content;
+//   color: ${(props) => props.theme.secondary};
+//   font-size: 40px;
+//   text-transform: capitalize;
+//   & span {
+//     font-size: 10px;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     padding: 4px;
+//     margin-left: 15px;
+//     border: ${(props) => `1px solid ${props.theme.secondary}`};
+//     border-radius: 3px;
+//   }
+// `;
 
-export const STitleOfList = styled.div`
-  display: block;
-  font-size: 40px;
-  position: relative;
-  overflow: hidden;
-  text-transform: capitalize;
-  font-weight: 300;
-  color: ${(props) => props.theme.secondary};
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background-color: ${(props) => props.theme.border};
-    margin-left: 20px;
-  }
-`;
 
-export const SSeparator = styled.div`
-  border-bottom: ${(props) => `3px solid ${props.theme.primary}`};
-  width: 100px;
-  margin: 10px 0;
-`;
 
 export const STags = styled.div`
   margin-top: 10px;

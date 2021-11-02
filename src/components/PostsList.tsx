@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import { SPostsContainer, STitleOfList } from './common';
+import { SPostsContainer, SHeadLine } from './common';
 import { Card } from './card';
 import { IPost, RECENT_LABEL } from '../common';
 
@@ -13,7 +13,7 @@ export const PostsList: FC<IPostsList> = ({ title = RECENT_LABEL, posts = [] }) 
   return (
     <SPostsContainer>
       <>
-        <STitleOfList>{title}</STitleOfList>
+        <SHeadLine>{title}</SHeadLine>
         {posts.map((post) => (
           <Card key={post.id} post={post} />
         ))}

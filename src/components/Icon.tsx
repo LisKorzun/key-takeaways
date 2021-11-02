@@ -7,15 +7,40 @@ import Level2Icon from '../assets/svg/level-2.svg';
 import Level3Icon from '../assets/svg/level-3.svg';
 import Level4Icon from '../assets/svg/level-4.svg';
 import Level5Icon from '../assets/svg/level-5.svg';
+import CodeIcon from '../assets/svg/code.svg';
 
 interface IconStylesProps {
   width?: string;
   color?: string;
+  opacity?: number;
 }
 
-const svgStyles = ({ width, color }: IconStylesProps) => css`
+const svgStyles = ({ width, color, opacity }: IconStylesProps) => css`
   width: ${width || '35px'};
-  fill: ${color || '#1B263B'}
+  fill: ${color || '#1B263B'};
+  opacity: ${opacity || 1};
+`;
+
+export const SLevel0Icon = styled(Level0Icon)`
+  ${(props) => svgStyles(props)}
+`;
+export const SLevel1Icon = styled(Level1Icon)`
+  ${(props) => svgStyles(props)}
+`;
+export const SLevel2Icon = styled(Level2Icon)`
+  ${(props) => svgStyles(props)}
+`;
+export const SLevel3Icon = styled(Level3Icon)`
+  ${(props) => svgStyles(props)}
+`;
+export const SLevel4Icon = styled(Level4Icon)`
+  ${(props) => svgStyles(props)}
+`;
+export const SLevel5Icon = styled(Level5Icon)`
+  ${(props) => svgStyles(props)}
+`;
+export const SCodeIcon = styled(CodeIcon)`
+  ${(props) => svgStyles(props)}
 `;
 
 export const enum IconNames {
@@ -25,43 +50,29 @@ export const enum IconNames {
   LEVEL_3 = 'Level-3',
   LEVEL_4 = 'Level-4',
   LEVEL_5 = 'Level-5',
+  CODE = 'code',
 }
-export const StyledLevel0Icon = styled(Level0Icon)`
-  ${(props) => svgStyles(props)}
-`;
-export const StyledLevel1Icon = styled(Level1Icon)`
-  ${(props) => svgStyles(props)}
-`;
-export const StyledLevel2Icon = styled(Level2Icon)`
-  ${(props) => svgStyles(props)}
-`;
-export const StyledLevel3Icon = styled(Level3Icon)`
-  ${(props) => svgStyles(props)}
-`;
-export const StyledLevel4Icon = styled(Level4Icon)`
-  ${(props) => svgStyles(props)}
-`;
-export const StyledLevel5Icon = styled(Level5Icon)`
-  ${(props) => svgStyles(props)}
-`;
 
 interface IconProps extends IconStylesProps {
   name: string;
 }
+
 export const Icon: FC<IconProps> = ({ name, ...other }) => {
   switch (name) {
     case IconNames.LEVEL_0:
-      return <StyledLevel0Icon {...other} />;
+      return <SLevel0Icon {...other} />;
     case IconNames.LEVEL_1:
-      return <StyledLevel1Icon {...other} />;
+      return <SLevel1Icon {...other} />;
     case IconNames.LEVEL_2:
-      return <StyledLevel2Icon {...other} />;
+      return <SLevel2Icon {...other} />;
     case IconNames.LEVEL_3:
-      return <StyledLevel3Icon {...other} />;
+      return <SLevel3Icon {...other} />;
     case IconNames.LEVEL_4:
-      return <StyledLevel4Icon {...other} />;
+      return <SLevel4Icon {...other} />;
     case IconNames.LEVEL_5:
-      return <StyledLevel5Icon {...other} />;
+      return <SLevel5Icon {...other} />;
+    case IconNames.CODE:
+      return <SCodeIcon {...other} />;
     default:
       return <></>;
   }

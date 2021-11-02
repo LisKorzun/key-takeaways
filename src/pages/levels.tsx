@@ -5,11 +5,8 @@ import { kebabCase, find } from 'lodash';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import { Title } from '../components/title';
-import { SRowContainer, STopicContainer, STitleOfList, STopic } from '../components/common';
 import { IPost } from '../common';
-import { PostsList } from '../components';
-import styled from 'styled-components';
-import Icon from '../assets/svg/react-logo.svg';
+import { PostsList, SRowContainer, STopicContainer,SHeadLine, STopic } from '../components';
 
 interface Props {
   data: {
@@ -25,7 +22,7 @@ interface Props {
   };
 }
 
-const DifficultiesPage: FC<Props> = ({ data }) => {
+const LevelsPage: FC<Props> = ({ data }) => {
   const { levels } = data.site.siteMetadata;
 
   return (
@@ -48,7 +45,7 @@ const DifficultiesPage: FC<Props> = ({ data }) => {
                     <PostsList posts={difficulty.nodes} />
                     <STopicContainer>
                       <>
-                        <STitleOfList>Topics</STitleOfList>
+                        <SHeadLine>Topics</SHeadLine>
                         {difficulty.group.map((topic) => (
                           <STopic key={topic.fieldValue}>
                             <Link to={`/topics/${kebabCase(topic.fieldValue)}`}>
@@ -96,4 +93,4 @@ export const query = graphql`
   }
 `;
 
-export default DifficultiesPage;
+export default LevelsPage;
