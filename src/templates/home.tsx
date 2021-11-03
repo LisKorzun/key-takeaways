@@ -33,7 +33,7 @@ const Home: FC<Props> = ({ pageContext }) => {
       <Banner title="Key Takeaways" icon="code" />
       <DarkSection>
         <h3>Competency Levels</h3>
-        <SFlexRowContainer wrap="wrap" gap="20px">
+        <SFlexRowContainer wrap="wrap" gap="20px" mt="30px">
           {levels.map((l) => {
             const level = find(levelsData, ['id', l.fieldValue]);
             const icon = `Level-${l.fieldValue}`;

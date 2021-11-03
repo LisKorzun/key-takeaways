@@ -1,10 +1,18 @@
 import React, { FC, Fragment } from 'react';
-import { graphql, Link } from 'gatsby';
-import { kebabCase, find } from 'lodash';
+import { graphql } from 'gatsby';
+import { find, take } from 'lodash';
 
-import { Title } from '../components/title';
 import { IPost } from '../common';
-import { Layout, Seo, PostsList, SRowContainer, STopicContainer, SHeadLine, STopic, Banner } from '../components';
+import {
+  Layout,
+  Seo,
+  SHeadLine,
+  Banner,
+  DarkSection,
+  SFlexColumnContainer,
+} from '../components';
+import { Card } from '../components/card';
+import { TopicCard } from '../components/TopicCard';
 
 interface Props {
   data: {
@@ -28,34 +36,31 @@ const LevelsPage: FC<Props> = ({ data }) => {
       <Seo title="Competency Levels" />
       <Banner title="Competency Levels" icon="levels" />
       <div>
-        {data.allMdx.group.map((difficulty) => {
-          const level = find(levels, ['id', difficulty.fieldValue]);
+        {data.allMdx.group.map((l) => {
+          const level = find(levels, ['id', l.fieldValue]);
           return (
-            <Fragment key={difficulty.fieldValue}>
+            <Fragment key={l.fieldValue}>
               {level && (
                 <>
-                  <Title
-                    caption="Competency level"
-                    title={level.title}
-                    link={`/levels/${kebabCase(level.title)}`}
-                    count={difficulty.totalCount}
-                  />
-                  <SRowContainer>
-                    <PostsList posts={difficulty.nodes} />
-                    <STopicContainer>
-                      <>
-                        <SHeadLine>Topics</SHeadLine>
-                        {difficulty.group.map((topic) => (
-                          <STopic key={topic.fieldValue}>
-                            <Link to={`/topics/${kebabCase(topic.fieldValue)}`}>
-                              {topic.fieldValue}
-                              <span>{topic.totalCount}</span>
-                            </Link>
-                          </STopic>
-                        ))}
-                      </>
-                    </STopicContainer>
-                  </SRowContainer>
+                  <DarkSection>
+                    <h3>{level.title}</h3>
+                  </DarkSection>
+                  <SFlexColumnContainer mb="50px">
+                    <SHeadLine>Recently published</SHeadLine>
+                    <div>
+                      {take(l.nodes, 5).map((post) => (
+                        <Card key={post.id} post={post} />
+                      ))}
+                    </div>
+                  </SFlexColumnContainer>
+                  <SFlexColumnContainer>
+                    <SHeadLine>Topics</SHeadLine>
+                    <SFlexColumnContainer>
+                      {l.group.map((topic) => (
+                        <TopicCard key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
+                      ))}
+                    </SFlexColumnContainer>
+                  </SFlexColumnContainer>
                 </>
               )}
             </Fragment>

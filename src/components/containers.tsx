@@ -47,6 +47,6 @@ export const DarkSection = styled.div`
     color: ${(props) => props.theme.primary};
     font-weight: 200;
     font-size: 40px;
-    margin: 0 0 30px;
+    margin: 0;
   }
 `;

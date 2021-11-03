@@ -41,6 +41,9 @@ export const STopicCard = styled((props) => <Link {...props} />)`
   }
   & span {
     margin-left: 20px;
+    //background-color: ${(props) => props.theme.primary};
+    //padding: 5px;
+    //border-radius: 3px;
   }
   &:hover {
     color: #bbc6d4;

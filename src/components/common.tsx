@@ -21,12 +21,11 @@ export const SSeparator = styled.div`
 
 export const SHeadLine = styled.div`
   display: block;
-  font-size: 40px;
+  font-size: 30px;
   position: relative;
   overflow: hidden;
-  text-transform: uppercase;
-  font-weight: 200;
-  color: ${(props) => props.theme.primary};
+  font-weight: 600;
+  color: ${(props) => props.theme.secondary};
   margin-bottom: 30px;
   &::after {
     content: '';
@@ -34,7 +33,7 @@ export const SHeadLine = styled.div`
     top: 50%;
     width: 100%;
     height: 1px;
-    background-color: ${(props) => props.theme.primary};
+    background-color: ${(props) => props.theme.accent};
     margin-left: 20px;
     opacity: 0.3;
   }
