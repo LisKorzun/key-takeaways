@@ -11,7 +11,7 @@ export const themes: IThemes = {
   blue: {
     primary: '#06BCF0',
     secondary: '#1B263B',
-    accent: '#778DA9',
+    accent: '#BBC6D4',
     background: '#FFF',
     text: '#0D1B2A',
     border: '#eee'

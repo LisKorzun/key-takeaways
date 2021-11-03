@@ -9,7 +9,6 @@ const SCard = styled.div`
   display: flex;
   padding-bottom: 15px;
   padding-top: 15px;
-  border-bottom: ${(props) => `1px solid ${props.theme.border}`};
 `;
 
 const SCardImage = styled((props) => <GatsbyImage {...props} />)`

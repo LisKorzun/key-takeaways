@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
+import { Link } from 'gatsby';
+import { kebabCase } from 'lodash';
 import styled from 'styled-components';
 
 import { Icon } from './Icon';
 
-const SLevelCard = styled.div`
+const SLevelCard = styled((props) => <Link {...props} />)`
   padding-top: 50px;
   padding-left: 20px;
   width: 100%;
@@ -14,6 +16,7 @@ const SLevelCard = styled.div`
   border-radius: 3px;
   border: ${(props) => `1px solid ${props.theme.background}`};
   color: ${(props) => `${props.theme.background}`};
+
   & h4 {
     margin: 5px 0;
     font-size: 30px;
@@ -32,6 +35,9 @@ const SLevelCard = styled.div`
     color: ${(props) => `${props.theme.secondary}`};
     background-color: ${(props) => `${props.theme.background}`};
   }
+  &:hover {
+    border: ${(props) => `1px solid ${props.theme.primary}`};
+  }
 `;
 
 interface Props {
@@ -41,8 +47,8 @@ interface Props {
 }
 
 export const LevelCard: FC<Props> = ({ title, count, icon }) => (
-  <SLevelCard>
-    <Icon name={icon} width="90px" color="#06BCF0" />
+  <SLevelCard to={`/levels/${kebabCase(title)}`}>
+    <Icon name={icon} width="90px" color="primary" />
     <h4>{title}</h4>
     <span>{count} articles</span>
   </SLevelCard>

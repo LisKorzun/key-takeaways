@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 
+import { DefaultThemeKeys } from '../common';
 import Level0Icon from '../assets/svg/level-0.svg';
 import Level1Icon from '../assets/svg/level-1.svg';
 import Level2Icon from '../assets/svg/level-2.svg';
@@ -8,39 +9,45 @@ import Level3Icon from '../assets/svg/level-3.svg';
 import Level4Icon from '../assets/svg/level-4.svg';
 import Level5Icon from '../assets/svg/level-5.svg';
 import CodeIcon from '../assets/svg/code.svg';
+import TopicsIcon from '../assets/svg/topics.svg';
 
 interface IconStylesProps {
-  width?: string;
-  color?: string;
-  opacity?: number;
+  readonly color: DefaultThemeKeys;
+  readonly width?: string;
+  readonly height?: string;
+  readonly opacity?: number;
 }
 
-const svgStyles = ({ width, color, opacity }: IconStylesProps) => css`
-  width: ${width || '35px'};
-  fill: ${color || '#1B263B'};
-  opacity: ${opacity || 1};
+const svgStyles = css<IconStylesProps>`
+  width: ${(props) => props.width || 'auto'};
+  height: ${(props) => props.height || 'auto'};
+  fill: ${(props) => props.theme[props.color]};
+  opacity: ${(props) => props.opacity || 1};
 `;
 
 export const SLevel0Icon = styled(Level0Icon)`
-  ${(props) => svgStyles(props)}
+  ${svgStyles}
 `;
 export const SLevel1Icon = styled(Level1Icon)`
-  ${(props) => svgStyles(props)}
+  ${svgStyles}
 `;
 export const SLevel2Icon = styled(Level2Icon)`
-  ${(props) => svgStyles(props)}
+  ${svgStyles}
 `;
 export const SLevel3Icon = styled(Level3Icon)`
-  ${(props) => svgStyles(props)}
+  ${svgStyles}
 `;
 export const SLevel4Icon = styled(Level4Icon)`
-  ${(props) => svgStyles(props)}
+  ${svgStyles}
 `;
 export const SLevel5Icon = styled(Level5Icon)`
-  ${(props) => svgStyles(props)}
+  ${svgStyles}
 `;
 export const SCodeIcon = styled(CodeIcon)`
-  ${(props) => svgStyles(props)}
+  ${svgStyles}
+`;
+export const STopicsIcon = styled(TopicsIcon)`
+  ${svgStyles}
 `;
 
 export const enum IconNames {
@@ -51,6 +58,7 @@ export const enum IconNames {
   LEVEL_4 = 'Level-4',
   LEVEL_5 = 'Level-5',
   CODE = 'code',
+  TOPICS = 'topics'
 }
 
 interface IconProps extends IconStylesProps {
@@ -73,6 +81,8 @@ export const Icon: FC<IconProps> = ({ name, ...other }) => {
       return <SLevel5Icon {...other} />;
     case IconNames.CODE:
       return <SCodeIcon {...other} />;
+    case IconNames.TOPICS:
+      return <STopicsIcon {...other} />;
     default:
       return <></>;
   }

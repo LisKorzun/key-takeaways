@@ -23,17 +23,19 @@ export const SHeadLine = styled.div`
   font-size: 40px;
   position: relative;
   overflow: hidden;
-  text-transform: capitalize;
-  font-weight: 300;
-  color: ${(props) => props.theme.secondary};
+  text-transform: uppercase;
+  font-weight: 200;
+  color: ${(props) => props.theme.primary};
+  margin-bottom: 30px;
   &::after {
     content: '';
     position: absolute;
     top: 50%;
     width: 100%;
     height: 1px;
-    background-color: ${(props) => props.theme.border};
+    background-color: ${(props) => props.theme.primary};
     margin-left: 20px;
+    opacity: 0.3;
   }
 `;
 

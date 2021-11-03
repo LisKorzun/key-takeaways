@@ -1,22 +1,17 @@
 import React, { FC } from 'react';
-import { graphql, Link } from 'gatsby';
-import { kebabCase } from 'lodash';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import { SSection, SSeparator, STitle, STopic } from '../components/common';
-import styled from 'styled-components';
-
-const STopicContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 35%;
-`;
+import { Banner } from '../components/Banner';
+import { TopicCard } from '../components/TopicCard';
+import { SFlexColumnContainer } from '../components';
+import { IGroupedField } from '../common';
 
 interface Props {
   data: {
     allMdx: {
-      group: { fieldValue: string; totalCount: number }[];
+      group: IGroupedField[];
     };
   };
 }
@@ -25,20 +20,12 @@ const TopicsPage: FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Seo title="Topics" />
-      <SSection>
-        <STitle>Topics</STitle>
-        <SSeparator />
-        <STopicContainer>
-          {data.allMdx.group.map((topic) => (
-            <STopic key={topic.fieldValue}>
-              <Link to={`/topics/${kebabCase(topic.fieldValue)}`}>
-                {topic.fieldValue}
-                <span>{topic.totalCount}</span>
-              </Link>
-            </STopic>
-          ))}
-        </STopicContainer>
-      </SSection>
+      <Banner title="Topics" icon="topics"/>
+      <SFlexColumnContainer>
+        {data.allMdx.group.map((topic) => (
+          <TopicCard key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
+        ))}
+      </SFlexColumnContainer>
     </Layout>
   );
 };
