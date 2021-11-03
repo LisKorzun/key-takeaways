@@ -27,6 +27,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           frontmatter {
             title
             tags
+            level
             topic
             date(formatString: "MMMM DD, YYYY")
             hero_image {

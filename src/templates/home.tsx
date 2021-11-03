@@ -2,18 +2,18 @@ import React, { FC } from 'react';
 import { take, find } from 'lodash';
 
 import { IGroupedField, IPost } from '../common';
-import { Card } from '../components/card';
 import {
   Layout,
   Seo,
   Banner,
+  PostCard,
+  LevelCard,
+  TopicCard,
   DarkSection,
   SFlexColumnContainer,
   SFlexRowContainer,
-  LevelCard,
   SHeadLine,
 } from '../components';
-import { TopicCard } from '../components/TopicCard';
 
 interface Props {
   pageContext: {
@@ -54,7 +54,7 @@ const Home: FC<Props> = ({ pageContext }) => {
         <SHeadLine>Recently published</SHeadLine>
         <div>
           {take(posts, 5).map((post) => (
-            <Card key={post.id} post={post} />
+            <PostCard key={post.id} post={post} />
           ))}
         </div>
       </SFlexColumnContainer>

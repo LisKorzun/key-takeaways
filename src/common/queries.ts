@@ -5,6 +5,7 @@ export const postFields = graphql`
     frontmatter {
       title
       tags
+      level
       topic
       date(formatString: "MMMM DD, YYYY")
       hero_image {

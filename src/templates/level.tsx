@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { graphql, Link } from 'gatsby';
 
-import { find } from 'lodash';
+import { find, take } from 'lodash';
 import { Title } from '../components/title';
-import { Layout, Seo, PostsList, SHeadLine, SRowContainer, STopicContainer, STopic } from '../components';
+import { Layout, Seo, SHeadLine, PostCard, SFlexColumnContainer } from '../components';
 import { ARTICLES_LABEL, IPost } from '../common';
 
 interface Props {
@@ -25,7 +25,7 @@ interface Props {
 
 const Level: FC<Props> = ({ pageContext, data }) => {
   const { level } = pageContext;
-  const { totalCount, group, nodes } = data.allMdx;
+  const { totalCount, nodes } = data.allMdx;
   const { levels } = data.site.siteMetadata;
   const levelData = find(levels, ['id', level]) || { title: '' };
 
@@ -33,23 +33,15 @@ const Level: FC<Props> = ({ pageContext, data }) => {
     <Layout>
       <Seo title={levelData.title} />
       <div>
-        <Title caption="Competency Level" title={levelData.title || ''} count={totalCount} />
-        <SRowContainer>
-          <PostsList posts={nodes} title={ARTICLES_LABEL} />
-          <STopicContainer>
-            <>
-              <SHeadLine>Topics</SHeadLine>
-              {group.map((topic) => (
-                <STopic key={topic.fieldValue}>
-                  <a>
-                    {topic.fieldValue}
-                    <span>{topic.totalCount}</span>
-                  </a>
-                </STopic>
-              ))}
-            </>
-          </STopicContainer>
-        </SRowContainer>
+        <Title caption="Competency Level" title={levelData.title || ''} />
+        <SFlexColumnContainer mb="50px">
+          <SHeadLine>{`${totalCount} ${ARTICLES_LABEL}`}</SHeadLine>
+          <div>
+            {take(nodes, 5).map((post) => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </div>
+        </SFlexColumnContainer>
         <Link to="/levels">All Competency Levels</Link>
       </div>
     </Layout>

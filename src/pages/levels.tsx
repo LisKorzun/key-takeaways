@@ -3,15 +3,7 @@ import { graphql } from 'gatsby';
 import { find, take } from 'lodash';
 
 import { IPost } from '../common';
-import {
-  Layout,
-  Seo,
-  SHeadLine,
-  Banner,
-  DarkSection,
-  SFlexColumnContainer,
-} from '../components';
-import { Card } from '../components/card';
+import { Layout, Seo, Banner, PostCard, SHeadLine, DarkSection, SFlexColumnContainer } from '../components';
 import { TopicCard } from '../components/TopicCard';
 
 interface Props {
@@ -47,11 +39,9 @@ const LevelsPage: FC<Props> = ({ data }) => {
                   </DarkSection>
                   <SFlexColumnContainer mb="50px">
                     <SHeadLine>Recently published</SHeadLine>
-                    <div>
-                      {take(l.nodes, 5).map((post) => (
-                        <Card key={post.id} post={post} />
-                      ))}
-                    </div>
+                    {take(l.nodes, 5).map((post) => (
+                      <PostCard key={post.id} post={post} />
+                    ))}
                   </SFlexColumnContainer>
                   <SFlexColumnContainer>
                     <SHeadLine>Topics</SHeadLine>

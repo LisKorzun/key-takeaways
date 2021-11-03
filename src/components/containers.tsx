@@ -7,6 +7,8 @@ interface FlexProps {
   maxW?: string;
   mt?: string;
   mb?: string;
+  pt?: string;
+  pb?: string;
 }
 
 export const SFlexRowContainer = styled.div<FlexProps>`
@@ -18,6 +20,8 @@ export const SFlexRowContainer = styled.div<FlexProps>`
   max-width: ${(p) => p.maxW || 'auto'};
   margin-top: ${(p) => p.mt || 0};
   margin-bottom: ${(p) => p.mb || 0};
+  padding-top: ${(p) => p.pt || 0};
+  padding-bottom: ${(p) => p.pb || 0};
 `;
 
 export const SFlexColumnContainer = styled.div<FlexProps>`
@@ -29,6 +33,8 @@ export const SFlexColumnContainer = styled.div<FlexProps>`
   max-width: ${(p) => p.maxW || 'auto'};
   margin-top: ${(p) => p.mt || 0};
   margin-bottom: ${(p) => p.mb || 0};
+  padding-top: ${(p) => p.pt || 0};
+  padding-bottom: ${(p) => p.pb || 0};
 `;
 
 export const DarkSection = styled.div`

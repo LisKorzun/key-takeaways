@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
+import { take } from 'lodash';
 import { Link, graphql } from 'gatsby';
 
 import { Title } from '../components/title';
-import { Layout, Seo, SRowContainer } from '../components';
+import { Layout, PostCard, Seo, SFlexColumnContainer, SHeadLine } from '../components';
 import { ARTICLES_LABEL, IPost } from '../common';
-import { PostsList } from '../components';
 
 interface Props {
   pageContext: {
@@ -26,10 +26,15 @@ const Topic: FC<Props> = ({ pageContext, data }) => {
     <Layout>
       <Seo title={`Topic ${topic}`} />
       <div>
-        <Title caption="Topic" title={topic} count={totalCount} />
-        <SRowContainer>
-          <PostsList posts={nodes} title={ARTICLES_LABEL} />
-        </SRowContainer>
+        <Title caption="Topic" title={topic} />
+        <SFlexColumnContainer mb="50px">
+          <SHeadLine>{`${totalCount} ${ARTICLES_LABEL}`}</SHeadLine>
+          <div>
+            {take(nodes, 5).map((post) => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </div>
+        </SFlexColumnContainer>
         <Link to="/topics">All topics</Link>
       </div>
     </Layout>

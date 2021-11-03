@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 import { Link, graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Banner, Layout, Seo, SFlexRowContainer, TagIcon } from '../components';
+import { Banner, Layout, Seo, SFlexRowContainer } from '../components';
 import styled from 'styled-components';
+import { Icon } from '../components/Icon';
 
 const STags = styled.div`
   margin-top: 10px;
@@ -45,7 +46,7 @@ const TagsPage: FC<Props> = ({ data }) => {
         <STags>
           {data.allMdx.group.map((tag) => (
             <Link key={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              <TagIcon /> {tag.fieldValue}
+              <Icon name="tag" height="13px" color="secondary" /> {tag.fieldValue}
             </Link>
           ))}
         </STags>

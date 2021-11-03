@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import Tag from '../assets/svg/tag.svg';
+import { Link } from 'gatsby';
+import React from 'react';
 
 export const STitle = styled.h1`
   font-size: 60px;
-  line-height: 75px;
+  line-height: 70px;
+  text-transform: capitalize;
   margin: 0;
 `;
 
@@ -13,9 +15,15 @@ export const SDescription = styled.div`
   font-weight: 300;
 `;
 
+export const SText = styled.p`
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0;
+`;
+
 export const SSeparator = styled.div`
   width: 100px;
-  margin: 30px 0;
+  margin: 20px 0;
   border-bottom: ${(props) => `8px solid ${props.theme.primary}`};
 `;
 
@@ -39,15 +47,49 @@ export const SHeadLine = styled.div`
   }
 `;
 
-export const SSection = styled.div`
-  margin-top: 70px;
+export const SCaption = styled.div`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: ${(props) => props.theme.primary};
+  & span {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-weight: 600;
+  }
+  & caption {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
 `;
 
-export const SRowContainer = styled.div`
+export const STag = styled.div`
+  margin-right: 10px;
   display: flex;
-  margin: 30px 0;
+  align-items: baseline;
+  & svg {
+    margin-right: 5px;
+  }
+  & span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: ${(props) => props.theme.secondary};
+  }
+`;
+
+export const STitleLink = styled((props) => <Link {...props} />)`
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  color: ${(props) => props.theme.secondary};
+  &:hover {
+    color: ${(props) => props.theme.accent};
+  }
 `;
 
 export const SPostsContainer = styled.div`
@@ -95,45 +137,4 @@ export const STopic = styled.div`
       color: ${(props) => props.theme.accent};
     }
   }
-`;
-
-// export const STitle = styled.div`
-//   display: flex;
-//   align-items: center;
-//   width: fit-content;
-//   color: ${(props) => props.theme.secondary};
-//   font-size: 40px;
-//   text-transform: capitalize;
-//   & span {
-//     font-size: 10px;
-//     font-weight: 600;
-//     text-transform: uppercase;
-//     padding: 4px;
-//     margin-left: 15px;
-//     border: ${(props) => `1px solid ${props.theme.secondary}`};
-//     border-radius: 3px;
-//   }
-// `;
-
-
-
-export const STags = styled.div`
-  margin-top: 10px;
-  margin-bottom: 5px;
-  display: flex;
-
-  & span {
-    margin-right: 10px;
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    color: ${(props) => props.theme.text};
-  }
-`;
-
-export const TagIcon = styled(Tag)`
-  fill: ${(props) => props.theme.text};
-  width: 13px;
 `;
