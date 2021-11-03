@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Tag from '../assets/svg/tag.svg';
 
-export const STitle = styled.h2`
+export const STitle = styled.h1`
   font-size: 60px;
+  line-height: 75px;
   margin: 0;
 `;
 

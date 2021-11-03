@@ -1,29 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import Tag from '../assets/svg/tag.svg';
-import About from '../assets/svg/about.svg';
-import Topic from '../assets/svg/topics.svg';
-import Levels from '../assets/svg/levels.svg';
 
-const TagIcon = styled(Tag)`
-  fill: ${(props) => props.theme.background};
-  width: 35px;
-`;
-
-const AboutIcon = styled(About)`
-  fill: ${(props) => props.theme.background};
-  width: 35px;
-`;
-
-const TopicIcon = styled(Topic)`
-  fill: ${(props) => props.theme.background};
-  width: 35px;
-`;
-const LevelsIcon = styled(Levels)`
-  fill: ${(props) => props.theme.background};
-  width: 35px;
-`;
+import { Icon } from './Icon';
 
 const Nav = styled.nav`
   margin: 20px auto;
@@ -31,10 +10,11 @@ const Nav = styled.nav`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; ;
+  justify-content: flex-end;
+  align-items: center;
 `;
 const NavItem = styled.li`
-  margin-top: 13px;
+  margin-top: 25px;
   padding: 0;
   list-style: none;
   font-size: 18px;
@@ -50,7 +30,7 @@ const NavLink = styled((props) => <Link {...props} />)`
     content: '';
     position: absolute;
     height: 2px;
-    bottom: 16px;
+    bottom: 5px;
     left: -2px;
     right: 0;
     background-color: ${(props) => props.theme.primary};
@@ -84,22 +64,22 @@ const Menu: FC = () => {
     <Nav>
       <NavItem>
         <NavLink to="/levels">
-          <LevelsIcon />
+          <Icon name="levels" height="30px" color="background" />
         </NavLink>
       </NavItem>
       <NavItem>
         <NavLink to="/topics">
-          <TopicIcon />
+          <Icon name="topics" height="30px" color="background" />
         </NavLink>
       </NavItem>
       <NavItem>
         <NavLink to="/tags">
-          <TagIcon />
+          <Icon name="tag" height="30px" color="background" />
         </NavLink>
       </NavItem>
       <NavItem>
         <NavLink to="/about">
-          <AboutIcon />
+          <Icon name="about" height="30px" color="background" />
         </NavLink>
       </NavItem>
     </Nav>

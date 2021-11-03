@@ -4,7 +4,7 @@ import { kebabCase, find } from 'lodash';
 
 import { Title } from '../components/title';
 import { IPost } from '../common';
-import { Layout, Seo, PostsList, SRowContainer, STopicContainer, SHeadLine, STopic } from '../components';
+import { Layout, Seo, PostsList, SRowContainer, STopicContainer, SHeadLine, STopic, Banner } from '../components';
 
 interface Props {
   data: {
@@ -26,6 +26,7 @@ const LevelsPage: FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Seo title="Competency Levels" />
+      <Banner title="Competency Levels" icon="levels" />
       <div>
         {data.allMdx.group.map((difficulty) => {
           const level = find(levels, ['id', difficulty.fieldValue]);
