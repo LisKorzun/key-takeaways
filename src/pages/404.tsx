@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, PageProps } from 'gatsby';
 
-import Layout from '../components/layout';
+import { Layout } from '../components';
 
 const NotFoundPage: React.FC<PageProps> = () => (
   <Layout>

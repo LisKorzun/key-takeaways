@@ -1,10 +1,8 @@
 import React, { FC } from 'react';
 import { Link, graphql } from 'gatsby';
 
-import Seo from '../components/seo';
-import Layout from '../components/layout';
 import { Title } from '../components/title';
-import { SRowContainer } from '../components/common';
+import { Layout, Seo, SRowContainer } from '../components';
 import { ARTICLES_LABEL, IPost } from '../common';
 import { PostsList } from '../components';
 

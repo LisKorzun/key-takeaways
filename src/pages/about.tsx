@@ -1,17 +1,12 @@
 import React, { FC } from 'react';
 import { PageProps } from 'gatsby';
 
-import Layout from '../components/layout';
-import Seo from '../components/seo';
-import { SSection, SSeparator, STitle } from '../components/common';
+import { Layout, Seo, Banner } from '../components';
 
 const AboutPage: FC<PageProps> = () => (
   <Layout>
     <Seo title="About" />
-    <SSection>
-      <STitle>About</STitle>
-      <SSeparator />
-    </SSection>
+    <Banner title="About" icon="about" />
   </Layout>
 );
 

@@ -10,6 +10,7 @@ import Level4Icon from '../assets/svg/level-4.svg';
 import Level5Icon from '../assets/svg/level-5.svg';
 import CodeIcon from '../assets/svg/code.svg';
 import TopicsIcon from '../assets/svg/topics.svg';
+import AboutIcon from '../assets/svg/about.svg';
 
 interface IconStylesProps {
   readonly color: DefaultThemeKeys;
@@ -49,6 +50,9 @@ export const SCodeIcon = styled(CodeIcon)`
 export const STopicsIcon = styled(TopicsIcon)`
   ${svgStyles}
 `;
+export const SAboutIcon = styled(AboutIcon)`
+  ${svgStyles}
+`;
 
 export const enum IconNames {
   LEVEL_0 = 'Level-0',
@@ -58,7 +62,8 @@ export const enum IconNames {
   LEVEL_4 = 'Level-4',
   LEVEL_5 = 'Level-5',
   CODE = 'code',
-  TOPICS = 'topics'
+  TOPICS = 'topics',
+  ABOUT = 'about'
 }
 
 interface IconProps extends IconStylesProps {
@@ -83,6 +88,8 @@ export const Icon: FC<IconProps> = ({ name, ...other }) => {
       return <SCodeIcon {...other} />;
     case IconNames.TOPICS:
       return <STopicsIcon {...other} />;
+    case IconNames.ABOUT:
+      return <SAboutIcon {...other} />;
     default:
       return <></>;
   }

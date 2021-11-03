@@ -2,9 +2,7 @@ import React, { FC } from 'react';
 import { Link, graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import Layout from '../components/layout';
-import Seo from '../components/seo';
-import { SSection, SSeparator, STitle, TagIcon } from '../components/common';
+import { Banner, Layout, Seo, SFlexRowContainer, TagIcon } from '../components';
 import styled from 'styled-components';
 
 const STags = styled.div`
@@ -42,9 +40,8 @@ const TagsPage: FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Seo title="Tags" />
-      <SSection>
-        <STitle>Tags</STitle>
-        <SSeparator />
+      <Banner title="Tags" icon="tag" />
+      <SFlexRowContainer>
         <STags>
           {data.allMdx.group.map((tag) => (
             <Link key={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
@@ -52,16 +49,7 @@ const TagsPage: FC<Props> = ({ data }) => {
             </Link>
           ))}
         </STags>
-        {/*{data.allMdx.group.map((tag) => (*/}
-        {/*  <article key={tag.fieldValue}>*/}
-        {/*    <p>*/}
-        {/*      <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>*/}
-        {/*        {tag.fieldValue} ({tag.totalCount})*/}
-        {/*      </Link>*/}
-        {/*    </p>*/}
-        {/*  </article>*/}
-        {/*))}*/}
-      </SSection>
+      </SFlexRowContainer>
     </Layout>
   );
 };

@@ -21,7 +21,7 @@ interface SeoProps {
   meta?: (IMetaName | IMetaProperty)[];
 }
 
-const Seo: FC<SeoProps> = ({ title, description = '', lang = 'en', meta = [] }) => {
+export const Seo: FC<SeoProps> = ({ title, description = '', lang = 'en', meta = [] }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -74,5 +74,3 @@ const Seo: FC<SeoProps> = ({ title, description = '', lang = 'en', meta = [] }) 
     />
   );
 };
-
-export default Seo;

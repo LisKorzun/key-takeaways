@@ -1,11 +1,9 @@
 import React, { FC } from 'react';
 import { graphql, Link } from 'gatsby';
 
-import Seo from '../components/seo';
-import Layout from '../components/layout';
 import { find } from 'lodash';
 import { Title } from '../components/title';
-import { PostsList, SHeadLine, SRowContainer, STopicContainer, STopic } from '../components';
+import { Layout, Seo, PostsList, SHeadLine, SRowContainer, STopicContainer, STopic } from '../components';
 import { ARTICLES_LABEL, IPost } from '../common';
 
 interface Props {

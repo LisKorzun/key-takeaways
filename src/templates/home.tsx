@@ -1,12 +1,18 @@
 import React, { FC } from 'react';
 import { take, find } from 'lodash';
 
-import Seo from '../components/seo';
-import Layout from '../components/layout';
 import { IGroupedField, IPost } from '../common';
 import { Card } from '../components/card';
-import { DarkSection, SFlexColumnContainer, SFlexRowContainer, LevelCard, SHeadLine } from '../components';
-import { Banner } from '../components/Banner';
+import {
+  Layout,
+  Seo,
+  Banner,
+  DarkSection,
+  SFlexColumnContainer,
+  SFlexRowContainer,
+  LevelCard,
+  SHeadLine,
+} from '../components';
 import { TopicCard } from '../components/TopicCard';
 
 interface Props {
@@ -24,7 +30,7 @@ const Home: FC<Props> = ({ pageContext }) => {
   return (
     <Layout>
       <Seo title="Home" />
-      <Banner title="Key Takeaways" icon="code"/>
+      <Banner title="Key Takeaways" icon="code" />
       <DarkSection>
         <h3>Competency Levels</h3>
         <SFlexRowContainer wrap="wrap" gap="20px">

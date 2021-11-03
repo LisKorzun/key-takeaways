@@ -2,11 +2,9 @@ import React, { FC, Fragment } from 'react';
 import { graphql, Link } from 'gatsby';
 import { kebabCase, find } from 'lodash';
 
-import Layout from '../components/layout';
-import Seo from '../components/seo';
 import { Title } from '../components/title';
 import { IPost } from '../common';
-import { PostsList, SRowContainer, STopicContainer,SHeadLine, STopic } from '../components';
+import { Layout, Seo, PostsList, SRowContainer, STopicContainer, SHeadLine, STopic } from '../components';
 
 interface Props {
   data: {

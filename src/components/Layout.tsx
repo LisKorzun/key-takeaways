@@ -53,7 +53,7 @@ const Content = styled.div`
   margin: 0 auto;
 `;
 
-const Layout: FC<LayoutProps> = ({ children, theme = 'blue' }) => (
+export const Layout: FC<LayoutProps> = ({ children, theme = 'blue' }) => (
   <ThemeProvider theme={{ ...themes[theme] }}>
     <GlobalStyle theme={themes[theme]} />
     <PageContainer>
@@ -66,5 +66,3 @@ const Layout: FC<LayoutProps> = ({ children, theme = 'blue' }) => (
     </PageContainer>
   </ThemeProvider>
 );
-
-export default Layout;

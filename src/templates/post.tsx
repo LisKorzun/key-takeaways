@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
-import Seo from '../components/seo';
-import Layout from '../components/layout';
+import { Layout, Seo } from '../components';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 interface Props {
