@@ -59,7 +59,7 @@ const NavLink = styled((props) => <Link {...props} />)`
   }
 `;
 
-const Menu: FC = () => {
+export const Menu: FC = () => {
   return (
     <Nav>
       <NavItem>
@@ -85,5 +85,3 @@ const Menu: FC = () => {
     </Nav>
   );
 };
-
-export default Menu;

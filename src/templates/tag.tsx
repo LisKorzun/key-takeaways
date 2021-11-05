@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { take } from 'lodash';
 import { Link, graphql } from 'gatsby';
 
-import { Title } from '../components/title';
+import { Title } from '../components/Title';
 import { Layout, PostCard, Seo, SFlexColumnContainer, SHeadLine } from '../components';
 import { ARTICLES_LABEL, IPost } from '../common';
 

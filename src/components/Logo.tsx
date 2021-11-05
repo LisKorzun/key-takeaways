@@ -36,7 +36,7 @@ const LogoContainer = styled.div`
 const logos = ['js', 'ts', 'react'];
 const delay = 8000;
 
-const Logo: FC = () => {
+export const Logo: FC = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -63,5 +63,3 @@ const Logo: FC = () => {
     </LogoContainer>
   );
 };
-
-export default Logo;

@@ -2,39 +2,59 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import React from 'react';
 
+import {
+  DESCRIPTION_SIZE,
+  HEADING_SIZE,
+  MARGIN_MEDIUM,
+  SEPARATOR_HEIGHT,
+  SEPARATOR_WIDTH,
+  TEXT_SIZE,
+  TITLE_SIZE,
+} from '../styles/sizes';
+
 export const STitle = styled.h1`
-  font-size: 60px;
-  line-height: 70px;
+  font-size: ${TITLE_SIZE}px;
+  line-height: ${TITLE_SIZE + 10}px;
   text-transform: capitalize;
   margin: 0;
 `;
 
+export const STitleCaption = styled.caption`
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: start;
+  margin-bottom: ${MARGIN_MEDIUM}px;
+  color: ${(props) => props.theme.primary};
+`;
+
+export const SSeparator = styled.div`
+  width: ${SEPARATOR_WIDTH}px;
+  margin: ${MARGIN_MEDIUM}px 0;
+  border-bottom: ${(props) => `${SEPARATOR_HEIGHT}px solid ${props.theme.primary}`};
+`;
+
 export const SDescription = styled.div`
   color: ${(props) => props.theme.secondary};
-  font-size: 20px;
+  font-size: ${DESCRIPTION_SIZE}px;
   font-weight: 300;
 `;
 
 export const SText = styled.p`
   font-weight: 300;
-  font-size: 16px;
+  font-size: ${TEXT_SIZE}px;
   margin: 0;
-`;
-
-export const SSeparator = styled.div`
-  width: 100px;
-  margin: 20px 0;
-  border-bottom: ${(props) => `8px solid ${props.theme.primary}`};
 `;
 
 export const SHeadLine = styled.div`
   display: block;
-  font-size: 30px;
+  font-size: ${HEADING_SIZE}px;
+  font-weight: 400;
+  color: ${(props) => props.theme.secondary};
   position: relative;
   overflow: hidden;
-  font-weight: 600;
-  color: ${(props) => props.theme.secondary};
-  margin-bottom: 30px;
+  margin-bottom: ${MARGIN_MEDIUM}px;
   &::after {
     content: '';
     position: absolute;
@@ -47,7 +67,18 @@ export const SHeadLine = styled.div`
   }
 `;
 
-export const SCaption = styled.div`
+export const SHeadingLink = styled((props) => <Link {...props} />)`
+  font-size: ${HEADING_SIZE}px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  color: ${(props) => props.theme.secondary};
+  &:hover {
+    color: ${(props) => props.theme.accent};
+  }
+`;
+
+export const SHeadingCaption = styled.div`
   display: flex;
   align-items: center;
   font-size: 12px;
@@ -60,6 +91,7 @@ export const SCaption = styled.div`
     font-weight: 600;
   }
   & caption {
+    font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -78,63 +110,5 @@ export const STag = styled.div`
     text-transform: uppercase;
     font-weight: 600;
     color: ${(props) => props.theme.secondary};
-  }
-`;
-
-export const STitleLink = styled((props) => <Link {...props} />)`
-  font-size: 30px;
-  font-weight: 400;
-  text-transform: capitalize;
-  margin-bottom: 10px;
-  color: ${(props) => props.theme.secondary};
-  &:hover {
-    color: ${(props) => props.theme.accent};
-  }
-`;
-
-export const SPostsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-right: 30px;
-  padding-right: 30px;
-  width: 65%;
-  border-right: ${(props) => `1px solid ${props.theme.border}`};
-`;
-
-export const STopicContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding-right: 30px;
-`;
-
-export const STopic = styled.div`
-  border-bottom: ${(props) => `1px solid ${props.theme.border}`};
-  padding: 20px 0;
-  display: block;
-  position: relative;
-  & a {
-    display: block;
-    font-weight: bold;
-    font-size: 13px;
-    position: relative;
-    padding-left: 14px;
-    text-transform: uppercase;
-    cursor: pointer;
-    &::before {
-      content: '.';
-      display: inline-block;
-      font-size: 25px;
-      position: absolute;
-      left: 0;
-      top: -14px;
-    }
-    & span {
-      float: right;
-      padding: 0 8px;
-    }
-    &:hover {
-      color: ${(props) => props.theme.accent};
-    }
   }
 `;

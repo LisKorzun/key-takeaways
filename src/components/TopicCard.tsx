@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 export const STopicCard = styled((props) => <Link {...props} />)`
-  min-height: 70px;
+  min-height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,6 +19,7 @@ export const STopicCard = styled((props) => <Link {...props} />)`
     padding-left: 25px;
     position: relative;
     overflow: hidden;
+    margin: 20px 0;
   }
   & h3:before {
     width: 8px;
@@ -41,12 +42,9 @@ export const STopicCard = styled((props) => <Link {...props} />)`
   }
   & span {
     margin-left: 20px;
-    //background-color: ${(props) => props.theme.primary};
-    //padding: 5px;
-    //border-radius: 3px;
   }
   &:hover {
-    color: #bbc6d4;
+    color: ${(props) => props.theme.accent};
   }
 `;
 

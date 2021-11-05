@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { graphql, Link } from 'gatsby';
-
 import { find, take } from 'lodash';
-import { Title } from '../components/title';
-import { Layout, Seo, SHeadLine, PostCard, SFlexColumnContainer } from '../components';
+
+import { Layout, Seo, Title, PostCard, SHeadLine, SFlexColumnContainer } from '../components';
 import { ARTICLES_LABEL, IPost } from '../common';
 
 interface Props {

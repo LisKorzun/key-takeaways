@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 
-import { SCaption, SText, STitleLink, STag } from './common';
+import { SHeadingCaption, SText, SHeadingLink, STag } from './common';
 import { SFlexColumnContainer, SFlexRowContainer } from './containers';
 import { Icon } from './Icon';
 
@@ -45,12 +45,12 @@ export const PostCard: FC<Props> = ({ post }) => {
       <SPostImage image={image} alt="" />
       <SFlexColumnContainer jc="space-between">
         <SFlexColumnContainer>
-          <SCaption>
+          <SHeadingCaption>
             <Icon name={icon} width="70px" color="primary" />
             <span>/</span>
             <caption>{topic}</caption>
-          </SCaption>
-          <STitleLink to={`/${slug}`}>{title}</STitleLink>
+          </SHeadingCaption>
+          <SHeadingLink to={`/${slug}`}>{title}</SHeadingLink>
           <SText>{date}</SText>
         </SFlexColumnContainer>
         <SFlexRowContainer mb="5px">

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-const HeaderLink = styled((props) => <Link {...props} />)`
+const SLogoTitle = styled((props) => <Link {...props} />)`
   display: flex;
   position: relative;
   margin: 20px 25px;
@@ -24,11 +24,10 @@ const HeaderLink = styled((props) => <Link {...props} />)`
   }
 `;
 
-const Header: FC = () => {
+export const LogoTitle: FC = () => {
   return (
-    <HeaderLink to="/">
+    <SLogoTitle to="/">
       <span>Key Takeaways</span>
-    </HeaderLink>
+    </SLogoTitle>
   );
 };
-export default Header;
