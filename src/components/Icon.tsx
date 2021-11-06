@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 
-import { DefaultThemeKeys } from '../common';
+import { DefaultThemeKeys, ICONS } from '../common';
 import Level0Icon from '../assets/svg/level-0.svg';
 import Level1Icon from '../assets/svg/level-1.svg';
 import Level2Icon from '../assets/svg/level-2.svg';
@@ -66,50 +66,35 @@ export const SArrowRightIcon = styled(ArrowRight)`
   ${svgStyles}
 `;
 
-export const enum IconNames {
-  LEVEL_0 = 'Level-0',
-  LEVEL_1 = 'Level-1',
-  LEVEL_2 = 'Level-2',
-  LEVEL_3 = 'Level-3',
-  LEVEL_4 = 'Level-4',
-  LEVEL_5 = 'Level-5',
-  CODE = 'code',
-  TOPICS = 'topics',
-  ABOUT = 'about',
-  LEVELS = 'levels',
-  TAG = 'tag',
-  ARROW_RIGHT = 'arrow-right'
-}
-
 interface IconProps extends IconStylesProps {
   name: string;
 }
 
 export const Icon: FC<IconProps> = ({ name, ...other }) => {
   switch (name) {
-    case IconNames.LEVEL_0:
+    case ICONS.LEVEL_0:
       return <SLevel0Icon {...other} />;
-    case IconNames.LEVEL_1:
+    case ICONS.LEVEL_1:
       return <SLevel1Icon {...other} />;
-    case IconNames.LEVEL_2:
+    case ICONS.LEVEL_2:
       return <SLevel2Icon {...other} />;
-    case IconNames.LEVEL_3:
+    case ICONS.LEVEL_3:
       return <SLevel3Icon {...other} />;
-    case IconNames.LEVEL_4:
+    case ICONS.LEVEL_4:
       return <SLevel4Icon {...other} />;
-    case IconNames.LEVEL_5:
+    case ICONS.LEVEL_5:
       return <SLevel5Icon {...other} />;
-    case IconNames.CODE:
+    case ICONS.CODE:
       return <SCodeIcon {...other} />;
-    case IconNames.TOPICS:
+    case ICONS.TOPICS:
       return <STopicsIcon {...other} />;
-    case IconNames.ABOUT:
+    case ICONS.ABOUT:
       return <SAboutIcon {...other} />;
-    case IconNames.LEVELS:
+    case ICONS.LEVELS:
       return <SLevelsIcon {...other} />;
-    case IconNames.TAG:
+    case ICONS.TAG:
       return <STagIcon {...other} />;
-    case IconNames.ARROW_RIGHT:
+    case ICONS.ARROW_RIGHT:
       return <SArrowRightIcon {...other} />;
     default:
       return <></>;

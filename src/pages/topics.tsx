@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 
-import { Topic } from '../components/Topic';
-import { Layout, Seo, Banner, SFlexColumnContainer } from '../components';
-import { IGroupedField } from '../common';
+import { Layout, Seo, Banner, TopicsList } from '../components';
+import { IGroupedField, LABELS, ICONS } from '../common';
 
 interface Props {
   data: {
@@ -13,19 +12,13 @@ interface Props {
   };
 }
 
-const TopicsPage: FC<Props> = ({ data }) => {
-  return (
-    <Layout>
-      <Seo title="Topics" />
-      <Banner title="Topics" icon="topics" />
-      <SFlexColumnContainer>
-        {data.allMdx.group.map((topic) => (
-          <Topic key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
-        ))}
-      </SFlexColumnContainer>
-    </Layout>
-  );
-};
+const TopicsPage: FC<Props> = ({ data }) => (
+  <Layout>
+    <Seo title={LABELS.TOPICS} />
+    <Banner title={LABELS.TOPICS} icon={ICONS.TOPICS} />
+    <TopicsList topics={data.allMdx.group} />
+  </Layout>
+);
 
 export const query = graphql`
   query {

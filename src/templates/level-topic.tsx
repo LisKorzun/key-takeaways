@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
-import { find, kebabCase, take } from 'lodash';
+import { kebabCase } from 'lodash';
 
 import {
   Layout,
@@ -12,81 +12,73 @@ import {
   SFlexColumnContainer,
   SFlexRowContainer,
 } from '../components';
-import { getPostsCount, IGroupedField, ILevelData, IPost, LEVEL_TITLE } from '../common';
+import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
   pageContext: {
-    level: string;
     topic: string;
     topics: IGroupedField[];
+    levelData: ILevelData;
   };
   data: {
     allMdx: {
       totalCount: number;
       nodes: IPost[];
     };
-    site: { siteMetadata: { levels: ILevelData[] } };
   };
 }
 
-const Level: FC<Props> = ({ pageContext, data }) => {
-  const { level, topic, topics } = pageContext;
-  const { totalCount, nodes } = data.allMdx;
-  const { levels } = data.site.siteMetadata;
-  const levelData = find(levels, ['id', level]) || { title: '' };
-  console.log(topic, topics);
-
+const LevelByTopic: FC<Props> = ({
+  pageContext: {
+    topic,
+    topics,
+    levelData: { title },
+  },
+  data: {
+    allMdx: { totalCount, nodes },
+  },
+}) => {
   return (
     <Layout>
-      <Seo title={levelData.title} />
-      <div>
-        <Title caption={LEVEL_TITLE} title={levelData.title || ''} />
-        <SFlexColumnContainer mb="50px">
-          <SFlexRowContainer mb="50px" wrap="wrap">
-            <SChipLink to={`/levels/${kebabCase(levelData.title)}`}>All topics</SChipLink>
-            {topics.map(({ fieldValue }) => (
-              <SChipLink
-                key={fieldValue}
-                to={`/levels/${kebabCase(levelData.title)}/${kebabCase(fieldValue)}`}
-                selected={fieldValue === topic}
-              >
-                {fieldValue}
-              </SChipLink>
-            ))}
-          </SFlexRowContainer>
-          <HeadLine heading={getPostsCount(totalCount)} link="/levels" label="Back to all levels" />
-          <div>
-            {take(nodes, 5).map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </SFlexColumnContainer>
-      </div>
+      <Seo title={`${LABELS.TOPIC} - ${topic} | ${LABELS.LEVEL} - ${title}`} />
+      <Title caption={LABELS.LEVEL} title={title} />
+      <SFlexColumnContainer mb="50px">
+        <SFlexRowContainer mb="50px" wrap="wrap">
+          <SChipLink to={`${ROUTES.LEVELS}/${kebabCase(title)}`}>{LABELS.ALL_TOPICS}</SChipLink>
+          {topics.map(({ fieldValue }) => (
+            <SChipLink
+              key={fieldValue}
+              to={`${ROUTES.LEVELS}/${kebabCase(title)}/${kebabCase(fieldValue)}`}
+              selected={fieldValue === topic}
+            >
+              {fieldValue}
+            </SChipLink>
+          ))}
+        </SFlexRowContainer>
+        <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.LEVELS} label={LABELS.BACK_TO_LEVELS} />
+        <div>
+          {nodes.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </div>
+      </SFlexColumnContainer>
     </Layout>
   );
 };
-
-export default Level;
 
 export const pageQuery = graphql`
   query ($level: String, $topic: String) {
     allMdx(
       filter: { frontmatter: { level: { eq: $level }, topic: { eq: $topic } } }
       sort: { fields: frontmatter___date, order: DESC }
-      limit: 1000
+      limit: 2000
     ) {
       totalCount
       nodes {
         ...postFields
       }
     }
-    site {
-      siteMetadata {
-        levels {
-          id
-          title
-        }
-      }
-    }
   }
 `;
+
+export default LevelByTopic;

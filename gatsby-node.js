@@ -18,6 +18,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           levels {
             id
             title
+            icon
           }
         }
       }
@@ -78,30 +79,35 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   createPage({
     path: '/',
     component: homeTemplate,
-    context: { levels, levelsData, tags, topics, posts },
+    context: { levels, tags, topics, posts },
   });
 
   levels.forEach((level) => {
-    const levelURL = `/levels/${_.kebabCase(_.find(levelsData, ['id', level.fieldValue]).title)}`;
+    const levelData = _.find(levelsData, ['id', level.fieldValue]);
+    const levelURL = `/levels/${_.kebabCase(levelData.title)}`;
+
     createPage({
       path: levelURL,
       component: levelTemplate,
       context: {
+        levelData,
         level: level.fieldValue,
       },
     });
     level.group.forEach((topic) => {
       const topicURL = `/${_.kebabCase(topic.fieldValue)}`;
+
       createPage({
         path: `${levelURL}${topicURL}`,
         component: levelTopicTemplate,
         context: {
+          levelData,
           level: level.fieldValue,
           topic: topic.fieldValue,
-          topics: level.group
+          topics: level.group,
         },
       });
-    })
+    });
   });
 
   tags.forEach((tag) => {

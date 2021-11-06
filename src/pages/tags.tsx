@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import { Link, graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
-
-import { Banner, Layout, Seo, SFlexRowContainer } from '../components';
 import styled from 'styled-components';
-import { Icon } from '../components/Icon';
-import { IGroupedField } from '../common';
+
+import { Layout, Seo, Banner, Icon, SFlexRowContainer } from '../components';
+import { IGroupedField, LABELS, ROUTES, ICONS } from '../common';
 
 const STags = styled.div`
   margin-top: 10px;
@@ -38,23 +37,21 @@ interface Props {
   };
 }
 
-const TagsPage: FC<Props> = ({ data }) => {
-  return (
-    <Layout>
-      <Seo title="Tags" />
-      <Banner title="Tags" icon="tag" />
-      <SFlexRowContainer>
-        <STags>
-          {data.allMdx.group.map((tag) => (
-            <Link key={tag.fieldValue} to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              <Icon name="tag" height="13px" color="secondary" /> {tag.fieldValue}
-            </Link>
-          ))}
-        </STags>
-      </SFlexRowContainer>
-    </Layout>
-  );
-};
+const TagsPage: FC<Props> = ({ data }) => (
+  <Layout>
+    <Seo title={LABELS.TAGS} />
+    <Banner title={LABELS.TAGS} icon={ICONS.TAG} />
+    <SFlexRowContainer>
+      <STags>
+        {data.allMdx.group.map(({ fieldValue }) => (
+          <Link key={fieldValue} to={`${ROUTES.TAGS}/${kebabCase(fieldValue)}`}>
+            <Icon name={ICONS.TAG} height="13px" color="secondary" /> {fieldValue}
+          </Link>
+        ))}
+      </STags>
+    </SFlexRowContainer>
+  </Layout>
+);
 
 export const query = graphql`
   query {

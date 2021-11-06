@@ -1,3 +1,3 @@
-import { POST_LABEL, POSTS_LABEL } from './constants';
+import { LABELS } from './constants';
 
-export const getPostsCount = (count: number): string => `${count} ${count > 1 ? POSTS_LABEL : POST_LABEL}`;
+export const getPostsCount = (count: number): string => `${count} ${count === 1 ? LABELS.POST : LABELS.POSTS}`;

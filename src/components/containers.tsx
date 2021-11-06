@@ -40,7 +40,7 @@ export const SFlexColumnContainer = styled.div<FlexProps>`
   padding-bottom: ${(p) => p.pb || 0};
 `;
 
-export const DarkSection = styled.div`
+export const SDarkSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

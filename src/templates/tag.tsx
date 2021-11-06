@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
-import { take } from 'lodash';
 import { graphql } from 'gatsby';
 
 import { Layout, PostCard, Seo, Title, HeadLine, SFlexColumnContainer } from '../components';
-import { getPostsCount, IPost } from '../common';
+import { getPostsCount, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
   pageContext: {
@@ -17,29 +16,31 @@ interface Props {
   };
 }
 
-const Tag: FC<Props> = ({ pageContext, data }) => {
-  const { tag } = pageContext;
-  const { nodes, totalCount } = data.allMdx;
-
-  return (
-    <Layout>
-      <Seo title={`Tag ${tag}`} />
-      <div>
-        <Title caption="Tag" title={tag} />
-        <HeadLine heading={getPostsCount(totalCount)} link="/tags" label="Back to all tags" />
-        <SFlexColumnContainer mb="50px">
-          {take(nodes, 5).map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </SFlexColumnContainer>
-      </div>
-    </Layout>
-  );
-};
+const Tag: FC<Props> = ({
+  pageContext: { tag },
+  data: {
+    allMdx: { nodes, totalCount },
+  },
+}) => (
+  <Layout>
+    <Seo title={`${LABELS.TAG} - ${tag}`} />
+    <Title caption={LABELS.TAG} title={tag} />
+    <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TAGS} label={LABELS.BACK_TO_TAGS} />
+    <SFlexColumnContainer mb="50px">
+      {nodes.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
+    </SFlexColumnContainer>
+  </Layout>
+);
 
 export const pageQuery = graphql`
   query ($tag: String) {
-    allMdx(filter: { frontmatter: { tags: { in: [$tag] } } }, sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 2000
+    ) {
       nodes {
         ...postFields
       }

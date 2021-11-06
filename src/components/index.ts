@@ -9,6 +9,7 @@ export * from './Logo';
 export * from './LogoTitle';
 export * from './Menu';
 export * from './HeadLine';
+export * from './Icon';
 
 export * from './containers';
 export * from './common';

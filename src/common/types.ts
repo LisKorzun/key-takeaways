@@ -16,4 +16,5 @@ export interface IGroupedField {
 export interface ILevelData {
   id: string;
   title: string;
+  icon: string;
 }

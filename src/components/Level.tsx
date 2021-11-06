@@ -1,10 +1,10 @@
 import React, { FC, Fragment } from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import { find, kebabCase } from 'lodash';
 import styled from 'styled-components';
 
 import { Icon } from './Icon';
-import { getPostsCount, IGroupedField } from '../common';
+import { getPostsCount, IGroupedField, ILevelData } from '../common';
 import { SFlexRowContainer } from './containers';
 
 const SLevelCard = styled((props) => <Link {...props} />)`
@@ -58,17 +58,37 @@ export const Level: FC<LevelCardProps> = ({ title, count, icon }) => (
 
 interface LevelsListProps {
   levels: IGroupedField[];
-  data: { id: string; title: string }[];
 }
 
-export const LevelsList: FC<LevelsListProps> = ({ levels, data }) => (
-  <SFlexRowContainer wrap="wrap" gap="20px" mt="30px" w="50%">
-    {levels.map(({ fieldValue, totalCount }) => {
-      const level = find(data, ['id', fieldValue]);
-      const icon = `Level-${fieldValue}`;
-      return (
-        <Fragment key={fieldValue}>{level && <Level title={level.title} count={totalCount} icon={icon} />}</Fragment>
-      );
-    })}
-  </SFlexRowContainer>
-);
+export const LevelsList: FC<LevelsListProps> = ({ levels }) => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            levels {
+              id
+              title
+              icon
+            }
+          }
+        }
+      }
+    `
+  );
+
+  const data: ILevelData[] = site.siteMetadata.levels;
+
+  return (
+    <SFlexRowContainer wrap="wrap" gap="20px" mt="30px" w="50%">
+      {levels.map(({ fieldValue, totalCount }) => {
+        const level = find(data, ['id', fieldValue]);
+        return (
+          <Fragment key={fieldValue}>
+            {level && <Level title={level.title} count={totalCount} icon={level.icon} />}
+          </Fragment>
+        );
+      })}
+    </SFlexRowContainer>
+  );
+};

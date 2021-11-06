@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { MARGIN_MEDIUM } from '../styles/sizes';
 import { Icon } from './Icon';
+import { ICONS } from '../common';
 
 const SHeadLine = styled.div`
   padding: 25px 0 20px;
@@ -63,7 +64,7 @@ export const HeadLine: FC<Props> = ({ heading, link, label }) => (
     <h3>{heading}</h3>
     {link && (
       <SHeadingLink to={link}>
-        <Icon name="arrow-right" color="secondary" height="16px" />
+        <Icon name={ICONS.ARROW_RIGHT} color="secondary" height="16px" />
         {label}
       </SHeadingLink>
     )}
