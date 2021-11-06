@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: "Josefin Sans";
     font-size: 16px;
+    font-weight: 400;
     line-height: normal;
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.background};

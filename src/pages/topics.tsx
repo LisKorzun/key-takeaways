@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 
-import { TopicCard } from '../components/TopicCard';
+import { Topic } from '../components/Topic';
 import { Layout, Seo, Banner, SFlexColumnContainer } from '../components';
 import { IGroupedField } from '../common';
 
@@ -20,7 +20,7 @@ const TopicsPage: FC<Props> = ({ data }) => {
       <Banner title="Topics" icon="topics" />
       <SFlexColumnContainer>
         {data.allMdx.group.map((topic) => (
-          <TopicCard key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
+          <Topic key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
         ))}
       </SFlexColumnContainer>
     </Layout>

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Link } from 'gatsby';
 import React from 'react';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 import {
   DESCRIPTION_SIZE,
@@ -16,6 +16,7 @@ export const STitle = styled.h1`
   font-size: ${TITLE_SIZE}px;
   line-height: ${TITLE_SIZE + 10}px;
   text-transform: capitalize;
+  color: ${(props) => props.theme.secondary};
   margin: 0;
 `;
 
@@ -39,11 +40,13 @@ export const SDescription = styled.div`
   color: ${(props) => props.theme.secondary};
   font-size: ${DESCRIPTION_SIZE}px;
   font-weight: 300;
+  color: ${(props) => props.theme.text};
 `;
 
 export const SText = styled.p`
   font-weight: 300;
   font-size: ${TEXT_SIZE}px;
+  color: ${(props) => props.theme.text};
   margin: 0;
 `;
 
@@ -77,6 +80,37 @@ export const SHeadingCaption = styled.div`
     letter-spacing: 2px;
     margin: 0;
   }
+`;
+
+interface ChipLinkProps {
+  selected?: boolean;
+}
+
+export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
+  padding: 8px 16px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: ${(props) => props.theme.secondary};
+  border: 1px solid ${(props) => props.theme.border};
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: ${(props) => props.theme.border};
+    color: ${(props) => props.theme.secondary};
+  }
+
+  ${({ selected, theme }) =>
+    selected &&
+    `
+    background-color: ${theme.primary};
+    color: ${theme.background};
+    &:hover {
+    background-color: ${theme.primary};
+    color: ${theme.background};
+  }
+  `}
 `;
 
 export const STag = styled.div`

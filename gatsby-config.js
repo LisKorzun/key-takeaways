@@ -11,10 +11,12 @@ module.exports = {
     },
     description: 'Key Takeaways: all you need!',
     levels: [
-      { id: '1', title: 'Basic' },
-      { id: '2', title: 'Competent' },
-      { id: '3', title: 'Proficient' },
+      { id: '0', title: 'Easier Than Easy' },
+      { id: '1', title: 'Beginner' },
+      { id: '2', title: 'Semi-Pro' },
+      { id: '3', title: 'Professional' },
       { id: '4', title: 'Expert' },
+      { id: '5', title: 'Master' },
     ],
   },
   plugins: [

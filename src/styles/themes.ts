@@ -11,10 +11,10 @@ export const themes: IThemes = {
   blue: {
     primary: '#06BCF0',
     secondary: '#1B263B',
-    accent: '#8d8d8d',
+    accent: '#D5D1D5',
     background: '#FFF',
     text: '#0D1B2A',
-    border: '#eee'
+    border: '#F3F7FA'
   },
   yellow: {
     primary: '#FFDF6C',

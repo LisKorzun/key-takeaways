@@ -1,19 +1,14 @@
 import React, { FC, Fragment } from 'react';
-import { graphql, Link } from 'gatsby';
-import { find, kebabCase, take } from 'lodash';
+import { graphql } from 'gatsby';
+import { find } from 'lodash';
 
-import { IPost } from '../common';
-import { Layout, Seo, Banner, HeadLine, PostCard, TopicCard, DarkSection, SFlexColumnContainer } from '../components';
+import { IGroupedField, LEVELS_TITLE } from '../common';
+import { Layout, Seo, Banner, Level, DarkSection, SFlexRowContainer, LevelsList } from '../components';
 
 interface Props {
   data: {
     allMdx: {
-      group: {
-        fieldValue: string;
-        totalCount: number;
-        nodes: IPost[];
-        group: { fieldValue: string; totalCount: number }[];
-      }[];
+      group: IGroupedField[];
     };
     site: { siteMetadata: { levels: { id: string; title: string }[] } };
   };
@@ -21,64 +16,25 @@ interface Props {
 
 const LevelsPage: FC<Props> = ({ data }) => {
   const { levels } = data.site.siteMetadata;
+  const { group } = data.allMdx;
 
   return (
     <Layout>
-      <Seo title="Competency Levels" />
-      <Banner title="Competency Levels" icon="levels" />
-      <div>
-        {data.allMdx.group.map((l) => {
-          const level = find(levels, ['id', l.fieldValue]);
-          return (
-            <Fragment key={l.fieldValue}>
-              {level && (
-                <>
-                  <Link to={`/levels/${kebabCase(level.title)}`}>
-                    <DarkSection>
-                      <h3>{level.title}</h3>
-                    </DarkSection>
-                  </Link>
-                  <SFlexColumnContainer mb="50px">
-                    <HeadLine heading="Topics" />
-                    <SFlexColumnContainer>
-                      {l.group.map((topic) => (
-                        <TopicCard key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
-                      ))}
-                    </SFlexColumnContainer>
-                  </SFlexColumnContainer>
-                  <SFlexColumnContainer mb="50px">
-                    <HeadLine
-                      heading="Posts"
-                      link={`/levels/${kebabCase(level.title)}`}
-                      label={`See all ${l.totalCount}`}
-                    />
-                    {take(l.nodes, 5).map((post) => (
-                      <PostCard key={post.id} post={post} />
-                    ))}
-                  </SFlexColumnContainer>
-                </>
-              )}
-            </Fragment>
-          );
-        })}
-      </div>
+      <Seo title={LEVELS_TITLE} />
+      <Banner title={LEVELS_TITLE} icon="levels" />
+      <DarkSection>
+        <LevelsList levels={group} data={levels}/>
+      </DarkSection>
     </Layout>
   );
 };
 
 export const query = graphql`
   query {
-    allMdx(limit: 5, sort: { order: DESC, fields: frontmatter___date }) {
+    allMdx(limit: 2000, sort: { order: DESC, fields: frontmatter___date }) {
       group(field: frontmatter___level) {
         totalCount
         fieldValue
-        nodes {
-          ...postFields
-        }
-        group(field: frontmatter___topic, limit: 5) {
-          fieldValue
-          totalCount
-        }
       }
     }
     site {

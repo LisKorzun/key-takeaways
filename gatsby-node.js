@@ -5,6 +5,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
   const levelTemplate = path.resolve('src/templates/level.tsx');
+  const levelTopicTemplate = path.resolve('src/templates/level-topic.tsx');
   const tagTemplate = path.resolve('src/templates/tag.tsx');
   const postTemplate = path.resolve('src/templates/post.tsx');
   const topicTemplate = path.resolve('src/templates/topic.tsx');
@@ -48,6 +49,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         group(field: frontmatter___level) {
           fieldValue
           totalCount
+          group(field: frontmatter___topic) {
+            fieldValue
+            totalCount
+          }
         }
       }
       topics: allMdx(limit: 2000) {
@@ -77,13 +82,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   levels.forEach((level) => {
+    const levelURL = `/levels/${_.kebabCase(_.find(levelsData, ['id', level.fieldValue]).title)}`;
     createPage({
-      path: `/levels/${_.kebabCase(_.find(levelsData, ['id', level.fieldValue]).title)}`,
+      path: levelURL,
       component: levelTemplate,
       context: {
         level: level.fieldValue,
       },
     });
+    level.group.forEach((topic) => {
+      const topicURL = `/${_.kebabCase(topic.fieldValue)}`;
+      createPage({
+        path: `${levelURL}${topicURL}`,
+        component: levelTopicTemplate,
+        context: {
+          level: level.fieldValue,
+          topic: topic.fieldValue,
+          topics: level.group
+        },
+      });
+    })
   });
 
   tags.forEach((tag) => {

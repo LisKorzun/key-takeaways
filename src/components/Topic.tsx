@@ -2,6 +2,8 @@ import { kebabCase } from 'lodash';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { SFlexColumnContainer } from './containers';
+import { IGroupedField } from '../common';
 
 export const STopicCard = styled((props) => <Link {...props} />)`
   min-height: 60px;
@@ -50,14 +52,26 @@ export const STopicCard = styled((props) => <Link {...props} />)`
   }
 `;
 
-interface Props {
+interface TopicCardProps {
   title: string;
   count: number;
 }
 
-export const TopicCard: FC<Props> = ({ title, count }) => (
+export const Topic: FC<TopicCardProps> = ({ title, count }) => (
   <STopicCard to={`/topics/${kebabCase(title)}`}>
     <h3> {title}</h3>
     <span>{count}</span>
   </STopicCard>
+);
+
+interface TopicsListProps {
+  topics: IGroupedField[];
+}
+
+export const TopicsList: FC<TopicsListProps> = ({ topics }) => (
+  <SFlexColumnContainer>
+    {topics.map(({ fieldValue, totalCount }) => (
+      <Topic key={fieldValue} title={fieldValue} count={totalCount} />
+    ))}
+  </SFlexColumnContainer>
 );

@@ -8,47 +8,48 @@ import {
   Title,
   HeadLine,
   PostCard,
+  SChipLink,
   SFlexColumnContainer,
   SFlexRowContainer,
-  SChipLink
 } from '../components';
-import { getPostsCount, IPost, LEVEL_TITLE } from '../common';
+import { getPostsCount, IGroupedField, IPost, LEVEL_TITLE } from '../common';
 
 interface Props {
   pageContext: {
     level: string;
+    topic: string;
+    topics: IGroupedField[];
   };
   data: {
     allMdx: {
       totalCount: number;
       nodes: IPost[];
-      group: {
-        fieldValue: string;
-        totalCount: number;
-      }[];
     };
     site: { siteMetadata: { levels: { id: string; title: string }[] } };
   };
 }
 
 const Level: FC<Props> = ({ pageContext, data }) => {
-  const { level } = pageContext;
-  const { totalCount, nodes, group } = data.allMdx;
+  const { level, topic, topics } = pageContext;
+  const { totalCount, nodes } = data.allMdx;
   const { levels } = data.site.siteMetadata;
   const levelData = find(levels, ['id', level]) || { title: '' };
+  console.log(topic, topics);
 
   return (
     <Layout>
-      <Seo title={`${LEVEL_TITLE} | ${levelData.title}`} />
+      <Seo title={levelData.title} />
       <div>
         <Title caption={LEVEL_TITLE} title={levelData.title || ''} />
         <SFlexColumnContainer mb="50px">
           <SFlexRowContainer mb="50px" wrap="wrap">
-            <SChipLink to={`/levels/${kebabCase(levelData.title)}`} selected>
-              All topics
-            </SChipLink>
-            {group.map(({ fieldValue }) => (
-              <SChipLink key={fieldValue} to={`/levels/${kebabCase(levelData.title)}/${kebabCase(fieldValue)}`}>
+            <SChipLink to={`/levels/${kebabCase(levelData.title)}`}>All topics</SChipLink>
+            {topics.map(({ fieldValue }) => (
+              <SChipLink
+                key={fieldValue}
+                to={`/levels/${kebabCase(levelData.title)}/${kebabCase(fieldValue)}`}
+                selected={fieldValue === topic}
+              >
                 {fieldValue}
               </SChipLink>
             ))}
@@ -68,17 +69,13 @@ const Level: FC<Props> = ({ pageContext, data }) => {
 export default Level;
 
 export const pageQuery = graphql`
-  query ($level: String) {
+  query ($level: String, $topic: String) {
     allMdx(
-      filter: { frontmatter: { level: { eq: $level } } }
+      filter: { frontmatter: { level: { eq: $level }, topic: { eq: $topic } } }
       sort: { fields: frontmatter___date, order: DESC }
       limit: 1000
     ) {
       totalCount
-      group(field: frontmatter___topic) {
-        fieldValue
-        totalCount
-      }
       nodes {
         ...postFields
       }

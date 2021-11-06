@@ -1,18 +1,20 @@
 import React, { FC, Fragment } from 'react';
 import { take, find } from 'lodash';
 
-import { IGroupedField, IPost } from '../common';
+import { IGroupedField, IPost, LEVELS_TITLE } from '../common';
 import {
   Layout,
   Seo,
   Banner,
   HeadLine,
   PostCard,
-  LevelCard,
-  TopicCard,
+  Level,
+  Topic,
   DarkSection,
   SFlexColumnContainer,
   SFlexRowContainer,
+  LevelsList,
+  TopicsList,
 } from '../components';
 
 interface Props {
@@ -32,26 +34,12 @@ const Home: FC<Props> = ({ pageContext }) => {
       <Seo title="Home" />
       <Banner title="Key Takeaways" icon="code" />
       <DarkSection>
-        <h3>Competency Levels</h3>
-        <SFlexRowContainer wrap="wrap" gap="20px" mt="30px">
-          {levels.map((l) => {
-            const level = find(levelsData, ['id', l.fieldValue]);
-            const icon = `Level-${l.fieldValue}`;
-            return (
-              <Fragment key={l.fieldValue}>
-                {level && <LevelCard title={level.title} count={l.totalCount} icon={icon} />}
-              </Fragment>
-            );
-          })}
-        </SFlexRowContainer>
+        <h3>{LEVELS_TITLE}</h3>
+        <LevelsList levels={levels} data={levelsData} />
       </DarkSection>
       <SFlexColumnContainer mb="70px">
         <HeadLine heading="Explore by Topics" link="/topics" label="See all" />
-        <SFlexColumnContainer>
-          {topics.map((topic) => (
-            <TopicCard key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
-          ))}
-        </SFlexColumnContainer>
+        <TopicsList topics={topics} />
       </SFlexColumnContainer>
       <SFlexColumnContainer mb="70px">
         <HeadLine heading="Recently published" />
