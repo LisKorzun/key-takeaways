@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface FlexProps {
   jc?: 'flex-start' | 'center' | 'space-between';
+  ai?: 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch';
   wrap?: 'wrap' | 'nowrap';
   gap?: string;
   maxW?: string;
@@ -16,6 +17,7 @@ export const SFlexRowContainer = styled.div<FlexProps>`
   display: flex;
   flex-direction: row;
   justify-content: ${(p) => p.jc || 'flex-start'};
+  align-items:  ${(p) => p.ai || 'stretch'};
   flex-wrap: ${(p) => p.wrap || 'nowrap'};
   gap: ${(p) => p.gap || 0};
   max-width: ${(p) => p.maxW || 'auto'};
@@ -30,6 +32,7 @@ export const SFlexColumnContainer = styled.div<FlexProps>`
   display: flex;
   flex-direction: column;
   justify-content: ${(p) => p.jc || 'flex-start'};
+  align-items:  ${(p) => p.ai || 'stretch'};
   flex-wrap: ${(p) => p.wrap || 'nowrap'};
   gap: ${(p) => p.gap || 0};
   max-width: ${(p) => p.maxW || 'auto'};

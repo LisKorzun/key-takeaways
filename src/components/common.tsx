@@ -126,3 +126,55 @@ export const STag = styled.div`
     color: ${(props) => props.theme.text};
   }
 `;
+
+export const STagChipLink = styled((props) => <Link {...props} />)`
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  display: flex;
+  text-transform: uppercase;
+  font-weight: 400;
+  align-items: baseline;
+  color: ${(props) => props.theme.secondary};
+  padding: 7px 45px 7px 14px;
+  border: 1px solid ${(props) => props.theme.border};
+  border-radius: 15px;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  height: fit-content;
+  & svg {
+    margin-right: 6px;
+  }
+  & span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+    color: ${(props) => props.theme.secondary};
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.border};
+  }
+  &:hover {
+    background-color: ${(props) => props.theme.primary};
+    color: ${(props) => props.theme.background};
+  }
+`;
+
+export const STagLetter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 60px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 50px;
+  min-width: 100px;
+  color: ${(props) => props.theme.primary};
+  border-right: 1px solid ${(props) => props.theme.border};
+`;

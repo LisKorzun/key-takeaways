@@ -1,33 +1,18 @@
 import React, { FC } from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
-import styled from 'styled-components';
 
-import { Layout, Seo, Banner, Icon, SFlexRowContainer } from '../components';
-import { IGroupedField, LABELS, ROUTES, ICONS } from '../common';
-
-const STags = styled.div`
-  margin-top: 10px;
-  display: flex;
-
-  & a {
-    margin-right: 20px;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    padding: 7px 14px;
-    border: 1px solid #eee;
-    border-radius: 15px;
-    justify-content: center;
-    color: ${(props) => props.theme.text};
-    &:hover {
-      background-color: ${(props) => props.theme.primary};
-      color: ${(props) => props.theme.background};
-    }
-  }
-`;
+import {
+  Layout,
+  Seo,
+  Banner,
+  Icon,
+  SFlexRowContainer,
+  SFlexColumnContainer,
+  STagChipLink,
+  STagLetter,
+} from '../components';
+import { groupByLetter, IGroupedField, LABELS, ROUTES, ICONS } from '../common';
 
 interface Props {
   data: {
@@ -37,21 +22,32 @@ interface Props {
   };
 }
 
-const TagsPage: FC<Props> = ({ data }) => (
-  <Layout>
-    <Seo title={LABELS.TAGS} />
-    <Banner title={LABELS.TAGS} icon={ICONS.TAG} />
-    <SFlexRowContainer>
-      <STags>
-        {data.allMdx.group.map(({ fieldValue }) => (
-          <Link key={fieldValue} to={`${ROUTES.TAGS}/${kebabCase(fieldValue)}`}>
-            <Icon name={ICONS.TAG} height="13px" color="secondary" /> {fieldValue}
-          </Link>
+const TagsPage: FC<Props> = ({ data }) => {
+  const groups = groupByLetter(data.allMdx.group);
+
+  return (
+    <Layout>
+      <Seo title={LABELS.TAGS} />
+      <Banner title={LABELS.TAGS} icon={ICONS.TAG} />
+      <SFlexColumnContainer>
+        {groups.map(({ tags, letter }) => (
+          <SFlexRowContainer key={letter} mb="50px">
+            <STagLetter>{letter}</STagLetter>
+            <SFlexRowContainer wrap="wrap">
+              {tags.map(({ fieldValue, totalCount }) => (
+                <STagChipLink key={fieldValue} to={`${ROUTES.TAGS}/${kebabCase(fieldValue)}`}>
+                  <Icon name={ICONS.TAG} height="14px" color="secondary" />
+                  {fieldValue}
+                  <span>{totalCount}</span>
+                </STagChipLink>
+              ))}
+            </SFlexRowContainer>
+          </SFlexRowContainer>
         ))}
-      </STags>
-    </SFlexRowContainer>
-  </Layout>
-);
+      </SFlexColumnContainer>
+    </Layout>
+  );
+};
 
 export const query = graphql`
   query {
