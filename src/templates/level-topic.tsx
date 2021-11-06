@@ -12,7 +12,7 @@ import {
   SFlexColumnContainer,
   SFlexRowContainer,
 } from '../components';
-import { getPostsCount, IGroupedField, IPost, LEVEL_TITLE } from '../common';
+import { getPostsCount, IGroupedField, ILevelData, IPost, LEVEL_TITLE } from '../common';
 
 interface Props {
   pageContext: {
@@ -25,7 +25,7 @@ interface Props {
       totalCount: number;
       nodes: IPost[];
     };
-    site: { siteMetadata: { levels: { id: string; title: string }[] } };
+    site: { siteMetadata: { levels: ILevelData[] } };
   };
 }
 

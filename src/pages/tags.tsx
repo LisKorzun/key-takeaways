@@ -5,6 +5,7 @@ import { kebabCase } from 'lodash';
 import { Banner, Layout, Seo, SFlexRowContainer } from '../components';
 import styled from 'styled-components';
 import { Icon } from '../components/Icon';
+import { IGroupedField } from '../common';
 
 const STags = styled.div`
   margin-top: 10px;
@@ -32,7 +33,7 @@ const STags = styled.div`
 interface Props {
   data: {
     allMdx: {
-      group: { fieldValue: string; totalCount: number }[];
+      group: IGroupedField[];
     };
   };
 }

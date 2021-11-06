@@ -1,26 +1,23 @@
-import React, { FC, Fragment } from 'react';
-import { take, find } from 'lodash';
+import React, { FC } from 'react';
+import { take } from 'lodash';
 
-import { IGroupedField, IPost, LEVELS_TITLE } from '../common';
+import { IGroupedField, ILevelData, IPost, LEVELS_TITLE } from '../common';
 import {
   Layout,
   Seo,
   Banner,
   HeadLine,
   PostCard,
-  Level,
-  Topic,
-  DarkSection,
-  SFlexColumnContainer,
-  SFlexRowContainer,
   LevelsList,
   TopicsList,
+  DarkSection,
+  SFlexColumnContainer,
 } from '../components';
 
 interface Props {
   pageContext: {
     levels: IGroupedField[];
-    levelsData: { id: string; title: string }[];
+    levelsData: ILevelData[];
     posts: IPost[];
     topics: IGroupedField[];
   };

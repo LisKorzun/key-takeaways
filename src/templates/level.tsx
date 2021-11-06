@@ -12,7 +12,7 @@ import {
   SFlexRowContainer,
   SChipLink
 } from '../components';
-import { getPostsCount, IPost, LEVEL_TITLE } from '../common';
+import { getPostsCount, IGroupedField, ILevelData, IPost, LEVEL_TITLE } from '../common';
 
 interface Props {
   pageContext: {
@@ -22,12 +22,9 @@ interface Props {
     allMdx: {
       totalCount: number;
       nodes: IPost[];
-      group: {
-        fieldValue: string;
-        totalCount: number;
-      }[];
+      group: IGroupedField[];
     };
-    site: { siteMetadata: { levels: { id: string; title: string }[] } };
+    site: { siteMetadata: { levels: ILevelData[] } };
   };
 }
 

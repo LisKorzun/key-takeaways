@@ -1,16 +1,15 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import { graphql } from 'gatsby';
-import { find } from 'lodash';
 
-import { IGroupedField, LEVELS_TITLE } from '../common';
-import { Layout, Seo, Banner, Level, DarkSection, SFlexRowContainer, LevelsList } from '../components';
+import { IGroupedField, ILevelData, LEVELS_TITLE } from '../common';
+import { Layout, Seo, Banner, LevelsList, DarkSection } from '../components';
 
 interface Props {
   data: {
     allMdx: {
       group: IGroupedField[];
     };
-    site: { siteMetadata: { levels: { id: string; title: string }[] } };
+    site: { siteMetadata: { levels: ILevelData[] } };
   };
 }
 
@@ -23,7 +22,7 @@ const LevelsPage: FC<Props> = ({ data }) => {
       <Seo title={LEVELS_TITLE} />
       <Banner title={LEVELS_TITLE} icon="levels" />
       <DarkSection>
-        <LevelsList levels={group} data={levels}/>
+        <LevelsList levels={group} data={levels} />
       </DarkSection>
     </Layout>
   );

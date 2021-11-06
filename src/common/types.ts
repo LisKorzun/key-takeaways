@@ -12,3 +12,8 @@ export interface IGroupedField {
   fieldValue: string;
   totalCount: number;
 }
+
+export interface ILevelData {
+  id: string;
+  title: string;
+}
