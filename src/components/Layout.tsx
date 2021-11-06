@@ -29,7 +29,7 @@ const SideContainer = styled.div`
   left: 0;
   right: 0;
   z-index: 1001;
-  background: ${(props) => props.theme.text};
+  background: ${(props) => props.theme.secondary};
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;

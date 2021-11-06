@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import { SHeadingCaption, SText, SHeadingLink, STag } from './common';
 import { SFlexColumnContainer, SFlexRowContainer } from './containers';
 import { Icon } from './Icon';
+import { IPost } from '../common';
 
 const SPostImage = styled((props) => <GatsbyImage {...props} />)`
   height: 150px;
@@ -18,18 +19,7 @@ const SPostImage = styled((props) => <GatsbyImage {...props} />)`
 `;
 
 interface Props {
-  post: {
-    slug: string;
-    id: string;
-    frontmatter: {
-      title: string;
-      date: string;
-      topic: string;
-      level: string;
-      tags: string[];
-      hero_image: ImageDataLike;
-    };
-  };
+  post: IPost;
 }
 
 export const PostCard: FC<Props> = ({ post }) => {
@@ -56,7 +46,7 @@ export const PostCard: FC<Props> = ({ post }) => {
         <SFlexRowContainer mb="5px">
           {tags.map((tag) => (
             <STag key={tag}>
-              <Icon name="tag" height="11px" color="secondary" />
+              <Icon name="tag" height="10px" color="text" />
               <span>{tag}</span>
             </STag>
           ))}

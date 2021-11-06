@@ -45,7 +45,7 @@ export const SDescription = styled.div`
 
 export const SText = styled.p`
   font-weight: 300;
-  font-size: ${TEXT_SIZE}px;
+  font-size: 14px;
   color: ${(props) => props.theme.text};
   margin: 0;
 `;
@@ -54,7 +54,7 @@ export const SHeadingLink = styled((props) => <Link {...props} />)`
   font-size: ${HEADING_SIZE}px;
   font-weight: 400;
   text-transform: capitalize;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: ${(props) => props.theme.secondary};
   &:hover {
     color: ${(props) => props.theme.accent};
@@ -121,9 +121,9 @@ export const STag = styled.div`
     margin-right: 3px;
   }
   & span {
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
     font-weight: 400;
-    color: ${(props) => props.theme.secondary};
+    color: ${(props) => props.theme.text};
   }
 `;
