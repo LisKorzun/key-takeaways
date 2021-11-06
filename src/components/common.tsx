@@ -19,7 +19,7 @@ export const STitle = styled.h1`
   margin: 0;
 `;
 
-export const STitleCaption = styled.caption`
+export const STitleCaption = styled.p`
   font-size: 16px;
   font-weight: 400;
   text-transform: uppercase;
@@ -47,26 +47,6 @@ export const SText = styled.p`
   margin: 0;
 `;
 
-export const SHeadLine = styled.div`
-  display: block;
-  font-size: ${HEADING_SIZE}px;
-  font-weight: 400;
-  color: ${(props) => props.theme.secondary};
-  position: relative;
-  overflow: hidden;
-  margin-bottom: ${MARGIN_MEDIUM}px;
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background-color: ${(props) => props.theme.accent};
-    margin-left: 20px;
-    opacity: 0.3;
-  }
-`;
-
 export const SHeadingLink = styled((props) => <Link {...props} />)`
   font-size: ${HEADING_SIZE}px;
   font-weight: 400;
@@ -90,11 +70,12 @@ export const SHeadingCaption = styled.div`
     padding-left: 10px;
     font-weight: 600;
   }
-  & caption {
+  & p {
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 2px;
+    margin: 0;
   }
 `;
 
@@ -103,12 +84,12 @@ export const STag = styled.div`
   display: flex;
   align-items: baseline;
   & svg {
-    margin-right: 5px;
+    margin-right: 3px;
   }
   & span {
     font-size: 12px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 400;
     color: ${(props) => props.theme.secondary};
   }
 `;

@@ -1,10 +1,9 @@
 import React, { FC, Fragment } from 'react';
-import { graphql } from 'gatsby';
-import { find, take } from 'lodash';
+import { graphql, Link } from 'gatsby';
+import { find, kebabCase, take } from 'lodash';
 
 import { IPost } from '../common';
-import { Layout, Seo, Banner, PostCard, SHeadLine, DarkSection, SFlexColumnContainer } from '../components';
-import { TopicCard } from '../components/TopicCard';
+import { Layout, Seo, Banner, HeadLine, PostCard, TopicCard, DarkSection, SFlexColumnContainer } from '../components';
 
 interface Props {
   data: {
@@ -34,22 +33,28 @@ const LevelsPage: FC<Props> = ({ data }) => {
             <Fragment key={l.fieldValue}>
               {level && (
                 <>
-                  <DarkSection>
-                    <h3>{level.title}</h3>
-                  </DarkSection>
+                  <Link to={`/levels/${kebabCase(level.title)}`}>
+                    <DarkSection>
+                      <h3>{level.title}</h3>
+                    </DarkSection>
+                  </Link>
                   <SFlexColumnContainer mb="50px">
-                    <SHeadLine>Recently published</SHeadLine>
-                    {take(l.nodes, 5).map((post) => (
-                      <PostCard key={post.id} post={post} />
-                    ))}
-                  </SFlexColumnContainer>
-                  <SFlexColumnContainer>
-                    <SHeadLine>Topics</SHeadLine>
+                    <HeadLine heading="Topics" />
                     <SFlexColumnContainer>
                       {l.group.map((topic) => (
                         <TopicCard key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
                       ))}
                     </SFlexColumnContainer>
+                  </SFlexColumnContainer>
+                  <SFlexColumnContainer mb="50px">
+                    <HeadLine
+                      heading="Posts"
+                      link={`/levels/${kebabCase(level.title)}`}
+                      label={`See all ${l.totalCount}`}
+                    />
+                    {take(l.nodes, 5).map((post) => (
+                      <PostCard key={post.id} post={post} />
+                    ))}
                   </SFlexColumnContainer>
                 </>
               )}

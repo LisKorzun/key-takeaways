@@ -8,6 +8,7 @@ export * from './Title';
 export * from './Logo';
 export * from './LogoTitle';
 export * from './Menu';
+export * from './HeadLine';
 
 export * from './containers';
 export * from './common';

@@ -48,7 +48,7 @@ export const PostCard: FC<Props> = ({ post }) => {
           <SHeadingCaption>
             <Icon name={icon} width="70px" color="primary" />
             <span>/</span>
-            <caption>{topic}</caption>
+            <p>{topic}</p>
           </SHeadingCaption>
           <SHeadingLink to={`/${slug}`}>{title}</SHeadingLink>
           <SText>{date}</SText>

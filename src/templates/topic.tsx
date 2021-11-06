@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 import { take } from 'lodash';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
-import { Title } from '../components/Title';
-import { Layout, PostCard, Seo, SFlexColumnContainer, SHeadLine } from '../components';
-import { ARTICLES_LABEL, IPost } from '../common';
+import { Layout, PostCard, Seo, Title, HeadLine, SFlexColumnContainer } from '../components';
+import { getPostsCount, IPost } from '../common';
 
 interface Props {
   pageContext: {
@@ -28,20 +27,17 @@ const Topic: FC<Props> = ({ pageContext, data }) => {
       <div>
         <Title caption="Topic" title={topic} />
         <SFlexColumnContainer mb="50px">
-          <SHeadLine>{`${totalCount} ${ARTICLES_LABEL}`}</SHeadLine>
+          <HeadLine heading={getPostsCount(totalCount)} link="/topics" label="Back to all topics" />
           <div>
             {take(nodes, 5).map((post) => (
               <PostCard key={post.id} post={post} />
             ))}
           </div>
         </SFlexColumnContainer>
-        <Link to="/topics">All topics</Link>
       </div>
     </Layout>
   );
 };
-
-export default Topic;
 
 export const pageQuery = graphql`
   query ($topic: String) {
@@ -53,3 +49,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default Topic;

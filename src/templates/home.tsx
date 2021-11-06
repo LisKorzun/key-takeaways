@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 import { take, find } from 'lodash';
 
 import { IGroupedField, IPost } from '../common';
@@ -6,13 +6,13 @@ import {
   Layout,
   Seo,
   Banner,
+  HeadLine,
   PostCard,
   LevelCard,
   TopicCard,
   DarkSection,
   SFlexColumnContainer,
   SFlexRowContainer,
-  SHeadLine,
 } from '../components';
 
 interface Props {
@@ -37,21 +37,24 @@ const Home: FC<Props> = ({ pageContext }) => {
           {levels.map((l) => {
             const level = find(levelsData, ['id', l.fieldValue]);
             const icon = `Level-${l.fieldValue}`;
-            return <>{level && <LevelCard title={level.title} count={l.totalCount} icon={icon} />}</>;
+            return (
+              <Fragment key={l.fieldValue}>
+                {level && <LevelCard title={level.title} count={l.totalCount} icon={icon} />}
+              </Fragment>
+            );
           })}
         </SFlexRowContainer>
       </DarkSection>
-      <SFlexColumnContainer>
-        <SHeadLine>Explore by Topics</SHeadLine>
+      <SFlexColumnContainer mb="70px">
+        <HeadLine heading="Explore by Topics" link="/topics" label="See all" />
         <SFlexColumnContainer>
           {topics.map((topic) => (
             <TopicCard key={topic.fieldValue} title={topic.fieldValue} count={topic.totalCount} />
           ))}
         </SFlexColumnContainer>
       </SFlexColumnContainer>
-
-      <SFlexColumnContainer mt="70px">
-        <SHeadLine>Recently published</SHeadLine>
+      <SFlexColumnContainer mb="70px">
+        <HeadLine heading="Recently published" />
         <div>
           {take(posts, 5).map((post) => (
             <PostCard key={post.id} post={post} />

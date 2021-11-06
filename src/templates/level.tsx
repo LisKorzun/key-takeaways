@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { find, take } from 'lodash';
 
-import { Layout, Seo, Title, PostCard, SHeadLine, SFlexColumnContainer } from '../components';
-import { ARTICLES_LABEL, IPost } from '../common';
+import { Layout, Seo, Title, HeadLine, PostCard, SFlexColumnContainer } from '../components';
+import { getPostsCount, IPost } from '../common';
 
 interface Props {
   pageContext: {
@@ -34,14 +34,13 @@ const Level: FC<Props> = ({ pageContext, data }) => {
       <div>
         <Title caption="Competency Level" title={levelData.title || ''} />
         <SFlexColumnContainer mb="50px">
-          <SHeadLine>{`${totalCount} ${ARTICLES_LABEL}`}</SHeadLine>
+          <HeadLine heading={getPostsCount(totalCount)} link="/levels" label="Back to all levels" />
           <div>
             {take(nodes, 5).map((post) => (
               <PostCard key={post.id} post={post} />
             ))}
           </div>
         </SFlexColumnContainer>
-        <Link to="/levels">All Competency Levels</Link>
       </div>
     </Layout>
   );

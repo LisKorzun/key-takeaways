@@ -49,7 +49,7 @@ const MainContainer = styled.div`
   background-color: ${(props) => props.theme.background};
 `;
 const Content = styled.div`
-  width: 60vw;
+  width: 50vw;
   margin: 0 auto;
 `;
 

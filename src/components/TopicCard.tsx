@@ -9,11 +9,11 @@ export const STopicCard = styled((props) => <Link {...props} />)`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  color: #0d1b2a;
+  color: ${(props) => props.theme.secondary};
   & h3 {
     font-size: 30px;
     line-height: 30px;
-    font-weight: 300;
+    font-weight: 200;
     width: 100%;
     text-transform: capitalize;
     padding-left: 25px;
@@ -42,6 +42,8 @@ export const STopicCard = styled((props) => <Link {...props} />)`
   }
   & span {
     margin-left: 20px;
+    margin-right: 20px;
+    font-weight: 400;
   }
   &:hover {
     color: ${(props) => props.theme.accent};
