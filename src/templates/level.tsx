@@ -67,12 +67,12 @@ export const pageQuery = graphql`
       limit: 2000
     ) {
       totalCount
+      nodes {
+        ...postFields
+      }
       group(field: frontmatter___topic) {
         fieldValue
         totalCount
-      }
-      nodes {
-        ...postFields
       }
     }
   }

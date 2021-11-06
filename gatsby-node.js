@@ -4,12 +4,13 @@ const _ = require('lodash');
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
+  const homeTemplate = path.resolve('src/templates/home.tsx');
   const levelTemplate = path.resolve('src/templates/level.tsx');
   const levelTopicTemplate = path.resolve('src/templates/level-topic.tsx');
+  const topicTemplate = path.resolve('src/templates/topic.tsx');
+  const topicByLevelsTemplate = path.resolve('src/templates/topic-by-levels.tsx');
   const tagTemplate = path.resolve('src/templates/tag.tsx');
   const postTemplate = path.resolve('src/templates/post.tsx');
-  const topicTemplate = path.resolve('src/templates/topic.tsx');
-  const homeTemplate = path.resolve('src/templates/home.tsx');
 
   const result = await graphql(`
     {
@@ -60,6 +61,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         group(field: frontmatter___topic) {
           fieldValue
           totalCount
+          group(field: frontmatter___level) {
+            fieldValue
+            totalCount
+          }
         }
       }
     }
@@ -110,22 +115,40 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
+  topics.forEach((topic) => {
+    const topicURL = `/topics/${_.kebabCase(topic.fieldValue)}`;
+
+    createPage({
+      path: topicURL,
+      component: topicTemplate,
+      context: {
+        levelsData,
+        topic: topic.fieldValue,
+      },
+    });
+    topic.group.forEach((level) => {
+      const levelData = _.find(levelsData, ['id', level.fieldValue]);
+      const levelURL = `/${_.kebabCase(levelData.title)}`;
+
+      createPage({
+        path: `${topicURL}${levelURL}`,
+        component: topicByLevelsTemplate,
+        context: {
+          levelsData,
+          level: level.fieldValue,
+          topic: topic.fieldValue,
+          levels: topic.group,
+        },
+      });
+    });
+  });
+
   tags.forEach((tag) => {
     createPage({
       path: `/tags/${_.kebabCase(tag.fieldValue)}`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,
-      },
-    });
-  });
-
-  topics.forEach((topic) => {
-    createPage({
-      path: `/topics/${_.kebabCase(topic.fieldValue)}`,
-      component: topicTemplate,
-      context: {
-        topic: topic.fieldValue,
       },
     });
   });

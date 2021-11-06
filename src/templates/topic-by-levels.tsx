@@ -17,21 +17,22 @@ import { find, kebabCase } from 'lodash';
 interface Props {
   pageContext: {
     topic: string;
+    level: string;
     levelsData: ILevelData[];
+    levels: IGroupedField[];
   };
   data: {
     allMdx: {
       nodes: IPost[];
       totalCount: number;
-      group: IGroupedField[];
     };
   };
 }
 
-const Topic: FC<Props> = ({
-  pageContext: { topic, levelsData },
+const TopicByLevels: FC<Props> = ({
+  pageContext: { topic, levelsData, levels, level },
   data: {
-    allMdx: { nodes, totalCount, group },
+    allMdx: { nodes, totalCount },
   },
 }) => (
   <Layout>
@@ -39,16 +40,17 @@ const Topic: FC<Props> = ({
     <Title caption={LABELS.TOPIC} title={topic} />
     <SFlexColumnContainer mb="50px">
       <SFlexRowContainer mb="50px" wrap="wrap">
-        <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}`} selected>
-          {LABELS.ALL_LEVELS}
-        </SChipLink>
-        {group.map(({ fieldValue }) => {
-          const level = find(levelsData, ['id', fieldValue]);
+        <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}`}>{LABELS.ALL_LEVELS}</SChipLink>
+        {levels.map(({ fieldValue }) => {
+          const levelData = find(levelsData, ['id', fieldValue]);
           return (
             <Fragment key={fieldValue}>
-              {level && (
-                <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}/${kebabCase(level.title)}`}>
-                  {level.title}
+              {levelData && (
+                <SChipLink
+                  to={`${ROUTES.TOPICS}/${kebabCase(topic)}/${kebabCase(levelData.title)}`}
+                  selected={fieldValue === level}
+                >
+                  {levelData.title}
                 </SChipLink>
               )}
             </Fragment>
@@ -66,9 +68,9 @@ const Topic: FC<Props> = ({
 );
 
 export const pageQuery = graphql`
-  query ($topic: String) {
+  query ($topic: String, $level: String) {
     allMdx(
-      filter: { frontmatter: { topic: { eq: $topic } } }
+      filter: { frontmatter: { topic: { eq: $topic }, level: { eq: $level } } }
       sort: { fields: frontmatter___date, order: DESC }
       limit: 2000
     ) {
@@ -76,12 +78,8 @@ export const pageQuery = graphql`
       nodes {
         ...postFields
       }
-      group(field: frontmatter___level) {
-        fieldValue
-        totalCount
-      }
     }
   }
 `;
 
-export default Topic;
+export default TopicByLevels;

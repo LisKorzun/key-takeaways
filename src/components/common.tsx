@@ -8,7 +8,6 @@ import {
   MARGIN_MEDIUM,
   SEPARATOR_HEIGHT,
   SEPARATOR_WIDTH,
-  TEXT_SIZE,
   TITLE_SIZE,
 } from '../styles/sizes';
 

@@ -24,6 +24,7 @@ export const LABELS = {
   BACK_TO_TAGS: 'Back to all tags',
   BACK_TO_TOPICS: 'Back to all topics',
   ALL_TOPICS: 'All topics',
+  ALL_LEVELS: 'All levels',
 };
 
 export const ICONS = {
