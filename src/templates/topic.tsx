@@ -56,11 +56,11 @@ const Topic: FC<Props> = ({
         })}
       </SFlexRowContainer>
       <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TOPICS} label={LABELS.BACK_TO_TOPICS} />
-      <div>
+      <SFlexColumnContainer mb="50px">
         {nodes.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
-      </div>
+      </SFlexColumnContainer>
     </SFlexColumnContainer>
   </Layout>
 );

@@ -53,7 +53,7 @@ export const SHeadingLink = styled((props) => <Link {...props} />)`
   font-size: ${HEADING_SIZE}px;
   font-weight: 400;
   text-transform: capitalize;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: ${(props) => props.theme.secondary};
   &:hover {
     color: ${(props) => props.theme.accent};

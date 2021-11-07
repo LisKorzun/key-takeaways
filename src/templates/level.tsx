@@ -50,11 +50,11 @@ const Level: FC<Props> = ({
         ))}
       </SFlexRowContainer>
       <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.LEVELS} label={LABELS.BACK_TO_LEVELS} />
-      <div>
+      <SFlexColumnContainer mb="50px">
         {nodes.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
-      </div>
+      </SFlexColumnContainer>
     </SFlexColumnContainer>
   </Layout>
 );

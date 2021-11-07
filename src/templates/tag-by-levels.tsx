@@ -16,7 +16,7 @@ import { find, kebabCase } from 'lodash';
 
 interface Props {
   pageContext: {
-    topic: string;
+    tag: string;
     level: string;
     levelsData: ILevelData[];
     levels: IGroupedField[];
@@ -29,25 +29,25 @@ interface Props {
   };
 }
 
-const TopicByLevels: FC<Props> = ({
-  pageContext: { topic, levelsData, levels, level },
+const TagByLevels: FC<Props> = ({
+  pageContext: { tag, levelsData, levels, level },
   data: {
     allMdx: { nodes, totalCount },
   },
 }) => (
   <Layout>
-    <Seo title={`${LABELS.TOPIC} - ${topic}`} />
-    <Title caption={LABELS.TOPIC} title={topic} />
+    <Seo title={`${LABELS.TAG} - ${tag}`} />
+    <Title caption={LABELS.TAG} title={tag} />
     <SFlexColumnContainer mb="50px">
       <SFlexRowContainer mb="50px" wrap="wrap">
-        <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}`}>{LABELS.ALL_LEVELS}</SChipLink>
+        <SChipLink to={`${ROUTES.TAGS}/${kebabCase(tag)}`}>{LABELS.ALL_LEVELS}</SChipLink>
         {levels.map(({ fieldValue }) => {
           const levelData = find(levelsData, ['id', fieldValue]);
           return (
             <Fragment key={fieldValue}>
               {levelData && (
                 <SChipLink
-                  to={`${ROUTES.TOPICS}/${kebabCase(topic)}/${kebabCase(levelData.title)}`}
+                  to={`${ROUTES.TAGS}/${kebabCase(tag)}/${kebabCase(levelData.title)}`}
                   selected={fieldValue === level}
                 >
                   {levelData.title}
@@ -57,7 +57,7 @@ const TopicByLevels: FC<Props> = ({
           );
         })}
       </SFlexRowContainer>
-      <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TOPICS} label={LABELS.BACK_TO_TOPICS} />
+      <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TAGS} label={LABELS.BACK_TO_TAGS} />
       <SFlexColumnContainer mb="50px">
         {nodes.map((post) => (
           <PostCard key={post.id} post={post} />
@@ -68,9 +68,9 @@ const TopicByLevels: FC<Props> = ({
 );
 
 export const pageQuery = graphql`
-  query ($topic: String, $level: String) {
+  query ($tag: String, $level: String) {
     allMdx(
-      filter: { frontmatter: { topic: { eq: $topic }, level: { eq: $level } } }
+      filter: { frontmatter: { tags: { in: [$tag] }, level: { eq: $level } } }
       sort: { fields: frontmatter___date, order: DESC }
       limit: 2000
     ) {
@@ -82,4 +82,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default TopicByLevels;
+export default TagByLevels;
