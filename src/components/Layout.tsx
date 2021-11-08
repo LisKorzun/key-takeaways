@@ -47,9 +47,10 @@ const MainContainer = styled.div`
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   background-color: ${(props) => props.theme.background};
+  overflow-x: hidden;
 `;
 const Content = styled.div`
-  width: 50vw;
+  width: 55vw;
   margin: 0 auto;
 `;
 

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { STitle, SSeparator, STitleCaption } from './common';
+import { SSeparator, STitleCaption } from './common';
 import { SFlexColumnContainer } from './containers';
 
 interface TitleProps {
@@ -12,7 +12,7 @@ export const Title: FC<TitleProps> = ({ caption, title }) => {
   return (
     <SFlexColumnContainer mt="50px" mb="30px">
       <STitleCaption>{caption}</STitleCaption>
-      <STitle>{title}</STitle>
+      <h1>{title}</h1>
       <SSeparator />
     </SFlexColumnContainer>
   );

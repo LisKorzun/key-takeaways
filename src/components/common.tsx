@@ -2,22 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import {
-  DESCRIPTION_SIZE,
-  HEADING_SIZE,
-  MARGIN_MEDIUM,
-  SEPARATOR_HEIGHT,
-  SEPARATOR_WIDTH,
-  TITLE_SIZE,
-} from '../styles/sizes';
-
-export const STitle = styled.h1`
-  font-size: ${TITLE_SIZE}px;
-  line-height: ${TITLE_SIZE + 10}px;
-  text-transform: capitalize;
-  color: ${(props) => props.theme.secondary};
-  margin: 0;
-`;
+import { MARGIN_MEDIUM, SEPARATOR_HEIGHT } from '../styles/sizes';
 
 export const STitleCaption = styled.p`
   font-size: 16px;
@@ -30,16 +15,10 @@ export const STitleCaption = styled.p`
 `;
 
 export const SSeparator = styled.div`
-  width: ${SEPARATOR_WIDTH}px;
-  margin: ${MARGIN_MEDIUM}px 0;
+  width: calc(10rem + 2vw);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   border-bottom: ${(props) => `${SEPARATOR_HEIGHT}px solid ${props.theme.primary}`};
-`;
-
-export const SDescription = styled.div`
-  color: ${(props) => props.theme.secondary};
-  font-size: ${DESCRIPTION_SIZE}px;
-  font-weight: 300;
-  color: ${(props) => props.theme.text};
 `;
 
 export const SText = styled.p`
@@ -50,13 +29,13 @@ export const SText = styled.p`
 `;
 
 export const SHeadingLink = styled((props) => <Link {...props} />)`
-  font-size: ${HEADING_SIZE}px;
+  font-size: calc(16px + 1vw);
   font-weight: 400;
   text-transform: capitalize;
   margin-bottom: 10px;
   color: ${(props) => props.theme.secondary};
   &:hover {
-    color: ${(props) => props.theme.accent};
+    opacity: 0.5;
   }
 `;
 
@@ -72,12 +51,20 @@ export const SHeadingCaption = styled.div`
     padding-left: 10px;
     font-weight: 600;
   }
-  & p {
+  & a {
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
+    cursor: pointer;
+    &:visited,
+    &:active {
+      color: ${(props) => props.theme.primary};
+    }
+    &:hover {
+      opacity: 0.5;
+    }
   }
 `;
 

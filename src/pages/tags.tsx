@@ -28,7 +28,7 @@ const TagsPage: FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Seo title={LABELS.TAGS} />
-      <Banner title={LABELS.TAGS} icon={ICONS.TAG} />
+      <Banner title={LABELS.TAGS} icon={ICONS.TAG} rotateIcon/>
       <SFlexColumnContainer>
         {groups.map(({ tags, letter }) => (
           <SFlexRowContainer key={letter} mb="50px">

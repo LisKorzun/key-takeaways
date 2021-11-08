@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
-import { SHeadingCaption, SText, SHeadingLink, STag } from './common';
+import { SHeadingCaption, SText, STag } from './common';
 import { SFlexColumnContainer, SFlexRowContainer } from './containers';
 import { Icon } from './Icon';
-import { IPost } from '../common';
+import { IPost, ROUTES } from '../common';
+import { kebabCase } from 'lodash';
 
 const SPostImage = styled((props) => <GatsbyImage {...props} />)`
   height: 150px;
@@ -38,9 +40,9 @@ export const PostCard: FC<Props> = ({ post }) => {
           <SHeadingCaption>
             <Icon name={icon} width="70px" color="primary" />
             <span>/</span>
-            <p>{topic}</p>
+            <Link to={`${ROUTES.TOPICS}/${kebabCase(topic)}`}>{topic}</Link>
           </SHeadingCaption>
-          <SHeadingLink to={`/${slug}`}>{title}</SHeadingLink>
+          <h2><Link to={`/${slug}`}>{title}</Link></h2>
           <SText>{date}</SText>
         </SFlexColumnContainer>
         <SFlexRowContainer mb="5px">

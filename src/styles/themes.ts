@@ -13,7 +13,7 @@ export const themes: IThemes = {
     secondary: '#1B263B',
     accent: '#9cacbf',
     background: '#FFF',
-    text: '#596a71',
+    text: '#1B263B',
     border: '#F3F7FA'
   },
   yellow: {
