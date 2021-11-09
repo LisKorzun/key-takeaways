@@ -22,8 +22,8 @@ const SBanner = styled.div<SBannerProps>`
   & svg {
     align-self: center;
     position: absolute;
-    top: -100px;
-    right: 0;
+    top: 20%;
+    right: -20%;
     transform: ${({ rotate }) => (rotate ? `rotate(0.1turn)` : `none`)};
   }
 

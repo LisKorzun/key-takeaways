@@ -13,7 +13,8 @@ import TopicsIcon from '../assets/svg/topics.svg';
 import AboutIcon from '../assets/svg/about.svg';
 import LevelsIcon from '../assets/svg/levels.svg';
 import TagIcon from '../assets/svg/tag.svg';
-import ArrowRight from '../assets/svg/arrow-right.svg';
+import ArrowRightIcon from '../assets/svg/arrow-right.svg';
+import ReactIcon from '../assets/svg/react-logo.svg';
 
 interface IconStylesProps {
   readonly color: DefaultThemeKeys;
@@ -62,7 +63,10 @@ export const SLevelsIcon = styled(LevelsIcon)`
 export const STagIcon = styled(TagIcon)`
   ${svgStyles}
 `;
-export const SArrowRightIcon = styled(ArrowRight)`
+export const SArrowRightIcon = styled(ArrowRightIcon)`
+  ${svgStyles}
+`;
+export const SReactIcon = styled(ReactIcon)`
   ${svgStyles}
 `;
 
@@ -96,6 +100,8 @@ export const Icon: FC<IconProps> = ({ name, ...other }) => {
       return <STagIcon {...other} />;
     case ICONS.ARROW_RIGHT:
       return <SArrowRightIcon {...other} />;
+    case ICONS.REACT_LOGO:
+      return <SReactIcon {...other} />;
     default:
       return <></>;
   }

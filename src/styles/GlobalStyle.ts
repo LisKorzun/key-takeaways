@@ -6,14 +6,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: "Josefin Sans";
+    font-family: "Architects Daughter", "Josefin Sans";
     line-height: 1.15;
     font-size: 62.5%;
     -webkit-text-size-adjust: 100%;
     height: 100%;
   }
+  
   body {
-    font-family: "Josefin Sans";
+    font-family: "Architects Daughter", "Josefin Sans";
     margin: 0;
     font-size: calc(1.8rem + .2vw);
     line-height: 1.15;
@@ -26,11 +27,13 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.background};
-
-    h1, h2, h3 {
+  }
+  
+  h1, h2, h3 {
       line-height: 1.2;
     }
-    h1 {
+  
+  h1 {
       font-size: calc(4rem + 1.6vw);
       text-transform: capitalize;
       color: ${(props) => props.theme.text};
@@ -56,10 +59,10 @@ const GlobalStyle = createGlobalStyle`
         color: ${(props) => props.theme.text};
       }
       &:hover {
-        opacity: 0.5;
+        color: ${(props) => props.theme.primary};
       }
     }
-  }
+  
 `;
 
 export default GlobalStyle;

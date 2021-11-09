@@ -14,15 +14,15 @@ export const themes: IThemes = {
     accent: '#9cacbf',
     background: '#FFF',
     text: '#1B263B',
-    border: '#F3F7FA'
+    border: '#F3F7FA',
   },
   yellow: {
-    primary: '#FFDF6C',
-    secondary: '#3F3F3F',
-    accent: '#707070',
-    background: '#FFFFFF',
-    text: '#202020',
-    border: '#eee'
+    primary: '#06BCF0',
+    secondary: '#FFF',
+    accent: '#9cacbf',
+    background: '#1B263B',
+    text: '#FFF',
+    border: '#eee',
   },
   green: {
     primary: '#A3BCB6',
@@ -30,7 +30,7 @@ export const themes: IThemes = {
     accent: '#DADED4',
     background: '#FFFFFF',
     text: '#3C403D',
-    border: '#eee'
+    border: '#eee',
   },
 };
 

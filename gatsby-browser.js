@@ -6,4 +6,6 @@ import '@fontsource/josefin-sans/500.css';
 import '@fontsource/josefin-sans/600.css';
 import '@fontsource/josefin-sans/700.css';
 
+import '@fontsource/architects-daughter';
+
 import 'normalize.css';

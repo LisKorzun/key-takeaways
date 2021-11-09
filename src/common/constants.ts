@@ -6,7 +6,7 @@ export const ROUTES = {
 };
 
 export const LABELS = {
-  TITLE: 'Key Takeaways',
+  TITLE: 'Cheat Sheets',
   HOME: 'Welcome!',
   ABOUT: 'About',
   LEVEL: 'Difficulty level',
@@ -33,6 +33,7 @@ export const ICONS = {
   TAG: 'tag',
   TOPICS: 'topics',
   CODE: 'code',
+  REACT_LOGO: 'react',
   ARROW_RIGHT: 'arrow-right',
   LEVEL_0: 'Level-0',
   LEVEL_1: 'Level-1',
