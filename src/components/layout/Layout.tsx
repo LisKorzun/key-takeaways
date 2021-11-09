@@ -46,7 +46,7 @@ const SLayout = styled.div<SLayoutProps>`
     opacity: 0.4;
     z-index: 4;
     top: ${HEADER_TOP}px;
-    left: 0;
+    left: 0.5rem;
     width: fit-content;
     height: 7rem;
     font-size: 2rem;

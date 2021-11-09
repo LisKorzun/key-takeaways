@@ -4,20 +4,32 @@ import { find, kebabCase } from 'lodash';
 import styled from 'styled-components';
 
 import { Icon } from './Icon';
-import { getPostsCount, IGroupedField, ILevelData } from '../common';
-import { SFlexRowContainer } from './containers';
+import { getPostsCount, IGroupedField, ILevelData, LABELS } from '../common';
+import { device } from '../styles';
 
 const SLevelCard = styled((props) => <Link {...props} />)`
   padding-top: 50px;
   padding-left: 20px;
-  width: 100%;
+  min-width: 90%;
+  @media only screen and ${device.mobileUp} {
+    min-width: 80%;
+  }
+  @media only screen and ${device.tabletUp} {
+    min-width: 40%;
+  }
+  @media only screen and ${device.laptopUp} {
+    min-width: 40%;
+  }
+  @media only screen and ${device.desktopUp} {
+    min-width: 30%;
+  }
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 3px;
-  border: ${(props) => `1px solid ${props.theme.background}`};
-  color: ${(props) => `${props.theme.background}`};
+  border: ${(props) => `1px solid ${props.theme.text}`};
+  color: ${(props) => `${props.theme.text}`};
 
   & h4 {
     margin: 5px 0;
@@ -33,9 +45,9 @@ const SLevelCard = styled((props) => <Link {...props} />)`
     padding: 6px;
     margin-top: 10px;
     margin-bottom: 10px;
-    border: ${(props) => `1px solid${props.theme.background}`};
-    color: ${(props) => `${props.theme.secondary}`};
-    background-color: ${(props) => `${props.theme.background}`};
+    border: ${(props) => `1px solid${props.theme.text}`};
+    color: ${(props) => `${props.theme.background}`};
+    background-color: ${(props) => `${props.theme.text}`};
   }
   &:hover {
     border: ${(props) => `1px solid ${props.theme.primary}`};
@@ -56,6 +68,30 @@ export const Level: FC<LevelCardProps> = ({ title, count, icon }) => (
   </SLevelCard>
 );
 
+const SLevelsList = styled.div`
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  h3 {
+    text-transform: uppercase;
+    text-align: center;
+    color: ${(props) => props.theme.primary};
+    margin-bottom: 5rem;
+  }
+  .levels {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    @media only screen and ${device.tabletUp} {
+    }
+    @media only screen and ${device.laptopUp} {
+      gap: 5rem;
+    }
+    @media only screen and ${device.desktopUp} {
+    }
+  }
+`;
 interface LevelsListProps {
   levels: IGroupedField[];
 }
@@ -80,15 +116,18 @@ export const LevelsList: FC<LevelsListProps> = ({ levels }) => {
   const data: ILevelData[] = site.siteMetadata.levels;
 
   return (
-    <SFlexRowContainer wrap="wrap" gap="20px" mt="30px" w="50%">
-      {levels.map(({ fieldValue, totalCount }) => {
-        const level = find(data, ['id', fieldValue]);
-        return (
-          <Fragment key={fieldValue}>
-            {level && <Level title={level.title} count={totalCount} icon={level.icon} />}
-          </Fragment>
-        );
-      })}
-    </SFlexRowContainer>
+    <SLevelsList>
+      <h3>{LABELS.LEVELS}</h3>
+      <div className="levels">
+        {levels.map(({ fieldValue, totalCount }) => {
+          const level = find(data, ['id', fieldValue]);
+          return (
+            <Fragment key={fieldValue}>
+              {level && <Level title={level.title} count={totalCount} icon={level.icon} />}
+            </Fragment>
+          );
+        })}
+      </div>
+    </SLevelsList>
   );
 };

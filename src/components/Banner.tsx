@@ -17,7 +17,7 @@ const SBanner = styled.div<SBannerProps>`
   column-gap: 5rem;
   position: relative;
   & .banner-content {
-    margin-top: 10rem;
+    margin-top: 5rem;
   }
   & svg {
     align-self: center;

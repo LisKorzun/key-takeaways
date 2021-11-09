@@ -11,8 +11,7 @@ import {
   LevelsList,
   TopicsList,
   SCenterSection,
-  SDarkSection,
-  SFlexColumnContainer,
+  SFullSection
 } from '../components';
 
 interface Props {
@@ -29,22 +28,21 @@ const Home: FC<Props> = ({ pageContext: { levels, posts, topics } }) => (
     <SCenterSection>
       <Banner title={LABELS.TITLE} icon={ICONS.CODE} />
     </SCenterSection>
-    <SDarkSection>
-      <h3>{LABELS.LEVELS}</h3>
+    <SFullSection>
       <LevelsList levels={levels} />
-    </SDarkSection>
-    <SFlexColumnContainer mb="70px">
+    </SFullSection>
+    <SCenterSection>
       <HeadLine heading={LABELS.EXPLORE_TOPICS} link={ROUTES.TOPICS} label={LABELS.SEE_TOPICS} />
       <TopicsList topics={topics} />
-    </SFlexColumnContainer>
-    <SFlexColumnContainer mb="70px">
+    </SCenterSection>
+    <SCenterSection>
       <HeadLine heading={LABELS.RECENT} />
       <div>
         {take(posts, 5).map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
       </div>
-    </SFlexColumnContainer>
+    </SCenterSection>
   </Layout>
 );
 

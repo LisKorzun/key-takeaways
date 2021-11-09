@@ -14,7 +14,7 @@ const SHamburger = styled.button`
   cursor: pointer;
   background: transparent;
   border: 0;
-  @media only screen and ${device.tabletUp} {
+  @media only screen and ${device.laptopUp} {
     top: 30px;
     left: 30px;
   }

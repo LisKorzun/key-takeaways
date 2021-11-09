@@ -2,27 +2,27 @@ import styled from 'styled-components';
 
 import { device } from '../../styles';
 
-export const SCenterSection = styled.div`
-  width: 90vw;
-  margin: 5rem auto;
-
+export const SFullSection = styled.div`
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 5rem 1rem;
+  width: 100%;
   @media only screen and ${device.mobileUp} {
-    width: 85vw;
+    padding: 5rem 3rem;
   }
 
   @media only screen and ${device.tabletUp} {
-    width: 80vw;
+    
   }
 
   @media only screen and ${device.laptopUp} {
-    width: 70vw;
+    padding: 5rem 5rem;
   }
 
   @media only screen and ${device.desktopUp} {
-    width: 65vw;
+    
   }
 
   @media only screen and ${device.desktopXLUP} {
-    width: 58vw;
+    
   }
 `;

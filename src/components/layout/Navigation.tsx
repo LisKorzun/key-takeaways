@@ -34,7 +34,7 @@ const SNavigation = styled.div`
       width: 45px;
       height: 34px;
       cursor: pointer;
-      @media only screen and ${device.tabletUp} {
+      @media only screen and ${device.laptopUp} {
         top: 30px;
         left: 30px;
       }
