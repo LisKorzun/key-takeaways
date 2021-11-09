@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { Header } from './Header';
+import { device } from '../../styles';
 
 const SNavigation = styled.div`
   width: 100%;
@@ -14,6 +14,7 @@ const SNavigation = styled.div`
     padding: 120px 34px;
 
     a {
+      font-family: 'Architects Daughter';
       display: block;
       font-size: 3rem;
       margin-bottom: 2.5rem;
@@ -26,14 +27,17 @@ const SNavigation = styled.div`
         color: ${(props) => props.theme.primary};
       }
     }
-
     .close {
       position: fixed;
-      top: 30px;
-      left: 30px;
+      top: 25px;
+      left: 20px;
       width: 45px;
       height: 34px;
       cursor: pointer;
+      @media only screen and ${device.tabletUp} {
+        top: 30px;
+        left: 30px;
+      }
 
       &:before,
       &:after {
@@ -43,14 +47,12 @@ const SNavigation = styled.div`
         width: 45px;
         height: 6px;
         top: 50%;
-        background-color: white;
+        background-color: ${(props) => props.theme.background};
         border-radius: 2px;
       }
-
       &:before {
         transform: translateY(-50%) rotate(45deg);
       }
-
       &:after {
         transform: translateY(-50%) rotate(-45deg);
       }

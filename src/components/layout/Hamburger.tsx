@@ -1,17 +1,23 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
+import { device } from '../../styles';
+
 const SHamburger = styled.button`
   position: fixed;
   z-index: 4;
-  top: 30px;
-  left: 30px;
+  top: 25px;
+  left: 20px;
   width: 52px;
   height: 38px;
   transition: all 300ms cubic-bezier(0.61, 0.01, 0.42, 1);
   cursor: pointer;
   background: transparent;
   border: 0;
+  @media only screen and ${device.tabletUp} {
+    top: 30px;
+    left: 30px;
+  }
   div {
     height: 0;
     width: 35px;

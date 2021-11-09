@@ -1,11 +1,11 @@
 import React, { FC, useState, useRef, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import GlobalStyle from '../../styles/GlobalStyle';
-import themes from '../../styles/themes';
-import { device } from '../../styles/breakpoints';
-import { Navigation, Hamburger, Header } from './';
+import { GlobalStyle, device, themes, ThemeModes } from '../../styles';
+import { Navigation, Hamburger } from './';
 import { LABELS } from '../../common';
+
+const HEADER_TOP = 170;
 
 interface SLayoutProps {
   opened: boolean;
@@ -28,7 +28,6 @@ const SLayout = styled.div<SLayoutProps>`
       }
   `}
   }
-
   main {
     pointer-events: auto;
     min-height: 100vh;
@@ -41,56 +40,54 @@ const SLayout = styled.div<SLayoutProps>`
     transition: all 0.3s ease;
   }
   header {
-    font-family: 'Josefin Sans';
+    display: none;
     font-weight: 200;
     position: fixed;
     opacity: 0.4;
     z-index: 4;
-    top: 70vh;
+    top: ${HEADER_TOP}px;
     left: 0;
     width: fit-content;
-    height: 10rem;
-    font-size: 3rem;
-    opacity: 0.4;
+    height: 7rem;
+    font-size: 2rem;
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
+    transition: all 0.2s ease-in-out;
+    @media only screen and ${device.tabletUp} {
+      display: block;
+    }
+    @media only screen and ${device.laptopUp} {
+      height: 10rem;
+      font-size: 3rem;
+    }
   }
-
   .content {
-    width: 80vw;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     z-index: 5;
   }
-
-  @media only screen and ${device.laptopUp} {
-    .content {
-      width: 70vw;
-    }
-  }
 `;
 
 interface LayoutProps {
-  theme?: string;
+  theme?: ThemeModes;
 }
 
-export const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => {
+export const Layout: FC<LayoutProps> = ({ children, theme = 'dark' }) => {
   const [opened, setOpened] = useState(false);
-  const windowRef = useRef(null);
-  const frontRef = useRef(null);
-  const headerRef = useRef(null);
+  const windowRef = useRef<HTMLDivElement>(null);
+  const frontRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   const updateTransformOrigin = () => {
-    const scrollTop = windowRef.current.scrollTop;
-    const pageHeight = frontRef.current.offsetHeight;
-    const equation = ((scrollTop + 1800) / pageHeight) * 100;
-    frontRef.current.style.transformOrigin = 'center ' + equation + '%';
+    const windowDiv = windowRef.current!;
+    const pageDiv = frontRef.current!;
+    const equation = ((windowDiv.scrollTop + 1800) / pageDiv.offsetHeight) * 100;
+    pageDiv.style.transformOrigin = 'center ' + equation + '%';
   };
 
   useEffect(() => {
     updateTransformOrigin();
-    console.log(window.outerHeight);
   }, []);
 
   const onScroll = () => {
@@ -99,14 +96,19 @@ export const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => {
 
   const onClose = () => {
     setOpened(false);
-    headerRef.current.style.position = 'fixed';
-    headerRef.current.style.top = 70 + 'vh';
+
+    const headerEl = headerRef.current!;
+    headerEl.style.position = 'fixed';
+    headerEl.style.top = HEADER_TOP + 'px';
   };
 
   const onOpen = () => {
     setOpened(true);
-    headerRef.current.style.position = 'absolute';
-    headerRef.current.style.top = windowRef.current.scrollTop + window.innerHeight * 0.7 + 'px';
+
+    const headerEl = headerRef.current!;
+    const windowEl = windowRef.current!;
+    headerEl.style.position = 'absolute';
+    headerEl.style.top = windowEl.scrollTop + HEADER_TOP + 'px';
   };
 
   return (
@@ -117,7 +119,7 @@ export const Layout: FC<LayoutProps> = ({ children, theme = 'yellow' }) => {
         <div id="front" ref={windowRef} onScroll={onScroll}>
           <main ref={frontRef}>
             <Hamburger onOpen={onOpen} />
-            <header ref={headerRef}>{LABELS.TITLE}</header>
+            <header ref={headerRef}>{LABELS.HEADER}</header>
             <div className="content">{children}</div>
           </main>
         </div>

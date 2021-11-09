@@ -1,12 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
 
   html {
-    font-family: "Architects Daughter", "Josefin Sans";
+    font-family: "Josefin Sans";
     line-height: 1.15;
     font-size: 62.5%;
     -webkit-text-size-adjust: 100%;
@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    font-family: "Architects Daughter", "Josefin Sans";
+    font-family: "Josefin Sans";
     margin: 0;
     font-size: calc(1.8rem + .2vw);
     line-height: 1.15;
@@ -27,14 +27,14 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     color: ${(props) => props.theme.text};
     background-color: ${(props) => props.theme.background};
-  }
   
-  h1, h2, h3 {
+    h1, h2, h3 {
       line-height: 1.2;
     }
   
-  h1 {
-      font-size: calc(4rem + 1.6vw);
+    h1 {
+      font-family: 'Architects Daughter';
+      font-size: calc(3rem + 3vw);
       text-transform: capitalize;
       color: ${(props) => props.theme.text};
       margin: 0;
@@ -54,15 +54,6 @@ const GlobalStyle = createGlobalStyle`
       text-decoration: none;
       margin: 0;
       cursor: pointer;
-      color: ${(props) => props.theme.text};
-      &:visited, &:active {
-        color: ${(props) => props.theme.text};
-      }
-      &:hover {
-        color: ${(props) => props.theme.primary};
-      }
     }
-  
+  }
 `;
-
-export default GlobalStyle;

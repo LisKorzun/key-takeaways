@@ -28,7 +28,7 @@ const SBanner = styled.div<SBannerProps>`
   }
 
   @media only screen and ${device.laptopUp} {
-    grid-template-columns: 1fr min-content;
+    grid-template-columns: 2fr 1fr;
     grid-template-rows: min-content;
     & svg {
       position: static;

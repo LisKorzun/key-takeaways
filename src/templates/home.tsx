@@ -10,6 +10,7 @@ import {
   PostCard,
   LevelsList,
   TopicsList,
+  SCenterSection,
   SDarkSection,
   SFlexColumnContainer,
 } from '../components';
@@ -25,7 +26,9 @@ interface Props {
 const Home: FC<Props> = ({ pageContext: { levels, posts, topics } }) => (
   <Layout>
     <Seo title={LABELS.HOME} />
-    <Banner title={LABELS.TITLE} icon={ICONS.CODE} />
+    <SCenterSection>
+      <Banner title={LABELS.TITLE} icon={ICONS.CODE} />
+    </SCenterSection>
     <SDarkSection>
       <h3>{LABELS.LEVELS}</h3>
       <LevelsList levels={levels} />

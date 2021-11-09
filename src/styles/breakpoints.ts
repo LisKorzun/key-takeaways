@@ -4,6 +4,7 @@ export const device = {
   tabletUp: `(min-width: 768px)`,
   laptopUp: `(min-width: 1024px)`,
   desktopUp: `(min-width: 1281px)`,
+  desktopXLUP: `(min-width: 1440px)`,
 
   iphoneXPortrait: `(min-device-width: 375px) 
   and (max-device-width: 812px) 
