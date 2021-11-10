@@ -10,6 +10,7 @@ import {
   SFlexColumnContainer,
   SFlexRowContainer,
   SChipLink,
+  SCenterSection,
 } from '../components';
 import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 import { find, kebabCase } from 'lodash';
@@ -36,32 +37,34 @@ const Topic: FC<Props> = ({
 }) => (
   <Layout>
     <Seo title={`${LABELS.TOPIC} - ${topic}`} />
-    <Title caption={LABELS.TOPIC} title={topic} />
-    <SFlexColumnContainer mb="50px">
-      <SFlexRowContainer mb="50px" wrap="wrap">
-        <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}`} selected>
-          {LABELS.ALL_LEVELS}
-        </SChipLink>
-        {group.map(({ fieldValue }) => {
-          const level = find(levelsData, ['id', fieldValue]);
-          return (
-            <Fragment key={fieldValue}>
-              {level && (
-                <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}/${kebabCase(level.title)}`}>
-                  {level.title}
-                </SChipLink>
-              )}
-            </Fragment>
-          );
-        })}
-      </SFlexRowContainer>
-      <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TOPICS} label={LABELS.BACK_TO_TOPICS} />
+    <SCenterSection>
+      <Title caption={LABELS.TOPIC} title={topic} />
       <SFlexColumnContainer mb="50px">
-        {nodes.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
+        <SFlexRowContainer mb="50px" wrap="wrap">
+          <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}`} selected>
+            {LABELS.ALL_LEVELS}
+          </SChipLink>
+          {group.map(({ fieldValue }) => {
+            const level = find(levelsData, ['id', fieldValue]);
+            return (
+              <Fragment key={fieldValue}>
+                {level && (
+                  <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}/${kebabCase(level.title)}`}>
+                    {level.title}
+                  </SChipLink>
+                )}
+              </Fragment>
+            );
+          })}
+        </SFlexRowContainer>
+        <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TOPICS} label={LABELS.BACK_TO_TOPICS} />
+        <SFlexColumnContainer mb="50px">
+          {nodes.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </SFlexColumnContainer>
       </SFlexColumnContainer>
-    </SFlexColumnContainer>
+    </SCenterSection>
   </Layout>
 );
 

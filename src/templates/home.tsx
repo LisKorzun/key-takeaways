@@ -11,8 +11,10 @@ import {
   LevelsList,
   TopicsList,
   SCenterSection,
-  SFullSection
+  SFullSection, SHeading
 } from '../components';
+import styled from 'styled-components';
+import { device } from '../styles';
 
 interface Props {
   pageContext: {
@@ -21,6 +23,8 @@ interface Props {
     topics: IGroupedField[];
   };
 }
+
+
 
 const Home: FC<Props> = ({ pageContext: { levels, posts, topics } }) => (
   <Layout>
@@ -36,7 +40,7 @@ const Home: FC<Props> = ({ pageContext: { levels, posts, topics } }) => (
       <TopicsList topics={topics} />
     </SCenterSection>
     <SCenterSection>
-      <HeadLine heading={LABELS.RECENT} />
+      <SHeading>{LABELS.RECENT}</SHeading>
       <div>
         {take(posts, 5).map((post) => (
           <PostCard key={post.id} post={post} />

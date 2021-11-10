@@ -43,13 +43,14 @@ const SLayout = styled.div<SLayoutProps>`
     display: none;
     font-weight: 200;
     position: fixed;
-    opacity: 0.4;
+    opacity: 0.6;
     z-index: 4;
     top: ${HEADER_TOP}px;
     left: 0.5rem;
     width: fit-content;
     height: 7rem;
     font-size: 2rem;
+    color: ${(props) => props.theme.accent};
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
     transition: all 0.2s ease-in-out;
@@ -74,7 +75,7 @@ interface LayoutProps {
   theme?: ThemeModes;
 }
 
-export const Layout: FC<LayoutProps> = ({ children, theme = 'dark' }) => {
+export const Layout: FC<LayoutProps> = ({ children, theme = 'light' }) => {
   const [opened, setOpened] = useState(false);
   const windowRef = useRef<HTMLDivElement>(null);
   const frontRef = useRef<HTMLDivElement>(null);

@@ -29,7 +29,7 @@ const SLevelCard = styled((props) => <Link {...props} />)`
   flex-direction: column;
   align-items: flex-start;
   border-radius: 0.3rem;
-  border: ${(props) => `0.1rem dashed ${props.theme.text}`};
+  border: ${(props) => `0.1rem dashed ${props.theme.accent}`};
   color: ${(props) => `${props.theme.text}`};
 
   & h3 {
@@ -45,6 +45,7 @@ const SLevelCard = styled((props) => <Link {...props} />)`
     margin-top: 1rem;
     margin-bottom: 1rem;
     margin-right: -0.2rem;
+    line-height: 1;
     color: ${(props) => `${props.theme.background}`};
     background-color: ${(props) => `${props.theme.text}`};
   }

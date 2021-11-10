@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
-import { SHeadingCaption, SText, STag } from './common';
+import { SHeadingCaption, SText, STag, SHeadingLink } from './common';
 import { SFlexColumnContainer, SFlexRowContainer } from './containers';
 import { Icon } from './Icon';
 import { IPost, ROUTES } from '../common';
@@ -42,7 +42,7 @@ export const PostCard: FC<Props> = ({ post }) => {
             <span>/</span>
             <Link to={`${ROUTES.TOPICS}/${kebabCase(topic)}`}>{topic}</Link>
           </SHeadingCaption>
-          <h2><Link to={`/${slug}`}>{title}</Link></h2>
+          <SHeadingLink to={`/${slug}`}>{title}</SHeadingLink>
           <SText>{date}</SText>
         </SFlexColumnContainer>
         <SFlexRowContainer mb="5px">

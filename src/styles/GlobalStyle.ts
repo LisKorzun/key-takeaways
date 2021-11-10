@@ -41,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     h2 {
       font-size: calc(3rem + 1.5vw);
-      font-weight: 200;
+      font-weight: 300;
       margin: 0;
     }
     h3 {
