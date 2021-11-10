@@ -10,7 +10,7 @@ import { LevelCard } from './LevelCard';
 const SLevelsList = styled.div`
   margin-top: 3rem;
   margin-bottom: 5rem;
-  h3 {
+  h2 {
     text-transform: uppercase;
     text-align: center;
     color: ${(props) => props.theme.text};
@@ -53,7 +53,7 @@ export const LevelsList: FC<LevelsListProps> = ({ levels }) => {
 
   return (
     <SLevelsList>
-      <h3>{LABELS.LEVELS}</h3>
+      <h2>{LABELS.LEVELS}</h2>
       <div className="levels">
         {levels.map(({ fieldValue, totalCount }) => {
           const level = find(data, ['id', fieldValue]);

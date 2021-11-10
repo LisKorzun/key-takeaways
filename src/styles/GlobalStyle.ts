@@ -39,10 +39,14 @@ export const GlobalStyle = createGlobalStyle`
       color: ${(props) => props.theme.text};
       margin: 0;
     }
-    h2 {}
-    h3 {
-      font-size: calc(3rem + 1vw);
+    h2 {
+      font-size: calc(3rem + 1.5vw);
       font-weight: 200;
+      margin: 0;
+    }
+    h3 {
+      font-size: calc(2rem + 1vw);
+      font-weight: 300;
       margin: 0;
     }
     

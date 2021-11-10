@@ -66,6 +66,7 @@ const SLayout = styled.div<SLayoutProps>`
     display: flex;
     flex-direction: column;
     z-index: 5;
+    overflow: hidden;
   }
 `;
 

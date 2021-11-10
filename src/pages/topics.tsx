@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 
-import { Layout, Seo, Banner, TopicsList } from '../components';
+import { Layout, Seo, Banner, TopicsList, SCenterSection } from '../components';
 import { IGroupedField, LABELS, ICONS } from '../common';
 
 interface Props {
@@ -15,8 +15,12 @@ interface Props {
 const TopicsPage: FC<Props> = ({ data }) => (
   <Layout>
     <Seo title={LABELS.TOPICS} />
-    <Banner title={LABELS.TOPICS} icon={ICONS.TOPICS} />
-    <TopicsList topics={data.allMdx.group} />
+    <SCenterSection>
+      <Banner title={LABELS.TOPICS} icon={ICONS.TOPICS} />
+    </SCenterSection>
+    <SCenterSection>
+      <TopicsList topics={data.allMdx.group} />
+    </SCenterSection>
   </Layout>
 );
 

@@ -32,10 +32,8 @@ const SLevelCard = styled((props) => <Link {...props} />)`
   border: ${(props) => `0.1rem dashed ${props.theme.text}`};
   color: ${(props) => `${props.theme.text}`};
 
-  & h4 {
+  & h3 {
     margin: 0.5rem 0;
-    font-size: 3rem;
-    font-weight: 400;
   }
 
   & span {
@@ -64,7 +62,7 @@ interface LevelCardProps {
 export const LevelCard: FC<LevelCardProps> = ({ title, count, icon }) => (
   <SLevelCard to={`/levels/${kebabCase(title)}`}>
     <Icon name={icon} width="90px" color="primary" />
-    <h4>{title}</h4>
+    <h3>{title}</h3>
     <span>{getPostsCount(count)}</span>
   </SLevelCard>
 );
