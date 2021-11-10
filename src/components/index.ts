@@ -2,7 +2,7 @@ export * from './Seo';
 export * from './Banner';
 export * from './PostCard';
 export * from './Topic';
-export * from './Level';
+export * from './LevelsList';
 export * from './Title';
 export * from './HeadLine';
 export * from './Icon';

@@ -42,23 +42,3 @@ export const SFlexColumnContainer = styled.div<FlexProps>`
   padding-top: ${(p) => p.pt || 0};
   padding-bottom: ${(p) => p.pb || 0};
 `;
-
-export const SDarkSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 100px;
-  margin-top: 50px;
-  padding-top: 70px;
-  padding-bottom: 70px;
-  background-color: ${(props) => `${props.theme.secondary}`};
-
-  & h3 {
-    text-transform: uppercase;
-    color: ${(props) => props.theme.primary};
-    font-weight: 200;
-    font-size: 40px;
-    margin: 0;
-  }
-`;

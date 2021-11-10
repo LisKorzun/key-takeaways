@@ -22,6 +22,7 @@ const SNavigation = styled.div`
       color: ${(props) => props.theme.background};
       &[aria-current='page'] {
         color: ${(props) => props.theme.primary};
+        font-weight: 700;
       }
       &:hover {
         color: ${(props) => props.theme.primary};
@@ -45,7 +46,7 @@ const SNavigation = styled.div`
         position: absolute;
         display: block;
         width: 45px;
-        height: 6px;
+        height: 4px;
         top: 50%;
         background-color: ${(props) => props.theme.background};
         border-radius: 2px;
