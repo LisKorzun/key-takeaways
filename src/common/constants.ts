@@ -21,9 +21,9 @@ export const LABELS = {
   RECENT: 'Recently published',
   SEE_TOPICS: 'See all topics',
   EXPLORE_TOPICS: 'Explore by Topics',
-  BACK_TO_LEVELS: 'Back to all levels',
-  BACK_TO_TAGS: 'Back to all tags',
-  BACK_TO_TOPICS: 'Back to all topics',
+  BACK_TO_LEVELS: 'See all levels',
+  BACK_TO_TAGS: 'See all tags',
+  BACK_TO_TOPICS: 'See all topics',
   ALL_TOPICS: 'All topics',
   ALL_LEVELS: 'All levels',
 };

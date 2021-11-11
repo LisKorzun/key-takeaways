@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { MARGIN_MEDIUM } from '../styles/sizes';
 import { Icon } from './Icon';
 import { ICONS } from '../common';
 import { device } from '../styles';
@@ -15,23 +14,12 @@ const SHeadLine = styled.div`
   align-items: center;
   position: relative;
   overflow: hidden;
-  margin-bottom: ${MARGIN_MEDIUM}px;
-  @media only screen and ${device.tabletUp} {
-    align-items: flex-end;
-  }
+  margin-bottom: 2rem;
 
-  &::after {
-    background: #fff url(/images/border.png) 1px bottom repeat-x;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: 0;
-    left: 0;
-  }
   h2 {
     text-transform: uppercase;
-    color: ${(props) => props.theme.primary};
+    color: ${(props) => props.theme.accent};
+    opacity: 0.6;
     line-height: 1;
   }
 `;
@@ -42,27 +30,31 @@ const SHeadLineLink = styled((props) => <Link {...props} />)`
   align-items: center;
   opacity: 0.6;
   span {
-    font-size: calc(1rem + 0.7vw);
     display: none;
-    font-weight: 600;
+    font-size: calc(1rem + 0.6vw);
+    font-weight: 400;
+    color: ${(props) => props.theme.accent};
   }
   svg {
     margin-right: 2rem;
     height: calc(2rem + 0.7vw);
+    fill: ${(props) => props.theme.accent};
   }
   &:hover {
-    color: ${(props) => props.theme.accent};
+    span {
+      color: ${(props) => props.theme.primary};
+    }
+    svg {
+      fill: ${(props) => props.theme.primary};
+    }
   }
   @media only screen and ${device.tabletUp} {
     span {
       display: block;
-      font-size: 21px;
-      color: ${(props) => props.theme.accent};
     }
     svg {
       margin-right: 1rem;
       height: 18px;
-      fill: ${(props) => props.theme.accent};
     }
   }
 `;

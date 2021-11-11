@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { SChipLink } from './styled';
 import { IGroupedField, LABELS } from '../common';
+import { device } from '../styles';
 
 interface ChipsByTopicsProps {
   active: string;
@@ -13,7 +14,11 @@ interface ChipsByTopicsProps {
 const SChipsByTopics = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
+  justify-content: center;
+  @media only screen and ${device.tabletUp} {
+    justify-content: flex-start;
+  }
 `;
 export const ChipsByTopics: FC<ChipsByTopicsProps> = ({ topics, active, baseRoute }) => (
   <SChipsByTopics>

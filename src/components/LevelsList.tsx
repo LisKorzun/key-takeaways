@@ -13,9 +13,9 @@ const SLevelsList = styled.div`
   h2 {
     text-transform: uppercase;
     text-align: center;
-    color: ${(props) => props.theme.text};
+    color: ${(props) => props.theme.accent};
     margin-bottom: 5rem;
-    //font-weight: 300;
+    opacity: 0.6;
   }
   .levels {
     display: flex;

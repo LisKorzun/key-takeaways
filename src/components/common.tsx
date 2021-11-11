@@ -2,18 +2,6 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { MARGIN_MEDIUM } from '../styles/sizes';
-
-export const STitleCaption = styled.p`
-  font-size: 16px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-align: start;
-  margin-bottom: ${MARGIN_MEDIUM}px;
-  color: ${(props) => props.theme.primary};
-`;
-
 export const SText = styled.p`
   font-weight: 300;
   font-size: 14px;
