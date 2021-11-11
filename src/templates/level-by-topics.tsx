@@ -2,16 +2,7 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import {
-  Layout,
-  Seo,
-  Title,
-  HeadLine,
-  PostCard,
-  SChipLink,
-  SFlexColumnContainer,
-  SFlexRowContainer,
-} from '../components';
+import { Layout, Seo, Title, HeadLine, ChipsByTopics, PostCard, SCenterSection } from '../components';
 import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
@@ -41,27 +32,16 @@ const LevelByTopic: FC<Props> = ({
   return (
     <Layout>
       <Seo title={`${LABELS.TOPIC} - ${topic} | ${LABELS.LEVEL} - ${title}`} />
-      <Title caption={LABELS.LEVEL} title={title} />
-      <SFlexColumnContainer mb="50px">
-        <SFlexRowContainer mb="50px" wrap="wrap">
-          <SChipLink to={`${ROUTES.LEVELS}/${kebabCase(title)}`}>{LABELS.ALL_TOPICS}</SChipLink>
-          {topics.map(({ fieldValue }) => (
-            <SChipLink
-              key={fieldValue}
-              to={`${ROUTES.LEVELS}/${kebabCase(title)}/${kebabCase(fieldValue)}`}
-              selected={fieldValue === topic}
-            >
-              {fieldValue}
-            </SChipLink>
-          ))}
-        </SFlexRowContainer>
+      <SCenterSection>
+        <Title caption={LABELS.LEVEL} title={title} />
+        <ChipsByTopics topics={topics} active={topic} baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`} />
         <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.LEVELS} label={LABELS.BACK_TO_LEVELS} />
-        <SFlexColumnContainer mb="50px">
+        <div>
           {nodes.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
-        </SFlexColumnContainer>
-      </SFlexColumnContainer>
+        </div>
+      </SCenterSection>
     </Layout>
   );
 };

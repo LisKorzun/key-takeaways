@@ -1,18 +1,9 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import { graphql } from 'gatsby';
+import { kebabCase } from 'lodash';
 
-import {
-  Layout,
-  PostCard,
-  Seo,
-  Title,
-  HeadLine,
-  SFlexColumnContainer,
-  SFlexRowContainer,
-  SChipLink,
-} from '../components';
+import { Layout, PostCard, Seo, Title, HeadLine, ChipsByLevels, SCenterSection } from '../components';
 import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
-import { find, kebabCase } from 'lodash';
 
 interface Props {
   pageContext: {
@@ -36,30 +27,16 @@ const Tag: FC<Props> = ({
 }) => (
   <Layout>
     <Seo title={`${LABELS.TAG} - ${tag}`} />
-    <Title caption={LABELS.TAG} title={tag} />
-    <SFlexColumnContainer mb="50px">
-      <SFlexRowContainer mb="50px" wrap="wrap">
-        <SChipLink to={`${ROUTES.TAGS}/${kebabCase(tag)}`} selected>
-          {LABELS.ALL_LEVELS}
-        </SChipLink>
-        {group.map(({ fieldValue }) => {
-          const level = find(levelsData, ['id', fieldValue]);
-          return (
-            <Fragment key={fieldValue}>
-              {level && (
-                <SChipLink to={`${ROUTES.TAGS}/${kebabCase(tag)}/${kebabCase(level.title)}`}>{level.title}</SChipLink>
-              )}
-            </Fragment>
-          );
-        })}
-      </SFlexRowContainer>
+    <SCenterSection>
+      <Title caption={LABELS.TAG} title={tag} />
+      <ChipsByLevels levels={group} data={levelsData} active="all" baseRoute={`${ROUTES.TAGS}/${kebabCase(tag)}`} />
       <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TAGS} label={LABELS.BACK_TO_TAGS} />
-      <SFlexColumnContainer mb="50px">
+      <div>
         {nodes.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
-      </SFlexColumnContainer>
-    </SFlexColumnContainer>
+      </div>
+    </SCenterSection>
   </Layout>
 );
 

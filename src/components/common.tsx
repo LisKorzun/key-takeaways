@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { MARGIN_MEDIUM, SEPARATOR_HEIGHT } from '../styles/sizes';
+import { MARGIN_MEDIUM } from '../styles/sizes';
 
 export const STitleCaption = styled.p`
   font-size: 16px;
@@ -12,13 +12,6 @@ export const STitleCaption = styled.p`
   text-align: start;
   margin-bottom: ${MARGIN_MEDIUM}px;
   color: ${(props) => props.theme.primary};
-`;
-
-export const SSeparator = styled.div`
-  width: calc(10rem + 2vw);
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  border-bottom: ${(props) => `${SEPARATOR_HEIGHT}px solid ${props.theme.primary}`};
 `;
 
 export const SText = styled.p`
@@ -68,36 +61,6 @@ export const SHeadingCaption = styled.div`
   }
 `;
 
-interface ChipLinkProps {
-  selected?: boolean;
-}
-
-export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
-  padding: 8px 16px;
-  margin-right: 10px;
-  margin-bottom: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  color: ${(props) => props.theme.secondary};
-  border: 1px solid ${(props) => props.theme.border};
-  border-radius: 8px;
-  cursor: pointer;
-  &:hover {
-    background-color: ${(props) => props.theme.border};
-    color: ${(props) => props.theme.secondary};
-  }
-
-  ${({ selected, theme }) =>
-    selected &&
-    `
-    background-color: ${theme.primary};
-    color: ${theme.background};
-    &:hover {
-    background-color: ${theme.primary};
-    color: ${theme.background};
-  }
-  `}
-`;
 
 export const STag = styled.div`
   margin-right: 10px;

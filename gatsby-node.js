@@ -6,7 +6,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const homeTemplate = path.resolve('src/templates/home.tsx');
   const levelTemplate = path.resolve('src/templates/level.tsx');
-  const levelTopicTemplate = path.resolve('src/templates/level-topic.tsx');
+  const levelTopicTemplate = path.resolve('src/templates/level-by-topics.tsx');
   const topicTemplate = path.resolve('src/templates/topic.tsx');
   const topicByLevelsTemplate = path.resolve('src/templates/topic-by-levels.tsx');
   const tagTemplate = path.resolve('src/templates/tag.tsx');

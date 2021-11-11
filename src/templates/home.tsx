@@ -11,10 +11,9 @@ import {
   LevelsList,
   TopicsList,
   SCenterSection,
-  SFullSection, SHeading
+  SFullSection,
+  SHeading,
 } from '../components';
-import styled from 'styled-components';
-import { device } from '../styles';
 
 interface Props {
   pageContext: {
@@ -23,8 +22,6 @@ interface Props {
     topics: IGroupedField[];
   };
 }
-
-
 
 const Home: FC<Props> = ({ pageContext: { levels, posts, topics } }) => (
   <Layout>

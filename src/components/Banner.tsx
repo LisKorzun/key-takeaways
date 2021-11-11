@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { SSeparator } from './common';
-import { device } from '../styles/breakpoints';
+import { SSeparator } from './styled';
+import { device } from '../styles';
 import { Icon } from './Icon';
 
 interface SBannerProps {

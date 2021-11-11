@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
-import { SSeparator, STitleCaption } from './common';
+import { STitleCaption } from './common';
+import { SSeparator } from './styled';
 import { SFlexColumnContainer } from './containers';
 
 interface TitleProps {

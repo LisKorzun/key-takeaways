@@ -1,18 +1,9 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import { graphql } from 'gatsby';
+import { kebabCase } from 'lodash';
 
-import {
-  Layout,
-  PostCard,
-  Seo,
-  Title,
-  HeadLine,
-  SFlexColumnContainer,
-  SFlexRowContainer,
-  SChipLink,
-} from '../components';
+import { Layout, PostCard, Seo, Title, HeadLine, ChipsByLevels, SCenterSection } from '../components';
 import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
-import { find, kebabCase } from 'lodash';
 
 interface Props {
   pageContext: {
@@ -37,33 +28,16 @@ const TagByLevels: FC<Props> = ({
 }) => (
   <Layout>
     <Seo title={`${LABELS.TAG} - ${tag}`} />
-    <Title caption={LABELS.TAG} title={tag} />
-    <SFlexColumnContainer mb="50px">
-      <SFlexRowContainer mb="50px" wrap="wrap">
-        <SChipLink to={`${ROUTES.TAGS}/${kebabCase(tag)}`}>{LABELS.ALL_LEVELS}</SChipLink>
-        {levels.map(({ fieldValue }) => {
-          const levelData = find(levelsData, ['id', fieldValue]);
-          return (
-            <Fragment key={fieldValue}>
-              {levelData && (
-                <SChipLink
-                  to={`${ROUTES.TAGS}/${kebabCase(tag)}/${kebabCase(levelData.title)}`}
-                  selected={fieldValue === level}
-                >
-                  {levelData.title}
-                </SChipLink>
-              )}
-            </Fragment>
-          );
-        })}
-      </SFlexRowContainer>
+    <SCenterSection>
+      <Title caption={LABELS.TAG} title={tag} />
+      <ChipsByLevels levels={levels} data={levelsData} active={level} baseRoute={`${ROUTES.TAGS}/${kebabCase(tag)}`} />
       <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TAGS} label={LABELS.BACK_TO_TAGS} />
-      <SFlexColumnContainer mb="50px">
+      <div>
         {nodes.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
-      </SFlexColumnContainer>
-    </SFlexColumnContainer>
+      </div>
+    </SCenterSection>
   </Layout>
 );
 

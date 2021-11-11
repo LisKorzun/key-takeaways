@@ -11,6 +11,7 @@ import {
   SFlexColumnContainer,
   STagChipLink,
   STagLetter,
+  SCenterSection,
 } from '../components';
 import { groupByLetter, IGroupedField, LABELS, ROUTES, ICONS } from '../common';
 
@@ -28,23 +29,25 @@ const TagsPage: FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Seo title={LABELS.TAGS} />
-      <Banner title={LABELS.TAGS} icon={ICONS.TAG} rotateIcon/>
-      <SFlexColumnContainer>
-        {groups.map(({ tags, letter }) => (
-          <SFlexRowContainer key={letter} mb="50px">
-            <STagLetter>{letter}</STagLetter>
-            <SFlexRowContainer wrap="wrap">
-              {tags.map(({ fieldValue, totalCount }) => (
-                <STagChipLink key={fieldValue} to={`${ROUTES.TAGS}/${kebabCase(fieldValue)}`}>
-                  <Icon name={ICONS.TAG} height="14px" color="secondary" />
-                  {fieldValue}
-                  <span>{totalCount}</span>
-                </STagChipLink>
-              ))}
+      <SCenterSection>
+        <Banner title={LABELS.TAGS} icon={ICONS.TAG} rotateIcon />
+        <SFlexColumnContainer>
+          {groups.map(({ tags, letter }) => (
+            <SFlexRowContainer key={letter} mb="50px">
+              <STagLetter>{letter}</STagLetter>
+              <SFlexRowContainer wrap="wrap">
+                {tags.map(({ fieldValue, totalCount }) => (
+                  <STagChipLink key={fieldValue} to={`${ROUTES.TAGS}/${kebabCase(fieldValue)}`}>
+                    <Icon name={ICONS.TAG} height="14px" color="secondary" />
+                    {fieldValue}
+                    <span>{totalCount}</span>
+                  </STagChipLink>
+                ))}
+              </SFlexRowContainer>
             </SFlexRowContainer>
-          </SFlexRowContainer>
-        ))}
-      </SFlexColumnContainer>
+          ))}
+        </SFlexColumnContainer>
+      </SCenterSection>
     </Layout>
   );
 };

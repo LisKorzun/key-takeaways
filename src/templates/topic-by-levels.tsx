@@ -1,18 +1,9 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 
-import {
-  Layout,
-  PostCard,
-  Seo,
-  Title,
-  HeadLine,
-  SFlexColumnContainer,
-  SFlexRowContainer,
-  SChipLink,
-} from '../components';
+import { Layout, Seo, Title, HeadLine, ChipsByLevels, PostCard, SCenterSection } from '../components';
 import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
-import { find, kebabCase } from 'lodash';
+import { kebabCase } from 'lodash';
 
 interface Props {
   pageContext: {
@@ -37,33 +28,21 @@ const TopicByLevels: FC<Props> = ({
 }) => (
   <Layout>
     <Seo title={`${LABELS.TOPIC} - ${topic}`} />
-    <Title caption={LABELS.TOPIC} title={topic} />
-    <SFlexColumnContainer mb="50px">
-      <SFlexRowContainer mb="50px" wrap="wrap">
-        <SChipLink to={`${ROUTES.TOPICS}/${kebabCase(topic)}`}>{LABELS.ALL_LEVELS}</SChipLink>
-        {levels.map(({ fieldValue }) => {
-          const levelData = find(levelsData, ['id', fieldValue]);
-          return (
-            <Fragment key={fieldValue}>
-              {levelData && (
-                <SChipLink
-                  to={`${ROUTES.TOPICS}/${kebabCase(topic)}/${kebabCase(levelData.title)}`}
-                  selected={fieldValue === level}
-                >
-                  {levelData.title}
-                </SChipLink>
-              )}
-            </Fragment>
-          );
-        })}
-      </SFlexRowContainer>
+    <SCenterSection>
+      <Title caption={LABELS.TOPIC} title={topic} />
+      <ChipsByLevels
+        levels={levels}
+        data={levelsData}
+        active={level}
+        baseRoute={`${ROUTES.TOPICS}/${kebabCase(topic)}`}
+      />
       <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TOPICS} label={LABELS.BACK_TO_TOPICS} />
-      <SFlexColumnContainer mb="50px">
+      <div>
         {nodes.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
-      </SFlexColumnContainer>
-    </SFlexColumnContainer>
+      </div>
+    </SCenterSection>
   </Layout>
 );
 
