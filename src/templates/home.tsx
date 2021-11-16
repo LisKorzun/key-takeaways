@@ -7,7 +7,7 @@ import {
   Seo,
   Banner,
   HeadLine,
-  PostCard,
+  PostsList,
   LevelsList,
   TopicsList,
   SCenterSection,
@@ -38,11 +38,7 @@ const Home: FC<Props> = ({ pageContext: { levels, posts, topics } }) => (
     </SCenterSection>
     <SCenterSection>
       <SHeading>{LABELS.RECENT}</SHeading>
-      <div>
-        {take(posts, 5).map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
-      </div>
+      <PostsList posts={take(posts, 5)} />
     </SCenterSection>
   </Layout>
 );

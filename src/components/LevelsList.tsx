@@ -15,7 +15,6 @@ const SLevelsList = styled.div`
     text-align: center;
     color: ${(props) => props.theme.accent};
     margin-bottom: 5rem;
-    opacity: 0.6;
   }
   .levels {
     display: flex;

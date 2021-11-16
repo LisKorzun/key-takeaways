@@ -1,6 +1,7 @@
 export * from './Seo';
 export * from './Banner';
 export * from './PostCard';
+export * from './PostsList';
 export * from './TopicsList';
 export * from './ChipsByLevels';
 export * from './ChipsByTopics';

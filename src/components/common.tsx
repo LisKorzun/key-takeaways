@@ -7,6 +7,7 @@ export const SText = styled.p`
   font-size: 14px;
   color: ${(props) => props.theme.text};
   margin: 0;
+  margin-bottom: 1rem;
 `;
 
 export const SHeadingLink = styled((props) => <Link {...props} />)`

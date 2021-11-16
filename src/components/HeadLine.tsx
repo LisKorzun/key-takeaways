@@ -19,7 +19,6 @@ const SHeadLine = styled.div`
   h2 {
     text-transform: uppercase;
     color: ${(props) => props.theme.accent};
-    opacity: 0.6;
     line-height: 1;
   }
 `;
@@ -28,7 +27,6 @@ const SHeadLineLink = styled((props) => <Link {...props} />)`
   color: ${(props) => props.theme.text};
   display: flex;
   align-items: center;
-  opacity: 0.6;
   span {
     display: none;
     font-size: calc(1rem + 0.6vw);

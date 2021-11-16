@@ -1,23 +1,41 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
-import { SHeadingCaption, SText, STag, SHeadingLink } from './common';
-import { SFlexColumnContainer, SFlexRowContainer } from './containers';
-import { Icon } from './Icon';
-import { IPost, ROUTES } from '../common';
-import { kebabCase } from 'lodash';
+import { IPost } from '../common';
+import { PostCardHeading } from './PostCardHeading';
 
 const SPostImage = styled((props) => <GatsbyImage {...props} />)`
-  height: 150px;
-  width: 250px;
-  max-width: 250px;
-  min-width: 250px;
+  height: 15rem;
+  width: 15rem;
+  min-width: 15rem;
   object-fit: cover;
-  border-radius: 8px;
-  margin-right: 30px;
+  border-radius: 1rem;
   object-position: center;
+  overflow: hidden;
+  margin-right: 2rem;
+  //border: solid 0.8rem ${(props) => props.theme.accent};
+  transform: scale(0.84) translateX(15%) rotateZ(calc(-1 * (11 * 1deg)));
+  transform-origin: 0 100%;
+  transition: transform 0.2s ease-out;
+  position: relative;
+  &::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: ${(props) => props.theme.accent};
+    opacity: .3;
+  }
+`;
+
+const SPostCard = styled.div`
+  display: flex;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  justify-content: space-between;
 `;
 
 interface Props {
@@ -33,27 +51,9 @@ export const PostCard: FC<Props> = ({ post }) => {
   const icon = `Level-${level}`;
 
   return (
-    <SFlexRowContainer pt="15px" pb="15px">
+    <SPostCard>
       <SPostImage image={image} alt="" />
-      <SFlexColumnContainer jc="space-between">
-        <SFlexColumnContainer>
-          <SHeadingCaption>
-            <Icon name={icon} width="70px" color="primary" />
-            <span>/</span>
-            <Link to={`${ROUTES.TOPICS}/${kebabCase(topic)}`}>{topic}</Link>
-          </SHeadingCaption>
-          <SHeadingLink to={`/${slug}`}>{title}</SHeadingLink>
-          <SText>{date}</SText>
-        </SFlexColumnContainer>
-        <SFlexRowContainer mb="5px">
-          {tags.map((tag) => (
-            <STag key={tag}>
-              <Icon name="tag" height="10px" color="text" />
-              <span>{tag}</span>
-            </STag>
-          ))}
-        </SFlexRowContainer>
-      </SFlexColumnContainer>
-    </SFlexRowContainer>
+      <PostCardHeading level={icon} topic={topic} title={title} slug={slug} date={date} tags={tags} />
+    </SPostCard>
   );
 };
