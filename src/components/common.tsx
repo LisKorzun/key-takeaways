@@ -4,10 +4,9 @@ import styled from 'styled-components';
 
 export const SText = styled.p`
   font-weight: 300;
-  font-size: 14px;
-  color: ${(props) => props.theme.text};
-  margin: 0;
-  margin-bottom: 1rem;
+  font-size: 15px;
+  color: ${(props) => props.theme.accent};
+  margin-bottom: 2rem;
 `;
 
 export const SHeadingLink = styled((props) => <Link {...props} />)`

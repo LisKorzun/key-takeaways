@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Layout, PostCard, Seo, Title, HeadLine, ChipsByLevels, SCenterSection } from '../components';
+import { Layout, Seo, Title, HeadLine, ChipsByLevels, SCenterSection, PostsList } from '../components';
 import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
@@ -32,11 +32,7 @@ const TagByLevels: FC<Props> = ({
       <Title caption={LABELS.TAG} title={tag} />
       <ChipsByLevels levels={levels} data={levelsData} active={level} baseRoute={`${ROUTES.TAGS}/${kebabCase(tag)}`} />
       <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TAGS} label={LABELS.BACK_TO_TAGS} />
-      <div>
-        {nodes.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
-      </div>
+      <PostsList posts={nodes} />
     </SCenterSection>
   </Layout>
 );

@@ -12,6 +12,9 @@ const SPostCardHeading = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  padding-right: 10%;
+  padding-left: 10%;
+  justify-content: center;
 `;
 
 interface PostCardHeadingProps {
@@ -31,7 +34,7 @@ export const PostCardHeading: FC<PostCardHeadingProps> = ({ level, topic, title,
       <Link to={`${ROUTES.TOPICS}/${kebabCase(topic)}`}>{topic}</Link>
     </SHeadingCaption>
     <SHeadingLink to={`/${slug}`}>{title}</SHeadingLink>
-    <SText>{date}</SText>
+    <SText>{date} | 5 min read</SText>
     <SFlexRowContainer mb="5px">
       {tags.map((tag) => (
         <STag key={tag}>
