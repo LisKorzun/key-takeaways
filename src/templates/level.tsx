@@ -31,7 +31,7 @@ const Level: FC<Props> = ({
     <SCenterSection>
       <Title caption={LABELS.LEVEL} title={title} />
       <ChipsByTopics topics={group} active="all" baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`} />
-      <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.LEVELS} label={LABELS.BACK_TO_LEVELS} />
+      {/*<HeadLine heading={getPostsCount(totalCount)} link={ROUTES.LEVELS} label={LABELS.BACK_TO_LEVELS} />*/}
       <PostsList posts={nodes} />
     </SCenterSection>
   </Layout>
