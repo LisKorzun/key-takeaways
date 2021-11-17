@@ -10,40 +10,40 @@ const SPostImage = styled((props) => <GatsbyImage {...props} />)`
   width: 30rem;
   min-width: 30rem;
   object-fit: cover;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   object-position: center;
   overflow: hidden;
-  margin-right: 2rem;
-  //border: solid 0.8rem ${(props) => props.theme.accent};
-  //transform: scale(0.84) translateX(15%) rotateZ(calc(-1 * (11 * 1deg)));
-  //transform-origin: 0 100%;
-  //transition: transform 0.2s ease-out;
   position: relative;
-  // &::after{
-  //   content: "";
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   background: ${(props) => props.theme.accent};
-  //   opacity: .3;
-  // }
 `;
-
 const SPostCard = styled.div`
   display: flex;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   justify-content: space-between;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  &::before {
+    display: none;
+    background-color: ${(props) => props.theme.accent};
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -50%;
+    width: 200%;
+    height: 160%;
+    z-index: -1;
+    opacity: 0.1;
+    overflow-x: hidden;
+    border-radius: 0.8rem;
+  }
 `;
 
 interface Props {
   post: IPost;
-  right: boolean;
 }
 
-export const PostCard: FC<Props> = ({ post, right }) => {
+export const PostCard: FC<Props> = ({ post }) => {
   const {
     slug,
     frontmatter: { hero_image, topic, title, date, tags, level },
@@ -53,9 +53,8 @@ export const PostCard: FC<Props> = ({ post, right }) => {
 
   return (
     <SPostCard>
-      {!right && <SPostImage image={image} alt="" />}
+      <SPostImage image={image} alt="" />
       <PostCardHeading level={icon} topic={topic} title={title} slug={slug} date={date} tags={tags} />
-      {right && <SPostImage image={image} alt="" />}
     </SPostCard>
   );
 };

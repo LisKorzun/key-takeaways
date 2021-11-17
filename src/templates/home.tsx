@@ -1,18 +1,17 @@
 import React, { FC } from 'react';
 import { take } from 'lodash';
 
-import { ICONS, IGroupedField, IPost, LABELS, ROUTES } from '../common';
+import { ICONS, IGroupedField, IPost, LABELS } from '../common';
 import {
   Layout,
   Seo,
   Banner,
-  HeadLine,
   PostsList,
   LevelsList,
   TopicsList,
   SCenterSection,
   SFullSection,
-  SHeading,
+  SHeading, FeaturedList
 } from '../components';
 
 interface Props {
@@ -31,14 +30,15 @@ const Home: FC<Props> = ({ pageContext: { levels, posts, topics } }) => (
     </SCenterSection>
     <SFullSection>
       <LevelsList levels={levels} />
+      <FeaturedList posts={take(posts, 4)} />
     </SFullSection>
-    <SCenterSection>
-      <HeadLine heading={LABELS.EXPLORE_TOPICS} link={ROUTES.TOPICS} label={LABELS.SEE_TOPICS} />
+    <SCenterSection background>
+      <SHeading>{LABELS.EXPLORE_TOPICS}</SHeading>
       <TopicsList topics={topics} />
     </SCenterSection>
     <SCenterSection>
       <SHeading>{LABELS.RECENT}</SHeading>
-      <PostsList posts={take(posts, 5)} />
+      <PostsList posts={take(posts, 11)} />
     </SCenterSection>
   </Layout>
 );

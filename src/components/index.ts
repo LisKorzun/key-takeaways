@@ -6,6 +6,7 @@ export * from './TopicsList';
 export * from './ChipsByLevels';
 export * from './ChipsByTopics';
 export * from './LevelsList';
+export * from './FeaturedList';
 export * from './Title';
 export * from './HeadLine';
 export * from './Icon';

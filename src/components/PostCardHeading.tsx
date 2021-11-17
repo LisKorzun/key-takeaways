@@ -8,6 +8,7 @@ import { Icon } from './Icon';
 import { ROUTES } from '../common';
 import { SFlexRowContainer } from './containers';
 
+
 const SPostCardHeading = styled.div`
   display: flex;
   flex-direction: column;

@@ -34,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
   
     h1 {
       font-family: 'Architects Daughter';
+      font-weight: 700;
       font-size: calc(3rem + 3vw);
       text-transform: capitalize;
       color: ${(props) => props.theme.text};

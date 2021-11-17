@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import { kebabCase } from 'lodash';
 import styled from 'styled-components';
 
-
 import { Icon } from './Icon';
 import { getPostsCount } from '../common';
 import { device } from '../styles';
@@ -12,28 +11,23 @@ const SLevelCard = styled((props) => <Link {...props} />)`
   padding-top: 5rem;
   padding-left: 2rem;
   min-width: 90%;
-  @media only screen and ${device.mobileUp} {
-    min-width: 80%;
-  }
-  @media only screen and ${device.tabletUp} {
-    min-width: 40%;
-  }
-  @media only screen and ${device.laptopUp} {
-    min-width: 40%;
-  }
-  @media only screen and ${device.desktopUp} {
-    min-width: 30%;
-  }
-
+  background-color: ${(props) => `${props.theme.background}`};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 0.3rem;
-  border: ${(props) => `0.1rem dashed ${props.theme.accent}`};
+  border-radius: 0.8rem;
   color: ${(props) => `${props.theme.text}`};
+  border: 1px solid ${(props) => `${props.theme.background}`};
+  transition: transform 0.2s ease-in-out;
+  @media only screen and ${device.mobileUp} {
+    min-width: 40%;
+  }
 
   & h3 {
     margin: 0.5rem 0;
+    font-size: 23px;
+    font-weight: 300;
+    color: ${(props) => `${props.theme.accent}`};
   }
 
   & span {
@@ -44,13 +38,13 @@ const SLevelCard = styled((props) => <Link {...props} />)`
     padding: 0.7rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    margin-right: -0.2rem;
+    margin-right: -0.1rem;
     line-height: 1;
     color: ${(props) => `${props.theme.background}`};
     background-color: ${(props) => `${props.theme.text}`};
   }
   &:hover {
-    border-color: ${(props) => `${props.theme.primary}`};
+    transform: scale(1.03);
   }
 `;
 

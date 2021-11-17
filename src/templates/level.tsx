@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Layout, Seo, Title, HeadLine, ChipsByTopics, SCenterSection, PostsList } from '../components';
-import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
+import { Layout, Seo, Title, ChipsByTopics, SCenterSection, PostsList } from '../components';
+import { IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
   pageContext: {
@@ -23,7 +23,7 @@ const Level: FC<Props> = ({
     levelData: { title },
   },
   data: {
-    allMdx: { totalCount, nodes, group },
+    allMdx: { nodes, group },
   },
 }) => (
   <Layout>
@@ -31,7 +31,6 @@ const Level: FC<Props> = ({
     <SCenterSection>
       <Title caption={LABELS.LEVEL} title={title} />
       <ChipsByTopics topics={group} active="all" baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`} />
-      {/*<HeadLine heading={getPostsCount(totalCount)} link={ROUTES.LEVELS} label={LABELS.BACK_TO_LEVELS} />*/}
       <PostsList posts={nodes} />
     </SCenterSection>
   </Layout>

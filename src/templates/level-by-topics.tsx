@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Layout, Seo, Title, HeadLine, ChipsByTopics, SCenterSection, PostsList } from '../components';
-import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
+import { Layout, Seo, Title, ChipsByTopics, SCenterSection, PostsList } from '../components';
+import { IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
   pageContext: {
@@ -26,7 +26,7 @@ const LevelByTopic: FC<Props> = ({
     levelData: { title },
   },
   data: {
-    allMdx: { totalCount, nodes },
+    allMdx: { nodes },
   },
 }) => {
   return (

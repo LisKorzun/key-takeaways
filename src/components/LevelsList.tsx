@@ -6,23 +6,34 @@ import styled from 'styled-components';
 import { IGroupedField, ILevelData, LABELS } from '../common';
 import { device } from '../styles';
 import { LevelCard } from './LevelCard';
+import { SHeading } from './styled';
 
 const SLevelsList = styled.div`
-  margin-top: 3rem;
-  margin-bottom: 5rem;
-  h2 {
-    text-transform: uppercase;
-    text-align: center;
-    color: ${(props) => props.theme.accent};
-    margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 90vw;
+  margin: 3rem auto 5rem;
+  @media only screen and ${device.mobileUp} {
+    max-width: 85vw;
+  }
+
+  @media only screen and ${device.tabletUp} {
+    max-width: 80vw;
+  }
+  @media only screen and ${device.laptopUp} {
+    width: 60%;
+    max-width: 50vw;
   }
   .levels {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 3rem;
-    @media only screen and ${device.laptopUp} {
+    gap: 2rem;
+    width: 100%;
+    @media only screen and ${device.tabletUp} {
       gap: 5rem;
     }
   }
@@ -52,7 +63,7 @@ export const LevelsList: FC<LevelsListProps> = ({ levels }) => {
 
   return (
     <SLevelsList>
-      <h2>{LABELS.LEVELS}</h2>
+      <SHeading>{LABELS.LEVELS}</SHeading>
       <div className="levels">
         {levels.map(({ fieldValue, totalCount }) => {
           const level = find(data, ['id', fieldValue]);
