@@ -18,7 +18,7 @@ const TopicsPage: FC<Props> = ({ data }) => (
     <SCenterSection>
       <Banner title={LABELS.TOPICS} icon={ICONS.TOPICS} />
     </SCenterSection>
-    <SCenterSection>
+    <SCenterSection background>
       <TopicsList topics={data.allMdx.group} />
     </SCenterSection>
   </Layout>
