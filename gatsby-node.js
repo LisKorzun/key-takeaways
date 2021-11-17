@@ -6,7 +6,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const homeTemplate = path.resolve('src/templates/home.tsx');
   const levelTemplate = path.resolve('src/templates/level.tsx');
-  const levelTopicTemplate = path.resolve('src/templates/level-by-topics.tsx');
   const topicTemplate = path.resolve('src/templates/topic.tsx');
   const topicByLevelsTemplate = path.resolve('src/templates/topic-by-levels.tsx');
   const tagTemplate = path.resolve('src/templates/tag.tsx');
@@ -102,6 +101,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: {
         levelData,
         level: level.fieldValue,
+        topic: 'all',
+        topics: level.group,
+        filter: { level: { eq: level.fieldValue } },
       },
     });
     level.group.forEach((topic) => {
@@ -109,12 +111,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
       createPage({
         path: `${levelURL}${topicURL}`,
-        component: levelTopicTemplate,
+        component: levelTemplate,
         context: {
           levelData,
           level: level.fieldValue,
           topic: topic.fieldValue,
           topics: level.group,
+          filter: { level: { eq: level.fieldValue }, topic: { eq: topic.fieldValue } },
         },
       });
     });

@@ -23,7 +23,7 @@ const SChipsByTopics = styled.div`
 export const ChipsByTopics: FC<ChipsByTopicsProps> = ({ topics, active, baseRoute }) => (
   <SChipsByTopics>
     <SChipLink to={baseRoute} selected={active === 'all'}>
-      {LABELS.ALL_LEVELS}
+      {LABELS.ALL_TOPICS}
     </SChipLink>
     {topics.map(({ fieldValue }) => (
       <SChipLink key={fieldValue} to={`${baseRoute}/${kebabCase(fieldValue)}`} selected={fieldValue === active}>

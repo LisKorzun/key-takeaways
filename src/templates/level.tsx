@@ -2,57 +2,54 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Layout, Seo, Title, ChipsByTopics, SCenterSection, PostsList } from '../components';
+import { Layout, Seo, Title, ChipsByTopics, PostsList, SCenterSection } from '../components';
 import { IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
   pageContext: {
+    topic: string;
+    topics: IGroupedField[];
     levelData: ILevelData;
   };
   data: {
     allMdx: {
       totalCount: number;
       nodes: IPost[];
-      group: IGroupedField[];
     };
   };
 }
 
-const Level: FC<Props> = ({
+const LevelByTopic: FC<Props> = ({
   pageContext: {
+    topic,
+    topics,
     levelData: { title },
   },
   data: {
-    allMdx: { nodes, group },
+    allMdx: { nodes },
   },
-}) => (
-  <Layout>
-    <Seo title={`${LABELS.LEVEL} - ${title}`} />
-    <SCenterSection>
-      <Title caption={LABELS.LEVEL} title={title} />
-      <ChipsByTopics topics={group} active="all" baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`} />
-      <PostsList posts={nodes} />
-    </SCenterSection>
-  </Layout>
-);
+}) => {
+  return (
+    <Layout>
+      <Seo title={`${LABELS.TOPIC} - ${topic} | ${LABELS.LEVEL} - ${title}`} />
+      <SCenterSection>
+        <Title caption={LABELS.LEVEL} title={title} />
+        <ChipsByTopics topics={topics} active={topic} baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`} />
+        <PostsList posts={nodes} />
+      </SCenterSection>
+    </Layout>
+  );
+};
 
 export const pageQuery = graphql`
-  query ($level: String) {
-    allMdx(
-      filter: { frontmatter: { level: { eq: $level } } }
-      sort: { fields: frontmatter___date, order: DESC }
-      limit: 2000
-    ) {
+  query ($filter: MdxFrontmatterFilterInput) {
+    allMdx(filter: { frontmatter: $filter }, sort: { fields: frontmatter___date, order: DESC }, limit: 2000) {
       totalCount
       nodes {
         ...postFields
-      }
-      group(field: frontmatter___topic) {
-        fieldValue
-        totalCount
       }
     }
   }
 `;
 
-export default Level;
+export default LevelByTopic;
