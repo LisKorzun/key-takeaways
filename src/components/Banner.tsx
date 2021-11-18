@@ -32,6 +32,7 @@ const SBanner = styled.div<SBannerProps>`
     grid-template-rows: min-content;
     & svg {
       position: static;
+      margin-right: -15vw;
     }
   }
 `;

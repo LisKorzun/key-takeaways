@@ -5,11 +5,11 @@ const gatsbyRequiredRules = path.join(process.cwd(), 'node_modules', 'gatsby', '
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://keytakeaways.gatsbyjs.io',
-    title: 'Key Takeaways | JS, TS, React',
+    title: 'JS, TS, React Cheat Sheets Series',
     author: {
       name: 'Alesia Korzun',
     },
-    description: 'Key Takeaways: all you need!',
+    description: 'JS, TS, React Cheat Sheets: all you need!',
     levels: [
       { id: '0', title: 'Easier Than Easy', icon: 'Level-0' },
       { id: '1', title: 'Beginner', icon: 'Level-1' },
