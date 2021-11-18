@@ -10,12 +10,18 @@ interface ChipLinkProps {
 export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   font-size: 1.4rem;
   font-weight: 600;
-  line-height: 1.2;
-  padding: 0.7rem 4.5rem 0.7rem 1.4rem;
+  text-transform: uppercase;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  min-height: 3.6rem;
+  padding-top: 0.3rem;
+  padding-right: 4.5rem;
+  padding-left: 1.4rem;
   margin-right: 1rem;
   margin-bottom: 0.8rem;
   color: ${({ theme }) => theme.text};
-  border: 0.2rem solid ${({ theme }) => theme.accent};
+  border: 0.3rem solid ${({ theme }) => theme.accent};
   border-radius: 1.6rem;
   cursor: pointer;
   position: relative;
@@ -25,23 +31,20 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   }
   span {
     font-size: 1.3rem;
+    padding-top: 0.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 0.1rem;
     position: absolute;
     right: 0.3rem;
-    top: 0.3rem;
-    width: 2.4rem;
-    height: 2.4rem;
-    color: ${({ theme }) => theme.secondary};
-    background-color: ${({ theme }) => theme.border};
+    top: 0.2rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.background};
     border-radius: 50%;
   }
-  svg {
-    margin-right: 0.6rem;
-  }
-
+ 
   ${({ selected, theme }) =>
     selected &&
     `

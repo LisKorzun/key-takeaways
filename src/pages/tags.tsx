@@ -1,21 +1,15 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
+import styled from 'styled-components';
 
-import {
-  Layout,
-  Seo,
-  Banner,
-  Icon,
-  SFlexRowContainer,
-  SFlexColumnContainer,
-  STagChipLink,
-  STagLetter,
-  SCenterSection,
-  SChipLink,
-  SChips,
-} from '../components';
-import { groupByLetter, IGroupedField, LABELS, ROUTES, ICONS } from '../common';
+import { Layout, Seo, SBigChar, SCenterSection, SChipLink, SChips } from '../components';
+import { groupByLetter, IGroupedField, LABELS, ROUTES } from '../common';
+
+const STagLine = styled.div`
+  display: flex;
+  margin-bottom: 5rem;
+`;
 
 interface Props {
   data: {
@@ -34,18 +28,17 @@ const TagsPage: FC<Props> = ({ data }) => {
       <SCenterSection background>
         <div>
           {groups.map(({ tags, letter }) => (
-            <SFlexRowContainer key={letter} mb="50px">
-              <STagLetter>{letter}</STagLetter>
+            <STagLine key={letter}>
+              <SBigChar>{letter}</SBigChar>
               <SChips>
                 {tags.map(({ fieldValue, totalCount }) => (
                   <SChipLink key={fieldValue} to={`${ROUTES.TAGS}/${kebabCase(fieldValue)}`}>
-                    <Icon name={ICONS.TAG} height="14px" color="secondary" />
                     {fieldValue}
                     <span>{totalCount}</span>
                   </SChipLink>
                 ))}
               </SChips>
-            </SFlexRowContainer>
+            </STagLine>
           ))}
         </div>
       </SCenterSection>

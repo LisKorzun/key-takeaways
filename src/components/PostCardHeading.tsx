@@ -6,8 +6,6 @@ import styled from 'styled-components';
 import { SHeadingCaption, SHeadingLink, STag, SText } from './common';
 import { Icon } from './Icon';
 import { ROUTES } from '../common';
-import { SFlexRowContainer } from './containers';
-
 
 const SPostCardHeading = styled.div`
   display: flex;
@@ -36,13 +34,13 @@ export const PostCardHeading: FC<PostCardHeadingProps> = ({ level, topic, title,
     </SHeadingCaption>
     <SHeadingLink to={`/${slug}`}>{title}</SHeadingLink>
     <SText>{date} | 5 min read</SText>
-    <SFlexRowContainer mb="5px">
+    <div>
       {tags.map((tag) => (
         <STag key={tag}>
           <Icon name="tag" height="10px" color="text" />
           <span>{tag}</span>
         </STag>
       ))}
-    </SFlexRowContainer>
+    </div>
   </SPostCardHeading>
 );
