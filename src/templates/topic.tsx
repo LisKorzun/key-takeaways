@@ -1,55 +1,58 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
-
-import { Layout, Seo, Title, HeadLine, ChipsByLevels, SCenterSection, PostsList } from '../components';
-import { getPostsCount, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 import { kebabCase } from 'lodash';
+
+import { Layout, Seo, Title, ChipsByLevels, PostsList, SCenterSection } from '../components';
+import { IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
   pageContext: {
     topic: string;
+    level: string;
     levelsData: ILevelData[];
+    levels: IGroupedField[];
+    total: number;
   };
   data: {
     allMdx: {
       nodes: IPost[];
-      totalCount: number;
-      group: IGroupedField[];
     };
   };
 }
 
 const Topic: FC<Props> = ({
-  pageContext: { topic, levelsData },
+  pageContext: { topic, levelsData, levels, level, total },
   data: {
-    allMdx: { nodes, totalCount, group },
+    allMdx: { nodes },
   },
 }) => (
   <Layout>
-    <Seo title={`${LABELS.TOPIC} - ${topic}`} />
+    <Seo title={topic} />
     <SCenterSection>
       <Title caption={LABELS.TOPIC} title={topic} />
-      <ChipsByLevels levels={group} data={levelsData} active="all" baseRoute={`${ROUTES.TOPICS}/${kebabCase(topic)}`} />
-      <HeadLine heading={getPostsCount(totalCount)} link={ROUTES.TOPICS} label={LABELS.BACK_TO_TOPICS} />
+      <ChipsByLevels
+        levels={levels}
+        data={levelsData}
+        active={level}
+        baseRoute={`${ROUTES.TOPICS}/${kebabCase(topic)}`}
+        total={total}
+      />
       <PostsList posts={nodes} />
     </SCenterSection>
   </Layout>
 );
 
 export const pageQuery = graphql`
-  query ($topic: String) {
+  query ($filter: MdxFrontmatterFilterInput, $skip: Int!, $limit: Int!) {
     allMdx(
-      filter: { frontmatter: { topic: { eq: $topic } } }
+      filter: { frontmatter: $filter }
       sort: { fields: frontmatter___date, order: DESC }
-      limit: 2000
+      limit: $limit
+      skip: $skip
     ) {
       totalCount
       nodes {
         ...postFields
-      }
-      group(field: frontmatter___level) {
-        fieldValue
-        totalCount
       }
     }
   }

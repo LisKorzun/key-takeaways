@@ -6,12 +6,6 @@ import { SChipLink } from './styled';
 import { IGroupedField, ILevelData, LABELS } from '../common';
 import { device } from '../styles';
 
-interface ChipsByLevelsProps {
-  active: string;
-  baseRoute: string;
-  data: ILevelData[];
-  levels: IGroupedField[];
-}
 const SChipsByLevels = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -21,18 +15,28 @@ const SChipsByLevels = styled.div`
     justify-content: flex-start;
   }
 `;
-export const ChipsByLevels: FC<ChipsByLevelsProps> = ({ levels, active, data, baseRoute }) => (
+
+interface ChipsByLevelsProps {
+  active: string;
+  baseRoute: string;
+  data: ILevelData[];
+  levels: IGroupedField[];
+  total: number;
+}
+export const ChipsByLevels: FC<ChipsByLevelsProps> = ({ levels, active, data, baseRoute, total }) => (
   <SChipsByLevels>
     <SChipLink to={baseRoute} selected={active === 'all'}>
       {LABELS.ALL_LEVELS}
+      <span>{total}</span>
     </SChipLink>
-    {levels.map(({ fieldValue }) => {
+    {levels.map(({ fieldValue, totalCount }) => {
       const level = find(data, ['id', fieldValue]);
       return (
         <Fragment key={fieldValue}>
           {level && (
             <SChipLink to={`${baseRoute}/${kebabCase(level.title)}`} selected={fieldValue === active}>
               {level.title}
+              <span>{totalCount}</span>
             </SChipLink>
           )}
         </Fragment>

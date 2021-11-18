@@ -11,7 +11,8 @@ import {
   TopicsList,
   SCenterSection,
   SFullSection,
-  SHeading, FeaturedList
+  SHeading,
+  FeaturedList,
 } from '../components';
 
 interface Props {
@@ -32,10 +33,7 @@ const Home: FC<Props> = ({ pageContext: { levels, posts, topics } }) => (
       <LevelsList levels={levels} />
       <FeaturedList posts={take(posts, 4)} />
     </SFullSection>
-    <SCenterSection background>
-      <SHeading>{LABELS.EXPLORE_TOPICS}</SHeading>
-      <TopicsList topics={topics} />
-    </SCenterSection>
+    <TopicsList topics={topics} />
     <SCenterSection>
       <SHeading>{LABELS.RECENT}</SHeading>
       <PostsList posts={take(posts, 11)} />

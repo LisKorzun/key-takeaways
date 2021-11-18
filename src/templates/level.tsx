@@ -19,7 +19,7 @@ interface Props {
   };
 }
 
-const LevelByTopic: FC<Props> = ({
+const Level: FC<Props> = ({
   pageContext: {
     topic,
     topics,
@@ -62,4 +62,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default LevelByTopic;
+export default Level;
