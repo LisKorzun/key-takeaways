@@ -18,7 +18,6 @@ const SLevelsList = styled.div`
   @media only screen and ${device.mobileUp} {
     max-width: 85vw;
   }
-
   @media only screen and ${device.tabletUp} {
     max-width: 80vw;
   }
@@ -26,6 +25,7 @@ const SLevelsList = styled.div`
     width: 60%;
     max-width: 50vw;
   }
+
   .levels {
     display: flex;
     align-items: center;
@@ -63,7 +63,7 @@ export const LevelsList: FC<LevelsListProps> = ({ levels }) => {
 
   return (
     <SLevelsList>
-      <SHeading>{LABELS.LEVELS}</SHeading>
+      <SHeading>{LABELS.LEVEL}</SHeading>
       <div className="levels">
         {levels.map(({ fieldValue, totalCount }) => {
           const level = find(data, ['id', fieldValue]);

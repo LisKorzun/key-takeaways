@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 
 import { IGroupedField, LABELS } from '../common';
-import { Layout, Seo, LevelsList, SFullSection } from '../components';
+import { Layout, Seo, LevelsList, SCenterSection } from '../components';
 
 interface Props {
   data: {
@@ -14,10 +14,10 @@ interface Props {
 
 const LevelsPage: FC<Props> = ({ data }) => (
   <Layout>
-    <Seo title={LABELS.LEVELS} />
-    <SFullSection>
+    <Seo title={LABELS.LEVEL} />
+    <SCenterSection background>
       <LevelsList levels={data.allMdx.group} />
-    </SFullSection>
+    </SCenterSection>
   </Layout>
 );
 

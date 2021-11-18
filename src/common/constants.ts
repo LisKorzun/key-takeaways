@@ -10,7 +10,7 @@ export const LABELS = {
   HEADER: 'Cheat Sheets',
   HOME: 'Welcome!',
   ABOUT: 'About',
-  LEVEL: 'Difficulty level',
+  LEVEL: 'Difficulty',
   LEVELS: 'Explore by Difficulty',
   TAGS: 'Tags',
   TAG: 'Tag',

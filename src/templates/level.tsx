@@ -26,15 +26,20 @@ const LevelByTopic: FC<Props> = ({
     levelData: { title },
   },
   data: {
-    allMdx: { nodes },
+    allMdx: { nodes, totalCount },
   },
 }) => {
   return (
     <Layout>
-      <Seo title={`${LABELS.TOPIC} - ${topic} | ${LABELS.LEVEL} - ${title}`} />
+      <Seo title={`${topic} for ${title}`} />
       <SCenterSection>
         <Title caption={LABELS.LEVEL} title={title} />
-        <ChipsByTopics topics={topics} active={topic} baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`} />
+        <ChipsByTopics
+          topics={topics}
+          active={topic}
+          baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`}
+          total={totalCount}
+        />
         <PostsList posts={nodes} />
       </SCenterSection>
     </Layout>
@@ -42,8 +47,13 @@ const LevelByTopic: FC<Props> = ({
 };
 
 export const pageQuery = graphql`
-  query ($filter: MdxFrontmatterFilterInput) {
-    allMdx(filter: { frontmatter: $filter }, sort: { fields: frontmatter___date, order: DESC }, limit: 2000) {
+  query ($filter: MdxFrontmatterFilterInput, $skip: Int!, $limit: Int!) {
+    allMdx(
+      filter: { frontmatter: $filter }
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       totalCount
       nodes {
         ...postFields

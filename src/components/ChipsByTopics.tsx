@@ -6,11 +6,6 @@ import { SChipLink } from './styled';
 import { IGroupedField, LABELS } from '../common';
 import { device } from '../styles';
 
-interface ChipsByTopicsProps {
-  active: string;
-  baseRoute: string;
-  topics: IGroupedField[];
-}
 const SChipsByTopics = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -20,14 +15,23 @@ const SChipsByTopics = styled.div`
     justify-content: flex-start;
   }
 `;
-export const ChipsByTopics: FC<ChipsByTopicsProps> = ({ topics, active, baseRoute }) => (
+
+interface ChipsByTopicsProps {
+  active: string;
+  baseRoute: string;
+  topics: IGroupedField[];
+  total: number;
+}
+export const ChipsByTopics: FC<ChipsByTopicsProps> = ({ topics, active, baseRoute, total }) => (
   <SChipsByTopics>
     <SChipLink to={baseRoute} selected={active === 'all'}>
       {LABELS.ALL_TOPICS}
+      <span>{total}</span>
     </SChipLink>
-    {topics.map(({ fieldValue }) => (
+    {topics.map(({ fieldValue, totalCount }) => (
       <SChipLink key={fieldValue} to={`${baseRoute}/${kebabCase(fieldValue)}`} selected={fieldValue === active}>
         {fieldValue}
+        <span>{totalCount}</span>
       </SChipLink>
     ))}
   </SChipsByTopics>

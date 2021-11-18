@@ -8,20 +8,19 @@ export const SFullSection = styled.div`
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  
+
   &::before {
     background-color: ${(props) => props.theme.primary};
-    content: "";
+    content: '';
     position: absolute;
     top: -1%;
     left: -50%;
     width: 200%;
     height: 120%;
     z-index: -1;
-    opacity: .1;
+    opacity: 0.1;
     transform: rotate(6deg) translateZ(0);
     overflow-x: hidden;
-    
   }
   padding: 5rem 1rem;
   width: 100%;
@@ -30,7 +29,6 @@ export const SFullSection = styled.div`
   }
 
   @media only screen and ${device.tabletUp} {
-    
   }
 
   @media only screen and ${device.laptopUp} {
@@ -39,10 +37,8 @@ export const SFullSection = styled.div`
   }
 
   @media only screen and ${device.desktopUp} {
-    
   }
 
   @media only screen and ${device.desktopXLUP} {
-    
   }
 `;
