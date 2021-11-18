@@ -8,7 +8,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const levelTemplate = path.resolve('src/templates/level.tsx');
   const topicTemplate = path.resolve('src/templates/topic.tsx');
   const tagTemplate = path.resolve('src/templates/tag.tsx');
-  const tagByLevelsTemplate = path.resolve('src/templates/tag-by-levels.tsx');
   const postTemplate = path.resolve('src/templates/post.tsx');
 
   const result = await graphql(`
@@ -44,9 +43,21 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         group(field: frontmatter___tags) {
           fieldValue
           totalCount
+          nodes {
+            slug
+            frontmatter {
+              title
+            }
+          }
           group(field: frontmatter___level) {
             fieldValue
             totalCount
+            nodes {
+              slug
+              frontmatter {
+                title
+              }
+            }
           }
         }
       }
@@ -215,28 +226,49 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   tags.forEach((tag) => {
     const tagURL = `/tags/${_.kebabCase(tag.fieldValue)}`;
+    const numPages = Math.ceil(tag.nodes.length / postsPerPage);
+    const total = tag.totalCount;
 
-    createPage({
-      path: tagURL,
-      component: tagTemplate,
-      context: {
-        tag: tag.fieldValue,
-        levelsData,
-      },
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? tagURL : `${tagURL}/${i + 1}`,
+        component: tagTemplate,
+        context: {
+          total,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+          levelsData,
+          tag: tag.fieldValue,
+          level: 'all',
+          levels: tag.group,
+          filter: { tags: { in: [tag.fieldValue] } },
+        },
+      });
     });
     tag.group.forEach((level) => {
       const levelData = _.find(levelsData, ['id', level.fieldValue]);
-      const levelURL = `/${_.kebabCase(levelData.title)}`;
+      const levelURL = `${tagURL}/${_.kebabCase(levelData.title)}`;
+      const numPages = Math.ceil(level.nodes.length / postsPerPage);
 
-      createPage({
-        path: `${tagURL}${levelURL}`,
-        component: tagByLevelsTemplate,
-        context: {
-          levelsData,
-          tag: tag.fieldValue,
-          level: level.fieldValue,
-          levels: tag.group,
-        },
+      Array.from({ length: numPages }).forEach((_, i) => {
+        createPage({
+          path: i === 0 ? levelURL : `${levelURL}/${i + 1}`,
+          component: tagTemplate,
+          context: {
+            total,
+            limit: postsPerPage,
+            skip: i * postsPerPage,
+            numPages,
+            currentPage: i + 1,
+            levelsData,
+            tag: tag.fieldValue,
+            level: level.fieldValue,
+            levels: tag.group,
+            filter: { tags: { in: [tag.fieldValue] }, level: { eq: level.fieldValue } },
+          },
+        });
       });
     });
   });

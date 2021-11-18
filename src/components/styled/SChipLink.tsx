@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { device } from '../../styles';
 
 interface ChipLinkProps {
   selected?: boolean;
@@ -52,4 +53,14 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
     color: ${theme.background};
   }
   `}
+`;
+
+export const SChips = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  justify-content: center;
+  @media only screen and ${device.tabletUp} {
+    justify-content: flex-start;
+  }
 `;
