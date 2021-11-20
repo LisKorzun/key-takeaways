@@ -44,8 +44,8 @@ export const SPostCardImage = styled((props) => <GatsbyImage {...props} />)`
     display: block;
   }
   @media only screen and ${device.desktopXLUP} {
-    width: 27rem;
-    min-width: 27rem;
+    width: 25rem;
+    min-width: 25rem;
   }
 `;
 
@@ -64,17 +64,21 @@ export const SPostCardContent = styled.div`
   }
 
   .caption {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     a:first-of-type {
       margin-bottom: 1rem;
     }
     span {
+      font-size: 1.4rem;
       display: none;
       margin: 0 1rem;
       color: ${(props) => props.theme.accent};
     }
     @media only screen and ${device.laptopUp} {
       display: flex;
+      a:first-of-type {
+        margin-bottom: 0;
+      }
       span {
         display: block;
       }
