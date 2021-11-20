@@ -44,8 +44,8 @@ export const SPostCardImage = styled((props) => <GatsbyImage {...props} />)`
     display: block;
   }
   @media only screen and ${device.desktopXLUP} {
-    width: 30rem;
-    min-width: 30rem;
+    width: 27rem;
+    min-width: 27rem;
   }
 `;
 
@@ -95,7 +95,7 @@ export const SPostCardContent = styled.div`
       }
     }
     @media only screen and ${device.desktopXLUP} {
-      width: 80%;
+      width: 70%;
     }
   }
 

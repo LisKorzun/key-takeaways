@@ -18,7 +18,7 @@ const SPostTags = styled.div`
     padding: 5px 10px 2px;
   }
   @media only screen and ${device.desktopXLUP} {
-    width: 80%;
+    width: 70%;
   }
 `;
 
