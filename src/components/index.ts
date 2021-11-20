@@ -11,6 +11,5 @@ export * from './Title';
 export * from './HeadLine';
 export * from './Icon';
 
-export * from './common';
 export * from './styled';
 export * from './layout';

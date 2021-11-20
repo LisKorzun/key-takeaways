@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Josefin Sans";
     line-height: 1.15;
     font-size: 62.5%;
-    -webkit-text-size-adjust: 100%;
+    text-size-adjust: none;
+    //-webkit-text-size-adjust: 100%;
     height: 100%;
   }
   

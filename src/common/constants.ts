@@ -37,6 +37,8 @@ export const ICONS = {
   CODE: 'code',
   REACT_LOGO: 'react',
   ARROW_RIGHT: 'arrow-right',
+  TIME: 'time',
+  DATE: 'date',
   LEVEL_0: 'Level-0',
   LEVEL_1: 'Level-1',
   LEVEL_2: 'Level-2',

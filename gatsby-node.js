@@ -30,7 +30,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             tags
             level
             topic
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "MMM DD, YYYY")
             hero_image {
               childImageSharp {
                 gatsbyImageData

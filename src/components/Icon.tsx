@@ -15,6 +15,8 @@ import LevelsIcon from '../assets/svg/levels.svg';
 import TagIcon from '../assets/svg/tag.svg';
 import ArrowRightIcon from '../assets/svg/arrow-right.svg';
 import ReactIcon from '../assets/svg/react-logo.svg';
+import TimeIcon from '../assets/svg/time.svg';
+import DateIcon from '../assets/svg/date.svg';
 
 interface IconStylesProps {
   readonly color: DefaultThemeKeys;
@@ -69,6 +71,12 @@ export const SArrowRightIcon = styled(ArrowRightIcon)`
 export const SReactIcon = styled(ReactIcon)`
   ${svgStyles}
 `;
+export const STimeIcon = styled(TimeIcon)`
+  ${svgStyles}
+`;
+export const SDateIcon = styled(DateIcon)`
+  ${svgStyles}
+`;
 
 interface IconProps extends IconStylesProps {
   name: string;
@@ -102,6 +110,10 @@ export const Icon: FC<IconProps> = ({ name, ...other }) => {
       return <SArrowRightIcon {...other} />;
     case ICONS.REACT_LOGO:
       return <SReactIcon {...other} />;
+    case ICONS.TIME:
+      return <STimeIcon {...other} />;
+    case ICONS.DATE:
+      return <SDateIcon {...other} />;
     default:
       return <></>;
   }

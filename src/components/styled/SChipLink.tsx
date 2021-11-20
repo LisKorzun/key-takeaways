@@ -22,7 +22,7 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   margin-bottom: 0.8rem;
   color: ${({ theme }) => theme.text};
   border: 0.3rem solid ${({ theme }) => theme.accent};
-  border-radius: 1.6rem;
+  border-radius: 2rem;
   cursor: pointer;
   position: relative;
   &:hover {

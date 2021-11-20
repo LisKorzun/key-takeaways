@@ -10,7 +10,6 @@ export const SCenterSection = styled.div<SCenterSectionProps>`
   width: 90vw;
   margin: 5rem auto;
   position: relative;
-  padding: 5rem;
   &::before {
     display: ${({ background }) => (background ? 'block' : 'none')};
     background-color: ${(props) => props.theme.accent};

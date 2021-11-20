@@ -1,40 +1,58 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { PostCard } from './PostCard';
 import { IPost } from '../common';
+import { device } from '../styles';
+
+const leftAlignment = css`
+  flex-direction: row;
+  & > div:first-child {
+    margin-right: 5rem;
+    margin-left: 0;
+  }
+`;
+
+const rightAlignment = css`
+  flex-direction: row-reverse;
+  & > div:first-child {
+    margin-right: 0;
+    margin-left: 5rem;
+  }
+`;
 
 const SPostsList = styled.div`
-  & > div:nth-child(1n) {
-    flex-direction: row;
+  & > article:nth-child(1n) {
+    background-color: ${(props) => props.theme.background};
   }
-  & > div:nth-child(2n) {
-    flex-direction: row-reverse;
+  & > article:nth-child(2n) {
+    background-color: rgba(117, 123, 148, 0.1);
   }
-  & > div:nth-child(3n) {
-    flex-direction: row;
-  }
-  & > div:nth-child(4n) {
-    justify-content: center;
-    &::before {
-      display: block;
+  @media only screen and ${device.tabletUp} {
+    & > article:nth-child(1n) {
+      background-color: inherit;
     }
-    & > div:first-child {
-      display: none;
+    & > article:nth-child(2n) {
+      background-color: inherit;
+      ${rightAlignment}
     }
-    div {
-      align-items: center;
-      text-align: center;
+    & > article:nth-child(4n) {
+      justify-content: center;
+      &::before {
+        display: block;
+      }
+      & > div:first-child {
+        display: none;
+      }
+      & > div:nth-child(2n) {
+        align-items: center;
+      }
     }
   }
-  & > div:nth-child(5n) {
-    flex-direction: row-reverse;
-  }
-  & > div:nth-child(6n) {
-    flex-direction: row;
-  }
-  & > div:nth-child(7n) {
-    flex-direction: row-reverse;
+  @media only screen and ${device.desktopXLUP} {
+    & > article:nth-child(2n) {
+      ${leftAlignment}
+    }
   }
 `;
 
