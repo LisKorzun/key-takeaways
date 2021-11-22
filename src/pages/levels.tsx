@@ -7,6 +7,7 @@ import { Layout, Seo, LevelsList, SCenterSection } from '../components';
 interface Props {
   data: {
     allMdx: {
+      totalCount: number;
       group: IGroupedField[];
     };
   };
@@ -15,15 +16,16 @@ interface Props {
 const LevelsPage: FC<Props> = ({ data }) => (
   <Layout>
     <Seo title={LABELS.LEVEL} />
-    <SCenterSection background>
-      <LevelsList levels={data.allMdx.group} />
+    <SCenterSection>
+      <LevelsList levels={data.allMdx.group} total={data.allMdx.totalCount} />
     </SCenterSection>
   </Layout>
 );
 
 export const query = graphql`
   query {
-    allMdx(limit: 2000, sort: { order: DESC, fields: frontmatter___date }) {
+    allMdx(limit: 2000, sort: { fields: frontmatter___date, order: DESC }) {
+      totalCount
       group(field: frontmatter___level) {
         totalCount
         fieldValue

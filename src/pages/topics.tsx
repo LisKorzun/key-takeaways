@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
+import { kebabCase } from 'lodash';
 
-import { Layout, Seo, TopicsList } from '../components';
-import { IGroupedField, LABELS } from '../common';
+import { Layout, PercentageRow, SCenterSection, Seo } from '../components';
+import { IGroupedField, LABELS, ROUTES } from '../common';
 
 interface Props {
   data: {
     allMdx: {
+      totalCount: number;
       group: IGroupedField[];
     };
   };
@@ -15,13 +17,24 @@ interface Props {
 const TopicsPage: FC<Props> = ({ data }) => (
   <Layout>
     <Seo title={LABELS.TOPICS} />
-    <TopicsList topics={data.allMdx.group} />
+    <SCenterSection>
+      {data.allMdx.group.map(({ fieldValue, totalCount }) => (
+        <PercentageRow
+          key={fieldValue}
+          label={fieldValue}
+          to={`${ROUTES.TOPICS}/${kebabCase(fieldValue)}`}
+          count={totalCount}
+          total={data.allMdx.totalCount}
+        />
+      ))}
+    </SCenterSection>
   </Layout>
 );
 
 export const query = graphql`
   query {
-    allMdx {
+    allMdx(limit: 2000, sort: { fields: frontmatter___date, order: DESC }) {
+      totalCount
       group(field: frontmatter___topic) {
         fieldValue
         totalCount

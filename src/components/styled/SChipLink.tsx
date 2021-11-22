@@ -21,7 +21,7 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   margin-right: 1rem;
   margin-bottom: 0.8rem;
   color: ${({ theme }) => theme.text};
-  border: 0.3rem solid rgba(117, 123, 148, 0.3);;
+  border: 0.3rem solid rgba(117, 123, 148, 0.3);
   border-radius: 2rem;
   cursor: pointer;
   position: relative;
