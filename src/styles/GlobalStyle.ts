@@ -51,6 +51,9 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 300;
       margin: 0;
     }
+    h4 {
+      margin: 0;
+    }
     
     p {
       font-weight: 300;

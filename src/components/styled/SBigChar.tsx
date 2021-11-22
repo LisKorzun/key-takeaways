@@ -11,4 +11,5 @@ export const SBigChar = styled.div`
   min-width: 10rem;
   color: ${(props) => props.theme.primary};
   border-right: 0.3rem dashed ${(props) => props.theme.accent};
+  float: left;
 `;
