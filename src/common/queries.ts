@@ -7,7 +7,7 @@ export const postFields = graphql`
       tags
       level
       topic
-      date(formatString: "MMMM DD, YYYY")
+      date(formatString: "MMM DD, YYYY")
       hero_image {
         childImageSharp {
           gatsbyImageData

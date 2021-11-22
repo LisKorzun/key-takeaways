@@ -14,7 +14,7 @@ const SPostInfo = styled.div`
   opacity: 0.6;
   svg {
     position: absolute;
-    top: -0.1rem;
+    top: -0.3rem;
     left: 0;
     height: calc(1rem + 0.3vw);
   }
