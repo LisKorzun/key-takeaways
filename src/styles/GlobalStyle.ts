@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.15;
     font-size: 62.5%;
     text-size-adjust: none;
-    //-webkit-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
     height: 100%;
   }
   

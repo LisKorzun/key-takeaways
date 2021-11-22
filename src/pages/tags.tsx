@@ -1,14 +1,15 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import { graphql, Link } from 'gatsby';
 import { kebabCase } from 'lodash';
 import styled from 'styled-components';
 
-import { Layout, Seo, SBigChar, SCenterSection, SChipLink, SChips } from '../components';
+import { Layout, Seo, SCenterSection } from '../components';
 import { groupByLetter, IGroupedField, LABELS, ROUTES } from '../common';
 
 interface Props {
   data: {
     allMdx: {
+      totalCount: number;
       group: IGroupedField[];
     };
   };
@@ -17,13 +18,16 @@ interface Props {
 const Stags = styled.div`
   display: flex;
   margin: 2rem 0;
-  border-bottom: 1px solid #f3f3f4;
+  padding: 2rem 0 0;
+  border-top: 1px solid ${(props) => props.theme.border};
   h4 {
-    font-size: 6rem;
+    font-size: 5rem;
+    line-height: normal;
     font-weight: 700;
     text-transform: uppercase;
-    min-width: 10rem;
+    min-width: 3.5rem;
     color: ${(props) => props.theme.primary};
+    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
   }
   ol {
     margin: 0;
@@ -31,27 +35,38 @@ const Stags = styled.div`
     a {
       width: 100%;
       display: block;
-      padding: 1rem 0.5rem;
+      padding: 1rem 1.5rem;
       margin-bottom: 1rem;
       position: relative;
-      em {
+      color: ${(props) => props.theme.text};
+      text-transform: lowercase;
+      font-weight: 300;
+      font-size: 2.5rem;
+      strong {
         float: right;
+        font-size: 2rem;
       }
       span {
         display: block;
         position: absolute;
         top: 0;
         left: 0;
-        min-width: 12%;
         height: 100%;
         overflow: hidden;
         -webkit-transition: background ease 0.2s;
         transition: background ease 0.2s;
-        border-radius: 4px;
+        border-radius: 8px;
         background: rgba(0, 0, 0, 0.05);
-        text-indent: -9999px;
-        width: 76%;
       }
+      &:hover {
+        z-index: 1;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+      }
+    }
+    a:last-of-type {
+      margin-bottom: 0;
     }
   }
 `;
@@ -69,11 +84,9 @@ const TagsPage: FC<Props> = ({ data }) => {
             <ol>
               {tags.map(({ fieldValue, totalCount }) => (
                 <Link key={fieldValue} to={`${ROUTES.TAGS}/${kebabCase(fieldValue)}`}>
-                  <em>{totalCount}</em>
+                  <strong>{totalCount}</strong>
                   {fieldValue}
-                  <span style={{ width: `${(totalCount * 100) / data.allMdx.group[0].totalCount}%` }}>
-                    {(totalCount * 100) / data.allMdx.group[0].totalCount}
-                  </span>
+                  <span style={{ width: `${(totalCount * 100) / data.allMdx.totalCount}%` }} />
                 </Link>
               ))}
             </ol>
@@ -86,7 +99,8 @@ const TagsPage: FC<Props> = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMdx {
+    allMdx(limit: 2000, sort: { fields: frontmatter___date, order: DESC }) {
+      totalCount
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
