@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Layout, Seo, Title, ChipsByLevels, PostsList, SCenterSection } from '../components';
-import { IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
+import { Layout, Seo, Title, ChipsByLevels, PostsList, SCenterSection, BackLink } from '../components';
+import { ICONS, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
   pageContext: {
@@ -29,7 +29,8 @@ const Topic: FC<Props> = ({
   <Layout>
     <Seo title={topic} />
     <SCenterSection>
-      <Title caption={LABELS.TOPIC} title={topic} />
+      <BackLink label={LABELS.BROWSE_TOPICS} to={ROUTES.TOPICS}/>
+      <Title caption={LABELS.TOPIC} title={topic} icon={ICONS.TOPICS} />
       <ChipsByLevels
         levels={levels}
         data={levelsData}
