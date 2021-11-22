@@ -14,6 +14,7 @@ import AboutIcon from '../assets/svg/about.svg';
 import LevelsIcon from '../assets/svg/levels.svg';
 import TagIcon from '../assets/svg/tag.svg';
 import ArrowRightIcon from '../assets/svg/arrow-right.svg';
+import ArrowBackIcon from '../assets/svg/arrow-back.svg';
 import ReactIcon from '../assets/svg/react-logo.svg';
 import TimeIcon from '../assets/svg/time.svg';
 import DateIcon from '../assets/svg/date.svg';
@@ -68,6 +69,9 @@ export const STagIcon = styled(TagIcon)`
 export const SArrowRightIcon = styled(ArrowRightIcon)`
   ${svgStyles}
 `;
+export const SArrowBackIcon = styled(ArrowBackIcon)`
+  ${svgStyles}
+`;
 export const SReactIcon = styled(ReactIcon)`
   ${svgStyles}
 `;
@@ -108,6 +112,8 @@ export const Icon: FC<IconProps> = ({ name, ...other }) => {
       return <STagIcon {...other} />;
     case ICONS.ARROW_RIGHT:
       return <SArrowRightIcon {...other} />;
+    case ICONS.ARROW_BACK:
+      return <SArrowBackIcon {...other} />;
     case ICONS.REACT_LOGO:
       return <SReactIcon {...other} />;
     case ICONS.TIME:

@@ -9,7 +9,7 @@ interface ChipLinkProps {
 
 export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   line-height: 1;
   display: flex;
@@ -21,7 +21,7 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   margin-right: 1rem;
   margin-bottom: 0.8rem;
   color: ${({ theme }) => theme.text};
-  border: 0.3rem solid ${({ theme }) => theme.accent};
+  border: 0.3rem solid rgba(117, 123, 148, 0.3);;
   border-radius: 2rem;
   cursor: pointer;
   position: relative;
