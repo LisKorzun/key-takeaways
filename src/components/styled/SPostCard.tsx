@@ -70,7 +70,7 @@ export const SPostCardContent = styled.div`
       margin-bottom: 1rem;
     }
     span {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       display: none;
       margin: 0 1rem;
       color: ${({ theme }) => theme.text};

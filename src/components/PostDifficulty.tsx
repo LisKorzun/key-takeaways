@@ -16,7 +16,7 @@ const SPostDifficulty = styled((props) => <Link {...props} />)`
   position: relative;
   svg {
     position: absolute;
-    top: -0.3rem;
+    top: -0.1rem;
     left: 0;
   }
 `;
