@@ -7,12 +7,12 @@ import { ROUTES } from '../common';
 
 const SPostTopic = styled((props) => <Link {...props} />)`
   display: block;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
   text-transform: uppercase;
-  color: ${(props) => props.theme.primary};
+  color: ${({ theme }) => theme.primary};
   &:hover {
-    color: ${(props) => props.theme.accent};
+    color: ${({ theme }) => theme.accent};
   }
 `;
 

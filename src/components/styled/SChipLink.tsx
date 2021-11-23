@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+
 import { device } from '../../styles';
 
 interface ChipLinkProps {
@@ -10,53 +11,48 @@ interface ChipLinkProps {
 export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   font-size: 1.4rem;
   font-weight: 400;
-  text-transform: uppercase;
+  text-transform: capitalize;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  min-height: 3.6rem;
-  padding-top: 0.3rem;
-  padding-right: 4.5rem;
-  padding-left: 1.4rem;
+  padding: 0.6rem 4.5rem;
   margin-right: 1rem;
   margin-bottom: 0.8rem;
   color: ${({ theme }) => theme.text};
-  border: 0.3rem solid rgba(117, 123, 148, 0.3);
+  background-color: ${({ theme }) => theme.accentRGBA};
+  border: 0.3rem solid ${({ theme }) => theme.accentRGBA};
   border-radius: 2rem;
   cursor: pointer;
   position: relative;
   &:hover {
-    background-color: ${({ theme }) => theme.accent};
-    border-color: ${({ theme }) => theme.accent};
-    color: ${({ theme }) => theme.background};
+    border-color: ${({ theme }) => theme.primaryRGBA};
   }
   span {
     font-size: 1.3rem;
     padding-top: 0.2rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 0.3rem;
-    top: 0.2rem;
-    width: 2.6rem;
-    height: 2.6rem;
+    right: 1px;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
     color: ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.background};
     border-radius: 50%;
   }
- 
+
   ${({ selected, theme }) =>
     selected &&
     `
     background-color: ${theme.primary};
     color: ${theme.background};
     border-color: ${theme.primary};
-    font-weight: 700;
     &:hover {
     background-color: ${theme.primary};
     border-color: ${theme.primary};
     color: ${theme.background};
+    cursor: default;
   }
   `}
 `;

@@ -6,31 +6,18 @@ import { Icon } from './Icon';
 import { ICONS } from '../common';
 
 const SBackLink = styled((props) => <Link {...props} />)`
-  font-size: 21px;
+  font-size: 2rem;
   font-weight: 600;
-  color: ${(props) => props.theme.accent};
+  color: ${(props) => props.theme.text};
   padding-left: 2.5rem;
   position: relative;
   width: 100%;
   display: block;
   svg {
     position: absolute;
-    top: 3px;
+    top: 4px;
     left: 0;
-    height: 14px;
-  }
-  &::before {
-    background-color: ${(props) => props.theme.primary};
-    content: '';
-    position: absolute;
-    top: -400px;
-    left: -50%;
-    width: 200%;
-    height: 650px;
-    z-index: -1;
-    opacity: 0.1;
-    transform: rotate(-11deg) translateZ(0);
-    overflow-x: hidden;
+    height: 13px;
   }
 `;
 
@@ -41,7 +28,7 @@ interface BackLinkProps {
 
 export const BackLink: FC<BackLinkProps> = ({ label, to }) => (
   <SBackLink to={to}>
-    <Icon name={ICONS.ARROW_BACK} color="accent" height="20px" />
+    <Icon name={ICONS.ARROW_BACK} color="text" height="20px" />
     {label}
   </SBackLink>
 );

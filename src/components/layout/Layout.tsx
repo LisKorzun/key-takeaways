@@ -41,11 +41,11 @@ const SLayout = styled.div<SLayoutProps>`
   }
   header {
     display: none;
-    font-weight: 200;
+    font-weight: 100;
     position: fixed;
     z-index: 4;
     top: ${HEADER_TOP}px;
-    left: 0.5rem;
+    left: 1rem;
     width: fit-content;
     height: 7rem;
     font-size: 2rem;
@@ -58,7 +58,7 @@ const SLayout = styled.div<SLayoutProps>`
     }
     @media only screen and ${device.laptopUp} {
       height: 10rem;
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
   }
   .content {

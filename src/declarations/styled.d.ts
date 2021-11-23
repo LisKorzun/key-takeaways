@@ -9,5 +9,6 @@ declare module 'styled-components' {
     text: string;
     border: string;
     primaryRGBA: string;
+    accentRGBA: string;
   }
 }

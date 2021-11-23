@@ -12,12 +12,12 @@ const SPercentageRow = styled((props) => <Link {...props} />)`
   position: relative;
   color: ${(props) => props.theme.text};
   text-transform: lowercase;
-  font-weight: 300;
-  font-size: calc(2rem + 0.7vw);
+  font-weight: 400;
+  font-size: calc(2rem);
 
   strong {
     float: right;
-    font-size: calc(1.5rem + 0.5vw);
+    font-size: calc(1rem + 0.5vw);
   }
   span {
     display: block;

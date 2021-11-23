@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: "Josefin Sans";
+    font-family: "Nunito";
     line-height: 1.15;
     font-size: 62.5%;
     text-size-adjust: none;
@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    font-family: "Josefin Sans";
+    font-family: "Nunito";
     margin: 0;
     font-size: calc(1.8rem + .2vw);
     line-height: 1.15;

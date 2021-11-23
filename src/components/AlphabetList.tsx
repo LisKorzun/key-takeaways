@@ -9,15 +9,14 @@ const SAlphabetList = styled.div`
   display: flex;
   margin: 2rem 0;
   padding: 2rem 0 0;
-  border-top: 1px solid ${(props) => props.theme.border};
+  border-top: 1px solid ${({ theme }) => theme.border};
   h4 {
-    font-size: calc(4rem + 0.5vw);
-    line-height: normal;
+    font-size: calc(3rem + 0.5vw);
+    line-height: 1;
     font-weight: 700;
     text-transform: uppercase;
-    min-width: 3.5rem;
-    color: ${(props) => props.theme.primary};
-    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
+    min-width: 2.5rem;
+    color: ${({ theme }) => theme.primary};
   }
   ol {
     margin: 0;

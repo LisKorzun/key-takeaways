@@ -1,6 +1,7 @@
 export * from './Seo';
 export * from './Banner';
 export * from './BackLink';
+export * from './BackImage';
 export * from './PostCard';
 export * from './AlphabetList';
 export * from './PostsList';

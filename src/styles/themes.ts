@@ -15,7 +15,8 @@ export const themes: IThemes = {
     background: '#FFF',
     text: '#1B263B',
     border: '#F3F7FA',
-    primaryRGBA: 'rgba(6, 188, 240, 0.1)'
+    primaryRGBA: 'rgba(6, 188, 240, 0.1)',
+    accentRGBA: 'rgba(117, 123, 148, 0.1)',
   },
   dark: {
     primary: '#06BCF0',
@@ -24,6 +25,7 @@ export const themes: IThemes = {
     background: '#1B263B',
     text: '#FFF',
     border: '#eee',
-    primaryRGBA: 'rgba(6, 188, 240, 0.1)'
-  }
+    primaryRGBA: 'rgba(6, 188, 240, 0.1)',
+    accentRGBA: 'rgba(117, 123, 148, 0.1)',
+  },
 };

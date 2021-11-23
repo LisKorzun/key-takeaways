@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
+
 import { device } from '../../styles';
 
 export const SPostCard = styled.article`
@@ -15,7 +16,7 @@ export const SPostCard = styled.article`
 
   &::before {
     display: none;
-    background-color: ${(props) => props.theme.accent};
+    background-color: ${({ theme }) => theme.accent};
     content: '';
     position: absolute;
     top: -25%;
@@ -72,7 +73,7 @@ export const SPostCardContent = styled.div`
       font-size: 1.4rem;
       display: none;
       margin: 0 1rem;
-      color: ${(props) => props.theme.accent};
+      color: ${({ theme }) => theme.text};
     }
     @media only screen and ${device.laptopUp} {
       display: flex;
@@ -89,7 +90,7 @@ export const SPostCardContent = styled.div`
     margin-bottom: 2rem;
     a {
       font-size: calc(16px + 1vw);
-      font-weight: 400;
+      font-weight: 600;
       text-transform: capitalize;
       display: block;
       line-height: 1.3;

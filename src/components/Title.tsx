@@ -1,45 +1,23 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { Icon } from './Icon';
-
 const STitle = styled.div`
-  margin-top: 6rem;
-  margin-bottom: 6rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   display: flex;
-  padding-left: 20rem;
-  position: relative;
+  flex-direction: column;
+  span {
+    font-size: 1.8rem;
+    color: ${(props) => props.theme.primary};
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
   h2 {
     font-family: 'Architects Daughter';
     font-size: calc(4rem + 2vw);
     font-weight: 700;
     text-transform: capitalize;
-    display: flex;
-    flex-direction: column;
-    span {
-      font-family: 'Josefin Sans';
-      font-size: 2rem;
-      color: ${(props) => props.theme.primary};
-      text-transform: uppercase;
-    }
-  }
-  div {
-    position: absolute;
-    top: -15%;
-    left: 0;
-    height: 14rem;
-    width: 14rem;
-    background-color: ${(props) => props.theme.primary};
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset, rgb(0 0 0 / 15%) 0px -36px 30px 0px inset,
-      rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px, rgb(0 0 0 / 9%) 0px 4px 2px,
-      rgb(0 0 0 / 9%) 0px 8px 4px, rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
-    svg {
-      width: 7rem;
-    }
   }
 `;
 
@@ -49,16 +27,11 @@ interface TitleProps {
   icon?: string;
 }
 
-export const Title: FC<TitleProps> = ({ caption, title, icon = 'tag' }) => {
+export const Title: FC<TitleProps> = ({ caption, title }) => {
   return (
     <STitle>
-      <div>
-        <Icon name={icon} color="background" width="40px" />
-      </div>
-      <h2>
-        <span>{caption}</span>
-        {title}
-      </h2>
+      <span>{caption}</span>
+      <h2>{title}</h2>
     </STitle>
   );
 };
