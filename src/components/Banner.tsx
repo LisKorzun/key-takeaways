@@ -17,6 +17,9 @@ const SBanner = styled.div<SBannerProps>`
   column-gap: 5rem;
   position: relative;
   & .banner-content {
+    h1 {
+      font-weight: 700;
+    }
     margin-top: 5rem;
   }
   & svg {

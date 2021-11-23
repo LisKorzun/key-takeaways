@@ -7,7 +7,7 @@ export const getPostsCount = (count: number): string => `${count} ${count === 1 
 
 interface Group {
   letter: string;
-  tags: IGroupedField[];
+  items: IGroupedField[];
 }
 type GroupsObject = {
   [key: string]: IGroupedField[];
@@ -18,5 +18,5 @@ export const groupByLetter = (items: IGroupedField[]): Group[] => {
     return r;
   }, {});
 
-  return map(groups, (tags, letter) => ({ letter, tags }));
+  return map(groups, (items, letter) => ({ letter, items }));
 };

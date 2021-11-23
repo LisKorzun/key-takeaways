@@ -2,6 +2,7 @@ export * from './Seo';
 export * from './Banner';
 export * from './BackLink';
 export * from './PostCard';
+export * from './AlphabetList';
 export * from './PostsList';
 export * from './ChipsByLevels';
 export * from './ChipsByTopics';

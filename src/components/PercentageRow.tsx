@@ -4,17 +4,20 @@ import styled from 'styled-components';
 
 const SPercentageRow = styled((props) => <Link {...props} />)`
   width: 100%;
-  display: block;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
   position: relative;
   color: ${(props) => props.theme.text};
   text-transform: lowercase;
   font-weight: 300;
-  font-size: 2.5rem;
+  font-size: calc(2rem + 0.7vw);
+
   strong {
     float: right;
-    font-size: 2rem;
+    font-size: calc(1.5rem + 0.5vw);
   }
   span {
     display: block;
@@ -25,7 +28,7 @@ const SPercentageRow = styled((props) => <Link {...props} />)`
     overflow: hidden;
     -webkit-transition: background ease 0.2s;
     transition: background ease 0.2s;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     background: ${(props) => props.theme.text};
     opacity: 0.1;
   }
@@ -49,8 +52,8 @@ interface PercentageRowProps {
 
 export const PercentageRow: FC<PercentageRowProps> = ({ label, to, count, total }) => (
   <SPercentageRow to={to}>
-    <strong>{count}</strong>
     {label}
+    <strong>{count}</strong>
     <span style={{ width: `${(count * 100) / total}%` }} />
   </SPercentageRow>
 );

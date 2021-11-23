@@ -7,13 +7,13 @@ import { ICONS, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../comm
 
 interface Props {
   pageContext: {
+    total: number;
     topic: string;
     topics: IGroupedField[];
     levelData: ILevelData;
   };
   data: {
     allMdx: {
-      totalCount: number;
       nodes: IPost[];
     };
   };
@@ -21,25 +21,26 @@ interface Props {
 
 const Level: FC<Props> = ({
   pageContext: {
+    total,
     topic,
     topics,
     levelData: { title },
   },
   data: {
-    allMdx: { nodes, totalCount },
+    allMdx: { nodes },
   },
 }) => {
   return (
     <Layout>
       <Seo title={`${topic} for ${title}`} />
       <SCenterSection>
-        <BackLink label={LABELS.BROWSE_LEVELS} to={ROUTES.LEVELS}/>
-        <Title caption={LABELS.LEVEL} title={title} icon={ICONS.LEVELS}/>
+        <BackLink label={LABELS.BROWSE_LEVELS} to={ROUTES.LEVELS} />
+        <Title caption={LABELS.LEVEL} title={title} icon={ICONS.LEVELS} />
         <ChipsByTopics
           topics={topics}
           active={topic}
           baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`}
-          total={totalCount}
+          total={total}
         />
         <PostsList posts={nodes} />
       </SCenterSection>

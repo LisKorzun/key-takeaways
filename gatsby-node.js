@@ -131,12 +131,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const levelData = _.find(levelsData, ['id', level.fieldValue]);
     const levelURL = `/levels/${_.kebabCase(levelData.title)}`;
     const numPages = Math.ceil(level.nodes.length / postsPerPage);
+    const total = level.totalCount;
 
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
         path: i === 0 ? levelURL : `${levelURL}/${i + 1}`,
         component: levelTemplate,
         context: {
+          total,
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,
@@ -159,6 +161,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           path: i === 0 ? topicURL : `${topicURL}/${i + 1}`,
           component: levelTemplate,
           context: {
+            total,
             limit: postsPerPage,
             skip: i * postsPerPage,
             numPages,

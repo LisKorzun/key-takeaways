@@ -26,8 +26,8 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   cursor: pointer;
   position: relative;
   &:hover {
-    background-color: ${({ theme }) => theme.primary};
-    border-color: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => theme.accent};
+    border-color: ${({ theme }) => theme.accent};
     color: ${({ theme }) => theme.background};
   }
   span {
@@ -49,13 +49,13 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   ${({ selected, theme }) =>
     selected &&
     `
-    background-color: ${theme.accent};
+    background-color: ${theme.primary};
     color: ${theme.background};
-    border-color: ${theme.accent};
+    border-color: ${theme.primary};
     font-weight: 700;
     &:hover {
-    background-color: ${theme.accent};
-    border-color: ${theme.accent};
+    background-color: ${theme.primary};
+    border-color: ${theme.primary};
     color: ${theme.background};
   }
   `}

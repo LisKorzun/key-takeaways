@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
-import { kebabCase } from 'lodash';
 
-import { Layout, PercentageRow, SCenterSection, Seo } from '../components';
+import { AlphabetList, Layout, SCenterSection, Seo, SHeading } from '../components';
 import { IGroupedField, LABELS, ROUTES } from '../common';
 
 interface Props {
@@ -18,15 +17,8 @@ const TopicsPage: FC<Props> = ({ data }) => (
   <Layout>
     <Seo title={LABELS.TOPICS} />
     <SCenterSection>
-      {data.allMdx.group.map(({ fieldValue, totalCount }) => (
-        <PercentageRow
-          key={fieldValue}
-          label={fieldValue}
-          to={`${ROUTES.TOPICS}/${kebabCase(fieldValue)}`}
-          count={totalCount}
-          total={data.allMdx.totalCount}
-        />
-      ))}
+      <SHeading>{LABELS.TOPICS}</SHeading>
+      <AlphabetList list={data.allMdx.group} total={data.allMdx.totalCount} baseUrl={ROUTES.TOPICS} />
     </SCenterSection>
   </Layout>
 );

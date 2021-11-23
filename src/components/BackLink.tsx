@@ -7,7 +7,7 @@ import { ICONS } from '../common';
 
 const SBackLink = styled((props) => <Link {...props} />)`
   font-size: 21px;
-  font-weight: 500;
+  font-weight: 600;
   color: ${(props) => props.theme.accent};
   padding-left: 2.5rem;
   position: relative;
