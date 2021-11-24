@@ -17,7 +17,7 @@ const SPercentageRow = styled((props) => <Link {...props} />)`
 
   strong {
     float: right;
-    font-size: calc(1rem + 0.5vw);
+    font-size: calc(1.2rem + 0.3vw);
     font-weight: 600;
   }
   span {

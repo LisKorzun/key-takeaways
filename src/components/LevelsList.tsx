@@ -8,7 +8,7 @@ import { PostDifficulty } from './PostDifficulty';
 import styled from 'styled-components';
 
 const SRow = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.primaryRGBA};
+  border-top: 1px solid ${({ theme }) => theme.accentRGBA};
   margin-bottom: 2rem;
   padding: 2rem 0 0;
   width: 100%;

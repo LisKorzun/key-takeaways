@@ -10,7 +10,7 @@ const SAlphabetList = styled.div`
   grid-template-columns: 2rem auto;
   margin-bottom: 2rem;
   padding: 2rem 0 0;
-  border-top: 1px solid ${({ theme }) => theme.primaryRGBA};
+  border-top: 1px solid ${({ theme }) => theme.accentRGBA};
   width: 100%;
   h4 {
     font-size: calc(3rem + 1vw);
