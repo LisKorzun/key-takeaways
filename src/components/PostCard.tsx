@@ -27,7 +27,7 @@ export const PostCard: FC<Props> = ({ post }) => {
         <div className="caption">
           <PostTopic topic={topic} />
           <span>/</span>
-          <PostDifficulty level={level} />
+          <PostDifficulty level={level} asLink />
         </div>
         <h2>
           <Link to={`/${slug}`}>{title}</Link>

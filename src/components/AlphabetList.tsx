@@ -6,17 +6,17 @@ import { groupByLetter, IGroupedField } from '../common';
 import { PercentageRow } from './PercentageRow';
 
 const SAlphabetList = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 2rem auto;
   margin-bottom: 2rem;
   padding: 2rem 0 0;
   border-top: 1px solid ${({ theme }) => theme.primaryRGBA};
   width: 100%;
   h4 {
-    font-size: calc(3rem + 0.5vw);
+    font-size: calc(3rem + 1vw);
     line-height: 1;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
-    min-width: 2.5rem;
     color: ${({ theme }) => theme.primary};
   }
   ol {
@@ -42,11 +42,12 @@ export const AlphabetList: FC<AlphabetListProps> = ({ list, total, baseUrl }) =>
             {items.map(({ fieldValue, totalCount }) => (
               <PercentageRow
                 key={fieldValue}
-                label={fieldValue}
                 to={`${baseUrl}/${kebabCase(fieldValue)}`}
                 count={totalCount}
                 total={total}
-              />
+              >
+                {fieldValue}
+              </PercentageRow>
             ))}
           </ol>
         </SAlphabetList>

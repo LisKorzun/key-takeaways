@@ -11,13 +11,14 @@ const SPercentageRow = styled((props) => <Link {...props} />)`
   margin-bottom: 2rem;
   position: relative;
   color: ${(props) => props.theme.text};
-  text-transform: lowercase;
-  font-weight: 400;
-  font-size: calc(2rem);
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  font-weight: 600;
 
   strong {
     float: right;
     font-size: calc(1rem + 0.5vw);
+    font-weight: 600;
   }
   span {
     display: block;
@@ -44,15 +45,14 @@ const SPercentageRow = styled((props) => <Link {...props} />)`
 `;
 
 interface PercentageRowProps {
-  label: string;
   to: string;
   count: number;
   total: number;
 }
 
-export const PercentageRow: FC<PercentageRowProps> = ({ label, to, count, total }) => (
+export const PercentageRow: FC<PercentageRowProps> = ({ to, count, total, children }) => (
   <SPercentageRow to={to}>
-    {label}
+    {children}
     <strong>{count}</strong>
     <span style={{ width: `${(count * 100) / total}%` }} />
   </SPercentageRow>

@@ -4,6 +4,15 @@ import { find, kebabCase } from 'lodash';
 
 import { IGroupedField, ILevelData, ROUTES } from '../common';
 import { PercentageRow } from './PercentageRow';
+import { PostDifficulty } from './PostDifficulty';
+import styled from 'styled-components';
+
+const SRow = styled.div`
+  border-top: 1px solid ${({ theme }) => theme.primaryRGBA};
+  margin-bottom: 2rem;
+  padding: 2rem 0 0;
+  width: 100%;
+`;
 
 interface LevelsListProps {
   levels: IGroupedField[];
@@ -34,16 +43,17 @@ export const LevelsList: FC<LevelsListProps> = ({ levels, total }) => {
       {levels.map(({ fieldValue, totalCount }) => {
         const level = find(data, ['id', fieldValue]);
         return (
-          <Fragment key={fieldValue}>
+          <SRow key={fieldValue}>
             {level && (
               <PercentageRow
-                label={level.title}
                 to={`${ROUTES.LEVELS}/${kebabCase(level.title)}`}
                 count={totalCount}
                 total={total}
-              />
+              >
+                <PostDifficulty level={fieldValue} showLabel/>
+              </PercentageRow>
             )}
-          </Fragment>
+          </SRow>
         );
       })}
     </>
