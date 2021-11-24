@@ -4,6 +4,7 @@ import { device } from '../../styles';
 
 interface SCenterSectionProps {
   background?: boolean;
+  small?: boolean;
 }
 
 export const SCenterSection = styled.div<SCenterSectionProps>`
@@ -33,19 +34,19 @@ export const SCenterSection = styled.div<SCenterSectionProps>`
   }
 
   @media only screen and ${device.tabletUp} {
-    width: 80vw;
+    width:  ${({ small }) => (small ? '75vw' : '80vw')};
     align-items: flex-start;
   }
 
   @media only screen and ${device.laptopUp} {
-    width: 70vw;
+    width:  ${({ small }) => (small ? '60vw' : '70vw')};
   }
 
   @media only screen and ${device.desktopUp} {
-    width: 65vw;
+    width:  ${({ small }) => (small ? '55vw' : '65vw')};
   }
 
   @media only screen and ${device.desktopXLUP} {
-    width: 58vw;
+    width:  ${({ small }) => (small ? '40vw' : '58vw')};
   }
 `;

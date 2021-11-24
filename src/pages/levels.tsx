@@ -16,7 +16,7 @@ interface Props {
 const LevelsPage: FC<Props> = ({ data }) => (
   <Layout>
     <Seo title={LABELS.LEVEL} />
-    <SCenterSection>
+    <SCenterSection small>
       <SHeading>{LABELS.LEVEL}</SHeading>
       <LevelsList levels={data.allMdx.group} total={data.allMdx.totalCount} />
     </SCenterSection>

@@ -16,7 +16,7 @@ interface Props {
 const TopicsPage: FC<Props> = ({ data }) => (
   <Layout>
     <Seo title={LABELS.TOPICS} />
-    <SCenterSection>
+    <SCenterSection small>
       <SHeading>{LABELS.TOPICS}</SHeading>
       <AlphabetList list={data.allMdx.group} total={data.allMdx.totalCount} baseUrl={ROUTES.TOPICS} />
     </SCenterSection>
