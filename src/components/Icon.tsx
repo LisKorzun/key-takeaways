@@ -18,6 +18,8 @@ import ArrowBackIcon from '../assets/svg/arrow-back.svg';
 import ReactIcon from '../assets/svg/react-logo.svg';
 import TimeIcon from '../assets/svg/time.svg';
 import DateIcon from '../assets/svg/date.svg';
+import SunIcon from '../assets/svg/sun.svg';
+import MoonIcon from '../assets/svg/moon.svg';
 
 interface IconStylesProps {
   readonly color: DefaultThemeKeys;
@@ -81,6 +83,12 @@ export const STimeIcon = styled(TimeIcon)`
 export const SDateIcon = styled(DateIcon)`
   ${svgStyles}
 `;
+export const SSunIcon = styled(SunIcon)`
+  ${svgStyles}
+`;
+export const SMoonIcon = styled(MoonIcon)`
+  ${svgStyles}
+`;
 
 interface IconProps extends IconStylesProps {
   name: string;
@@ -120,6 +128,10 @@ export const Icon: FC<IconProps> = ({ name, ...other }) => {
       return <STimeIcon {...other} />;
     case ICONS.DATE:
       return <SDateIcon {...other} />;
+    case ICONS.SUN:
+      return <SSunIcon {...other} />;
+    case ICONS.MOON:
+      return <SMoonIcon {...other} />;
     default:
       return <></>;
   }
