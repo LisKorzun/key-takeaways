@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { device } from '../styles';
 
 const STitle = styled.div`
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: calc(2rem + 1.5vw);
+  margin-bottom: calc(2rem + 1.5vw);
   display: flex;
   flex-direction: column;
+  align-items: center;
   span {
     font-size: 1.8rem;
     color: ${(props) => props.theme.primary};
@@ -18,6 +20,9 @@ const STitle = styled.div`
     font-size: calc(4rem + 2vw);
     font-weight: 700;
     text-transform: capitalize;
+  }
+  @media only screen and ${device.tabletUp} {
+    align-items: flex-start;
   }
 `;
 

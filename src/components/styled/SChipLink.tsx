@@ -60,7 +60,7 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
 export const SChips = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 3rem 0;
+  margin-bottom: calc(2rem + 1.5vw);
   justify-content: center;
   @media only screen and ${device.tabletUp} {
     justify-content: flex-start;

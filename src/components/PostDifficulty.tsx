@@ -14,6 +14,7 @@ const SPostDifficulty = styled((props) => <Link {...props} />)`
   font-weight: 400;
   color: ${({ theme }) => theme.text};
   position: relative;
+  min-height: 1.2rem;
   svg {
     position: absolute;
     top: -0.1rem;

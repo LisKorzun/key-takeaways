@@ -9,15 +9,14 @@ const SBackLink = styled((props) => <Link {...props} />)`
   font-size: 2rem;
   font-weight: 600;
   color: ${(props) => props.theme.text};
-  padding-left: 2.5rem;
+  margin-left: 2.5rem;
   position: relative;
-  width: 100%;
-  display: block;
+
   svg {
     position: absolute;
-    top: 4px;
-    left: 0;
-    height: 13px;
+    top: 0.4rem;
+    left: -2rem;
+    height: 1.3rem;
   }
 `;
 

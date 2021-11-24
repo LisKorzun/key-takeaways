@@ -10,6 +10,9 @@ export const SCenterSection = styled.div<SCenterSectionProps>`
   width: 90vw;
   margin: 5rem auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &::before {
     display: ${({ background }) => (background ? 'block' : 'none')};
     background-color: ${(props) => props.theme.accent};
@@ -31,6 +34,7 @@ export const SCenterSection = styled.div<SCenterSectionProps>`
 
   @media only screen and ${device.tabletUp} {
     width: 80vw;
+    align-items: flex-start;
   }
 
   @media only screen and ${device.laptopUp} {
