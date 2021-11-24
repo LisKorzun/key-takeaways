@@ -7,9 +7,10 @@ import { PercentageRow } from './PercentageRow';
 
 const SAlphabetList = styled.div`
   display: flex;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
   padding: 2rem 0 0;
-  border-top: 1px solid ${({ theme }) => theme.border};
+  border-top: 1px solid ${({ theme }) => theme.primaryRGBA};
+  width: 100%;
   h4 {
     font-size: calc(3rem + 0.5vw);
     line-height: 1;

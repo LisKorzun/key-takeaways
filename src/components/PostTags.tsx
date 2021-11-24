@@ -10,12 +10,12 @@ const SPostTags = styled.div`
   & > div {
     margin-right: 1rem;
     font-size: calc(0.9rem + 0.2vw);
-    font-weight: 400;
+    font-weight: 500;
     text-transform: capitalize;
     border: 2px solid ${({ theme }) => theme.accentRGBA};
     background-color: ${({ theme }) => theme.accentRGBA};
     border-radius: 1rem;
-    padding: 2px 15px;
+    padding: 3px 15px 2px;
   }
   @media only screen and ${device.desktopXLUP} {
     width: 70%;

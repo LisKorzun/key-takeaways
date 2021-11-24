@@ -6,7 +6,7 @@ import { device } from '../../styles';
 
 export const SPostCard = styled.article`
   display: flex;
-  padding: 1rem;
+  padding: 2rem 1rem;
   justify-content: space-between;
   position: relative;
   @media only screen and ${device.desktopXLUP} {

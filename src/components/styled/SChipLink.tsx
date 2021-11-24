@@ -34,9 +34,9 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
     justify-content: center;
     position: absolute;
     right: 1px;
-    top: 0;
-    width: 2.5rem;
-    height: 2.5rem;
+    top: 1px;
+    width: 2.4rem;
+    height: 2.4rem;
     color: ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.background};
     border-radius: 50%;
@@ -48,6 +48,7 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
     background-color: ${theme.primary};
     color: ${theme.background};
     border-color: ${theme.primary};
+    font-weight: 600;
     &:hover {
     background-color: ${theme.primary};
     border-color: ${theme.primary};

@@ -16,7 +16,6 @@ const STitle = styled.div`
     margin-bottom: 0.5rem;
   }
   h2 {
-    font-family: 'Architects Daughter';
     font-size: calc(4rem + 2vw);
     font-weight: 700;
     text-transform: capitalize;
