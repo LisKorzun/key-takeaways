@@ -19,10 +19,10 @@ export const SPostCard = styled.article`
     background-color: ${({ theme }) => theme.accent};
     content: '';
     position: absolute;
-    top: -25%;
+    top: -18%;
     left: -50%;
     width: 200%;
-    height: 145%;
+    height: 136%;
     z-index: -1;
     opacity: 0.1;
     overflow-x: hidden;
