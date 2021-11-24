@@ -22,6 +22,7 @@ const rightAlignment = css`
 `;
 
 const SPostsList = styled.div`
+  width: 100%;
   & > article:nth-child(1n) {
     background-color: ${(props) => props.theme.background};
   }

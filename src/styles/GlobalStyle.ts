@@ -56,7 +56,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     p {
-      font-weight: 200;
+      font-weight: 300;
       line-height: calc(1.4em + .2vw);
       word-break: break-word;
       color: ${(props) => props.theme.text};

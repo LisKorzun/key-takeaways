@@ -6,6 +6,7 @@ import { device } from '../../styles';
 
 interface ChipLinkProps {
   selected?: boolean;
+  size?: 'small';
 }
 
 export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
@@ -22,6 +23,13 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   border-radius: 2rem;
   cursor: pointer;
   position: relative;
+  ${({ size }) =>
+    size === 'small' &&
+    `
+    font-size: calc(0.9rem + 0.2vw);
+    font-weight: 600;
+    padding: 3px 15px 2px;
+  `}
   &:hover {
     border-color: ${({ theme }) => theme.primaryRGBA};
   }

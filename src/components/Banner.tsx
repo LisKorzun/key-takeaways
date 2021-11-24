@@ -5,11 +5,7 @@ import { SSeparator } from './styled';
 import { device } from '../styles';
 import { Icon } from './Icon';
 
-interface SBannerProps {
-  rotate: boolean;
-}
-
-const SBanner = styled.div<SBannerProps>`
+const SBanner = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -27,7 +23,6 @@ const SBanner = styled.div<SBannerProps>`
     position: absolute;
     top: 20%;
     right: -20%;
-    transform: ${({ rotate }) => (rotate ? `rotate(0.1turn)` : `none`)};
   }
 
   @media only screen and ${device.laptopUp} {
@@ -44,12 +39,11 @@ interface Props {
   title: string;
   icon: string;
   description?: string;
-  rotateIcon?: boolean;
 }
 const defaultDescription =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
-export const Banner: FC<Props> = ({ title, description = defaultDescription, icon, rotateIcon = false }) => (
-  <SBanner rotate={rotateIcon}>
+export const Banner: FC<Props> = ({ title, description = defaultDescription, icon }) => (
+  <SBanner>
     <div className="banner-content">
       <h1>{title}</h1>
       <SSeparator />
