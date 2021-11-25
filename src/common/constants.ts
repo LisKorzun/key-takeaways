@@ -45,6 +45,8 @@ export const ICONS = {
   DATE: 'date',
   SUN: 'sun',
   MOON: 'moon',
+  NEXT: 'next',
+  PREV: 'prev',
   LEVEL_0: 'Level-0',
   LEVEL_1: 'Level-1',
   LEVEL_2: 'Level-2',

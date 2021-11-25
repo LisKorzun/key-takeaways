@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Layout, Seo, Title, ChipsByTopics, PostsList, SCenterSection, BackLink } from '../components';
+import { Layout, Seo, Title, ChipsByTopics, PostsList, BackLink, Pagination, SCenterSection } from '../components';
 import { ICONS, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
@@ -11,6 +11,9 @@ interface Props {
     topic: string;
     topics: IGroupedField[];
     levelData: ILevelData;
+    numPages: number;
+    currentPage: number;
+    baseURL: string;
   };
   data: {
     allMdx: {
@@ -25,6 +28,9 @@ const Level: FC<Props> = ({
     topic,
     topics,
     levelData: { title },
+    numPages,
+    currentPage,
+    baseURL,
   },
   data: {
     allMdx: { nodes },
@@ -44,6 +50,7 @@ const Level: FC<Props> = ({
         />
         <PostsList posts={nodes} />
       </SCenterSection>
+      <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />
     </Layout>
   );
 };

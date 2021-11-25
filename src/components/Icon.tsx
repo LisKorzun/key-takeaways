@@ -20,6 +20,8 @@ import TimeIcon from '../assets/svg/time.svg';
 import DateIcon from '../assets/svg/date.svg';
 import SunIcon from '../assets/svg/sun.svg';
 import MoonIcon from '../assets/svg/moon.svg';
+import NextIcon from '../assets/svg/next.svg';
+import PrevIcon from '../assets/svg/prev.svg';
 
 interface IconStylesProps {
   readonly color: DefaultThemeKeys;
@@ -89,6 +91,12 @@ export const SSunIcon = styled(SunIcon)`
 export const SMoonIcon = styled(MoonIcon)`
   ${svgStyles}
 `;
+export const SNextIcon = styled(NextIcon)`
+  ${svgStyles}
+`;
+export const SPrevIcon = styled(PrevIcon)`
+  ${svgStyles}
+`;
 
 interface IconProps extends IconStylesProps {
   name: string;
@@ -132,6 +140,10 @@ export const Icon: FC<IconProps> = ({ name, ...other }) => {
       return <SSunIcon {...other} />;
     case ICONS.MOON:
       return <SMoonIcon {...other} />;
+    case ICONS.NEXT:
+      return <SNextIcon {...other} />;
+    case ICONS.PREV:
+      return <SPrevIcon {...other} />;
     default:
       return <></>;
   }

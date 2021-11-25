@@ -119,7 +119,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const topics = result.data.topics.group;
   const posts = result.data.posts.nodes;
 
-  const postsPerPage = 2;
+  const postsPerPage = 3;
 
   createPage({
     path: '/',
@@ -143,6 +143,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           skip: i * postsPerPage,
           numPages,
           currentPage: i + 1,
+          baseURL: levelURL,
           levelData,
           level: level.fieldValue,
           topic: 'all',
@@ -166,6 +167,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             skip: i * postsPerPage,
             numPages,
             currentPage: i + 1,
+            baseURL: topicURL,
             levelData,
             level: level.fieldValue,
             topic: topic.fieldValue,
@@ -192,6 +194,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           skip: i * postsPerPage,
           numPages,
           currentPage: i + 1,
+          baseURL: topicURL,
           levelsData,
           topic: topic.fieldValue,
           level: 'all',
@@ -216,6 +219,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             skip: i * postsPerPage,
             numPages,
             currentPage: i + 1,
+            baseURL: levelURL,
             levelsData,
             level: level.fieldValue,
             topic: topic.fieldValue,
@@ -242,6 +246,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           skip: i * postsPerPage,
           numPages,
           currentPage: i + 1,
+          baseURL: tagURL,
           levelsData,
           tag: tag.fieldValue,
           level: 'all',
@@ -265,6 +270,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             skip: i * postsPerPage,
             numPages,
             currentPage: i + 1,
+            baseURL: levelURL,
             levelsData,
             tag: tag.fieldValue,
             level: level.fieldValue,

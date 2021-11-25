@@ -5,6 +5,7 @@ export * from './BackImage';
 export * from './PostCard';
 export * from './AlphabetList';
 export * from './PostsList';
+export * from './Pagination';
 export * from './ChipsByLevels';
 export * from './ChipsByTopics';
 export * from './LevelsList';
