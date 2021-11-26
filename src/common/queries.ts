@@ -16,5 +16,6 @@ export const postFields = graphql`
     }
     id
     slug
+    timeToRead
   }
 `;

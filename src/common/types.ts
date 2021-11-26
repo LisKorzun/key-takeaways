@@ -5,6 +5,7 @@ export type DefaultThemeKeys = 'primary' | 'secondary' | 'accent' | 'background'
 export interface IPost {
   slug: string;
   id: string;
+  timeToRead: number;
   frontmatter: { title: string; date: string; level: string; topic: string; tags: string[]; hero_image: ImageDataLike };
 }
 
