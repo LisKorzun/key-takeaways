@@ -6,67 +6,74 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: "Nunito";
-    line-height: 1.15;
     font-size: 62.5%;
-    text-size-adjust: none;
     -webkit-text-size-adjust: 100%;
     height: 100%;
   }
   
   body {
-    font-family: "Nunito";
-    margin: 0;
-    font-size: calc(1.8rem + .2vw);
-    line-height: 1.15;
+    font-family: "Outfit";
     font-weight: 300;
+    font-size: calc(1.8rem + .2vw);
+    line-height: 1.2;
     display: flex;
     flex-direction: column;
-    min-height: 100%;
-    height: 100%;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    color: ${(props) => props.theme.text};
-    background-color: ${(props) => props.theme.background};
+    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.background};
   
-    h1, h2, h3 {
+    h1, h2, h3, h4, h5, h6 {
       line-height: 1.2;
+      margin: 0;
     }
   
     h1 {
-      font-family: 'Architects Daughter';
-      font-weight: 700;
+      font-weight: 900;
       font-size: calc(3rem + 3vw);
       text-transform: capitalize;
-      color: ${(props) => props.theme.text};
-      margin: 0;
     }
     h2 {
       font-size: calc(2.5rem + 1.5vw);
       font-weight: 300;
-      margin: 0;
     }
     h3 {
       font-size: calc(2rem + 1vw);
       font-weight: 300;
-      margin: 0;
-    }
-    h4 {
-      margin: 0;
     }
     
     p {
       font-weight: 300;
+      font-size: calc(1.8rem + .2vw);
       line-height: calc(1.4em + .2vw);
       word-break: break-word;
-      color: ${(props) => props.theme.text};
       margin: 0 0 2rem;
+      text-align: justify;
     }
-    
+    em {
+      font-style: italic;
+    }
+    strong {
+      font-weight: 600;
+    }
     a {
       text-decoration: none;
       margin: 0;
       cursor: pointer;
+      color: ${({ theme }) => theme.primary};
+      font-weight: 400;
+    }
+    ul, ol {
+      margin: 0;
+      li {
+        margin: 1.1rem 0;
+        p {
+          margin: 0 0 1.1rem;
+        }
+      }
+    }
+    ul li {
+      list-style-type: circle;
     }
   }
 `;
