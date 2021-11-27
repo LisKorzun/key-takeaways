@@ -25,7 +25,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         nodes {
           slug
           id
-          timeToRead
           frontmatter {
             title
             tags

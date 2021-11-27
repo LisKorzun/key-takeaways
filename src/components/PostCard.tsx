@@ -16,7 +16,6 @@ interface Props {
 export const PostCard: FC<Props> = ({ post }) => {
   const {
     slug,
-    timeToRead,
     frontmatter: { hero_image, topic, title, date, tags, level },
   } = post;
   const image = getImage(hero_image);
@@ -34,7 +33,7 @@ export const PostCard: FC<Props> = ({ post }) => {
           <Link to={`/${slug}`}>{title}</Link>
         </h2>
         <footer>
-          <PostInfo icon="time" label={`${timeToRead} min read`} />
+          <PostInfo icon="time" label={`5 min read`} />
           <PostInfo icon="date" label={date} />
         </footer>
         <PostTags tags={tags} />

@@ -48,7 +48,6 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-readingtime',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
   ],
