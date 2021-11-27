@@ -47,7 +47,7 @@ export const GlobalStyle = createGlobalStyle`
       font-size: calc(1.8rem + .2vw);
       line-height: calc(1.4em + .2vw);
       word-break: break-word;
-      margin: 0 0 2rem;
+      margin: 1rem 0;
       text-align: justify;
     }
     em {
