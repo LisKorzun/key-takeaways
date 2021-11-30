@@ -44,7 +44,44 @@ module.exports = {
         },
       },
     },
-    'gatsby-plugin-mdx',
+    {
+      resolve: `gatsby-plugin-readingtime`,
+      options: {
+        config: {},
+        types: {},
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 630,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: {
+                console: `bash`,
+                env: `bash`,
+                es6: `js`,
+                flowchart: `none`,
+                gitignore: `none`,
+                gql: `graphql`,
+                mdx: `markdown`,
+                ml: `fsharp`,
+                sh: `bash`,
+                styl: `stylus`,
+                terminal: `bash`,
+              },
+            },
+          },
+        ],
+      },
+    },
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',

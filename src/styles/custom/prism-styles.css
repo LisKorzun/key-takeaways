@@ -1,0 +1,41 @@
+.gatsby-highlight {
+  position: relative;
+  width: 100%;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  font-family: 'Space Mono';
+  font-size: 1.7rem;
+  line-height: 1.7;
+}
+
+pre[class*='language-'] {
+  position: relative;
+  padding: 2.5rem 2rem 2rem;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background-color: rgba(6, 188, 240, 0.1);
+}
+
+pre[class='language-js']::before {
+  content: 'js';
+}
+
+pre[class='language-ts']::before {
+  content: 'ts';
+}
+
+pre[class='language-css']::before {
+  content: 'css';
+}
+
+pre[class='language-html']::before {
+  content: 'html';
+}
+
+pre[class*='language-diff']::before {
+  content: 'diff';
+}

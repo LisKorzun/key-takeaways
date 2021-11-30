@@ -168,7 +168,7 @@ Big picture:
 
 Code blocks are part of the Markdown spec, but syntax highlighting isn't. However, many renderers -- like Github's and _Markdown Here_ -- support syntax highlighting. _Markdown Here_ supports highlighting for dozens of languages (and not-really-languages, like diffs and HTTP headers); to see the complete list, and how to write the language names, see the [highlight.js demo page](http://softwaremaniacs.org/media/soft/highlight/test.html).
 
-```no-highlight
+```
 Inline `code` has `back-ticks around` it.
 ```
 
@@ -176,16 +176,17 @@ Inline `code` has `back-ticks around` it.
 
 Blocks of code are either fenced by lines with three back-ticks <code>```</code>, or are indented with four spaces. I recommend only using the fenced code blocks -- they're easier and only they support syntax highlighting.
 
-```javascript
-var s = 'JavaScript syntax highlighting';
+```js
+const s = 'JavaScript syntax highlighting';
+alert('click to copy 💾');
 alert(s);
 ```
-
-```python
-s = "Python syntax highlighting"
-print s
+```diff-javascript
+const App = () => {
+-	return <div>This line was removed</div>;
++	return <div>This line was added</div>;
+}
 ```
-
 ```no-highlight
 No language indicated, so no syntax highlighting in Markdown Here (varies on Github).
 But let's throw in a <b>tag</b>.
