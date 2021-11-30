@@ -36,6 +36,10 @@ pre[class='language-html']::before {
   content: 'html';
 }
 
+pre[class='language-markdown']::before {
+  content: 'md';
+}
+
 pre[class*='language-diff']::before {
   content: 'diff';
 }
