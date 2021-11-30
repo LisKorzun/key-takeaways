@@ -67,6 +67,13 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.primary};
     font-weight: 400;
   }
+  
+  hr {
+    width: 100%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid ${({ theme }) => theme.accentRGBA};
+  }
 
   ul, ol {
     margin: 0;
@@ -82,6 +89,53 @@ export const GlobalStyle = createGlobalStyle`
     list-style-type: circle;
   }
   
+  table {
+    border-collapse: collapse;
+    margin: 2.5rem 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 4rem;
+  }
+  thead tr {
+    background-color: ${({ theme }) => theme.primaryRGBA};
+    color:  ${({ theme }) => theme.text};
+    text-align: left;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    min-width: 12rem;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid ${({ theme }) => theme.accentRGBA};
+  }
+
+  tbody tr:nth-of-type(even) {
+    background-color: ${({ theme }) => theme.accentRGBA};
+  }
+  
+  blockquote {
+    background: ${({ theme }) => theme.accentRGBA};
+    border-left: 8px solid ${({ theme }) => theme.accentRGBA};
+    margin: 3rem 1rem;
+    padding: 1rem;
+    quotes: "\\201C""\\201D""\\2018""\\2019";
+  }
+
+  blockquote:before {
+    color: ${({ theme }) => theme.accent};
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  blockquote p {
+    display: inline;
+  }
+  
   pre[class*='language-']::before {
     font-family: "Outfit";
     border-radius: 0 0 4px 4px;
@@ -91,7 +145,7 @@ export const GlobalStyle = createGlobalStyle`
     position: absolute;
     left: 2.5rem;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
     top: 0;
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.background};

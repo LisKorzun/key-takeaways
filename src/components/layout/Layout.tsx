@@ -74,7 +74,7 @@ interface LayoutProps {
   theme?: ThemeModes;
 }
 
-export const Layout: FC<LayoutProps> = ({ children, theme = 'dark' }) => {
+export const Layout: FC<LayoutProps> = ({ children, theme = 'light' }) => {
   const [opened, setOpened] = useState(false);
   const windowRef = useRef<HTMLDivElement>(null);
   const frontRef = useRef<HTMLDivElement>(null);
