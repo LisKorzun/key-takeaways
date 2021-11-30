@@ -22,12 +22,12 @@ interface Props {
 }
 
 const components = {
-  h1: SH1,
-  h2: SH2,
-  h3: SH3,
-  h4: SH4,
-  h5: SH5,
-  h6: SH6,
+  // h1: SH1,
+  // h2: SH2,
+  // h3: SH3,
+  // h4: SH4,
+  // h5: SH5,
+  // h6: SH6,
 };
 
 const Post: FC<Props> = ({ data }) => {

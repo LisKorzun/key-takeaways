@@ -1,55 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    font-size: 62.5%;
-    -webkit-text-size-adjust: 100%;
-    height: 100%;
-  }
   
   body {
-    font-family: "Outfit";
-    font-weight: 300;
-    font-size: calc(1.8rem + .2vw);
-    line-height: 1.2;
-    display: flex;
-    flex-direction: column;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
     color: ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.background};
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  h1 {
-    font-weight: 900;
-    font-size: calc(3rem + 3vw);
-    text-transform: capitalize;
-  }
-  h2 {
-    font-size: calc(2.5rem + 1.5vw);
-    font-weight: 300;
-  }
-  h3 {
-    font-size: calc(2rem + 1vw);
-    font-weight: 300;
-  }
-
-  p {
-    font-weight: 300;
-    font-size: calc(1.8rem + .2vw);
-    line-height: calc(1.4em + .2vw);
-    word-break: break-word;
-    margin: 1rem 0;
-    text-align: justify;
+  hr {
+    border: 0;
+    height: 2px;
+    //background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), ${({ theme }) => theme.primary}, rgba(0, 0, 0, 0));
   }
   
   em {
@@ -68,12 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
   
-  hr {
-    width: 100%;
-    border: 0;
-    height: 0;
-    border-top: 1px solid ${({ theme }) => theme.accentRGBA};
-  }
+  
 
   ul, ol {
     margin: 0;
