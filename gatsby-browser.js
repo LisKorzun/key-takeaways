@@ -15,5 +15,5 @@ import '@fontsource/outfit/900.css';
 import 'prismjs/themes/prism-solarizedlight.css';
 
 /* Custom */
-import './src/styles/custom/normalize.css';
+import './src/styles/custom/common.css';
 import './src/styles/custom/prism-styles.css';

@@ -1,23 +1,5 @@
 .gatsby-highlight {
-  position: relative;
   width: 100%;
-}
-
-code[class*='language-'],
-pre[class*='language-'] {
-  font-family: 'Space Mono', monospace;
-  font-size: 1.7rem;
-  line-height: 1.7;
-}
-
-pre[class*='language-'] {
-  position: relative;
-  padding: 2.5rem 2rem 2rem;
-}
-
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background-color: rgba(6, 188, 240, 0.1);
 }
 
 pre[class='language-js']::before {

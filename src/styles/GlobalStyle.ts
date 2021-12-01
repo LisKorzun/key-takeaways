@@ -8,60 +8,19 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   hr {
-    border: 0;
-    height: 2px;
-    //background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), ${({ theme }) => theme.primary}, rgba(0, 0, 0, 0));
-  }
-  
-  em {
-    font-style: italic;
-  }
-  
-  strong {
-    font-weight: 600;
+    border-top: 1px dashed ${({ theme }) => theme.accent};
+    &::after {
+      color: ${({ theme }) => theme.accent};
+    }
   }
   
   a {
-    text-decoration: none;
-    margin: 0;
-    cursor: pointer;
     color: ${({ theme }) => theme.primary};
-    font-weight: 400;
   }
   
-  
-
-  ul, ol {
-    margin: 0;
-    li {
-      margin: 1.1rem 0;
-      p {
-        margin: 0 0 1.1rem;
-      }
-    }
-  }
-
-  ul li {
-    list-style-type: circle;
-  }
-  
-  table {
-    border-collapse: collapse;
-    margin: 2.5rem 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 4rem;
-  }
   thead tr {
     background-color: ${({ theme }) => theme.primaryRGBA};
     color:  ${({ theme }) => theme.text};
-    text-align: left;
-  }
-  
-  th, td {
-    padding: 12px 15px;
-    min-width: 12rem;
   }
 
   tbody tr {
@@ -81,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   blockquote:before {
-    color: ${({ theme }) => theme.accent};
+    color: ${({ theme }) => theme.accentRGBA};
     content: open-quote;
     font-size: 4em;
     line-height: 0.1em;
@@ -94,16 +53,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   pre[class*='language-']::before {
-    font-family: "Outfit";
-    border-radius: 0 0 4px 4px;
-    font-size: 1.4rem;
-    line-height: 1;
-    padding: 0.5rem 0.8rem;
-    position: absolute;
-    left: 2.5rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    top: 0;
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.background};
   }

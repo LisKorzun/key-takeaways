@@ -55,6 +55,7 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: [
+          `gatsby-remark-autolink-headers`,
           {
             resolve: "gatsby-remark-embed-video",
             options: {
@@ -78,7 +79,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              maxWidth: 1200,
             },
           },
           {
