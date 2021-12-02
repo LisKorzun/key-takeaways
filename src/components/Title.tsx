@@ -18,7 +18,10 @@ const STitle = styled.div`
     text-transform: capitalize;
     margin: 1rem 0;
   }
-  @media only screen and ${device.tabletUp} {
+  @media only screen and ${device.desktopXLUP} {
+    span {
+      font-size: 1.6rem;
+    }
   }
 `;
 

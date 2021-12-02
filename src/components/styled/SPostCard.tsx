@@ -32,37 +32,37 @@ export const SPostCard = styled.article`
 `;
 
 export const SPostCardImage = styled((props) => <GatsbyImage {...props} />)`
-  height: auto;
-  width: 20rem;
-  min-width: 20rem;
-  object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+  //object-fit: cover;
   border-radius: 0.8rem;
   object-position: center;
-  overflow: hidden;
-  position: relative;
-  margin-right: 5rem;
+  //overflow: hidden;
+  //position: relative;
+  //margin-right: 5rem;
   display: none;
   @media only screen and ${device.tabletUp} {
     display: block;
   }
   @media only screen and ${device.desktopXLUP} {
-    width: 25rem;
-    min-width: 25rem;
+    //width: 25rem;
+    //min-width: 29rem;
+    //max-height: 17rem;
   }
 `;
 
 export const SPostCardContent = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  flex-grow: 1;
+  //margin-top: 2rem;
+  //margin-bottom: 2rem;
+  //flex-grow: 1;
   position: relative;
   @media only screen and ${device.tabletUp} {
     margin-top: 3rem;
     margin-bottom: 3rem;
   }
   @media only screen and ${device.desktopXLUP} {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   .caption {
@@ -92,7 +92,8 @@ export const SPostCardContent = styled.div`
   }
 
   h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
     a {
       font-size: calc(16px + 1vw);
       font-weight: 600;
@@ -104,9 +105,9 @@ export const SPostCardContent = styled.div`
         color: ${(props) => props.theme.accent};
       }
     }
-    @media only screen and ${device.desktopXLUP} {
-      width: 70%;
-    }
+    //@media only screen and ${device.desktopXLUP} {
+    //  width: 70%;
+    //}
   }
 
   footer {
@@ -114,15 +115,15 @@ export const SPostCardContent = styled.div`
     & > div {
       margin-right: 2rem;
     }
-    @media only screen and ${device.desktopXLUP} {
-      position: absolute;
-      top: 30%;
-      right: 0;
-      flex-direction: column;
-      justify-content: center;
-      & > div {
-        margin-bottom: 2rem;
-      }
-    }
+    // @media only screen and ${device.desktopXLUP} {
+    //   position: absolute;
+    //   top: 30%;
+    //   right: 0;
+    //   flex-direction: column;
+    //   justify-content: center;
+    //   & > div {
+    //     margin-bottom: 2rem;
+    //   }
+    // }
   }
 `;

@@ -23,38 +23,43 @@ const rightAlignment = css`
 
 const SPostsList = styled.div`
   width: 100%;
-  & > article:nth-child(1n) {
-    background-color: ${(props) => props.theme.background};
-  }
-  & > article:nth-child(2n) {
-    background-color: rgba(117, 123, 148, 0.1);
-  }
-  @media only screen and ${device.tabletUp} {
-    & > article:nth-child(1n) {
-      background-color: inherit;
-    }
-    & > article:nth-child(2n) {
-      background-color: inherit;
-      ${rightAlignment}
-    }
-    & > article:nth-child(4n) {
-      justify-content: center;
-      &::before {
-        display: block;
-      }
-      & > div:first-child {
-        display: none;
-      }
-      & > div:nth-child(2n) {
-        align-items: center;
-      }
-    }
-  }
-  @media only screen and ${device.desktopXLUP} {
-    & > article:nth-child(2n) {
-      ${leftAlignment}
-    }
-  }
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  grid-auto-rows: 170px;
+  gap: 4rem;
+  align-items: center;
+  // & > article:nth-child(1n) {
+  //   background-color: ${(props) => props.theme.background};
+  // }
+  // & > article:nth-child(2n) {
+  //   background-color: rgba(117, 123, 148, 0.1);
+  // }
+  // @media only screen and ${device.tabletUp} {
+  //   & > article:nth-child(1n) {
+  //     background-color: inherit;
+  //   }
+  //   & > article:nth-child(2n) {
+  //     background-color: inherit;
+  //     ${rightAlignment}
+  //   }
+  //   & > article:nth-child(4n) {
+  //     justify-content: center;
+  //     &::before {
+  //       display: block;
+  //     }
+  //     & > div:first-child {
+  //       display: none;
+  //     }
+  //     & > div:nth-child(2n) {
+  //       align-items: center;
+  //     }
+  //   }
+  // }
+  // @media only screen and ${device.desktopXLUP} {
+  //   & > article:nth-child(2n) {
+  //     ${leftAlignment}
+  //   }
+  // }
 `;
 
 interface PostsListProps {

@@ -47,6 +47,6 @@ export const SCenterSection = styled.div<SCenterSectionProps>`
   }
 
   @media only screen and ${device.desktopXLUP} {
-    width: ${({ small }) => (small ? '40vw' : '900px')};
+    width: ${({ small }) => (small ? '40vw' : '1000px')};
   }
 `;

@@ -22,7 +22,7 @@ export const PostCard: FC<Props> = ({ post }) => {
   const image = getImage(hero_image);
 
   return (
-    <SPostCard>
+    <>
       <SPostCardImage image={image} alt="" />
       <SPostCardContent>
         <div className="caption">
@@ -37,8 +37,8 @@ export const PostCard: FC<Props> = ({ post }) => {
           <PostInfo icon="time" label={`${timeToRead} min read`} />
           <PostInfo icon="date" label={date} />
         </footer>
-        <PostTags tags={tags} />
+        {/*<PostTags tags={tags} />*/}
       </SPostCardContent>
-    </SPostCard>
+    </>
   );
 };

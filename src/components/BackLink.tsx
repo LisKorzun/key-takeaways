@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { Icon } from './Icon';
 import { ICONS } from '../common';
+import { device } from '../styles';
 
 const SBackLink = styled((props) => <Link {...props} />)`
   font-size: 1.5rem;
@@ -19,6 +20,12 @@ const SBackLink = styled((props) => <Link {...props} />)`
     top: 0.4rem;
     left: -2rem;
     height: 1.1rem;
+  }
+  @media only screen and ${device.desktopXLUP} {
+    font-size: 1.8rem;
+    svg {
+      height: 1.3rem;
+    }
   }
 `;
 

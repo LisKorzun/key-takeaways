@@ -6,7 +6,6 @@ import { device } from '../../styles';
 
 interface ChipLinkProps {
   selected?: boolean;
-  size?: 'small';
 }
 
 export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
@@ -18,13 +17,10 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   margin-bottom: 0.8rem;
   border-radius: 6px;
   color: ${({ theme }) => theme.text};
-  ${({ size }) =>
-    size === 'small' &&
-    `
-    font-size: calc(0.9rem + 0.2vw);
-    font-weight: 600;
-    padding: 3px 15px 2px;
-  `}
+  @media only screen and ${device.desktopXLUP} {
+    font-size: 1.6rem;
+    padding: 0 12px;
+  }
   &:hover {
     color: ${({ theme }) => theme.primary};
   }
