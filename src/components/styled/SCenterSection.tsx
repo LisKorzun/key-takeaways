@@ -8,8 +8,8 @@ interface SCenterSectionProps {
 }
 
 export const SCenterSection = styled.div<SCenterSectionProps>`
-  width: 90vw;
-  margin: 5rem auto;
+  width: 100%;
+  margin: 3rem auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -34,18 +34,19 @@ export const SCenterSection = styled.div<SCenterSectionProps>`
   }
 
   @media only screen and ${device.tabletUp} {
-    width:  ${({ small }) => (small ? '75vw' : '80vw')};
+    width: ${({ small }) => (small ? '75vw' : '80vw')};
   }
 
   @media only screen and ${device.laptopUp} {
-    width:  ${({ small }) => (small ? '60vw' : '70vw')};
+    width: ${({ small }) => (small ? '60vw' : '70vw')};
+    margin: 5rem auto;
   }
 
   @media only screen and ${device.desktopUp} {
-    width:  ${({ small }) => (small ? '58vw' : '65vw')};
+    width: ${({ small }) => (small ? '58vw' : '800px')};
   }
 
   @media only screen and ${device.desktopXLUP} {
-    width:  ${({ small }) => (small ? '40vw' : '58vw')};
+    width: ${({ small }) => (small ? '40vw' : '900px')};
   }
 `;

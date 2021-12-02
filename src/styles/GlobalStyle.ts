@@ -68,7 +68,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   div#front::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.accent};;
+    background-color: ${({ theme }) => theme.text};;
     border-radius: 10rem;
   }
   

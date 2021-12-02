@@ -5,17 +5,17 @@ import { Icon } from './Icon';
 
 const SPostInfo = styled.div`
   position: relative;
-  padding-left: calc(1.8rem + 0.3vw);
-  text-transform: uppercase;
+  padding-left: 20px;
+  text-transform: capitalize;
 
-  font-size: calc(1rem + 0.2vw);
+  font-size: 12px;
   font-weight: 400;
   color: ${(props) => props.theme.accent};
   svg {
     position: absolute;
-    top: -0.1rem;
+    top: 0;
     left: 0;
-    height: calc(1rem + 0.3vw);
+    height: 13px;
   }
 `;
 

@@ -17,7 +17,7 @@ const difficulty = css`
   min-height: 1.2rem;
   svg {
     position: absolute;
-    top: -0.2rem;
+    top: 0;
     left: 0;
   }
 `;
@@ -57,7 +57,7 @@ export const PostDifficulty: FC<PostDifficultyProps> = ({ level, asLink = false,
   const content = useMemo(
     () => (
       <>
-        <Icon name={data.icon} height="16px" color="text" />
+        <Icon name={data.icon} height="15px" color="text" />
         {showLabel ? data.title : ''}
       </>
     ),

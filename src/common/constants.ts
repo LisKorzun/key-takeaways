@@ -29,7 +29,7 @@ export const LABELS = {
   BACK_TO_TAGS: 'See all tags',
   BACK_TO_TOPICS: 'See all topics',
   ALL_TOPICS: 'All topics',
-  ALL_LEVELS: 'All difficulty levels',
+  ALL_LEVELS: 'All',
 };
 
 export const ICONS = {

@@ -10,19 +10,14 @@ interface ChipLinkProps {
 }
 
 export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
-  font-size: 1.4rem;
-  font-weight: 400;
+  font-size: 1.3rem;
+  font-weight: 600;
   text-transform: capitalize;
-  line-height: 1;
-  padding: 0.6rem 4.5rem;
-  margin-right: 1rem;
+  line-height: 160%;
+  padding: 0 9px;
   margin-bottom: 0.8rem;
+  border-radius: 6px;
   color: ${({ theme }) => theme.text};
-  background-color: ${({ theme }) => theme.accentRGBA};
-  border: 0.3rem solid ${({ theme }) => theme.accentRGBA};
-  border-radius: 2rem;
-  cursor: pointer;
-  position: relative;
   ${({ size }) =>
     size === 'small' &&
     `
@@ -31,7 +26,7 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
     padding: 3px 15px 2px;
   `}
   &:hover {
-    border-color: ${({ theme }) => theme.primaryRGBA};
+    color: ${({ theme }) => theme.primary};
   }
   span {
     font-size: 1.3rem;
@@ -53,13 +48,10 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   ${({ selected, theme }) =>
     selected &&
     `
-    background-color: ${theme.primary};
+    background-color: ${theme.text};
     color: ${theme.background};
-    border-color: ${theme.primary};
-    font-weight: 600;
     &:hover {
-    background-color: ${theme.primary};
-    border-color: ${theme.primary};
+    background-color: ${theme.text};
     color: ${theme.background};
     cursor: default;
   }
@@ -69,8 +61,8 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
 export const SChips = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: calc(2rem + 1.5vw);
   justify-content: center;
+  margin: 1rem 2rem;
   @media only screen and ${device.tabletUp} {
     justify-content: flex-start;
   }

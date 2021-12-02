@@ -3,25 +3,22 @@ import styled from 'styled-components';
 import { device } from '../styles';
 
 const STitle = styled.div`
-  margin-top: calc(2rem + 1.5vw);
-  margin-bottom: calc(2rem + 1.5vw);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-left: 2rem;
+  line-height: 1;
   span {
-    font-size: 1.8rem;
-    color: ${(props) => props.theme.primary};
+    font-size: 1.3rem;
+    color: ${({ theme }) => theme.primary};
     text-transform: uppercase;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 1px;
   }
-  h2 {
-    font-size: calc(4rem + 2vw);
-    font-weight: 700;
+  h1 {
     text-transform: capitalize;
+    margin: 1rem 0;
   }
   @media only screen and ${device.tabletUp} {
-    align-items: flex-start;
   }
 `;
 
@@ -35,7 +32,7 @@ export const Title: FC<TitleProps> = ({ caption, title }) => {
   return (
     <STitle>
       <span>{caption}</span>
-      <h2>{title}</h2>
+      <h1>{title}</h1>
     </STitle>
   );
 };

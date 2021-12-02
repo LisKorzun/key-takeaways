@@ -59,6 +59,7 @@
     "gatsby-plugin-eslint": "^4.0.2",
     "lodash": "^4.17.21",
     "prettier": "^2.4.1",
+    "react-is": "^17.0.2",
     "typescript": "^4.4.3"
   },
   "scripts": {

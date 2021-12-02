@@ -15,7 +15,7 @@ export const ChipsByLevels: FC<ChipsByLevelsProps> = ({ levels, active, data, ba
   <SChips>
     <SChipLink to={baseRoute} selected={active === 'all'}>
       {LABELS.ALL_LEVELS}
-      <span>{total}</span>
+      {/*<span>{total}</span>*/}
     </SChipLink>
     {levels.map(({ fieldValue, totalCount }) => {
       const level = find(data, ['id', fieldValue]);
@@ -24,7 +24,7 @@ export const ChipsByLevels: FC<ChipsByLevelsProps> = ({ levels, active, data, ba
           {level && (
             <SChipLink to={`${baseRoute}/${kebabCase(level.title)}`} selected={fieldValue === active}>
               {level.title}
-              <span>{totalCount}</span>
+              {/*<span>{totalCount}</span>*/}
             </SChipLink>
           )}
         </Fragment>

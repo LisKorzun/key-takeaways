@@ -6,17 +6,19 @@ import { Icon } from './Icon';
 import { ICONS } from '../common';
 
 const SBackLink = styled((props) => <Link {...props} />)`
-  font-size: calc(1.5rem + 0.5vw);
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: ${(props) => props.theme.text};
   margin-left: 2.8rem;
+  margin-bottom: 3rem;
   position: relative;
+  align-self: center;
 
   svg {
     position: absolute;
     top: 0.4rem;
-    left: -2.5rem;
-    height: calc(1rem + 0.3vw);
+    left: -2rem;
+    height: 1.1rem;
   }
 `;
 

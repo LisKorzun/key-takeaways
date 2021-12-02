@@ -6,12 +6,13 @@ import { device } from '../../styles';
 
 export const SPostCard = styled.article`
   display: flex;
-  padding: 2rem 1rem;
+  padding: 1rem 2rem;
   justify-content: space-between;
   position: relative;
   @media only screen and ${device.desktopXLUP} {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    padding: 2rem 1rem;
   }
 
   &::before {
@@ -66,11 +67,15 @@ export const SPostCardContent = styled.div`
 
   .caption {
     margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
     a:first-of-type {
       margin-bottom: 1rem;
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: 1px;
     }
     span {
-      font-size: 1.5rem;
       display: none;
       margin: 0 1rem;
       color: ${({ theme }) => theme.text};
