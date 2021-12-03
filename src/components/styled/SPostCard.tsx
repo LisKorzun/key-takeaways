@@ -57,12 +57,12 @@ export const SPostCardContent = styled.div`
   //flex-grow: 1;
   position: relative;
   @media only screen and ${device.tabletUp} {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    //margin-top: 3rem;
+    //margin-bottom: 3rem;
   }
   @media only screen and ${device.desktopXLUP} {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    //margin-top: 2rem;
+    //margin-bottom: 2rem;
   }
 
   .caption {
