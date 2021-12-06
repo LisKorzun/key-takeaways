@@ -120,7 +120,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const topics = result.data.topics.group;
   const posts = result.data.posts.nodes;
 
-  const postsPerPage = 3;
+  const postsPerPage = 12;
 
   createPage({
     path: '/',

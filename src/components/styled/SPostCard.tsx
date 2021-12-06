@@ -95,7 +95,7 @@ export const SPostCardContent = styled.div`
     margin-bottom: 1.5rem;
     margin-top: 1rem;
     a {
-      font-size: calc(16px + 1vw);
+      font-size: calc(16px + 0.5vw);
       font-weight: 600;
       text-transform: capitalize;
       display: block;

@@ -57,7 +57,7 @@ export const PostDifficulty: FC<PostDifficultyProps> = ({ level, asLink = false,
   const content = useMemo(
     () => (
       <>
-        <Icon name={data.icon} height="15px" color="text" />
+        <Icon name={data.icon} height="15px" color="accent" />
         {showLabel ? data.title : ''}
       </>
     ),

@@ -25,12 +25,12 @@ const SSheetAndSideBar = styled.div`
   margin: 0 auto;
   @media only screen and ${device.tabletUp} {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 300px;
     gap: 30px;
   }
 `;
 const SSideBar = styled.div``;
-const SSheet = styled.main`
+const SSheet = styled.div`
   position: relative;
   z-index: 1;
   align-self: start;
@@ -46,9 +46,9 @@ const Home: FC<Props> = ({ pageContext: { posts } }) => (
       <SSheetAndSideBar>
         <SSheet>
           <SHeading>{LABELS.RECENT}</SHeading>
-          <PostsList posts={take(posts, 11)} />
+          <PostsList posts={take(posts, 13)} />
         </SSheet>
-        {/*<SSideBar>SideBar</SSideBar>*/}
+        <SSideBar>SideBar</SSideBar>
       </SSheetAndSideBar>
     </SPageWrapper>
   </Layout>
