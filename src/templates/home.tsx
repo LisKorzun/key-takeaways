@@ -17,19 +17,13 @@ interface Props {
 const SPageWrapper = styled.div`
   padding: 0 100px;
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: 1300px;
 `;
 const SSheetAndSideBar = styled.div`
   display: block;
   padding-top: 0;
   margin: 0 auto;
-  @media only screen and ${device.tabletUp} {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 30px;
-  }
 `;
-const SSideBar = styled.div``;
 const SSheet = styled.div`
   position: relative;
   z-index: 1;
@@ -48,7 +42,6 @@ const Home: FC<Props> = ({ pageContext: { posts } }) => (
           <SHeading>{LABELS.RECENT}</SHeading>
           <PostsList posts={take(posts, 13)} />
         </SSheet>
-        <SSideBar>SideBar</SSideBar>
       </SSheetAndSideBar>
     </SPageWrapper>
   </Layout>

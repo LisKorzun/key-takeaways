@@ -8,7 +8,7 @@ import { ILevelData } from '../common';
 
 const difficulty = css`
   display: block;
-  padding-left: 8rem;
+  //padding-left: 8rem;
   text-transform: uppercase;
   font-size: 1.7rem;
   font-weight: 600;
@@ -18,7 +18,7 @@ const difficulty = css`
   svg {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
   }
 `;
 
@@ -57,7 +57,7 @@ export const PostDifficulty: FC<PostDifficultyProps> = ({ level, asLink = false,
   const content = useMemo(
     () => (
       <>
-        <Icon name={data.icon} height="15px" color="accent" />
+        <Icon name={data.icon} height="30px" color="accent" />
         {showLabel ? data.title : ''}
       </>
     ),

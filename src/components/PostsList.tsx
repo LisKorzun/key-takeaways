@@ -8,7 +8,7 @@ import { device } from '../styles';
 const SPostsList = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-auto-rows: minmax(130px, auto);
   gap: 3rem;
   align-items: stretch;
@@ -18,6 +18,7 @@ const SPostsList = styled.div`
   & > article:nth-child(11),
   & > article:nth-child(12) {
     grid-column-end: span 2;
+    grid-template-rows: auto;
     background-image: none;
     align-self: center;
     & > div:first-child {
@@ -31,26 +32,16 @@ const SPostsList = styled.div`
   & > article:nth-child(5),
   & > article:nth-child(10) {
     grid-row-end: span 2;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     & > div:first-child {
-      grid-column: 1;
-      grid-row: 1;
-      z-index: -1;
-      border-radius: 8px;
-      //display: none;
+      display: none;
     }
     & > div:last-child {
       grid-column: 1;
       grid-row: 1;
-      align-self: stretch;
+      align-self: auto;
       border-radius: 8px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      //background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-      background-image: linear-gradient(to top, ${({ theme }) => theme.accentRGBA}, rgba(0, 0, 0, 0));
-      //background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+      background-color: ${({ theme }) => theme.accentRGBA};
     }
   }
 `;
