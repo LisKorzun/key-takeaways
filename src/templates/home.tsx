@@ -15,9 +15,15 @@ interface Props {
 }
 
 const SPageWrapper = styled.div`
-  padding: 0 100px;
+  padding: 0 20px;
   margin: 0 auto;
   max-width: 1300px;
+  @media only screen and ${device.tabletUp} {
+    padding: 0 80px;
+  }
+  @media only screen and ${device.laptopUp} {
+    padding: 0 100px;
+  }
 `;
 const SSheetAndSideBar = styled.div`
   display: block;

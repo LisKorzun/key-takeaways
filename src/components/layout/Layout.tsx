@@ -47,7 +47,7 @@ const SLayout = styled.div<SLayoutProps>`
     top: ${HEADER_TOP}px;
     left: 1rem;
     width: fit-content;
-    height: 7rem;
+    height: 9rem;
     font-size: 2rem;
     color: ${(props) => props.theme.accent};
     -webkit-transform: rotate(-90deg);
@@ -57,7 +57,7 @@ const SLayout = styled.div<SLayoutProps>`
       display: block;
     }
     @media only screen and ${device.laptopUp} {
-      height: 10rem;
+      height: 11rem;
       font-size: 2.5rem;
     }
   }

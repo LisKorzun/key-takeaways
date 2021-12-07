@@ -1,6 +1,7 @@
 export const device = {
   mobileOnly: `(max-width: 480px)`,
   mobileUp: `(min-width: 480px)`,
+  tabletSUp: `(min-width: 640px)`,
   tabletUp: `(min-width: 768px)`,
   laptopUp: `(min-width: 1024px)`,
   desktopUp: `(min-width: 1281px)`,

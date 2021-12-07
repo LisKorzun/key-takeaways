@@ -64,11 +64,11 @@ export const GlobalStyle = createGlobalStyle`
 
   div#front::-webkit-scrollbar-track {
     border-radius: 1.5px;
-    background-color: transparent;
+    background-color: ${({ theme }) => theme.accentRGBA};
   }
 
   div#front::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.text};;
+    background-color: ${({ theme }) => theme.text};
     border-radius: 10rem;
   }
   
