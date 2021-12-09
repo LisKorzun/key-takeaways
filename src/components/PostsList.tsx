@@ -38,12 +38,13 @@ const SPostsList = styled.div`
   grid-auto-rows: minmax(115px, auto);
   gap: 3rem;
   align-items: stretch;
-  & > article:nth-child(2n),
-  & > article:nth-child(4) {
-    ${hideImage}
+  @media only screen and ${device.small} {
+    & > article:nth-child(3n) {
+      ${hideImage}
+    }
   }
 
-  @media only screen and ${device.tabletSUp} {
+  @media only screen and ${device.medium} {
     grid-template-columns: repeat(2, 1fr);
     & > article:nth-child(3),
     & > article:nth-child(8) {
@@ -61,7 +62,7 @@ const SPostsList = styled.div`
       }
     }
   }
-  @media only screen and ${device.laptopUp} {
+  @media only screen and ${device.large} {
     grid-template-columns: repeat(3, 1fr);
     & > article:nth-child(4),
     & > article:nth-child(6),
