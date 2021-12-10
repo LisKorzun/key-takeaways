@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { device } from '../styles';
 
-const STitle = styled.div`
+const STitle = styled.h1`
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
   line-height: 1;
   span {
     font-size: 1.3rem;
@@ -13,10 +14,10 @@ const STitle = styled.div`
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1px;
+    text-shadow: 0 3px 3px rgb(0 0 0 / 50%);
   }
-  h1 {
+  div {
     text-transform: capitalize;
-    margin: 1rem 0;
   }
   @media only screen and ${device.desktopXLUP} {
     span {
@@ -35,7 +36,7 @@ export const Title: FC<TitleProps> = ({ caption, title }) => {
   return (
     <STitle>
       <span>{caption}</span>
-      <h1>{title}</h1>
+      <div>{title}</div>
     </STitle>
   );
 };

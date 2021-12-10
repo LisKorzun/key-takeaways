@@ -2,7 +2,17 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Layout, Seo, Title, ChipsByTopics, PostsList, BackLink, Pagination, SCenterSection } from '../components';
+import {
+  Layout,
+  Seo,
+  Title,
+  ChipsByTopics,
+  PostsList,
+  BackLink,
+  Pagination,
+  SCenterSection,
+  SPageWrapper,
+} from '../components';
 import { ICONS, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
@@ -39,8 +49,7 @@ const Level: FC<Props> = ({
   return (
     <Layout>
       <Seo title={`${topic} for ${title}`} />
-      <SCenterSection>
-        <BackLink label={LABELS.BROWSE_LEVELS} to={ROUTES.LEVELS} />
+      <SPageWrapper>
         <Title caption={LABELS.LEVEL} title={title} icon={ICONS.LEVELS} />
         <ChipsByTopics
           topics={topics}
@@ -49,8 +58,8 @@ const Level: FC<Props> = ({
           total={total}
         />
         <PostsList posts={nodes} />
-      </SCenterSection>
-      <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />
+      </SPageWrapper>
+      {/*<Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />*/}
     </Layout>
   );
 };

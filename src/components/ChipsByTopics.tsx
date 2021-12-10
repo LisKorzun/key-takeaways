@@ -26,12 +26,12 @@ export const ChipsByTopics: FC<ChipsByTopicsProps> = ({ topics, active, baseRout
   <SChipsByTopics>
     <SChipLink to={baseRoute} selected={active === 'all'}>
       {LABELS.ALL_TOPICS}
-      <span>{total}</span>
+      {/*<span>{total}</span>*/}
     </SChipLink>
     {topics.map(({ fieldValue, totalCount }) => (
       <SChipLink key={fieldValue} to={`${baseRoute}/${kebabCase(fieldValue)}`} selected={fieldValue === active}>
         {fieldValue}
-        <span>{totalCount}</span>
+        {/*<span>{totalCount}</span>*/}
       </SChipLink>
     ))}
   </SChipsByTopics>

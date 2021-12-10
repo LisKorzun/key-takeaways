@@ -13,7 +13,7 @@ export const LABELS = {
   LEVEL: 'Difficulty',
   LEVELS: 'Explore by Difficulty',
   TAGS: 'Tags',
-  TAG: 'Tag',
+  TAG: 'Posts Tagged',
   TOPICS: 'Topics',
   TOPIC: 'Topic',
   POST: 'Post',
