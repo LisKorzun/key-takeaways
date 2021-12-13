@@ -11,12 +11,12 @@ module.exports = {
     },
     description: 'JS, TS, React Cheat Sheets: all you need!',
     levels: [
-      { id: '0', title: 'Super Easy', icon: 'Level-0' },
-      { id: '1', title: 'Easy', icon: 'Level-1' },
-      { id: '2', title: 'Medium', icon: 'Level-2' },
-      { id: '3', title: 'Hard', icon: 'Level-3' },
-      { id: '4', title: 'Insanely Hard', icon: 'Level-4' },
-      { id: '5', title: 'Master', icon: 'Level-5' },
+      { id: '0', title: 'Beginner', icon: 'Level-0', caption: 'Just starting out' },
+      { id: '1', title: 'Novice', icon: 'Level-1', caption: 'The fundamentals' },
+      { id: '2', title: 'Intermediate', icon: 'Level-2', caption: 'Beyond the basics' },
+      { id: '3', title: 'Advanced', icon: 'Level-3', caption: 'Above and beyond' },
+      { id: '4', title: 'Expert', icon: 'Level-4', caption: 'Been around the block a few times' },
+      { id: '5', title: 'Master', icon: 'Level-5', caption: 'For Big Fish' },
     ],
   },
   plugins: [
@@ -57,7 +57,7 @@ module.exports = {
         gatsbyRemarkPlugins: [
           `gatsby-remark-autolink-headers`,
           {
-            resolve: "gatsby-remark-embed-video",
+            resolve: 'gatsby-remark-embed-video',
             options: {
               width: 800,
               ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
@@ -67,12 +67,11 @@ module.exports = {
               loadingStrategy: 'lazy', //Optional: Enable support for lazy-load offscreen iframes. Default is disabled.
               urlOverrides: [
                 {
-                  id: "youtube",
-                  embedURL: videoId =>
-                    `https://www.youtube-nocookie.com/embed/${videoId}`,
+                  id: 'youtube',
+                  embedURL: (videoId) => `https://www.youtube-nocookie.com/embed/${videoId}`,
                 },
               ],
-              containerClass: "embedVideo-container", //Optional: Custom CSS class for iframe container, for multiple classes separate them by space
+              containerClass: 'embedVideo-container', //Optional: Custom CSS class for iframe container, for multiple classes separate them by space
               iframeId: false, //Optional: if true, iframe's id will be set to what is provided after 'video:' (YouTube IFrame player API requires iframe id)
             },
           },
