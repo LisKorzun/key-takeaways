@@ -1,18 +1,25 @@
 import React, { FC } from 'react';
-import { take } from 'lodash';
 
 import { ICONS, IGroupedField, IPost, LABELS } from '../common';
 import { Layout, Seo, Banner, PostsList, SPageWrapper, SCenterSection, SHeading } from '../components';
+import { graphql } from 'gatsby';
 
 interface Props {
   pageContext: {
     levels: IGroupedField[];
-    posts: IPost[];
-    topics: IGroupedField[];
+  };
+  data: {
+    allMdx: {
+      nodes: IPost[];
+    };
   };
 }
 
-const Home: FC<Props> = ({ pageContext: { posts } }) => (
+const Home: FC<Props> = ({
+  data: {
+    allMdx: { nodes },
+  },
+}) => (
   <Layout>
     <Seo title={LABELS.HOME} />
     <SCenterSection>
@@ -20,9 +27,19 @@ const Home: FC<Props> = ({ pageContext: { posts } }) => (
     </SCenterSection>
     <SPageWrapper>
       <SHeading>{LABELS.RECENT}</SHeading>
-      <PostsList posts={take(posts, 13)} />
+      <PostsList posts={nodes} />
     </SPageWrapper>
   </Layout>
 );
+
+export const pageQuery = graphql`
+  query {
+    allMdx(limit: 12, sort: {fields: frontmatter___date, order: DESC}) {
+      nodes {
+       ...postFields
+      }
+  }
+  }
+`;
 
 export default Home;

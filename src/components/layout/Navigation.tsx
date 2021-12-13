@@ -72,7 +72,6 @@ export const Navigation: FC<NavigationProps> = ({ onClose }) => {
         <div className="close" onClick={onClose} />
         <Link to="/">Home</Link>
         <Link to="/levels">Difficulty</Link>
-        <Link to="/topics">Topics</Link>
         <Link to="/tags">Tags</Link>
         <Link to="/about">About</Link>
       </nav>
