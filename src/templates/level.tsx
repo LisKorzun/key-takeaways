@@ -6,11 +6,9 @@ import {
   Layout,
   Seo,
   Title,
-  ChipsByTopics,
+  ChipsByTags,
   PostsList,
-  BackLink,
   Pagination,
-  SCenterSection,
   SPageWrapper,
 } from '../components';
 import { ICONS, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
@@ -18,8 +16,8 @@ import { ICONS, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../comm
 interface Props {
   pageContext: {
     total: number;
-    topic: string;
-    topics: IGroupedField[];
+    tag: string;
+    tags: IGroupedField[];
     levelData: ILevelData;
     numPages: number;
     currentPage: number;
@@ -35,8 +33,8 @@ interface Props {
 const Level: FC<Props> = ({
   pageContext: {
     total,
-    topic,
-    topics,
+    tag,
+    tags,
     levelData: { title },
     numPages,
     currentPage,
@@ -48,18 +46,13 @@ const Level: FC<Props> = ({
 }) => {
   return (
     <Layout>
-      <Seo title={`${topic} for ${title}`} />
+      <Seo title={`${tag} for ${title}`} />
       <SPageWrapper>
         <Title caption={LABELS.LEVEL} title={title} icon={ICONS.LEVELS} />
-        <ChipsByTopics
-          topics={topics}
-          active={topic}
-          baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`}
-          total={total}
-        />
+        <ChipsByTags tags={tags} active={tag} baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`} total={total} />
         <PostsList posts={nodes} />
       </SPageWrapper>
-      {/*<Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />*/}
+      <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />
     </Layout>
   );
 };

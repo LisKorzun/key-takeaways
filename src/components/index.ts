@@ -8,6 +8,7 @@ export * from './PostsList';
 export * from './Pagination';
 export * from './ChipsByLevels';
 export * from './ChipsByTopics';
+export * from './ChipsByTags';
 export * from './LevelsList';
 export * from './PercentageRow';
 export * from './FeaturedList';
