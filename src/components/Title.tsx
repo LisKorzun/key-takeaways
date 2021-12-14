@@ -5,9 +5,10 @@ import { device } from '../styles';
 const STitle = styled.h1`
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-bottom: 3rem;
   line-height: 1;
+  text-align: center;
   span {
     font-size: 1.3rem;
     color: ${({ theme }) => theme.primary};
@@ -20,7 +21,11 @@ const STitle = styled.h1`
     text-transform: capitalize;
     text-shadow: 0 2px 3px rgb(0 0 0 / 50%);
   }
+  @media only screen and ${device.tabletUp} {
+    text-align: left;
+  }
   @media only screen and ${device.desktopXLUP} {
+    margin-top: 5rem;
     span {
       font-size: 1.6rem;
     }

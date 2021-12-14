@@ -23,12 +23,12 @@ const SLayout = styled.div<SLayoutProps>`
       `
       overflow: hidden;
       pointer-events: none;
-      main {
+      .page {
         transform: rotate(10deg) translateZ(0);
       }
   `}
   }
-  main {
+  .page {
     pointer-events: auto;
     min-height: 100vh;
     position: relative;
@@ -39,7 +39,7 @@ const SLayout = styled.div<SLayoutProps>`
     transform-origin: center 70%;
     transition: all 0.3s ease;
   }
-  header {
+  .header {
     display: none;
     font-weight: 100;
     position: fixed;
@@ -118,11 +118,13 @@ export const Layout: FC<LayoutProps> = ({ children, theme = 'light' }) => {
       <SLayout opened={opened}>
         <Navigation onClose={onClose} />
         <div id="front" ref={windowRef} onScroll={onScroll}>
-          <main ref={frontRef}>
+          <div ref={frontRef} className="page">
             <Hamburger onOpen={onOpen} />
-            <header ref={headerRef}>{LABELS.HEADER}</header>
+            <div ref={headerRef} className="header">
+              {LABELS.HEADER}
+            </div>
             <div className="content">{children}</div>
-          </main>
+          </div>
         </div>
       </SLayout>
     </ThemeProvider>

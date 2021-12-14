@@ -31,13 +31,38 @@ interface AlphabetListProps {
   baseUrl: string;
 }
 
+const SLetterRow = styled.div`
+  display: grid;
+  grid-template-columns: 50px 1fr;
+`;
+
+const SHeaderNav = styled.div`
+  background: ${({ theme }) => theme.primaryRGBA};
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  a {
+    color: ${({ theme }) => theme.text};
+    font-weight: 500;
+    font-size: 15px;
+    white-space: nowrap;
+    padding: 0 1rem;
+    line-height: 26px;
+  }
+`;
+
 export const AlphabetList: FC<AlphabetListProps> = ({ list, total, baseUrl }) => {
   const groups = groupByLetter(list);
   return (
     <>
       {groups.map(({ items, letter }) => (
-        <SAlphabetList key={letter}>
-          <h4>{letter}</h4>
+        <SLetterRow key={letter} id={`letter-${letter}`}>
+          <div>{letter}</div>
           <ol>
             {items.map(({ fieldValue, totalCount }) => (
               <PercentageRow
@@ -50,7 +75,7 @@ export const AlphabetList: FC<AlphabetListProps> = ({ list, total, baseUrl }) =>
               </PercentageRow>
             ))}
           </ol>
-        </SAlphabetList>
+        </SLetterRow>
       ))}
     </>
   );

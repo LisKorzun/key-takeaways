@@ -14,7 +14,8 @@ type GroupsObject = {
 };
 export const groupByLetter = (items: IGroupedField[]): Group[] => {
   const groups = items.reduce((r: GroupsObject, c: IGroupedField) => {
-    r[c.fieldValue[0]] = r[c.fieldValue[0]] ? [...r[c.fieldValue[0]], c] : [c];
+    const letter = c.fieldValue[0].toUpperCase();
+    r[letter] = r[letter] ? [...r[letter], c] : [c];
     return r;
   }, {});
 
