@@ -2,11 +2,13 @@ import { graphql } from 'gatsby';
 
 export const postFields = graphql`
   fragment postFields on Mdx {
+    id
+    slug
+    timeToRead
     frontmatter {
       title
       tags
       level
-      topic
       date(formatString: "MMM DD, YYYY")
       hero_image {
         childImageSharp {
@@ -14,8 +16,5 @@ export const postFields = graphql`
         }
       }
     }
-    id
-    slug
-    timeToRead
   }
 `;

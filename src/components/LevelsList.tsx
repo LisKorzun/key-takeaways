@@ -46,7 +46,7 @@ export const LevelsList: FC<LevelsListProps> = ({ levels, total }) => {
           <SRow key={fieldValue}>
             {level && (
               <PercentageRow
-                to={`${ROUTES.LEVELS}/${kebabCase(level.title)}`}
+                to={`${ROUTES.LEVEL}/${kebabCase(level.title)}`}
                 count={totalCount}
                 total={total}
               >

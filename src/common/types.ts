@@ -6,7 +6,7 @@ export interface IPost {
   slug: string;
   id: string;
   timeToRead: number;
-  frontmatter: { title: string; date: string; level: string; topic: string; tags: string[]; hero_image: ImageDataLike };
+  frontmatter: { title: string; date: string; level: string; tags: string[]; hero_image: ImageDataLike };
 }
 
 export interface IGroupedField {
@@ -18,4 +18,5 @@ export interface ILevelData {
   id: string;
   title: string;
   icon: string;
+  caption: string;
 }

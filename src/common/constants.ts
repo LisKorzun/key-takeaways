@@ -1,8 +1,7 @@
 export const ROUTES = {
   HOME: '/',
-  TOPICS: '/topics',
-  TAGS: '/tags',
-  LEVELS: '/levels',
+  TAG: '/tag',
+  LEVEL: '/level',
 };
 
 export const LABELS = {
@@ -13,24 +12,11 @@ export const LABELS = {
   LEVEL: 'Difficulty',
   LEVELS: 'Explore by Difficulty',
   TAGS: 'Tags',
-  TAG: 'Posts Tagged',
-  TOPICS: 'Topics',
-  TOPIC: 'Topic',
+  TAG_CAPTION: 'Posts Tagged',
   POST: 'Post',
   POSTS: 'Posts',
   RECENT: 'Recently published',
-  SEE_TOPICS: 'See all topics',
-  FEATURED: 'Featured',
-  BROWSE_TAGS: 'Browse Tags',
-  BROWSE_TOPICS: 'Browse Topics',
-  BROWSE_LEVELS: 'Browse Difficulty Levels',
-  EXPLORE_TOPICS: 'Explore by Topics',
-  BACK_TO_LEVELS: 'See all levels',
-  BACK_TO_TAGS: 'See all tags',
-  BACK_TO_TOPICS: 'See all topics',
-  ALL_TOPICS: 'All topics',
   ALL: 'All',
-  ALL_LEVELS: 'All',
 };
 
 export const ICONS = {

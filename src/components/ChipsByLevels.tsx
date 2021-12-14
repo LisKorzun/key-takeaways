@@ -11,20 +11,18 @@ interface ChipsByLevelsProps {
   levels: IGroupedField[];
   total: number;
 }
-export const ChipsByLevels: FC<ChipsByLevelsProps> = ({ levels, active, data, baseRoute, total }) => (
+export const ChipsByLevels: FC<ChipsByLevelsProps> = ({ levels, active, data, baseRoute }) => (
   <SChips>
     <SChipLink to={baseRoute} selected={active === 'all'}>
-      {LABELS.ALL_LEVELS}
-      {/*<span>{total}</span>*/}
+      {LABELS.ALL}
     </SChipLink>
-    {levels.map(({ fieldValue, totalCount }) => {
+    {levels.map(({ fieldValue }) => {
       const level = find(data, ['id', fieldValue]);
       return (
         <Fragment key={fieldValue}>
           {level && (
             <SChipLink to={`${baseRoute}/${kebabCase(level.title)}`} selected={fieldValue === active}>
               {level.title}
-              {/*<span>{totalCount}</span>*/}
             </SChipLink>
           )}
         </Fragment>

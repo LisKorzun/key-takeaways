@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { ICONS, IGroupedField, IPost, LABELS } from '../common';
-import { Layout, Seo, Banner, PostsList, SPageWrapper, SCenterSection, SHeading } from '../components';
+import { IGroupedField, IPost, LABELS } from '../common';
+import { Layout, Seo, PostsList, SPageWrapper, SHeading } from '../components';
 import { graphql } from 'gatsby';
 
 interface Props {
@@ -22,9 +22,6 @@ const Home: FC<Props> = ({
 }) => (
   <Layout>
     <Seo title={LABELS.HOME} />
-    <SCenterSection>
-      <Banner title={LABELS.TITLE} icon={ICONS.CODE} />
-    </SCenterSection>
     <SPageWrapper>
       <SHeading>{LABELS.RECENT}</SHeading>
       <PostsList posts={nodes} />
@@ -34,11 +31,11 @@ const Home: FC<Props> = ({
 
 export const pageQuery = graphql`
   query {
-    allMdx(limit: 12, sort: {fields: frontmatter___date, order: DESC}) {
+    allMdx(limit: 12, sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
-       ...postFields
+        ...postFields
       }
-  }
+    }
   }
 `;
 

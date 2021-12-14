@@ -2,15 +2,16 @@ import React, { FC } from 'react';
 import { kebabCase } from 'lodash';
 import styled from 'styled-components';
 
-import { device } from '../styles';
-import { SChipLink } from './styled';
 import { ROUTES } from '../common';
+import { Link } from 'gatsby';
 
 const SPostTags = styled.div`
-  display: flex;
-  padding-top: 2rem;
-  @media only screen and ${device.desktopXLUP} {
-    width: 70%;
+  a {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-inline-end: 1.1rem;
+    font-weight: 700;
+    color: ${({ theme }) => theme.primary};
   }
 `;
 
@@ -21,9 +22,9 @@ interface PostTagsProps {
 export const PostTags: FC<PostTagsProps> = ({ tags }) => (
   <SPostTags>
     {tags.map((tag) => (
-      <SChipLink to={`${ROUTES.TAGS}/${kebabCase(tag)}`} key={tag} size="small">
+      <Link to={`${ROUTES.TAG}/${kebabCase(tag)}`} key={tag}>
         {tag}
-      </SChipLink>
+      </Link>
     ))}
   </SPostTags>
 );

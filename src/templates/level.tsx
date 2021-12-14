@@ -11,7 +11,7 @@ import {
   Pagination,
   SPageWrapper,
 } from '../components';
-import { ICONS, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
+import { ICONS, IGroupedField, ILevelData, IPost, ROUTES } from '../common';
 
 interface Props {
   pageContext: {
@@ -35,7 +35,7 @@ const Level: FC<Props> = ({
     total,
     tag,
     tags,
-    levelData: { title },
+    levelData: { title, caption },
     numPages,
     currentPage,
     baseURL,
@@ -48,8 +48,8 @@ const Level: FC<Props> = ({
     <Layout>
       <Seo title={`${tag} for ${title}`} />
       <SPageWrapper>
-        <Title caption={LABELS.LEVEL} title={title} icon={ICONS.LEVELS} />
-        <ChipsByTags tags={tags} active={tag} baseRoute={`${ROUTES.LEVELS}/${kebabCase(title)}`} total={total} />
+        <Title caption={caption} title={title} icon={ICONS.LEVELS} />
+        <ChipsByTags tags={tags} active={tag} baseRoute={`${ROUTES.LEVEL}/${kebabCase(title)}`} total={total} />
         <PostsList posts={nodes} />
       </SPageWrapper>
       <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />

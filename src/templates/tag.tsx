@@ -30,14 +30,14 @@ const Tag: FC<Props> = ({
   },
 }) => (
   <Layout>
-    <Seo title={`${tag} ${LABELS.TAG}`} />
+    <Seo title={`${tag} ${LABELS.TAG_CAPTION}`} />
     <SPageWrapper>
-      <Title caption={LABELS.TAG} title={tag} icon={ICONS.TAG} />
+      <Title caption={LABELS.TAG_CAPTION} title={tag} icon={ICONS.TAG} />
       <ChipsByLevels
         levels={levels}
         data={levelsData}
         active={level}
-        baseRoute={`${ROUTES.TAGS}/${kebabCase(tag)}`}
+        baseRoute={`${ROUTES.TAG}/${kebabCase(tag)}`}
         total={total}
       />
       <PostsList posts={nodes} />

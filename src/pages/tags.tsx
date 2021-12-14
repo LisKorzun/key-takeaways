@@ -18,7 +18,7 @@ const TagsPage: FC<Props> = ({ data }) => (
     <Seo title={LABELS.TAGS} />
     <SCenterSection small>
       <SHeading>{LABELS.TAGS}</SHeading>
-      <AlphabetList list={data.allMdx.group} total={data.allMdx.totalCount} baseUrl={ROUTES.TAGS} />
+      <AlphabetList list={data.allMdx.group} total={data.allMdx.totalCount} baseUrl={ROUTES.TAG} />
     </SCenterSection>
   </Layout>
 );

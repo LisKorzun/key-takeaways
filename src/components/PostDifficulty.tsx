@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 
 import { Icon } from './Icon';
-import { ILevelData } from '../common';
+import { ILevelData, ROUTES } from '../common';
 
 const difficulty = css`
   display: block;
@@ -67,7 +67,7 @@ export const PostDifficulty: FC<PostDifficultyProps> = ({ level, asLink = false,
   return (
     <>
       {asLink ? (
-        <SPostDifficultyLink to={`/levels/${kebabCase(data.title)}`}>{content}</SPostDifficultyLink>
+        <SPostDifficultyLink to={`${ROUTES.LEVEL}/${kebabCase(data.title)}`}>{content}</SPostDifficultyLink>
       ) : (
         <SPostDifficulty>{content}</SPostDifficulty>
       )}

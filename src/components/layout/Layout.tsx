@@ -43,7 +43,7 @@ const SLayout = styled.div<SLayoutProps>`
     display: none;
     font-weight: 100;
     position: fixed;
-    z-index: 4;
+    z-index: -1;
     top: ${HEADER_TOP}px;
     left: 1rem;
     width: fit-content;
@@ -74,7 +74,7 @@ interface LayoutProps {
   theme?: ThemeModes;
 }
 
-export const Layout: FC<LayoutProps> = ({ children, theme = 'dark' }) => {
+export const Layout: FC<LayoutProps> = ({ children, theme = 'light' }) => {
   const [opened, setOpened] = useState(false);
   const windowRef = useRef<HTMLDivElement>(null);
   const frontRef = useRef<HTMLDivElement>(null);

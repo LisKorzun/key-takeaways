@@ -12,12 +12,13 @@ const STitle = styled.h1`
     font-size: 1.3rem;
     color: ${({ theme }) => theme.primary};
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 1px;
-    text-shadow: 0 3px 3px rgb(0 0 0 / 50%);
+    line-height: 2rem;
   }
   div {
     text-transform: capitalize;
+    text-shadow: 0 2px 3px rgb(0 0 0 / 50%);
   }
   @media only screen and ${device.desktopXLUP} {
     span {

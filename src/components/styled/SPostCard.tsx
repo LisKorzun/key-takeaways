@@ -19,7 +19,7 @@ export const SPostCardContent = styled.div`
   row-gap: 10px;
   background-color: ${({ theme }) => theme.accentRGBA};
 
-  & > a:nth-child(1) {
+  & > div:nth-child(1) {
     grid-column-end: span 2;
     font-size: 12px;
     font-weight: 600;
@@ -34,13 +34,10 @@ export const SPostCardContent = styled.div`
     align-self: start;
     a {
       font-size: calc(16px + 0.5vw);
-      font-weight: 600;
+      font-weight: 500;
       text-transform: capitalize;
       display: block;
       line-height: 1.3;
       color: ${(props) => props.theme.secondary};
-      &:hover {
-        color: ${(props) => props.theme.accent};
-      }
   }
 `;

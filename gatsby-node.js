@@ -19,6 +19,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             id
             title
             icon
+            caption
           }
         }
       }
@@ -80,7 +81,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const total = level.totalCount;
     const levelData = _.find(levelsData, ['id', level.fieldValue]);
 
-    const levelURL = `/levels/${_.kebabCase(levelData.title)}`;
+    const levelURL = `/level/${_.kebabCase(levelData.title)}`;
     const numPages = Math.ceil(total / postsPerPage);
 
     const common = {
@@ -132,7 +133,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   tags.forEach((tag) => {
     const total = tag.totalCount;
     const currentTag = tag.fieldValue;
-    const tagURL = `/tags/${_.kebabCase(currentTag)}`;
+    const tagURL = `/tag/${_.kebabCase(currentTag)}`;
     const numPages = Math.ceil(total / postsPerPage);
 
     const common = {

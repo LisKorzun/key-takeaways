@@ -9,8 +9,8 @@ interface ChipLinkProps {
 }
 
 export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
   text-transform: capitalize;
   line-height: 160%;
   padding: 0 9px;
@@ -20,9 +20,6 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
   @media only screen and ${device.desktopXLUP} {
     font-size: 1.6rem;
     padding: 0 12px;
-  }
-  &:hover {
-    color: ${({ theme }) => theme.primary};
   }
   span {
     font-size: 1.3rem;
@@ -47,8 +44,7 @@ export const SChipLink = styled((props) => <Link {...props} />)<ChipLinkProps>`
     background-color: ${theme.text};
     color: ${theme.background};
     &:hover {
-    background-color: ${theme.text};
-    color: ${theme.background};
+    opacity: 1;
     cursor: default;
   }
   `}
@@ -58,7 +54,7 @@ export const SChips = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1rem 2rem;
+  margin: 1rem 0 2rem;
   @media only screen and ${device.tabletUp} {
     justify-content: flex-start;
   }

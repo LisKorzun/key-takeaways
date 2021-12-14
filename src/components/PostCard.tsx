@@ -6,7 +6,7 @@ import { IPost } from '../common';
 import { SPostCardContent, SPostCard } from './styled';
 import { PostDifficulty } from './PostDifficulty';
 import { PostInfo } from './PostInfo';
-import { PostTopic } from './PostTopic';
+import { PostTags } from './PostTags';
 
 interface Props {
   post: IPost;
@@ -16,7 +16,7 @@ export const PostCard: FC<Props> = ({ post }) => {
   const {
     slug,
     timeToRead,
-    frontmatter: { hero_image, topic, title, date, level },
+    frontmatter: { hero_image, tags, title, date, level },
   } = post;
   const image = getImage(hero_image)!;
 
@@ -24,7 +24,7 @@ export const PostCard: FC<Props> = ({ post }) => {
     <SPostCard>
       <GatsbyImage image={image} alt="" />
       <SPostCardContent>
-        <PostTopic topic={topic} />
+        <PostTags tags={tags} />
         <PostDifficulty level={level} asLink />
         <h2>
           <Link to={`/${slug}`}>{title}</Link>

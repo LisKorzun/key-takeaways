@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import { PageProps } from 'gatsby';
 
-import { Layout, Seo, Banner, SCenterSection } from '../components';
-import { ICONS, LABELS } from '../common';
+import { Layout, Seo, SCenterSection } from '../components';
+import { LABELS } from '../common';
 
 const AboutPage: FC<PageProps> = () => (
   <Layout>
     <Seo title={LABELS.ABOUT} />
     <SCenterSection>
-      <Banner title={LABELS.ABOUT} icon={ICONS.ABOUT} />
+      <h1>{LABELS.ABOUT}</h1>
     </SCenterSection>
   </Layout>
 );
