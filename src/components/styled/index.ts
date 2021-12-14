@@ -1,4 +1,4 @@
-export * from './SCenterSection';
+export * from './SContainers';
 export * from './SFullSection';
 export * from './SHeading';
 export * from './SChipLink';

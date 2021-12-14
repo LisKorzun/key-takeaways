@@ -4,7 +4,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout, SCenterSection, Seo, SFullSection } from '../components';
+import { Layout, Seo, SFullSection, SPageWrapper } from '../components';
 import { IPost } from '../common';
 
 interface IFullPost extends IPost {
@@ -33,11 +33,11 @@ const Post: FC<Props> = ({ data }) => {
         <GatsbyImage image={image} alt="test-img" />
         <p>{data.mdx.frontmatter.date}</p>
       </SFullSection>
-      <SCenterSection>
+      <SPageWrapper>
         <MDXProvider components={components}>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
-      </SCenterSection>
+      </SPageWrapper>
     </Layout>
   );
 };
