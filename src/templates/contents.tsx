@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
+
+import { IGroupedField, LABELS, ROUTES } from '../common';
+import { Layout, Seo, AlphabetList, SPageWrapper, SHeading } from '../components';
 import { graphql } from 'gatsby';
 
-import { Layout, Seo, SCenterSection, SHeading, AlphabetList } from '../components';
-import { IGroupedField, LABELS, ROUTES } from '../common';
-
 interface Props {
+  pageContext: {
+    levels: IGroupedField[];
+  };
   data: {
     allMdx: {
       totalCount: number;
@@ -13,17 +16,17 @@ interface Props {
   };
 }
 
-const TagsPage: FC<Props> = ({ data }) => (
+const Contents: FC<Props> = ({ data }) => (
   <Layout>
     <Seo title={LABELS.TAGS} />
-    <SCenterSection small>
+    <SPageWrapper>
       <SHeading>{LABELS.TAGS}</SHeading>
       <AlphabetList list={data.allMdx.group} total={data.allMdx.totalCount} baseUrl={ROUTES.TAG} />
-    </SCenterSection>
+    </SPageWrapper>
   </Layout>
 );
 
-export const query = graphql`
+export const pageQuery = graphql`
   query {
     allMdx(limit: 2000, sort: { fields: frontmatter___date, order: DESC }) {
       totalCount
@@ -35,4 +38,4 @@ export const query = graphql`
   }
 `;
 
-export default TagsPage;
+export default Contents;

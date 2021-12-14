@@ -7,6 +7,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const SORT = '{ fields: frontmatter___date, order: DESC }';
 
   const homeTemplate = path.resolve('src/templates/home.tsx');
+  const contentsTemplate = path.resolve('src/templates/contents.tsx');
   const levelTemplate = path.resolve('src/templates/level.tsx');
   const tagTemplate = path.resolve('src/templates/tag.tsx');
   const postTemplate = path.resolve('src/templates/post.tsx');
@@ -66,6 +67,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   createPage({
     path: '/',
     component: homeTemplate,
+    context: { levels, tags, posts },
+  });
+
+  createPage({
+    path: '/contents',
+    component: contentsTemplate,
     context: { levels, tags, posts },
   });
 
