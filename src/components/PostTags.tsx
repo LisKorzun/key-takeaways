@@ -6,6 +6,8 @@ import { ROUTES } from '../common';
 import { Link } from 'gatsby';
 
 const SPostTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   a {
     text-transform: uppercase;
     font-size: 1.1rem;
@@ -23,7 +25,7 @@ export const PostTags: FC<PostTagsProps> = ({ tags }) => (
   <SPostTags>
     {tags.map((tag) => (
       <Link to={`${ROUTES.TAG}/${kebabCase(tag)}`} key={tag}>
-        {tag}
+        #{tag}
       </Link>
     ))}
   </SPostTags>
