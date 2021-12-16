@@ -11,9 +11,9 @@ const SPercentageRow = styled((props) => <Link {...props} />)`
   margin-bottom: 2rem;
   position: relative;
   color: ${(props) => props.theme.text};
-  text-transform: uppercase;
-  font-size: 1.7rem;
-  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  font-weight: 500;
 
   strong {
     float: right;
@@ -30,8 +30,8 @@ const SPercentageRow = styled((props) => <Link {...props} />)`
     -webkit-transition: background ease 0.2s;
     transition: background ease 0.2s;
     border-radius: 0.8rem;
-    background: ${(props) => props.theme.text};
-    opacity: 0.1;
+    background: ${(props) => props.theme.accentRGBA};
+    //opacity: 0.1;
   }
   &:last-of-type {
     margin-bottom: 0;

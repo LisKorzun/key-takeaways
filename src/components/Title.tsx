@@ -16,10 +16,10 @@ const STitle = styled.h1`
     font-weight: 700;
     letter-spacing: 1px;
     line-height: 2rem;
+    text-shadow: none;
   }
   div {
     text-transform: capitalize;
-    text-shadow: 0 2px 3px rgb(0 0 0 / 50%);
   }
   @media only screen and ${device.tabletUp} {
     text-align: left;

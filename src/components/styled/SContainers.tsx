@@ -7,7 +7,7 @@ export const SPageWrapper = styled.div`
   align-self: center;
   width: 100%;
   //width: -webkit-fill-available;
-  width: -moz-available;
+  //width: -moz-available;
   max-width: 1300px;
   @media only screen and ${device.tabletUp} {
     padding: 0 80px;

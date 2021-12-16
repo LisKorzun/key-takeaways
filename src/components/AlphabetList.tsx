@@ -7,17 +7,19 @@ import { PercentageRow } from './PercentageRow';
 
 const SAlphabetList = styled.div`
   display: grid;
-  grid-template-columns: 2rem auto;
+  grid-template-columns: 4rem 1fr;
   margin-bottom: 2rem;
-  padding: 2rem 0 0;
-  border-top: 1px solid ${({ theme }) => theme.accentRGBA};
+  padding: 0 0 2rem;
+  border-bottom: 1px solid ${({ theme }) => theme.accentRGBA};
   width: 100%;
   h4 {
-    font-size: calc(3rem + 1vw);
+    font-size: 3rem;
     line-height: 1;
     font-weight: 900;
     text-transform: uppercase;
     color: ${({ theme }) => theme.primary};
+    margin: 0;
+    padding-left: 5px;
   }
   ol {
     margin: 0;
@@ -31,38 +33,13 @@ interface AlphabetListProps {
   baseUrl: string;
 }
 
-const SLetterRow = styled.div`
-  display: grid;
-  grid-template-columns: 50px 1fr;
-`;
-
-const SHeaderNav = styled.div`
-  background: ${({ theme }) => theme.primaryRGBA};
-  border-radius: 8px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  margin-bottom: 3rem;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  a {
-    color: ${({ theme }) => theme.text};
-    font-weight: 500;
-    font-size: 15px;
-    white-space: nowrap;
-    padding: 0 1rem;
-    line-height: 26px;
-  }
-`;
-
 export const AlphabetList: FC<AlphabetListProps> = ({ list, total, baseUrl }) => {
   const groups = groupByLetter(list);
   return (
     <>
       {groups.map(({ items, letter }) => (
-        <SLetterRow key={letter} id={`letter-${letter}`}>
-          <div>{letter}</div>
+        <SAlphabetList key={letter} id={`letter-${letter}`}>
+          <h4>{letter}</h4>
           <ol>
             {items.map(({ fieldValue, totalCount }) => (
               <PercentageRow
@@ -75,7 +52,7 @@ export const AlphabetList: FC<AlphabetListProps> = ({ list, total, baseUrl }) =>
               </PercentageRow>
             ))}
           </ol>
-        </SLetterRow>
+        </SAlphabetList>
       ))}
     </>
   );
