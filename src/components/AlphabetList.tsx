@@ -7,7 +7,7 @@ import { PercentageRow } from './PercentageRow';
 
 const SAlphabetList = styled.div`
   display: grid;
-  grid-template-columns: 4rem 1fr;
+  grid-template-columns: 3.5rem 1fr;
   margin-bottom: 2rem;
   padding: 0 0 2rem;
   border-bottom: 1px solid ${({ theme }) => theme.accentRGBA};
