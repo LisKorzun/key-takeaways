@@ -73,7 +73,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   createPage({
     path: '/contents',
     component: contentsTemplate,
-    context: { levels, tags, posts },
+    context: { levels,levelsData, tags, posts },
   });
 
   posts.forEach(({ slug }) => {

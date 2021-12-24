@@ -68,6 +68,9 @@ const SLayout = styled.div<SLayoutProps>`
     z-index: 5;
     overflow: hidden;
   }
+  footer {
+    background-color:${({ theme }) => theme.accentRGBA}; ;
+  }
 `;
 
 interface LayoutProps {

@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 
 import { IPost } from '../common';
 import { SPostCardContent, SPostCard } from './styled';
-import { PostDifficulty } from './PostDifficulty';
+import { PostLevel } from './PostLevel';
 import { PostInfo } from './PostInfo';
 import { PostTags } from './PostTags';
 
@@ -25,7 +25,7 @@ export const PostCard: FC<Props> = ({ post }) => {
       <GatsbyImage image={image} alt="" />
       <SPostCardContent>
         <PostTags tags={tags} />
-        <PostDifficulty level={level} asLink />
+        <PostLevel level={level} />
         <h2>
           <Link to={`/${slug}`}>{title}</Link>
         </h2>
