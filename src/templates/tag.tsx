@@ -41,8 +41,8 @@ const Tag: FC<Props> = ({
         total={total}
       />
       <PostsList posts={nodes} />
+      <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />
     </SPageWrapper>
-    <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />
   </Layout>
 );
 

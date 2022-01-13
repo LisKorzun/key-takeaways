@@ -17,9 +17,6 @@ export const GlobalStyle = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.primary};
   }
-  a:focus, a:hover {
-    opacity: .6;
-  }
   
   thead tr {
     background-color: ${({ theme }) => theme.primaryRGBA};

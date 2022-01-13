@@ -2,15 +2,7 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import {
-  Layout,
-  Seo,
-  Title,
-  ChipsByTags,
-  PostsList,
-  Pagination,
-  SPageWrapper,
-} from '../components';
+import { Layout, Seo, Title, ChipsByTags, PostsList, Pagination, SPageWrapper } from '../components';
 import { ICONS, IGroupedField, ILevelData, IPost, ROUTES } from '../common';
 
 interface Props {
@@ -51,8 +43,8 @@ const Level: FC<Props> = ({
         <Title caption={caption} title={title} icon={ICONS.LEVELS} />
         <ChipsByTags tags={tags} active={tag} baseRoute={`${ROUTES.LEVEL}/${kebabCase(title)}`} total={total} />
         <PostsList posts={nodes} />
+        <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />
       </SPageWrapper>
-      <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />
     </Layout>
   );
 };
