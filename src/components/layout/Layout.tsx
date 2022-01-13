@@ -33,7 +33,6 @@ const SLayout = styled.div<SLayoutProps>`
     min-height: 100vh;
     position: relative;
     z-index: 3;
-    overflow-y: auto;
     background-color: ${(props) => props.theme.background};
     box-shadow: 0 0 20px rgba(black, 0.7);
     transform-origin: center 70%;
@@ -66,10 +65,9 @@ const SLayout = styled.div<SLayoutProps>`
     display: flex;
     flex-direction: column;
     z-index: 5;
-    overflow: hidden;
   }
   footer {
-    background-color:${({ theme }) => theme.accentRGBA}; ;
+    background-color: ${({ theme }) => theme.accentRGBA};
   }
 `;
 
