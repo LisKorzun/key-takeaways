@@ -53,8 +53,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   pre[class*='language-']::before {
-    background-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.primary};
   }
 
   div#front::-webkit-scrollbar {

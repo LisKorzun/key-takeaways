@@ -12,7 +12,7 @@ const SPostLevelLabel = styled((props) => <Link {...props} />)`
   align-items: center;
   font-size: 1.4rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.background};
+  color: white;
   border-radius: 4px;
   background-color: ${({ theme }) => theme.accentRGBA};
   position: relative;
@@ -49,7 +49,7 @@ export const PostLevelLabel: FC<PostLevelProps> = ({ level }) => {
 
   return (
     <SPostLevelLabel to={`${ROUTES.LEVEL}/${kebabCase(data.title)}`}>
-      <Icon name={data.icon} height="30px" color="background" />
+      <Icon name={data.icon} height="30px" color="text" />
       {data.title}
     </SPostLevelLabel>
   );

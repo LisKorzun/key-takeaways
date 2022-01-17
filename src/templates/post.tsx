@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import isEmpty from 'lodash/isEmpty';
 
-import { Layout, Seo, PostTags, PostInfo, PostLevelLabel } from '../components';
-import { IPost } from '../common';
-import styled from 'styled-components';
+import { Layout, Seo, PostTags, PostInfo, PostLevelLabel, PostToC, SPostLayout } from '../components';
+import { IPost, IHeading } from '../common';
 import { device } from '../styles';
 
 interface IFullPost extends IPost {
@@ -25,7 +26,7 @@ interface Props {
 
 const components = {};
 
-const SBlogImg = styled((props) => <GatsbyImage {...props} />)`
+const SPostHeaderImage = styled((props) => <GatsbyImage {...props} />)`
   height: auto;
   min-height: 550px;
   max-height: 550px;
@@ -50,7 +51,7 @@ const SBlogImg = styled((props) => <GatsbyImage {...props} />)`
   }
 `;
 
-const PostHeader = styled.div`
+const SPostHeader = styled.div`
   padding: 100px 20px 30px;
   min-height: 550px;
   max-height: 550px;
@@ -85,63 +86,14 @@ const PostHeader = styled.div`
   }
 `;
 
-interface IHeading {
-  url: string;
-  title: string;
-}
-interface IToc {
-  items: IHeading[];
-}
-const ToC: FC<IToc> = ({ items = [] }) => (
-  <>
-    <h6>Table of Contents</h6>
-    <ul>
-      {items.map((item) => (
-        <li key={item.url}>
-          <Link to={item.url}>{item.title}</Link>
-        </li>
-      ))}
-    </ul>
-  </>
-);
-
-const Layt = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-self: center;
-  margin: 0 auto;
-  max-width: 1300px;
-  width: 100%;
-  padding: 0 2rem;
-  aside {
-    max-width: min(300px, 100%);
-    margin-left: 5rem;
-    position: sticky;
-    top: 3rem;
-    align-self: flex-start;
-    display: none;
-    @media only screen and ${device.xlUp} {
-      display: block;
-    }
-  }
-  article {
-    flex: 1 1 600px;
-    max-width: min(600px, 100%);
-    @media only screen and ${device.lUp} {
-      flex: 1 1 900px;
-      max-width: min(900px, 100%);
-    }
-  }
-`;
-
 const Post: FC<Props> = ({ data }) => {
   const image = getImage(data.mdx.frontmatter.hero_image)!;
 
   return (
     <Layout>
       <Seo title={data.mdx.frontmatter.title} />
-      <SBlogImg image={image} alt="test-img" />
-      <PostHeader>
+      <SPostHeaderImage image={image} alt="test-img" />
+      <SPostHeader>
         <PostTags tags={data.mdx.frontmatter.tags} size="medium" />
         <h1>{data.mdx.frontmatter.title}</h1>
         <div className="post-summary">
@@ -149,17 +101,19 @@ const Post: FC<Props> = ({ data }) => {
           <PostInfo icon="time" label={`${data.mdx.timeToRead} min read`} />
           <PostInfo icon="date" label={data.mdx.frontmatter.date} />
         </div>
-      </PostHeader>
-      <Layt>
+      </SPostHeader>
+      <SPostLayout>
         <article>
           <MDXProvider components={components}>
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </MDXProvider>
         </article>
-        <aside>
-          <ToC items={data.mdx.tableOfContents.items} />
-        </aside>
-      </Layt>
+        {!isEmpty(data.mdx.tableOfContents.items) ? (
+          <aside>
+            <PostToC items={data.mdx.tableOfContents.items} />
+          </aside>
+        ) : null}
+      </SPostLayout>
     </Layout>
   );
 };

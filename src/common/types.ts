@@ -20,3 +20,8 @@ export interface ILevelData {
   icon: string;
   caption: string;
 }
+
+export interface IHeading {
+  url: string;
+  title: string;
+}
