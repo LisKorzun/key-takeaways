@@ -6,23 +6,29 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import { Icon } from './Icon';
 import { ILevelData, ROUTES } from '../common';
 
-const SPostLevel = styled((props) => <Link {...props} />)`
+const SPostLevelLabel = styled((props) => <Link {...props} />)`
   display: block;
+  text-transform: uppercase;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.background};
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.accentRGBA};
   position: relative;
-  min-height: 1.2rem;
-  padding-left: 2rem;
+  min-height: 3rem;
+  padding: 1rem 1rem 1rem 3.5rem;
   svg {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    left: 10px;
   }
 `;
 
 interface PostLevelProps {
   level: string;
 }
-
-export const PostLevel: FC<PostLevelProps> = ({ level }) => {
+export const PostLevelLabel: FC<PostLevelProps> = ({ level }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -42,8 +48,9 @@ export const PostLevel: FC<PostLevelProps> = ({ level }) => {
   const data: ILevelData = find(site.siteMetadata.levels, ['id', level]);
 
   return (
-    <SPostLevel to={`${ROUTES.LEVEL}/${kebabCase(data.title)}`}>
-      <Icon name={data.icon} height="30px" color="accent" />
-    </SPostLevel>
+    <SPostLevelLabel to={`${ROUTES.LEVEL}/${kebabCase(data.title)}`}>
+      <Icon name={data.icon} height="30px" color="background" />
+      {data.title}
+    </SPostLevelLabel>
   );
 };
