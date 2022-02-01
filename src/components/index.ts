@@ -6,6 +6,7 @@ export * from './PostLevelLabel';
 export * from './PostInfo';
 export * from './PostTags';
 export * from './PostToC';
+export * from './PostRelated';
 export * from './Pagination';
 export * from './ChipsByLevels';
 export * from './ChipsByTags';

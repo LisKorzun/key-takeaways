@@ -23,19 +23,10 @@ body {
 }
 
 hr {
-  height: 2rem;
   border: 0;
-  color: inherit;
-  width: 100%;
-}
-hr::after {
-  content: '\002700';
-  display: inline-block;
-  position: relative;
-  top: -1.9rem;
-  left: 4rem;
-  padding: 0 0.3rem;
-  font-size: 3rem;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /*

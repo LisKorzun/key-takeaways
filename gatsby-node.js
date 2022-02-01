@@ -73,7 +73,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   createPage({
     path: '/contents',
     component: contentsTemplate,
-    context: { levels,levelsData, tags, posts },
+    context: { levels, levelsData, tags, posts },
   });
 
   posts.forEach(({ slug }) => {
@@ -188,4 +188,35 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       });
     });
   });
+};
+
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    Mdx: {
+      relatedPosts: {
+        type: ['Mdx'],
+        resolve: async (source, args, context, info) => {
+          const { entries } = await context.nodeModel.findAll({
+            query: {
+              limit: 2,
+              filter: {
+                id: {
+                  ne: source.id,
+                },
+                frontmatter: {
+                  tags: {
+                    in: source.frontmatter.tags,
+                  },
+                },
+              },
+            },
+            type: 'Mdx',
+          });
+          return entries;
+        },
+      },
+    },
+  };
+
+  createResolvers(resolvers);
 };

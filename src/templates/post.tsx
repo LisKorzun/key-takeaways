@@ -6,13 +6,14 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import isEmpty from 'lodash/isEmpty';
 
-import { Layout, Seo, PostTags, PostInfo, PostLevelLabel, PostToC, SPostLayout } from '../components';
+import { Layout, Seo, PostTags, PostInfo, PostLevelLabel, PostToC, PostRelated, SPostLayout } from '../components';
 import { IPost, IHeading } from '../common';
 import { device } from '../styles';
 
 interface IFullPost extends IPost {
   body: string;
   tableOfContents: { items: IHeading[] };
+  relatedPosts: IPost[];
 }
 
 interface Props {
@@ -107,6 +108,7 @@ const Post: FC<Props> = ({ data }) => {
           <MDXProvider components={components}>
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </MDXProvider>
+          <PostRelated posts={data.mdx.relatedPosts} />
         </article>
         {!isEmpty(data.mdx.tableOfContents.items) ? (
           <aside>
@@ -126,6 +128,9 @@ export const pageQuery = graphql`
       ...postFields
       body
       tableOfContents
+      relatedPosts {
+        ...postFields
+      }
     }
   }
 `;
