@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { IPost } from '../common';
 import { PostTags } from './PostTags';
 
+// TODO: Refactor
+
 const SPostRelated = styled.div`
   display: grid;
   grid-template-columns: auto auto;
@@ -101,6 +103,7 @@ const TrendingCard: FC<Props> = ({ post }) => {
     </SPostTrendingCard>
   );
 };
+
 export const PostRelated: FC<PostRelatedProps> = ({ posts }) => (
   <>
     <SHeading>Related Posts</SHeading>
