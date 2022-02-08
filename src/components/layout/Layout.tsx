@@ -5,7 +5,7 @@ import { GlobalStyle, device, themes, ThemeModes } from '../../styles';
 import { Navigation, Hamburger } from './';
 import { LABELS } from '../../common';
 
-const HEADER_TOP = 170;
+const HEADER_TOP = 200;
 
 interface SLayoutProps {
   opened: boolean;
@@ -44,9 +44,9 @@ const SLayout = styled.div<SLayoutProps>`
     position: fixed;
     z-index: -1;
     top: ${HEADER_TOP}px;
-    left: 1rem;
-    width: fit-content;
-    height: 9rem;
+    left: -20px;
+    //width: fit-content;
+    height: 35px;
     font-size: 2rem;
     color: ${(props) => props.theme.accent};
     -webkit-transform: rotate(-90deg);

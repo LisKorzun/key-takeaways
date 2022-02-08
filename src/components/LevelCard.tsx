@@ -13,6 +13,10 @@ const SLevelCard = styled((props) => <Link {...props} />)`
   background-color: ${({ theme }) => theme.accentRGBA};
   padding: 10px;
   border-radius: 0.8rem;
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  &:hover {
+    transform: translateY(-4px);
+  }
   & > svg {
     grid-row-end: span 2;
   }
