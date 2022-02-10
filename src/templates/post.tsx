@@ -6,7 +6,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import isEmpty from 'lodash/isEmpty';
 
-import { Layout, Seo, PostTags, PostInfo, PostLevelLabel, PostToC, PostRelated, SPostLayout } from '../components';
+import { Seo, PostTags, PostInfo, PostLevelLabel, PostToC, PostRelated, SPostLayout } from '../components';
 import { IPost, IHeading } from '../common';
 import { device } from '../styles';
 
@@ -91,7 +91,7 @@ const Post: FC<Props> = ({ data }) => {
   const image = getImage(data.mdx.frontmatter.hero_image)!;
 
   return (
-    <Layout>
+    <>
       <Seo title={data.mdx.frontmatter.title} />
       <SPostHeaderImage image={image} alt="test-img" />
       <SPostHeader>
@@ -116,7 +116,7 @@ const Post: FC<Props> = ({ data }) => {
           </aside>
         ) : null}
       </SPostLayout>
-    </Layout>
+    </>
   );
 };
 

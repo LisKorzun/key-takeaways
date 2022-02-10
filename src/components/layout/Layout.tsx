@@ -1,9 +1,11 @@
 import React, { FC, useState, useRef, useEffect } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 
-import { GlobalStyle, device, themes, ThemeModes } from '../../styles';
+import { device } from '../../styles';
+import { ThemeProvider } from '../ThemeContext';
 import { Navigation, Hamburger } from './';
 import { LABELS } from '../../common';
+import ThemeToggle from '../ThemeToggle';
 
 const HEADER_TOP = 200;
 
@@ -33,31 +35,30 @@ const SLayout = styled.div<SLayoutProps>`
     min-height: 100vh;
     position: relative;
     z-index: 3;
-    background-color: ${(props) => props.theme.background};
+    background-color: var(--color-background);
     box-shadow: 0 0 20px rgba(black, 0.7);
     transform-origin: center 70%;
     transition: all 0.3s ease;
   }
   .header {
-    display: none;
+    opacity: 0;
     font-weight: 100;
+    font-size: 1.5rem;
+    font-family: 'Syncopate', sans-serif;
     position: fixed;
     z-index: -1;
-    top: ${HEADER_TOP}px;
-    left: -20px;
-    //width: fit-content;
+    top: 250px;
+    left: -50px;
     height: 35px;
-    font-size: 2rem;
-    color: ${(props) => props.theme.accent};
+    color: var(--color-text);
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    transition: all 0.2s ease-in-out;
+    transition: opacity 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     @media only screen and ${device.tabletUp} {
-      display: block;
+      opacity: 1;
     }
     @media only screen and ${device.laptopUp} {
-      height: 11rem;
-      font-size: 2.5rem;
+      left: -40px;
     }
   }
   .content {
@@ -66,16 +67,9 @@ const SLayout = styled.div<SLayoutProps>`
     flex-direction: column;
     z-index: 5;
   }
-  footer {
-    background-color: ${({ theme }) => theme.accentRGBA};
-  }
 `;
 
-interface LayoutProps {
-  theme?: ThemeModes;
-}
-
-export const Layout: FC<LayoutProps> = ({ children, theme = 'light' }) => {
+export const Layout: FC = ({ children }) => {
   const [opened, setOpened] = useState(false);
   const windowRef = useRef<HTMLDivElement>(null);
   const frontRef = useRef<HTMLDivElement>(null);
@@ -114,8 +108,7 @@ export const Layout: FC<LayoutProps> = ({ children, theme = 'light' }) => {
   };
 
   return (
-    <ThemeProvider theme={{ ...themes[theme] }}>
-      <GlobalStyle theme={themes[theme]} />
+    <ThemeProvider>
       <SLayout opened={opened}>
         <Navigation onClose={onClose} />
         <div id="front" ref={windowRef} onScroll={onScroll}>
@@ -125,6 +118,7 @@ export const Layout: FC<LayoutProps> = ({ children, theme = 'light' }) => {
               {LABELS.HEADER}
             </div>
             <div className="content">{children}</div>
+            <ThemeToggle />
           </div>
         </div>
       </SLayout>

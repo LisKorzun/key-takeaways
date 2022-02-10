@@ -16,7 +16,7 @@ const SNavigation = styled.div`
     a {
       font-family: 'Architects Daughter';
       display: block;
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 2.5rem;
       text-decoration: none;
       color: ${(props) => props.theme.background};

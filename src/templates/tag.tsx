@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
-import { Layout, Seo, Title, ChipsByLevels, PostsList, SPageWrapper, Pagination } from '../components';
+import { Seo, Title, ChipsByLevels, PostsList, SPageWrapper, Pagination } from '../components';
 import { ICONS, IGroupedField, ILevelData, IPost, LABELS, ROUTES } from '../common';
 
 interface Props {
@@ -29,7 +29,7 @@ const Tag: FC<Props> = ({
     allMdx: { nodes },
   },
 }) => (
-  <Layout>
+  <>
     <Seo title={`${tag} ${LABELS.TAG_CAPTION}`} />
     <SPageWrapper>
       <Title caption={LABELS.TAG_CAPTION} title={tag} icon={ICONS.TAG} />
@@ -43,7 +43,7 @@ const Tag: FC<Props> = ({
       <PostsList posts={nodes} />
       <Pagination currentPage={currentPage} numPages={numPages} baseURL={baseURL} />
     </SPageWrapper>
-  </Layout>
+  </>
 );
 
 export const pageQuery = graphql`

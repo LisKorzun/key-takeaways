@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 
 import { groupByLetter, IGroupedField, ILevelData, LABELS, ROUTES } from '../common';
-import { Layout, Seo, AlphabetList, SPageWrapper, SLetterNav, SPageLayout, LevelsList } from '../components';
+import { Seo, AlphabetList, SPageWrapper, SLetterNav, SPageLayout, LevelsList } from '../components';
 
 interface Props {
   pageContext: {
@@ -21,7 +21,7 @@ const Contents: FC<Props> = ({ data, pageContext: { levels, levelsData } }) => {
   const groups = groupByLetter(data.allMdx.group);
 
   return (
-    <Layout>
+    <>
       <Seo title={LABELS.TAGS} />
       <SPageWrapper>
         <SPageLayout>
@@ -43,7 +43,7 @@ const Contents: FC<Props> = ({ data, pageContext: { levels, levelsData } }) => {
           </aside>
         </SPageLayout>
       </SPageWrapper>
-    </Layout>
+    </>
   );
 };
 

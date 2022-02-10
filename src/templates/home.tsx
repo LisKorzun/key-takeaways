@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { IGroupedField, IPost, LABELS } from '../common';
-import { Layout, Seo, PostsList, SPageWrapper, SHeading } from '../components';
+import { Seo, PostsList, SPageWrapper, SHeading } from '../components';
 import { graphql } from 'gatsby';
 
 interface Props {
@@ -20,13 +20,13 @@ const Home: FC<Props> = ({
     allMdx: { nodes },
   },
 }) => (
-  <Layout>
+  <>
     <Seo title={LABELS.HOME} />
     <SPageWrapper>
       <SHeading>{LABELS.RECENT}</SHeading>
       <PostsList posts={nodes} />
     </SPageWrapper>
-  </Layout>
+  </>
 );
 
 export const pageQuery = graphql`

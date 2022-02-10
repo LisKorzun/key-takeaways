@@ -6,7 +6,7 @@ export const ROUTES = {
 
 export const LABELS = {
   TITLE: 'JS, TS, React Cheat Sheets Series',
-  HEADER: 'You should know   JS',
+  HEADER: 'you should know',
   HOME: 'Welcome!',
   ABOUT: 'About',
   LEVEL: 'Difficulty',
